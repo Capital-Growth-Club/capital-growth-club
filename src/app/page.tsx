@@ -281,24 +281,24 @@ export default function Home() {
                 7th Level — Full Rebuild
               </p>
               <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                Jeremy Miner at 7th Level brought us in to do the hardest thing — a full rebuild. Their sales system wasn&apos;t built to scale. We rebuilt the entire thing from the ground up, engineered so the business could grow without cracking under pressure.
+                Jeremy Miner at 7th Level was spending close to $750K/mo on ads — around $25K/day — booking ~50 appointments daily. We rebuilt their entire ad structure and system from the ground up.
               </p>
               <div className="space-y-4">
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Cost Per Booked Call</span>
-                  <span className="text-white font-semibold line-through decoration-white/30">$80</span>
+                  <span className="text-white/40 text-sm">Previous Ad Spend</span>
+                  <span className="text-white font-semibold line-through decoration-white/30">$25K/day</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">New Cost Per Booked Call</span>
-                  <span className="text-brand-gold font-bold text-xl">&lt; $20</span>
+                  <span className="text-white/40 text-sm">New Ad Spend</span>
+                  <span className="text-brand-gold font-bold text-xl">&lt; $3K/day</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Booked Calls (First 24 Hrs)</span>
-                  <span className="text-white font-semibold">29</span>
+                  <span className="text-white/40 text-sm">Booked Appts (12 Days)</span>
+                  <span className="text-white font-semibold">70+</span>
                 </div>
                 <div className="flex justify-between items-center pt-1">
-                  <span className="text-white/40 text-sm">Show-Up Rate</span>
-                  <span className="text-brand-gold font-bold text-xl">70%</span>
+                  <span className="text-white/40 text-sm">Same ICP, New System</span>
+                  <span className="text-brand-gold font-bold text-xl">88% Less Spend</span>
                 </div>
               </div>
             </div>
