@@ -112,6 +112,84 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
+/* Quiz animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out both;
+}
+
+/* Confetti */
+.confetti-particle {
+  position: absolute;
+  top: -10px;
+  border-radius: 2px;
+  animation: confetti-fall linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(-10px) translateX(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh)) translateX(var(--drift, 0px)) rotate(var(--rotation, 720deg));
+    opacity: 0;
+  }
+}
+
+.confetti-burst-left {
+  position: absolute;
+  border-radius: 2px;
+  animation: confetti-burst-left-anim ease-out forwards;
+}
+
+.confetti-burst-right {
+  position: absolute;
+  border-radius: 2px;
+  animation: confetti-burst-right-anim ease-out forwards;
+}
+
+@keyframes confetti-burst-left-anim {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--burst-y, -300px)) translateX(var(--burst-x, 50px)) rotate(var(--rotation, 720deg));
+    opacity: 0;
+  }
+}
+
+@keyframes confetti-burst-right-anim {
+  0% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 1;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(var(--burst-y, -300px)) translateX(var(--burst-x, -50px)) rotate(var(--rotation, 720deg));
+    opacity: 0;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
