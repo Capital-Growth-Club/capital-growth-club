@@ -145,17 +145,17 @@ export default function Home() {
             {[
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2v24M2 14h24" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /><circle cx="14" cy="14" r="12" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /></svg>,
-                title: "Spending on Ads but Not Getting Clients",
+                title: "Spending On Ads But Not Getting Clients",
                 desc: "You're putting money into marketing but the phone isn't ringing. Clicks and views don't pay the bills — booked appointments do.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="4" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /><path d="M9 14h10M14 9v10" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>,
-                title: "Getting Leads but Not Closing Them",
+                title: "Getting Leads But Not Closing Them",
                 desc: "Names are coming in but they're not turning into paying clients. Your calendar is full of no-shows and your team is chasing people who won't call back.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#BB9A65" strokeWidth="2" strokeLinejoin="round" opacity="0.3" /><path d="M10 18l8-8" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>,
-                title: "People Book but Don't Show Up",
+                title: "People Book But Don't Show Up",
                 desc: "You're paying to get someone to schedule, and then 80% of them never show. That's money you already spent — gone.",
               },
               {
@@ -170,7 +170,7 @@ export default function Home() {
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 8h20v14a2 2 0 01-2 2H6a2 2 0 01-2-2V8z" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /><path d="M10 14l3 3 5-6" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>,
-                title: "Marketing Feels Like a Money Pit",
+                title: "Marketing Feels Like A Money Pit",
                 desc: "You know you should be marketing but it feels like you're throwing money into a hole with no way to tell if any of it is coming back.",
               },
             ].map((item, i) => (
