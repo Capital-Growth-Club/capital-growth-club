@@ -103,6 +103,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
   const [otpError, setOtpError] = useState("");
   const [otpSending, setOtpSending] = useState(false);
 
+  // Continuous falling confetti (starts mid-animation)
   const confetti = useMemo(
     () =>
       Array.from({ length: 40 }).map((_, i) => ({
@@ -114,6 +115,39 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
         animationDelay: `${-Math.random() * 5}s`,
         drift: `${-40 + Math.random() * 80}px`,
         rotation: `${360 + Math.random() * 720}deg`,
+      })),
+    []
+  );
+
+  // Burst particles — cannon effect from bottom center
+  const burstLeft = useMemo(
+    () =>
+      Array.from({ length: 20 }).map((_, i) => ({
+        left: `${40 + Math.random() * 20}%`,
+        width: `${5 + Math.random() * 8}px`,
+        height: `${5 + Math.random() * 8}px`,
+        backgroundColor: confettiColors[i % confettiColors.length],
+        animationDuration: `${1.2 + Math.random() * 2}s`,
+        animationDelay: `${Math.random() * 0.3}s`,
+        burstX: `${20 + Math.random() * 120}px`,
+        burstY: `${-150 - Math.random() * 250}px`,
+        rotation: `${360 + Math.random() * 720}deg`,
+      })),
+    []
+  );
+
+  const burstRight = useMemo(
+    () =>
+      Array.from({ length: 20 }).map((_, i) => ({
+        left: `${40 + Math.random() * 20}%`,
+        width: `${5 + Math.random() * 8}px`,
+        height: `${5 + Math.random() * 8}px`,
+        backgroundColor: confettiColors[i % confettiColors.length],
+        animationDuration: `${1.2 + Math.random() * 2}s`,
+        animationDelay: `${Math.random() * 0.3}s`,
+        burstX: `${-20 - Math.random() * 120}px`,
+        burstY: `${-150 - Math.random() * 250}px`,
+        rotation: `${-360 - Math.random() * 720}deg`,
       })),
     []
   );
@@ -328,10 +362,47 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
           {submitted ? (
             /* Success State — shown after OTP verified */
             <div className="text-center py-8 relative">
-              {/* Confetti */}
+              {/* Burst confetti — cannon from bottom */}
+              {burstLeft.map((p, i) => (
+                <div
+                  key={`bl-${i}`}
+                  className="confetti-burst-left"
+                  style={{
+                    left: p.left,
+                    bottom: "0%",
+                    width: p.width,
+                    height: p.height,
+                    backgroundColor: p.backgroundColor,
+                    animationDuration: p.animationDuration,
+                    animationDelay: p.animationDelay,
+                    "--burst-x": p.burstX,
+                    "--burst-y": p.burstY,
+                    "--rotation": p.rotation,
+                  } as React.CSSProperties}
+                />
+              ))}
+              {burstRight.map((p, i) => (
+                <div
+                  key={`br-${i}`}
+                  className="confetti-burst-right"
+                  style={{
+                    left: p.left,
+                    bottom: "0%",
+                    width: p.width,
+                    height: p.height,
+                    backgroundColor: p.backgroundColor,
+                    animationDuration: p.animationDuration,
+                    animationDelay: p.animationDelay,
+                    "--burst-x": p.burstX,
+                    "--burst-y": p.burstY,
+                    "--rotation": p.rotation,
+                  } as React.CSSProperties}
+                />
+              ))}
+              {/* Falling confetti — continuous rain */}
               {confetti.map((p, i) => (
                 <div
-                  key={i}
+                  key={`fall-${i}`}
                   className="confetti-particle"
                   style={{
                     left: p.left,
