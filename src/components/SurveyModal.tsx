@@ -96,9 +96,13 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [direction, setDirection] = useState<"forward" | "back">("forward");
+  const [verifyStep, setVerifyStep] = useState(false);
+  const [otpCode, setOtpCode] = useState("");
+  const [otpError, setOtpError] = useState("");
+  const [otpSending, setOtpSending] = useState(false);
 
   const totalSteps = questions.length + 1; // +1 for contact info
-  const progress = ((step + 1) / totalSteps) * 100;
+  const progress = verifyStep ? 100 : ((step + 1) / totalSteps) * 100;
   const isContactStep = step === questions.length;
 
   useEffect(() => {
@@ -119,6 +123,10 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
     setSubmitted(false);
     setSubmitting(false);
     setDirection("forward");
+    setVerifyStep(false);
+    setOtpCode("");
+    setOtpError("");
+    setOtpSending(false);
   }
 
   function handleClose() {
@@ -140,10 +148,74 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
     }
   }
 
+  function formatE164(phone: string): string {
+    const digits = phone.replace(/\D/g, "");
+    if (digits.startsWith("1") && digits.length === 11) return `+${digits}`;
+    if (digits.length === 10) return `+1${digits}`;
+    return `+${digits}`;
+  }
+
+  function maskedPhone(): string {
+    const e164 = formatE164(contactInfo.phone);
+    if (e164.length < 5) return e164;
+    return e164.slice(0, 2) + "•".repeat(e164.length - 6) + e164.slice(-4);
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSubmitting(true);
+    setOtpError("");
 
+    try {
+      const res = await fetch("/api/auth/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: formatE164(contactInfo.phone) }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setOtpError(data.error || "Failed to send verification code. Please check your phone number.");
+        setSubmitting(false);
+        return;
+      }
+
+      setVerifyStep(true);
+    } catch {
+      setOtpError("Failed to send verification code. Please try again.");
+    }
+
+    setSubmitting(false);
+  }
+
+  async function handleVerifyOtp(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+    setOtpError("");
+
+    try {
+      const res = await fetch("/api/auth/verify-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          phone: formatE164(contactInfo.phone),
+          code: otpCode,
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setOtpError(data.error || "Invalid code. Please try again.");
+        setSubmitting(false);
+        return;
+      }
+    } catch {
+      setOtpError("Verification failed. Please try again.");
+      setSubmitting(false);
+      return;
+    }
+
+    // Phone verified — now send the webhook
     const payload = {
       name: contactInfo.name,
       email: contactInfo.email,
@@ -172,6 +244,28 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
 
     setSubmitting(false);
     setSubmitted(true);
+  }
+
+  async function resendOtp() {
+    setOtpSending(true);
+    setOtpError("");
+
+    try {
+      const res = await fetch("/api/auth/send-otp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ phone: formatE164(contactInfo.phone) }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        setOtpError(data.error || "Failed to resend code.");
+      }
+    } catch {
+      setOtpError("Failed to resend code. Please try again.");
+    }
+
+    setOtpSending(false);
   }
 
   if (!open) return null;
@@ -215,7 +309,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
 
         <div className="p-8 md:p-12">
           {submitted ? (
-            /* Success State */
+            /* Success State — shown after OTP verified */
             <div className="text-center py-8">
               <div className="w-20 h-20 mx-auto mb-6 rounded-full gradient-bg flex items-center justify-center">
                 <svg
@@ -244,6 +338,79 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
               <button onClick={handleClose} className="btn-primary">
                 Close
               </button>
+            </div>
+          ) : verifyStep ? (
+            /* Phone Verification Step */
+            <div>
+              <p className="text-brand-gold text-sm font-semibold tracking-[0.2em] uppercase mb-3">
+                Verify Your Phone
+              </p>
+              <h3 className="text-2xl md:text-3xl font-bold mb-2">
+                Enter the code we sent to {maskedPhone()}
+              </h3>
+              <p className="text-white/50 mb-8">
+                We sent a 6-digit verification code via SMS. Enter it below to
+                confirm your phone number.
+              </p>
+
+              <form onSubmit={handleVerifyOtp} className="space-y-5">
+                <div>
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="one-time-code"
+                    pattern="[0-9]{6}"
+                    maxLength={6}
+                    required
+                    autoFocus
+                    value={otpCode}
+                    onChange={(e) => {
+                      const val = e.target.value.replace(/\D/g, "").slice(0, 6);
+                      setOtpCode(val);
+                      setOtpError("");
+                    }}
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-white text-center text-2xl tracking-[0.5em] font-mono placeholder-white/20 focus:outline-none focus:border-brand-gold/50 transition-colors"
+                    placeholder="000000"
+                  />
+                </div>
+
+                {otpError && (
+                  <p className="text-red-400 text-sm">{otpError}</p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={submitting || otpCode.length < 6}
+                  className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {submitting ? "Verifying..." : "Verify & Submit"}
+                </button>
+
+                <div className="flex items-center justify-between">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setVerifyStep(false);
+                      setOtpCode("");
+                      setOtpError("");
+                    }}
+                    className="text-white/40 hover:text-white transition-colors text-sm flex items-center gap-2"
+                  >
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M10 12L6 8l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Change number
+                  </button>
+                  <button
+                    type="button"
+                    onClick={resendOtp}
+                    disabled={otpSending}
+                    className="text-brand-gold/70 hover:text-brand-gold transition-colors text-sm disabled:opacity-40"
+                  >
+                    {otpSending ? "Sending..." : "Resend code"}
+                  </button>
+                </div>
+              </form>
             </div>
           ) : isContactStep ? (
             /* Contact Info Step */

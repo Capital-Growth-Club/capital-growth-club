@@ -6,7 +6,7 @@ import SurveyButton from "./SurveyButton";
 const faqs = [
   {
     q: "How much does it cost to work with Capital Growth Club?",
-    a: "We don't believe in making you sit through a sales call just to find out if the numbers make sense. For an ongoing working relationship — where we're inside your business every month managing, optimizing, and building — engagements range from $5,000 to $20,000/month depending on scope, with the potential for a revenue share arrangement on top. For one-time build-and-handoff projects, those start in the mid five figures and can go into six figures depending on what needs to be built. This is not a cheap service. But if you're doing real numbers and you're serious about building a system that performs, the investment reflects what it takes to do this right.",
+    a: "We don't believe in making you sit through a sales call just to find out if the numbers make sense. For an ongoing working relationship — where we're inside your business every month managing, optimizing, and building — engagements range from $5,000 to $20,000/month depending on scope, with the potential for a revenue share arrangement on top. For one-time build-and-handoff projects, those start in the mid five figures and can go into six figures depending on what needs to be built. We work with service business owners who are ready to deploy real capital into scaling — not people hoping ads will save a broken business, but operators building toward $1M to $10M/month who need the system to get there. The investment reflects what it takes to do this right.",
   },
   {
     q: "How is this different from every other marketing agency?",
@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "I've been burned by agencies before. How do I know this will actually work?",
-    a: "We get it — and that's exactly why we have a qualification process. Not to be difficult, but because if we can't see a clear and honest path to a return for you, we won't take the engagement. We'd rather tell you that now than have you three months in without results. Every system we build is backed by $10M+ in managed ad spend and real campaign data. When we're at capacity, we close applications.",
+    a: "We get it — and that's exactly why we have a qualification process. Not to be difficult, but because if we can't see a clear and honest path to a return for you, we won't take the engagement. We'd rather tell you that now than have you three months in without results. Every system we build is backed by 306+ service businesses served and real campaign data. When we're at capacity, we close applications.",
   },
   {
     q: "How long does it take to see results?",
