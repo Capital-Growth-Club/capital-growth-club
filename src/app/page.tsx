@@ -44,18 +44,14 @@ export default function Home() {
             {/* VSL Video */}
             <div className="relative w-full max-w-3xl mb-10">
               <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-brand-card" style={{ animation: "pulse-glow 4s ease-in-out infinite" }}>
-                <div className="aspect-video relative flex items-center justify-center bg-gradient-to-br from-brand-card to-brand-black">
-                  <div className="text-center">
-                    <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center mx-auto mb-4 hover:scale-110 transition-transform cursor-pointer">
-                      <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                        <path d="M12 8l16 8-16 8V8z" fill="#0E0E0E" stroke="#0E0E0E" strokeWidth="2" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                    <p className="text-white/40 text-sm">
-                      Watch How We Fix Broken Growth Systems for Service Businesses
-                    </p>
-                  </div>
-                </div>
+                <video
+                  className="w-full aspect-video object-cover"
+                  src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/69ef6578d31f44bbd812efae.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
               </div>
               <div className="absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-brand-gold/20 rounded-br-2xl pointer-events-none" />
               <div className="absolute -top-3 -left-3 w-24 h-24 border-t-2 border-l-2 border-brand-gold/20 rounded-tl-2xl pointer-events-none" />
