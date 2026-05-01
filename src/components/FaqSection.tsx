@@ -6,11 +6,11 @@ import SurveyButton from "./SurveyButton";
 const faqs = [
   {
     q: "How much does it cost to work with Capital Growth Club?",
-    a: "We don't believe in making you sit through a sales call just to find out if the numbers make sense. For an ongoing working relationship — where we're inside your business every month managing, optimizing, and building — engagements range from $5,000 to $20,000/month depending on scope, with the potential for a revenue share arrangement on top. For one-time build-and-handoff projects, those start in the mid five figures and can go into six figures depending on what needs to be built. We work with service business owners who are ready to deploy real capital into scaling — not people hoping ads will save a broken business, but operators building toward $1M to $10M/month who need the system to get there. The investment reflects what it takes to do this right.",
+    a: "We don't believe in making you sit through a sales call just to find out if the numbers make sense. For an ongoing working relationship — where we're inside your business every month managing, optimizing, and building — engagements range from $5,000 to $20,000/month depending on scope, with the potential for a revenue share arrangement on top. For one-time build-and-handoff projects, those start in the mid five figures and can go into six figures depending on what needs to be built. We work with service business owners who are ready to deploy real capital into scaling — not people hoping ads will save a broken business, but operators building toward $1M/month who need the system to get there. The investment reflects what it takes to do this right.",
   },
   {
     q: "How is this different from every other marketing agency?",
-    a: "Most businesses are hiring for pieces — a media buyer here, a funnel builder there, someone for email and SMS — and every one of those people is doing their job in isolation with no one seeing the full picture. We build the entire system end-to-end as one thing. Someone who crafts the ad that stops the right person mid-scroll, builds the funnel that turns that lead into a booked call, and handles everything between the opt-in and the appointment — the nurture, the follow-up, the confirmation sequence. That's the difference between a 20% show rate and a 70% show rate.",
+    a: "Most agencies sell pieces — a media buyer here, a funnel builder there, someone for email and SMS — and every one of them works in isolation with no one seeing the full picture. We build the entire cold client acquisition system end-to-end as one thing. The ad creative that stops the right person mid-scroll, the funnel that turns that lead into a booked call, the CRM and follow-up between the opt-in and the appointment, and the tracking that tells you what's actually working. That's the difference between a 20% show rate and a 70% show rate — and between running ads and actually acquiring customers.",
   },
   {
     q: "I've been burned by agencies before. How do I know this will actually work?",
@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "What kind of businesses do you work with?",
-    a: "We specialize in service-based businesses doing $250K+/month — real estate teams, home service companies, legal firms, medical practices, financial advisors, and high-ticket coaching/consulting businesses. If you sell a service and want to scale past $1M/month, we're built for you.",
+    a: "We specialize in service-based businesses doing $250K+/month that are tired of relying on referrals and word-of-mouth — real estate teams, home service companies, legal firms, medical practices, financial advisors, and high-ticket coaching/consulting businesses. If you sell a service, you're ready to deploy capital into cold client acquisition, and you want to scale toward $1M/month, we're built for you.",
   },
   {
     q: "What does the application process look like? Is this a sales call?",

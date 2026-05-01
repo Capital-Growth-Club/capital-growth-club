@@ -30,16 +30,16 @@ export default function Home() {
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4">
-              After Working With Hundreds of Service Businesses, We Keep Finding the Same 3 Broken Pieces.{" "}
-              <span className="gradient-text">Your Ads. Your Funnel. Your Sales System.</span>
+              Most Service Businesses Don&apos;t Have a Lead Generation Problem.{" "}
+              <span className="gradient-text">They Have a Cold Client Acquisition Problem.</span>
             </h1>
 
             {/* Sub-headline */}
             <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-10 max-w-2xl">
-              Whether you run a coaching practice, law firm, home services company,
-              medical practice, or agency — if your ads aren&apos;t converting, your leads
-              aren&apos;t closing, and your show rate is stuck at 20%, you don&apos;t need
-              another media buyer. You need the entire system rebuilt by one team.
+              We build service businesses the entire machine that turns ice-cold strangers
+              into profitable customers — paid ads, sales funnels, CRM, follow-up automations,
+              and tracking. All built and managed by one team, so you stop depending on
+              referrals and start scaling on demand.
             </p>
 
             {/* VSL Video */}
@@ -102,9 +102,9 @@ export default function Home() {
           </div>
 
           <p className="text-center text-white/20 text-sm mt-10 max-w-2xl mx-auto leading-relaxed">
-            After 8+ years building growth systems for service businesses — from solo consultants
-            to multi-location operations — we&apos;ve learned that every growth problem traces back to the
-            same thing: a broken system, not a broken ad.
+            After 8+ years building cold client acquisition systems for service businesses — from solo
+            consultants to multi-location operations — we&apos;ve learned that every growth problem
+            traces back to the same thing: a broken system, not a broken ad.
           </p>
         </div>
       </section>
@@ -129,33 +129,33 @@ export default function Home() {
             {[
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2v24M2 14h24" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /><circle cx="14" cy="14" r="12" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /></svg>,
-                title: "Spending On Ads But Not Getting Clients",
-                desc: "You're putting money into marketing but the phone isn't ringing. Clicks and views don't pay the bills — booked appointments do.",
+                title: "Living Off Referrals And Word-Of-Mouth",
+                desc: "Your business runs on hope — hope someone refers you, hope a past client comes back, hope organic social brings in a lead. None of it is predictable, and none of it scales.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="4" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /><path d="M9 14h10M14 9v10" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>,
-                title: "Getting Leads But Not Closing Them",
-                desc: "Names are coming in but they're not turning into paying clients. Your calendar is full of no-shows and your team is chasing people who won't call back.",
+                title: "Cold Leads Don't Answer Or Disappear",
+                desc: "You finally get leads from cold traffic — and half of them never answer the phone. The ones who do say they're interested, then ghost the second you try to follow up.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#BB9A65" strokeWidth="2" strokeLinejoin="round" opacity="0.3" /><path d="M10 18l8-8" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>,
-                title: "People Book But Don't Show Up",
-                desc: "You're paying to get someone to schedule, and then 80% of them never show. That's money you already spent — gone.",
+                title: "No-Shows And “Need To Think About It”",
+                desc: "People book and then don't show. The ones who do show say they need to “think about it” and never come back. You're paying for appointments that never close.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 24l8-8 4 4 8-12" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>,
-                title: "No Idea What's Working",
-                desc: "You can't tell which marketing is actually bringing in clients and which is just burning cash. Without the numbers, every decision is a guess.",
+                title: "Asking “Are Ads Even Worth It?”",
+                desc: "You've tried ads, you've spent the money, and you can't tell if it's the platform, the offer, your market, or the funnel. So you start questioning whether ads work for your business at all.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /><path d="M14 8v6l4 4" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>,
-                title: "Too Many People, Nobody in Charge",
-                desc: "You've got one person doing your ads, another doing your website, someone else doing emails — and none of them are talking to each other.",
+                title: "No Idea Which Part Of The Funnel Is Broken",
+                desc: "Maybe it's the ad. Maybe it's the landing page. Maybe it's the follow-up. Maybe it's the offer. Without proper tracking, every fix is a guess and every dollar is a gamble.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 8h20v14a2 2 0 01-2 2H6a2 2 0 01-2-2V8z" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /><path d="M10 14l3 3 5-6" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>,
-                title: "Marketing Feels Like A Money Pit",
-                desc: "You know you should be marketing but it feels like you're throwing money into a hole with no way to tell if any of it is coming back.",
+                title: "Old Leads Sitting Dead In Your CRM",
+                desc: "You've collected hundreds — maybe thousands — of leads over time. Nobody&apos;s followed up in months. There&apos;s real money sitting there, but no system to pull it out.",
               },
             ].map((item, i) => (
               <div key={i} className="card-dark p-8 group">
@@ -170,7 +170,8 @@ export default function Home() {
 
           <div className="text-center mt-12">
             <p className="text-white/40 text-lg mb-6">
-              If you checked more than one, you&apos;re leaving six figures on the table every month.
+              These aren&apos;t lead generation problems. They&apos;re cold client acquisition problems —
+              and they&apos;re costing you six figures a year.
             </p>
             <SurveyButton className="btn-primary">
               Let&apos;s Fix This
@@ -191,8 +192,8 @@ export default function Home() {
               <span className="gradient-text">Service Businesses</span>
             </h2>
             <p className="text-white/50 text-lg">
-              These aren&apos;t projections. These are real results from service
-              businesses we&apos;ve built growth systems for.
+              These aren&apos;t projections. These are real results from service businesses
+              we&apos;ve built cold client acquisition systems for.
             </p>
           </div>
 
@@ -206,68 +207,70 @@ export default function Home() {
 
           {/* Case Study Cards */}
           <div className="grid md:grid-cols-3 gap-6">
-            {/* Case Study 1: Fitness / Skool */}
+            {/* Case Study 1: Real Estate */}
             <div className="card-dark p-8 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
               <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Online Coaching — Skool
+                Real Estate — Buyer &amp; Seller Leads
               </p>
               <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                A fitness coach was stuck at 40 members in his Skool community. No real acquisition system, nothing converting. We built the full front-to-back system — positioning, funnel, paid traffic strategy, all of it working together.
+                A real estate team was completely dependent on referrals with no predictable pipeline.
+                We built the full cold client acquisition system — ads, funnels, CRM, and follow-up.
+                Result: $5 buyer leads, $72 local seller leads, and over $243M in sales volume.
               </p>
               <div className="space-y-4">
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Ad Spend</span>
-                  <span className="text-white font-semibold">$10,000</span>
+                  <span className="text-white/40 text-sm">Buyer Leads</span>
+                  <span className="text-white font-semibold">$5 each</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">New Members</span>
-                  <span className="text-white font-semibold">5,000+</span>
+                  <span className="text-white/40 text-sm">Seller Leads</span>
+                  <span className="text-white font-semibold">$72 each</span>
                 </div>
                 <div className="flex justify-between items-center pt-1">
-                  <span className="text-white/40 text-sm">Cost Per Acquisition</span>
-                  <span className="text-brand-gold font-bold text-xl">&lt; $2.00</span>
+                  <span className="text-white/40 text-sm">Sales Volume Generated</span>
+                  <span className="text-brand-gold font-bold text-xl">$243M+</span>
                 </div>
               </div>
             </div>
 
-            {/* Case Study 2: Real Estate */}
+            {/* Case Study 2: Lending */}
             <div className="card-dark p-8 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
               <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Real Estate — Seller Leads
+                Lending — Cold Inbound Leads
               </p>
               <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                A real estate investor in Myrtle Beach was completely dependent on friends and family for seller leads. No pipeline, no data, no predictability. We built a cold acquisition system from scratch.
+                A lending company couldn&apos;t crack Facebook ads — leads were unqualified, costs were
+                high, and nothing was tracked. We rebuilt the acquisition system from creative to CRM.
+                In one month they pulled $83K profit from $8K ad spend.
               </p>
               <div className="space-y-4">
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Ad Spend</span>
-                  <span className="text-white font-semibold">$15,000</span>
+                  <span className="text-white/40 text-sm">Qualified Leads (3 mo)</span>
+                  <span className="text-white font-semibold">203</span>
                 </div>
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Sales Volume</span>
-                  <span className="text-white font-semibold">$243M+</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Seller Listing Appts</span>
-                  <span className="text-white font-semibold">60</span>
+                  <span className="text-white/40 text-sm">Ad Spend (1 mo)</span>
+                  <span className="text-white font-semibold">$8,000</span>
                 </div>
                 <div className="flex justify-between items-center pt-1">
-                  <span className="text-white/40 text-sm">Timeframe</span>
-                  <span className="text-brand-gold font-bold text-xl">&lt; 1 Year</span>
+                  <span className="text-white/40 text-sm">Profit (1 mo)</span>
+                  <span className="text-brand-gold font-bold text-xl">$83,000</span>
                 </div>
               </div>
             </div>
 
-            {/* Case Study 3: Coaching — CPL Reduction */}
+            {/* Case Study 3: 7th Level */}
             <div className="card-dark p-8 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
               <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
                 7th Level — Full Rebuild
               </p>
               <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                Jeremy Miner at 7th Level was spending close to $750K/mo on ads — around $25K/day — booking ~50 appointments daily. We rebuilt their entire ad structure and system from the ground up.
+                Jeremy Miner brought us in to rebuild their CRM sales system, ad and sales tracking,
+                automated sales processes, and the entire ad infrastructure for rigorous A/B testing
+                as they scaled into 7-figure ad spend with healthier margins.
               </p>
               <div className="space-y-4">
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
@@ -277,10 +280,6 @@ export default function Home() {
                 <div className="flex justify-between items-center border-b border-white/5 pb-3">
                   <span className="text-white/40 text-sm">New Ad Spend</span>
                   <span className="text-brand-gold font-bold text-xl">&lt; $3K/day</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Booked Appts (12 Days)</span>
-                  <span className="text-white font-semibold">70+</span>
                 </div>
                 <div className="flex justify-between items-center pt-1">
                   <span className="text-white/40 text-sm">Same ICP, New System</span>
@@ -297,15 +296,17 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-6">
             <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              What We Actually Do
+              Where Cold Acquisition Breaks
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              We Fix the Three Things{" "}
-              <span className="gradient-text">Costing You Clients</span>
+              Capturing a Lead Is Only{" "}
+              <span className="gradient-text">One Small Part of the Process</span>
             </h2>
             <p className="text-white/50 text-lg">
-              Most service businesses are losing money in three places: their ads,
-              their website, and what happens after someone reaches out. We fix all three.
+              The real money is made in what happens after a stranger clicks the ad —
+              the funnel, the follow-up, the tracking, the sales process. Here&apos;s where
+              cold client acquisition breaks down for most service businesses, and what
+              we actually do to fix it.
             </p>
           </div>
         </div>
@@ -322,8 +323,9 @@ export default function Home() {
               Facebook &amp; Instagram Ads
             </h3>
             <p className="text-white/50 leading-relaxed">
-              We get your business in front of the right people on social media — and make sure the ads
-              actually bring in clients, not just likes and clicks.
+              Cold traffic doesn&apos;t know you, doesn&apos;t trust you, and isn&apos;t looking for you.
+              We build the creative, targeting, and funnel infrastructure that turns scrolling
+              strangers into booked appointments.
             </p>
           </div>
 
@@ -331,19 +333,19 @@ export default function Home() {
             {[
               {
                 problem: "Your ads look like everyone else's",
-                solution: "We build you a unique offer and fresh ad content every month — between 25 and 200 new creatives — so your business stands out and people actually stop scrolling.",
+                solution: "We build a unique offer and ship 25–200 fresh creatives every month — built around your ICP's pain, not generic templates. People stop scrolling because the ad actually speaks to them.",
               },
               {
-                problem: "You're spending money but the phone isn't ringing",
-                solution: "We set up your campaigns so Facebook learns who your real customers are and finds more of them — instead of showing your ads to people who will never buy.",
+                problem: "Cold traffic isn't converting",
+                solution: "We structure campaigns so Meta learns who your real customers are and finds more of them. The right hook in front of the right person is what turns cold strangers into booked leads.",
               },
               {
-                problem: "People click your ad but don't book or call",
-                solution: "We build you a dedicated landing page for every campaign that's designed to convert visitors into booked appointments — not just send them to your homepage.",
+                problem: "Clicks don't turn into bookings",
+                solution: "We build a dedicated landing page or funnel for every campaign — designed to capture leads, build trust, and move them toward becoming a customer. Not your homepage. A funnel.",
               },
               {
-                problem: "You have no idea what's working",
-                solution: "We install proper tracking so you can see exactly which ads are bringing in real clients — and we cut the ones that aren't.",
+                problem: "You don't know what's actually working",
+                solution: "We install full conversion tracking and attribution so you can see which ads, hooks, and audiences are producing real customers — and we cut the ones that aren't.",
               },
             ].map((item, i) => (
               <div key={i} className="card-dark p-7">
@@ -376,8 +378,9 @@ export default function Home() {
               Google Ads &amp; Local Services
             </h3>
             <p className="text-white/50 leading-relaxed">
-              When someone in your area searches for exactly what you do, we make sure
-              your business shows up first — and that they actually call you, not your competitor.
+              Search traffic is the warmest cold traffic you can buy — these people are
+              actively looking for what you do. We make sure they find you first and convert
+              into customers, not just clicks.
             </p>
           </div>
 
@@ -385,19 +388,19 @@ export default function Home() {
             {[
               {
                 problem: "You're paying for clicks from people who will never hire you",
-                solution: "We target the exact searches your real customers are typing — and block the ones that waste your money, like people looking for DIY tips or job applications.",
+                solution: "We bid on the exact searches your real customers are typing — and block the ones that waste your spend, like DIY tips or job applications.",
               },
               {
                 problem: "Your budget runs out before the day is over",
-                solution: "We restructure your campaigns so your money goes toward the searches that actually turn into paying clients — not the most expensive keywords in your industry.",
+                solution: "We restructure your campaigns so spend goes toward keywords that actually convert — not the most expensive ones in your industry.",
               },
               {
-                problem: "People search for your service and land on the wrong page",
-                solution: "We build dedicated pages that match exactly what someone searched for — so when they click, they see the service they need and a clear way to contact you.",
+                problem: "Searchers land on the wrong page and bounce",
+                solution: "We build dedicated landing pages that match each keyword's intent — so when they click, they see exactly the service they searched for and a clear way to take action.",
               },
               {
-                problem: "Your Google Local Services listing isn't getting you calls",
-                solution: "We optimize your profile, help you get more reviews, and make sure you're verified — so Google ranks you higher and sends you better leads at a lower cost.",
+                problem: "Your Local Services listing isn't generating calls",
+                solution: "We optimize your profile, help you stack reviews, and get you Google-verified — so Google ranks you higher and sends you better leads at a lower cost.",
               },
             ].map((item, i) => (
               <div key={i} className="card-dark p-7">
@@ -427,12 +430,12 @@ export default function Home() {
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="4" y="4" width="24" height="24" rx="4" stroke="#BB9A65" strokeWidth="2" /><path d="M10 12h12M10 16h8M10 20h10" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>
             </div>
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              Your Sales System &amp; Follow-Up
+              CRM, Follow-Up &amp; Tracking
             </h3>
             <p className="text-white/50 leading-relaxed">
-              Getting leads is only half the battle. If nobody calls them back fast enough,
-              if they don&apos;t show up to their appointment, or if they fall through the cracks —
-              you paid for that lead and got nothing. We fix that.
+              This is where most agencies stop and most service businesses bleed money. Speed-to-lead,
+              follow-up sequences, sales process, and proper tracking are what separate a lead generator
+              from a real cold client acquisition system.
             </p>
           </div>
 
@@ -440,19 +443,19 @@ export default function Home() {
             {[
               {
                 problem: "Leads come in but nobody calls them fast enough",
-                solution: "We set up instant notifications and automations so every new lead gets a call or text within minutes — not hours. The faster you respond, the more you close.",
+                solution: "We set up instant notifications and automations so every new lead gets a call or text within minutes — not hours. Speed-to-lead under 3 minutes is the difference between closing them and losing them.",
               },
               {
-                problem: "People book appointments but don't show up",
-                solution: "We build automated reminder sequences — texts and emails — that confirm the appointment, remind them the day before, and follow up if they miss it.",
+                problem: "People book but don't show up",
+                solution: "We build automated reminder sequences — text and email — that confirm the appointment, remind them the day before, and re-engage no-shows. Show rates jump from 20% to 70%+ when this is wired up correctly.",
               },
               {
-                problem: "You don't know your numbers",
-                solution: "We set up dashboards so you can see exactly how much it costs to get a lead, book an appointment, and close a new client — in real time, not at the end of the month.",
+                problem: "Bad tracking means every decision is a guess",
+                solution: "We install conversion tracking, server-side events, and CRM attribution so you can see cost-per-lead, cost-per-appointment, and cost-per-client in real time. No more guessing what's working.",
               },
               {
-                problem: "Old leads are sitting untouched and forgotten",
-                solution: "We build follow-up sequences that automatically re-engage leads over weeks and months. Some of your best clients will come from leads you thought were dead.",
+                problem: "Old leads sit dead in your CRM",
+                solution: "We build long-term nurture sequences — email and SMS — that automatically re-engage leads over weeks and months. Some of your best customers will come from leads you thought were dead.",
               },
             ].map((item, i) => (
               <div key={i} className="card-dark p-7">
@@ -482,12 +485,12 @@ export default function Home() {
               Add It Up
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-              What This Is{" "}
+              What Broken Cold Acquisition Is{" "}
               <span className="gradient-text">Costing You Every Year</span>
             </h2>
             <p className="text-white/50 text-lg">
-              Each of these feels small on its own. Add them up over 12 months
-              and the number will make you sick.
+              Each leak feels small on its own. Add them up over 12 months across
+              your entire acquisition system and the number will make you sick.
             </p>
           </div>
 
@@ -521,19 +524,19 @@ export default function Home() {
             The Real Problem
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-8 leading-tight">
-            It&apos;s Not One Thing That&apos;s Broken.{" "}
-            <span className="gradient-text">It&apos;s the Whole System.</span>
+            It&apos;s Not That Your Service Is Bad.{" "}
+            <span className="gradient-text">You Don&apos;t Have a Predictable System.</span>
           </h2>
           <p className="text-white/50 text-lg md:text-xl leading-relaxed mb-8 max-w-3xl mx-auto">
-            If any of those sections hit close to home, you&apos;re not alone. We see the
-            same pattern in almost every service business that comes to us — the ads,
-            the website, and the follow-up are all disconnected and leaking money.
+            It&apos;s not that your service is bad. It&apos;s not that your market doesn&apos;t need
+            you. It&apos;s not that people aren&apos;t buying. The real problem is you don&apos;t have
+            a predictable system for turning complete strangers into profitable customers.
           </p>
           <p className="text-white/50 text-lg md:text-xl leading-relaxed mb-8 max-w-3xl mx-auto">
-            Better ads won&apos;t help if your website doesn&apos;t convert. A better website
-            won&apos;t help if nobody calls the lead back for 4 hours. Everything from the
-            moment someone first sees your business to the moment they become a paying
-            client needs to work{" "}
+            Better ads won&apos;t help if your funnel doesn&apos;t convert. A better funnel
+            won&apos;t help if nobody calls the lead back in 3 minutes. Bad tracking means
+            you can&apos;t fix what you can&apos;t see. Every piece — ad, funnel, CRM, follow-up,
+            tracking — has to work{" "}
             <span className="text-white font-semibold">as one connected system</span>.
             That&apos;s what we build.
           </p>
@@ -561,7 +564,7 @@ export default function Home() {
         <TestimonialScroll />
       </section>
 
-      {/* ════════════════ SOLUTION — "Your Complete Growth Engine" ════════════════ */}
+      {/* ════════════════ SOLUTION — "Your Cold Client Acquisition System" ════════════════ */}
       <RevealSection className="py-16 md:py-24 bg-brand-dark" id="solution">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
@@ -569,25 +572,25 @@ export default function Home() {
               How We Fix It
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              One Team. One System.{" "}
-              <span className="gradient-text">Built for Your Business.</span>
+              Your Complete{" "}
+              <span className="gradient-text">Cold Client Acquisition System</span>
             </h2>
             <p className="text-white/50 text-lg">
-              Every service business is different — so we don&apos;t hand you a template.
-              We audit what&apos;s broken, build what&apos;s missing, and connect every piece so
-              your ads, your funnel, and your sales process work as one system instead
-              of three separate problems.
+              We don&apos;t hand you a template. We audit your business, identify your ICP,
+              build what&apos;s missing, and connect every piece — ads, funnel, CRM, follow-up,
+              and tracking — into one system that turns ice-cold strangers into profitable
+              customers on demand.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { step: "01", title: "Find Your Ideal Client", desc: "We dig into your market, your competition, and your past wins to figure out exactly who your most profitable clients are — then we build everything around attracting more of them." },
-              { step: "02", title: "Fix Your Front End", desc: "Whether it's your ads, your offer, your landing pages, or all three — we rebuild the front of your funnel so the right people are coming in and converting, not just clicking." },
-              { step: "03", title: "Build What Converts", desc: "Some businesses need a lead magnet. Others need a direct booking flow. Some need a VSL. We build whatever your market actually responds to — not what a playbook says you should have." },
-              { step: "04", title: "Launch & Manage Your Campaigns", desc: "We run your paid traffic across the channels that make sense for your service — Meta, Google, LSA, YouTube — with fresh creative, proper structure, and daily optimization." },
-              { step: "05", title: "Connect Your Backend", desc: "Your CRM, your pipeline, your lead routing, your team notifications — we wire it all together so every lead is tracked, followed up on, and never falls through the cracks." },
-              { step: "06", title: "Automate Your Follow-Up", desc: "Speed-to-lead, appointment reminders, no-show recovery, long-term nurture — we build the automations that turn your sales process into a system that runs whether you're watching it or not." },
+              { step: "01", title: "Identify Your ICP", desc: "We dig into your market, competition, and past wins to figure out exactly who your most profitable customers are — what they care about, what pain they feel, and what message will actually get their attention." },
+              { step: "02", title: "Build the Offer & Hook", desc: "We turn that ICP research into lead magnets, offers, and ad creative that don't just collect names — they create demand. Built for cold traffic that doesn't know you yet." },
+              { step: "03", title: "Build the Funnel", desc: "Whether your market needs a VSL, a booking flow, a lead magnet, or a direct-purchase page — we build the funnel that fits how your customers actually buy. Not a playbook template." },
+              { step: "04", title: "Launch Paid Traffic", desc: "We run your campaigns across the channels that make sense for your service — Meta, Google, LSA, LinkedIn, YouTube — with the right campaign structure, targeting, and daily optimization." },
+              { step: "05", title: "Wire Up CRM & Follow-Up", desc: "We connect your funnel into your CRM, set up automations, email sequences, SMS reminders, and speed-to-lead workflows so leads don't sit and die. Plus the long-term nurture that turns dead leads into closed customers." },
+              { step: "06", title: "Install Tracking", desc: "Server-side conversion tracking, ad platform attribution, and CRM dashboards so you see cost-per-lead, cost-per-appointment, and cost-per-customer in real time. Guessing is expensive — tracking is the fix." },
             ].map((item) => (
               <div key={item.step} className="card-dark p-8 group relative overflow-hidden">
                 <span className="absolute top-6 right-6 text-6xl font-bold text-white/[0.03] group-hover:text-brand-gold/[0.08] transition-colors">
@@ -629,7 +632,7 @@ export default function Home() {
                 <h3 className="text-xl font-bold">This Is For You If...</h3>
               </div>
               <ul className="space-y-4">
-                {["You run a service business — coaching, consulting, legal, medical, home services, financial, or agency", "You're doing $250K+/month and building toward $1M–$10M/month", "You're ready to deploy capital into a real growth system — not test the waters", "You want one team building your entire client acquisition engine", "You're done with agencies that run ads in isolation and call it a strategy"].map((item, i) => (
+                {["You run a service business — coaching, consulting, legal, medical, home services, financial, or agency", "You're doing $250K+/month and ready to scale toward $1M/month", "You're tired of depending on referrals, word-of-mouth, and inconsistent organic leads", "You're ready to deploy capital into a real cold client acquisition system — not test the waters", "You want one team owning your ads, funnel, CRM, follow-up, and tracking"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <svg className="w-5 h-5 mt-0.5 shrink-0" viewBox="0 0 20 20" fill="none">
                       <path d="M5 10l4 4 6-8" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -650,7 +653,7 @@ export default function Home() {
                 <h3 className="text-xl font-bold">This Is NOT For You If...</h3>
               </div>
               <ul className="space-y-4">
-                {["You sell products, not services — we're built for service businesses specifically", "Your business is doing less than $250K/month in revenue", "You're not ready to invest real capital into scaling — you're still testing the waters", "You're looking for a quick hack, not a real growth system", "You don't have a proven service that delivers results yet"].map((item, i) => (
+                {["You sell products, not services — we're built for service businesses specifically", "Your business is doing less than $250K/month in revenue", "You're not ready to deploy real capital into scaling — you're still testing the waters", "You're looking for a quick hack or a media buyer, not a full acquisition system", "You don't have a proven service that delivers real results yet"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <svg className="w-5 h-5 mt-0.5 shrink-0" viewBox="0 0 20 20" fill="none">
                       <path d="M6 6l8 8M14 6l-8 8" stroke="#666" strokeWidth="1.5" strokeLinecap="round" />
@@ -684,10 +687,10 @@ export default function Home() {
               <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-brand-gold/40 via-brand-gold/20 to-transparent hidden md:block" />
               <div className="space-y-12">
                 {[
-                  { step: "01", title: "Apply & Qualify", desc: "Fill out a quick application so we can make sure your service business is the right fit. We only take on businesses we know we can help scale." },
-                  { step: "02", title: "Strategy Session", desc: "We jump on a call to map out your entire client acquisition system — your ideal client, offer positioning, funnel architecture, and launch timeline." },
-                  { step: "03", title: "Build & Launch", desc: "Our team builds everything — ad creative, landing pages, funnel flows, CRM pipelines, and automation sequences tailored to your service. Then we launch." },
-                  { step: "04", title: "Scale & Optimize", desc: "We monitor performance daily, optimize campaigns, and scale what's working — continuously driving more qualified clients into your service business." },
+                  { step: "01", title: "Apply & Qualify", desc: "Fill out a quick application so we can make sure your service business is the right fit. We only take on businesses we know we can help scale with cold client acquisition." },
+                  { step: "02", title: "Strategy Session", desc: "We jump on a call to map out your full cold acquisition system — ICP, offer positioning, funnel architecture, ad strategy, CRM build, follow-up flows, and tracking infrastructure." },
+                  { step: "03", title: "Build & Launch", desc: "Our team builds everything — ad creative, landing pages, funnel flows, CRM pipelines, automations, and tracking — tailored to your service. Then we launch." },
+                  { step: "04", title: "Scale & Optimize", desc: "We monitor performance daily, A/B test creative, optimize the funnel, tighten the follow-up, and scale what's working — continuously driving more profitable customers into your service business." },
                 ].map((item, i) => (
                   <div key={i} className="flex gap-8 items-start">
                     <div className="shrink-0 w-16 h-16 rounded-2xl gradient-bg flex items-center justify-center relative z-10">
@@ -731,13 +734,14 @@ export default function Home() {
             Ready To Scale?
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-            Every Month Without a System Is{" "}
-            <span className="gradient-text">Clients You&apos;re Never Getting Back</span>
+            Stop Running Ads.{" "}
+            <span className="gradient-text">Start Building Your Cold Client Acquisition System.</span>
           </h2>
           <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            If you can&apos;t answer what it costs to acquire a new client, what that
-            client is worth over time, and which part of your funnel is leaking the
-            most — you don&apos;t have a scaling service business. You have an expensive guessing game.
+            If you can&apos;t tell us your cost-per-customer, your customer lifetime value, and which
+            part of your funnel is leaking the most — you don&apos;t have a scalable service business.
+            You have an expensive guessing game. We build the machine that turns strangers into
+            profitable customers, predictably.
           </p>
 
           <SurveyButton className="btn-primary !text-lg !py-5 !px-12">
