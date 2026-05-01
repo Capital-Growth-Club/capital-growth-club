@@ -137,9 +137,9 @@ export default function QualifiedClient() {
               <span className="gradient-text">applications are currently open.</span>
             </h1>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              Please book your call with one of our client acquisition leads
-              below. We&apos;ll review your application before the call so we can
-              cover the right ground when we connect.
+              Book a call with one of our Cold Acquisition Advisors below to see
+              how we can help. We&apos;ll review your application beforehand so we
+              can cover the right ground when we connect.
             </p>
           </div>
 
