@@ -9,16 +9,20 @@ export const metadata: Metadata = {
 
 const PREP_ITEMS = [
   {
-    title: "Have your dashboards open",
-    desc: "If we're reviewing campaign performance, having your ad accounts, CRM, and tracking dashboards pulled up will let us dig in faster.",
+    title: "Check your email",
+    desc: "You'll receive a confirmation email shortly, followed by a Google Calendar invitation. The Google Meet link will be inside that calendar invite.",
   },
   {
-    title: "Bring your questions",
-    desc: "If there's a specific bottleneck, strategy question, or system issue you want to cover — write it down ahead of time so we can prioritize the call.",
+    title: "Write down what you want to cover",
+    desc: "Whether it's a CRM question, a sales process issue, an ad campaign setup, or something else entirely — having your specific questions or issues written down ahead of time makes the call faster and more useful.",
   },
   {
-    title: "Show up on Zoom",
-    desc: "The calendar invite has the Zoom link. Join from a desktop if possible — it's easier to share screens and review work together.",
+    title: "Have the relevant accounts pulled up",
+    desc: "If your question involves your CRM, ad account, funnel, or anything else we'd need to look at together — have it open and ready to share so we can dig in right away.",
+  },
+  {
+    title: "Join on a desktop if possible",
+    desc: "Google Meet works on mobile, but a desktop or laptop makes it easier to share screens and review work together.",
   },
 ];
 
@@ -60,11 +64,12 @@ export default function SupportThankYouPage() {
           </p>
           <h1 className="text-3xl md:text-5xl font-bold mb-5 leading-tight">
             Thanks for booking your{" "}
-            <span className="gradient-text">support call.</span>
+            <span className="gradient-text">call with our team.</span>
           </h1>
           <p className="text-white/60 text-lg leading-relaxed mb-10">
-            You&apos;ll get a calendar invite and a confirmation text shortly.
-            Here&apos;s how to make the most of our time together.
+            You&apos;ll get a confirmation email shortly, followed by a Google
+            Calendar invitation with the Meet link. Here&apos;s how to make the
+            most of our time together.
           </p>
 
           <div className="bg-brand-card border border-white/10 rounded-2xl p-6 md:p-8 mb-10 text-left">
