@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "5 Levels of Awareness Quiz | Capital Growth Club",
+  title: "5 Levels of Awareness Quiz",
   description:
     "Find out which awareness level to target first with your ads. Take the free quiz and get a custom action plan for your business.",
   openGraph: {
@@ -9,16 +9,15 @@ export const metadata: Metadata = {
     description:
       "Find out which awareness level to target first with your ads. Take the free quiz and get a custom action plan for your business.",
     url: "https://capitalgrowthclub.com/5-levels-of-awareness-quiz",
-    siteName: "Capital Growth Club",
-    type: "website",
   },
   twitter: {
-    card: "summary_large_image",
     title: "5 Levels of Awareness Quiz | Capital Growth Club",
     description:
-      "Find out which awareness level to target first with your ads. Take the free quiz and get a custom action plan for your business.",
+      "Find out which awareness level to target first with your ads. Take the free quiz and get a custom action plan.",
   },
-  metadataBase: new URL("https://capitalgrowthclub.com"),
+  alternates: {
+    canonical: "https://capitalgrowthclub.com/5-levels-of-awareness-quiz",
+  },
 };
 
 export default function QuizLayout({

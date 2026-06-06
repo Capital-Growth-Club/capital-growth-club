@@ -5,9 +5,10 @@ import BookedThankYouVideo from "@/components/BookedThankYouVideo";
 import FaqVideoGrid from "@/components/FaqVideoGrid";
 
 export const metadata: Metadata = {
-  title: "You're Booked — Capital Growth Club",
+  title: "You're Booked",
   description:
     "Your strategy call is locked in. Watch the videos below to get the most out of our conversation.",
+  robots: { index: false, follow: false },
 };
 
 export default function BookedPage() {

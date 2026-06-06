@@ -3,9 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Not Quite The Right Fit — Capital Growth Club",
+  title: "Application Reviewed",
   description:
     "Based on your application, you don't meet the qualifying criteria for our offer right now.",
+  robots: { index: false, follow: false },
 };
 
 export default function NotAFitPage() {

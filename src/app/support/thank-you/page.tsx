@@ -3,8 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Call Confirmed — Capital Growth Club",
-  description: "Your training or support call has been booked.",
+  title: "Call Confirmed",
+  description: "Your call with our team has been booked.",
+  robots: { index: false, follow: false },
 };
 
 const PREP_ITEMS = [

@@ -3,9 +3,23 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Capital Growth Club | Cold Client Acquisition for Service Businesses",
+  title: "Capital Growth Club | Real Estate Lead Generation Engine",
   description:
-    "We build cold client acquisition systems for private lenders and real estate agents. Select which one you are to learn more.",
+    "We run paid ad campaigns that put qualified buyer and seller leads into your team's pipeline every month. Choose your role to get started.",
+  openGraph: {
+    title: "Capital Growth Club | Real Estate Lead Generation Engine",
+    description:
+      "We run paid ad campaigns that put qualified buyer and seller leads into your team's pipeline every month.",
+    url: "https://capitalgrowthclub.com",
+  },
+  twitter: {
+    title: "Capital Growth Club | Real Estate Lead Generation Engine",
+    description:
+      "Qualified buyer and seller leads delivered to your real estate team's pipeline every month.",
+  },
+  alternates: {
+    canonical: "https://capitalgrowthclub.com",
+  },
 };
 
 export default function Home() {

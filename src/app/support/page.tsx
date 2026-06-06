@@ -3,9 +3,10 @@ import Image from "next/image";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Book a Training or Support Call — Capital Growth Club",
+  title: "Book a Call With Our Team",
   description:
     "Schedule time with our team for training, strategy, or support on your campaigns and systems.",
+  robots: { index: false, follow: false },
 };
 
 const CALENDAR_URL =

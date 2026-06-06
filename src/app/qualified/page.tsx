@@ -3,8 +3,10 @@ import { Suspense } from "react";
 import QualifiedClient from "./QualifiedClient";
 
 export const metadata: Metadata = {
-  title: "You Qualify — Capital Growth Club",
-  description: "Book your strategy call with Capital Growth Club.",
+  title: "You Qualified — Book Your Call",
+  description:
+    "Congrats — you qualify. Book a call with one of our Cold Acquisition Advisors.",
+  robots: { index: false, follow: false },
 };
 
 export default function QualifiedPage() {

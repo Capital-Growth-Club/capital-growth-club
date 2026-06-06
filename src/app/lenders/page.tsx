@@ -10,9 +10,23 @@ import TestimonialScroll from "@/components/TestimonialScroll";
 import HeroVideo from "@/components/HeroVideo";
 
 export const metadata: Metadata = {
-  title: "Capital Growth Club | Cold Client Acquisition for Private Lenders",
+  title: "Lead Generation for Private Lenders",
   description:
-    "We build cold client acquisition systems for private lenders — paid ads, funnels, CRM, follow-up, and tracking. All built and managed by one team.",
+    "We run paid ad campaigns that put qualified borrower leads into your lending team's pipeline every month.",
+  openGraph: {
+    title: "Lead Generation for Private Lenders | Capital Growth Club",
+    description:
+      "We run paid ad campaigns that put qualified borrower leads into your lending team's pipeline every month.",
+    url: "https://capitalgrowthclub.com/lenders",
+  },
+  twitter: {
+    title: "Lead Generation for Private Lenders | Capital Growth Club",
+    description:
+      "Qualified borrower leads delivered to your lending team's pipeline every month.",
+  },
+  alternates: {
+    canonical: "https://capitalgrowthclub.com/lenders",
+  },
 };
 
 export default function LendersPage() {

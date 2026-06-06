@@ -12,23 +12,41 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Capital Growth Club | High-Converting Sales Funnels for Service Businesses",
+  metadataBase: new URL("https://capitalgrowthclub.com"),
+  title: {
+    default: "Capital Growth Club | Real Estate Lead Generation Engine",
+    template: "%s | Capital Growth Club",
+  },
   description:
-    "We build complete sales funnels for service businesses doing $250K+/month. From ad creative to CRM automations — we turn your leads into closed deals.",
+    "We run, manage, and create paid ad campaigns that consistently put qualified buyers and sellers into your real estate team's pipeline every month.",
   keywords: [
-    "sales funnel",
-    "lead generation",
-    "CRM automation",
-    "service business marketing",
-    "high converting funnels",
-    "paid advertising",
-    "marketing agency",
+    "real estate lead generation",
+    "real estate ads",
+    "buyer leads",
+    "seller leads",
+    "real estate marketing agency",
+    "facebook ads for real estate",
+    "google ads for real estate",
+    "real estate team leads",
   ],
+  applicationName: "Capital Growth Club",
   openGraph: {
-    title: "Capital Growth Club | Scale Your Service Business to $1M/month",
-    description:
-      "Stop losing leads. We build complete sales funnels — from ad creative to CRM automations — for service businesses ready to scale.",
     type: "website",
+    siteName: "Capital Growth Club",
+    title: "Capital Growth Club | Real Estate Lead Generation Engine",
+    description:
+      "We run, manage, and create paid ad campaigns that consistently put qualified buyers and sellers into your real estate team's pipeline every month.",
+    url: "https://capitalgrowthclub.com",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Capital Growth Club | Real Estate Lead Generation Engine",
+    description:
+      "Qualified buyer and seller leads delivered to your real estate team's pipeline every month — guaranteed.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

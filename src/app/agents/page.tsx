@@ -10,9 +10,23 @@ import TestimonialScroll from "@/components/TestimonialScroll";
 import HeroVideo from "@/components/HeroVideo";
 
 export const metadata: Metadata = {
-  title: "Capital Growth Club | Cold Client Acquisition for Real Estate Agents",
+  title: "Buyer & Seller Leads for Real Estate Teams",
   description:
-    "We build cold client acquisition systems for real estate agents — paid ads, funnels, CRM, follow-up, and tracking. All built and managed by one team.",
+    "We will double your qualified buyer or seller leads in 90 days — or refund every dollar, including ad spend. Built for real estate teams with a full-time ISA or 5+ agents in Tier A or Tier B markets.",
+  openGraph: {
+    title: "Buyer & Seller Leads for Real Estate Teams | Capital Growth Club",
+    description:
+      "We will double your qualified buyer or seller leads in 90 days — or refund every dollar including ad spend.",
+    url: "https://capitalgrowthclub.com/agents",
+  },
+  twitter: {
+    title: "Buyer & Seller Leads for Real Estate Teams | Capital Growth Club",
+    description:
+      "Double your qualified buyer or seller leads in 90 days — or get a full refund including ad spend.",
+  },
+  alternates: {
+    canonical: "https://capitalgrowthclub.com/agents",
+  },
 };
 
 const agentFaqs = [
