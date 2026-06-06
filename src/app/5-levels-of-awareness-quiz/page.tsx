@@ -250,7 +250,7 @@ export default function QuizPage() {
                   Quiz Complete!
                 </h2>
                 <p className="text-brand-muted text-lg mb-10 max-w-md mx-auto">
-                  We&apos;ve analyzed your answers. Ready to see which
+                  We've analyzed your answers. Ready to see which
                   awareness level you should target first?
                 </p>
                 <button onClick={handleSeeResults} className="btn-primary text-lg">

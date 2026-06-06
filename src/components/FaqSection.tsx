@@ -3,14 +3,16 @@
 import { useState } from "react";
 import SurveyButton from "./SurveyButton";
 
-const faqs = [
+export type Faq = { q: string; a: string };
+
+const defaultFaqs: Faq[] = [
   {
     q: "How much does it cost to work with Capital Growth Club?",
     a: "We don't believe in making you sit through a sales call just to find out if the numbers make sense. For an ongoing working relationship — where we're inside your business every month managing, optimizing, and building — engagements range from $5,000 to $20,000/month depending on scope, with the potential for a revenue share arrangement on top. For one-time build-and-handoff projects, those start in the mid five figures and can go into six figures depending on what needs to be built. We work with service business owners who are ready to deploy real capital into scaling — not people hoping ads will save a broken business, but operators building toward $1M/month who need the system to get there. The investment reflects what it takes to do this right.",
   },
   {
     q: "How is this different from every other marketing agency?",
-    a: "Most agencies sell pieces — a media buyer here, a funnel builder there, someone for email and SMS — and every one of them works in isolation with no one seeing the full picture. We build the entire cold client acquisition system end-to-end as one thing. The ad creative that stops the right person mid-scroll, the funnel that turns that lead into a booked call, the CRM and follow-up between the opt-in and the appointment, and the tracking that tells you what's actually working. That's the difference between a 20% show rate and a 70% show rate — and between running ads and actually acquiring customers.",
+    a: "Most agencies sell pieces — a media buyer here, a funnel builder there, someone for email and SMS — and every one of them works in isolation with no one seeing the full picture. We build the entire cold client acquisition system end-to-end as one thing. The ad creative that stops the right person mid-scroll, the funnel that turns that lead into a booked call, the CRM and follow-up between the opt-in and the appointment, and the tracking that tells you what's actually working. That's the difference between running ads and actually acquiring customers.",
   },
   {
     q: "I've been burned by agencies before. How do I know this will actually work?",
@@ -88,7 +90,7 @@ function AccordionItem({
   );
 }
 
-export default function FaqSection() {
+export default function FaqSection({ faqs = defaultFaqs }: { faqs?: Faq[] } = {}) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -107,7 +109,7 @@ export default function FaqSection() {
 
       <div className="text-center mt-12">
         <p className="text-white/40 mb-6">
-          Still have questions? We&apos;ll answer everything on your strategy call.
+          Still have questions? We'll answer everything on your strategy call.
         </p>
         <SurveyButton className="btn-primary">Apply Now</SurveyButton>
       </div>

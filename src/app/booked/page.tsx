@@ -39,7 +39,7 @@ export default function BookedPage() {
               <span className="gradient-text">watch this before we talk.</span>
             </h1>
             <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
-              You&apos;ll get a calendar invite and a confirmation text shortly.
+              You'll get a calendar invite and a confirmation text shortly.
               In the meantime, this short video walks you through exactly what
               to expect on the call so we can make the most of our time
               together.
@@ -64,7 +64,7 @@ export default function BookedPage() {
             </div>
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold gradient-text">
-                $243M+
+                $8.4B+
               </p>
               <p className="text-white/40 text-xs md:text-sm mt-2">
                 Sales Volume Generated
@@ -72,10 +72,10 @@ export default function BookedPage() {
             </div>
             <div className="text-center">
               <p className="text-3xl md:text-4xl font-bold gradient-text">
-                28,692+
+                52,984+
               </p>
               <p className="text-white/40 text-xs md:text-sm mt-2">
-                Clients Acquired
+                Real Estate Leads Captured
               </p>
             </div>
           </div>

@@ -2,7 +2,13 @@
 
 import { useRef, useEffect, useCallback, useState } from "react";
 
-const testimonials = [
+export type Testimonial = {
+  quote: string;
+  author: string;
+  role: string;
+};
+
+const defaultTestimonials: Testimonial[] = [
   { quote: "We were getting tons of calls from our Google Ads but half of them were for jobs we don't even do. Nobody had set up negative keywords. CGC cleaned up our campaigns and our cost per booked job dropped by 55% in the first month.", author: "Jake R.", role: "Home Services — HVAC" },
   { quote: "Our biggest issue was new patient no-shows. People would book online and never walk through the door. CGC built an automated reminder and confirmation sequence — texts, emails, the works. Our no-show rate went from 35% down to 8%.", author: "Dr. Sarah M.", role: "Medical Practice" },
   { quote: "We were spending $15K/mo on ads and getting case leads, but our intake team wasn't calling them fast enough. CGC set up a system where every new lead gets a call within 90 seconds. Our signed retainer rate doubled.", author: "Marcus T.", role: "Legal — Personal Injury" },
@@ -17,7 +23,7 @@ const testimonials = [
   { quote: "In solar, the sale happens in the home — but getting the appointment set is where most companies bleed out. CGC built a pre-qualification funnel that filters out renters and low-credit leads before they ever hit our calendar. Our in-home close rate jumped from 22% to 41%.", author: "Jordan & Kyle M.", role: "Solar Installation" },
 ];
 
-export default function TestimonialScroll() {
+export default function TestimonialScroll({ testimonials = defaultTestimonials }: { testimonials?: Testimonial[] } = {}) {
   const trackRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number>(0);
   const posRef = useRef(0);

@@ -138,7 +138,7 @@ export default function QualifiedClient() {
             </h1>
             <p className="text-white/60 text-lg max-w-2xl mx-auto">
               Book a call with one of our Cold Acquisition Advisors below to see
-              how we can help. We&apos;ll review your application beforehand so we
+              how we can help. We'll review your application beforehand so we
               can cover the right ground when we connect.
             </p>
           </div>

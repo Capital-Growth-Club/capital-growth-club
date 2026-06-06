@@ -423,7 +423,7 @@ function ResultsContent() {
                 <div>
                   <p className="text-white text-sm font-medium mb-1">Use your social presence as your first audience lever</p>
                   <p className="text-brand-muted text-xs leading-relaxed">
-                    Even if your business is brand new, a strong social media presence gives you leverage. If people can look you up and see you&apos;re a real person who knows what they&apos;re talking about, you can run ads that move people up the awareness ladder faster. Create Custom Audiences from your Instagram or Facebook followers, page engagers, and video viewers — these are people who already see you as credible and are far more likely to convert.
+                    Even if your business is brand new, a strong social media presence gives you leverage. If people can look you up and see you're a real person who knows what they're talking about, you can run ads that move people up the awareness ladder faster. Create Custom Audiences from your Instagram or Facebook followers, page engagers, and video viewers — these are people who already see you as credible and are far more likely to convert.
                   </p>
                 </div>
               </div>
@@ -433,9 +433,9 @@ function ResultsContent() {
                   <span className="text-brand-gold text-xs font-bold">2</span>
                 </div>
                 <div>
-                  <p className="text-white text-sm font-medium mb-1">Export your buyer list from your CRM (when you&apos;re ready)</p>
+                  <p className="text-white text-sm font-medium mb-1">Export your buyer list from your CRM (when you're ready)</p>
                   <p className="text-brand-muted text-xs leading-relaxed">
-                    Once you have <span className="text-white font-medium">400+ contacts</span>, upload your past customers and closed deals as a Custom Audience in Meta. This is the minimum Meta requires to build a Lookalike Audience. If you&apos;re not there yet, don&apos;t worry — start by building Custom Audiences from your social media followers, page engagers, and video viewers instead. These work just as well as a seed audience while you grow your customer list.
+                    Once you have <span className="text-white font-medium">400+ contacts</span>, upload your past customers and closed deals as a Custom Audience in Meta. This is the minimum Meta requires to build a Lookalike Audience. If you're not there yet, don't worry — start by building Custom Audiences from your social media followers, page engagers, and video viewers instead. These work just as well as a seed audience while you grow your customer list.
                   </p>
                 </div>
               </div>
@@ -447,7 +447,7 @@ function ResultsContent() {
                 <div>
                   <p className="text-white text-sm font-medium mb-1">Create Lookalike Audiences (1%–3%)</p>
                   <p className="text-brand-muted text-xs leading-relaxed">
-                    Whether you&apos;re using a buyer list (400+ contacts) or social engagement audiences, a 1% Lookalike finds the people most similar to your seed audience. This is your best cold traffic audience. Start here for Level 1 and 2 campaigns — these people look like your warmest contacts but don&apos;t know you yet.
+                    Whether you're using a buyer list (400+ contacts) or social engagement audiences, a 1% Lookalike finds the people most similar to your seed audience. This is your best cold traffic audience. Start here for Level 1 and 2 campaigns — these people look like your warmest contacts but don't know you yet.
                   </p>
                 </div>
               </div>
@@ -471,7 +471,7 @@ function ResultsContent() {
                 <div>
                   <p className="text-white text-sm font-medium mb-1">Layer your campaigns across awareness levels</p>
                   <p className="text-brand-muted text-xs leading-relaxed">
-                    Run cold traffic at the bottom (Levels 1 &amp; 2) to fill the funnel. Retarget engagers with solution and proof-driven ads (Levels 3 &amp; 4). Close warm audiences with direct offers (Level 5). Every layer feeds the next — this is how you scale without burning out your audience.
+                    Run cold traffic at the bottom (Levels 1 & 2) to fill the funnel. Retarget engagers with solution and proof-driven ads (Levels 3 & 4). Close warm audiences with direct offers (Level 5). Every layer feeds the next — this is how you scale without burning out your audience.
                   </p>
                 </div>
               </div>

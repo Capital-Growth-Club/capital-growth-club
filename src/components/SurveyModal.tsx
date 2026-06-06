@@ -29,135 +29,92 @@ type Question = {
 
 const questions: Question[] = [
   {
-    id: "business-type",
-    question: "What kind of service business do you own/operate?",
+    id: "role",
+    question: "Which best describes you?",
     type: "single",
     options: [
-      "Real Estate Team / Brokerage",
-      "Coaching / Consulting",
-      "Legal / Law Firm",
-      "Medical / Dental Practice",
-      "Home Services (HVAC, Roofing, Plumbing, Solar, etc.)",
-      "Financial Advisory / Lending / Insurance",
-      "Med Spa / Aesthetics",
-      "Other",
+      "Solo agent",
+      "Team lead with 5+ agents",
+      "Boutique brokerage owner",
     ],
   },
   {
-    id: "customer-sources",
-    question: "Where are most of your customers coming from right now?",
+    id: "market",
+    question: "What market are you located in?",
+    type: "text",
+    placeholder: "e.g. Charleston, SC",
+  },
+  {
+    id: "nearest-major-city",
+    question: "What's the nearest major city?",
+    type: "text",
+    placeholder: "e.g. Charlotte, NC",
+  },
+  {
+    id: "market-tier",
+    question: "Would you describe your market as:",
+    subtitle: "Tier A = popular travel destination or $1M+ avg price point. Tier B = large city with high-volume mid-priced homes at $500K+.",
+    type: "single",
+    options: ["Tier A", "Tier B", "Not sure"],
+  },
+  {
+    id: "isa",
+    question: "Do you have a full-time ISA on payroll?",
+    type: "single",
+    options: [
+      "Yes, full-time ISA",
+      "We're hiring an ISA in the next 30 days",
+      "No, but I have 5+ agents under me with strong conversion ability",
+      "No, and we're not interested in hiring one",
+    ],
+  },
+  {
+    id: "conversion-ability",
+    question:
+      "How would you rate your team's ability to close deals 6–24 months after the first lead contact?",
+    type: "single",
+    options: [
+      "Excellent — proven, systematized long-term follow-up",
+      "Strong — we close consistently in this window",
+      "Average — some leads convert long-term, not systematized",
+      "Not sure / haven't measured",
+    ],
+  },
+  {
+    id: "lead-focus",
+    question: "Are you looking for buyer leads, seller leads, or both?",
+    type: "single",
+    options: [
+      "Buyer leads only",
+      "Seller leads only",
+      "Both — full engagement",
+    ],
+  },
+  {
+    id: "lead-sources",
+    question: "Where do most of your leads come from right now?",
     subtitle: "Select all that apply",
     type: "multi",
     options: [
-      "Referrals / word-of-mouth",
-      "SEO / organic Google",
-      "Google Local Services (LSA)",
-      "Google Ads",
-      "Meta Ads (Facebook/Instagram)",
-      "Organic social (TikTok, IG, LinkedIn, YouTube)",
-      "Email / SMS",
-      "Cold outbound",
-      "Past customers / repeat business",
+      "Referrals / past clients / sphere",
+      "Zillow / Realtor.com / Redfin / paid platforms",
+      "Google search / SEO / IDX traffic",
+      "Paid Meta or Google ads",
+      "Open houses / door knocking / cold outbound",
+      "Organic social media",
       "Other",
     ],
   },
   {
-    id: "current-revenue",
-    question: "What's your current monthly revenue?",
+    id: "ran-ads-with-agency",
+    question: "Have you run ads with an agency before?",
     type: "single",
-    options: [
-      "$100K – $250K / month",
-      "$250K – $500K / month",
-      "$500K – $1M / month",
-      "$1M+ / month",
-    ],
-  },
-  {
-    id: "target-revenue",
-    question: "What's your target monthly revenue 12 months from now?",
-    type: "single",
-    options: [
-      "$500K – $1M / month",
-      "$1M – $3M / month",
-      "$3M – $5M / month",
-      "$5M – $10M / month",
-      "$10M+ / month",
-    ],
-  },
-  {
-    id: "blocker",
-    question: "In your own words, what's stopping you from getting there?",
-    type: "textarea",
-    placeholder: "Tell us what's actually broken or holding you back...",
-  },
-  {
-    id: "running-ads",
-    question: "Are you currently running paid ads?",
-    type: "single",
-    options: [
-      "Yes, currently running",
-      "I've run them before, not currently",
-      "No, never run paid ads",
-    ],
-  },
-  {
-    id: "ad-spend",
-    question: "What's your daily ad spend (current or last campaign)?",
-    type: "single",
-    options: [
-      "Under $100 / day",
-      "$100 – $300 / day",
-      "$300 – $1,000 / day",
-      "$1,000 – $3,000 / day",
-      "$3,000+ / day",
-    ],
-    conditional: {
-      dependsOn: "running-ads",
-      values: ["Yes, currently running", "I've run them before, not currently"],
-    },
-  },
-  {
-    id: "ads-not-working",
-    question: "Why do you think the ads aren't / weren't working?",
-    type: "textarea",
-    placeholder: "What did you try? What broke down?",
-    conditional: {
-      dependsOn: "running-ads",
-      values: ["Yes, currently running", "I've run them before, not currently"],
-    },
-  },
-  {
-    id: "cac",
-    question: "What's your current cost-per-customer (CAC)?",
-    subtitle: 'Best estimate is fine — write "Don\'t know" if you\'re not sure.',
-    type: "text",
-    placeholder: "e.g. $250 or Don't know",
-  },
-  {
-    id: "ltv",
-    question: "What's your average customer lifetime value (LTV)?",
-    subtitle: 'Best estimate or "N/A" if it doesn\'t apply.',
-    type: "text",
-    placeholder: "e.g. $5,000 or N/A",
-  },
-  {
-    id: "crm-size",
-    question: "How many email contacts do you have in your CRM?",
-    type: "single",
-    options: [
-      "Don't have a CRM",
-      "0 – 500",
-      "500 – 2,000",
-      "2,000 – 10,000",
-      "10,000 – 50,000",
-      "50,000 – 100,000",
-      "100,000+",
-    ],
+    options: ["Yes", "No"],
   },
   {
     id: "investment",
     question:
-      "Are you willing and able to invest $15K+ per month between ad spend and retainers (not including performance bonuses) to build a real cold client acquisition system?",
+      "Are you able to invest at least $2,500/month between retainer and ad spend for a single market?",
     type: "single",
     options: ["Yes", "I'd need to discuss this on the call", "No"],
   },
@@ -207,9 +164,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
     email: "",
     phone: "",
   });
-  const [contactStage, setContactStage] = useState<"info" | "phone" | "verify">(
-    "info"
-  );
+  const [contactStage, setContactStage] = useState<"info" | "verify">("info");
   const [submitting, setSubmitting] = useState(false);
   const [otpCode, setOtpCode] = useState("");
   const [otpError, setOtpError] = useState("");
@@ -365,13 +320,13 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
     }
 
     const investment = answers["investment"] as string | undefined;
-    const qualified =
-      investment === "Yes" || investment === "I'd need to discuss this on the call";
+    const isa = answers["isa"] as string | undefined;
+    const disqualifiedByIsa = isa === "No, and we're not interested in hiring one";
+    const disqualifiedByInvestment = investment === "No";
+    const qualified = !disqualifiedByIsa && !disqualifiedByInvestment;
 
-    const customerSources = answers["customer-sources"];
-    const sourcesStr = Array.isArray(customerSources)
-      ? customerSources.join(", ")
-      : "";
+    const leadSources = answers["lead-sources"];
+    const sourcesStr = Array.isArray(leadSources) ? leadSources.join(", ") : "";
 
     const payload = {
       first_name: contactInfo.firstName,
@@ -379,17 +334,15 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
       name: `${contactInfo.firstName} ${contactInfo.lastName}`.trim(),
       email: contactInfo.email,
       phone: contactInfo.phone,
-      business_type: (answers["business-type"] as string) || "",
-      customer_sources: sourcesStr,
-      current_revenue: (answers["current-revenue"] as string) || "",
-      target_revenue: (answers["target-revenue"] as string) || "",
-      blocker: (answers["blocker"] as string) || "",
-      running_ads: (answers["running-ads"] as string) || "",
-      ad_spend: (answers["ad-spend"] as string) || "",
-      ads_not_working: (answers["ads-not-working"] as string) || "",
-      cac: (answers["cac"] as string) || "",
-      ltv: (answers["ltv"] as string) || "",
-      crm_size: (answers["crm-size"] as string) || "",
+      role: (answers["role"] as string) || "",
+      market: (answers["market"] as string) || "",
+      nearest_major_city: (answers["nearest-major-city"] as string) || "",
+      market_tier: (answers["market-tier"] as string) || "",
+      isa: isa || "",
+      conversion_ability: (answers["conversion-ability"] as string) || "",
+      lead_focus: (answers["lead-focus"] as string) || "",
+      lead_sources: sourcesStr,
+      ran_ads_with_agency: (answers["ran-ads-with-agency"] as string) || "",
       investment: investment || "",
       qualified: qualified ? "yes" : "no",
     };
@@ -416,7 +369,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
       });
       router.push(`/qualified?${params.toString()}`);
     } else {
-      router.push("/skool-offer");
+      router.push("/not-a-fit");
     }
   }
 
@@ -506,16 +459,10 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
                   Where should we reach you?
                 </h3>
                 <p className="text-white/50 mb-8">
-                  Last step before we review your application.
+                  We'll text a 6-digit code to verify your phone after you continue.
                 </p>
 
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    setContactStage("phone");
-                  }}
-                  className="space-y-5"
-                >
+                <form onSubmit={handleSendOtp} className="space-y-5">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm text-white/60 mb-2">
@@ -574,49 +521,6 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
                       placeholder="john@company.com"
                     />
                   </div>
-
-                  <div className="flex items-center gap-4 pt-4">
-                    <button
-                      type="button"
-                      onClick={goBack}
-                      className="text-white/40 hover:text-white transition-colors text-sm flex items-center gap-2"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                      >
-                        <path
-                          d="M10 12L6 8l4-4"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      Back
-                    </button>
-                    <button type="submit" className="btn-primary flex-1">
-                      Continue
-                    </button>
-                  </div>
-                </form>
-              </div>
-            ) : contactStage === "phone" ? (
-              <div>
-                <p className="text-brand-gold text-sm font-semibold tracking-[0.2em] uppercase mb-3">
-                  Verify your phone
-                </p>
-                <h3 className="text-2xl md:text-3xl font-bold mb-2">
-                  Enter your mobile number
-                </h3>
-                <p className="text-white/50 mb-8">
-                  We&apos;ll text you a 6-digit code to verify it&apos;s really
-                  you. This is the last step.
-                </p>
-
-                <form onSubmit={handleSendOtp} className="space-y-5">
                   <div>
                     <label className="block text-sm text-white/60 mb-2">
                       Mobile phone <span className="text-brand-gold">*</span>
@@ -625,7 +529,6 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
                       type="tel"
                       required
                       minLength={7}
-                      autoFocus
                       value={contactInfo.phone}
                       onChange={(e) =>
                         setContactInfo((p) => ({
@@ -645,7 +548,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
                   <div className="flex items-center gap-4 pt-2">
                     <button
                       type="button"
-                      onClick={() => setContactStage("info")}
+                      onClick={goBack}
                       className="text-white/40 hover:text-white transition-colors text-sm flex items-center gap-2"
                     >
                       <svg
@@ -669,7 +572,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
                       disabled={submitting}
                       className="btn-primary flex-1 disabled:opacity-60 disabled:cursor-not-allowed"
                     >
-                      {submitting ? "Sending code..." : "Send verification code"}
+                      {submitting ? "Sending code..." : "Continue & Verify Phone"}
                     </button>
                   </div>
                 </form>
@@ -726,7 +629,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
                     <button
                       type="button"
                       onClick={() => {
-                        setContactStage("phone");
+                        setContactStage("info");
                         setOtpCode("");
                         setOtpError("");
                       }}
