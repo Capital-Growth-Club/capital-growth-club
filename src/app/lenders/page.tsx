@@ -67,7 +67,7 @@ export default function LendersPage() {
 
             {/* CTA Button */}
             <SurveyButton className="btn-primary !text-lg !py-5 !px-12 mb-10">
-              Apply To Work With Us
+              Apply And Book Call
             </SurveyButton>
 
             {/* Trust bar */}
@@ -561,7 +561,7 @@ export default function LendersPage() {
           </p>
 
           <SurveyButton className="btn-primary !text-lg !py-5 !px-12">
-            Apply To Work With Us
+            Apply And Book Call
           </SurveyButton>
         </div>
       </RevealSection>
@@ -764,7 +764,7 @@ export default function LendersPage() {
           </p>
 
           <SurveyButton className="btn-primary !text-lg !py-5 !px-12">
-            Apply To Work With Us
+            Apply And Book Call
           </SurveyButton>
 
           <p className="text-white/30 text-sm mt-6">

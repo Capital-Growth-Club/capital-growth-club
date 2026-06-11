@@ -35,7 +35,7 @@ export default function NavBar() {
         </a>
 
         <SurveyButton className="btn-primary !py-3 !px-6 !text-sm">
-          Apply Now
+          Apply And Book Call
         </SurveyButton>
       </div>
     </nav>

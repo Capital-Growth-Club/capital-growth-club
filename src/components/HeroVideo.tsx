@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 const VIDEO_URL =
-  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/69effa2705d419900125096d.mp4";
+  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a2a1bc3d7f65291ad92f2cc.mp4";
 const REPLAY_AFTER_MS = 20000;
 
 export default function HeroVideo() {

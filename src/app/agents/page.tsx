@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import SurveyProvider from "@/components/SurveyProvider";
 import SurveyButton from "@/components/SurveyButton";
 import NavBar from "@/components/NavBar";
@@ -12,17 +13,17 @@ import HeroVideo from "@/components/HeroVideo";
 export const metadata: Metadata = {
   title: "Buyer & Seller Leads for Real Estate Teams",
   description:
-    "We will double your qualified buyer or seller leads in 90 days — or refund every dollar, including ad spend. Built for real estate teams with a full-time ISA or 5+ agents in Tier A or Tier B markets.",
+    "We will double your buyer and seller leads in 90 days — or refund every dollar, including ad spend. Built for established real estate teams in Tier A or Tier B markets.",
   openGraph: {
     title: "Buyer & Seller Leads for Real Estate Teams | Capital Growth Club",
     description:
-      "We will double your qualified buyer or seller leads in 90 days — or refund every dollar including ad spend.",
+      "We will double your buyer and seller leads in 90 days — or refund every dollar including ad spend.",
     url: "https://capitalgrowthclub.com/agents",
   },
   twitter: {
     title: "Buyer & Seller Leads for Real Estate Teams | Capital Growth Club",
     description:
-      "Double your qualified buyer or seller leads in 90 days — or get a full refund including ad spend.",
+      "Double your buyer and seller leads in 90 days — or get a full refund including ad spend.",
   },
   alternates: {
     canonical: "https://capitalgrowthclub.com/agents",
@@ -32,63 +33,75 @@ export const metadata: Metadata = {
 const agentFaqs = [
   {
     q: "What does the lead guarantee actually mean?",
-    a: "We guarantee to double your qualified buyer or seller lead flow in the first 90 days of ads running — or we refund the retainer and ad spend in full. The guarantee only applies when the client meets our qualifying requirements at signing: a full-time ISA (or 5+ agents with a proven 6–24 month conversion track record), a Tier A or B market, willingness to invest the $2,500/month minimum, and operational readiness to follow up on leads in under 5 minutes during business hours. We turn away more agents than we take precisely because the guarantee is real.",
+    a: "We guarantee to double your buyer or seller lead flow in the first 90 days of ads running — or we refund the retainer and ad spend in full. The guarantee only applies when the client meets our qualifying requirements at signing: previous year sales volume of $25M+ for solo agents or $100M+ for teams, a Tier A or B market, and willingness to invest the $1,500/month minimum total (retainer + ad spend). We turn away more agents than we take precisely because the guarantee is real.",
   },
   {
     q: "What counts as a qualified lead?",
     a: "A qualified lead is someone who (1) submitted their information through one of our lead generation campaigns, (2) provided a real, verified phone number, and (3) acknowledged interest in buying or selling a property within the next 6–24 months. That's the only kind of lead that counts toward our 90-day guarantee — bots, fake numbers, duplicates, and prospects outside that intent window don't count.",
   },
   {
+    q: "What are the three packages and how do I pick one?",
+    a: "Starter ($497/month per campaign) is the fastest way in — we run a campaign and deliver leads straight to your CRM, your team takes it from there. Best for agents who want to own their lead flow without the full done-for-you overhead. Premium ($3,497/month) adds a pre-trained lead qualifier and market exclusivity, so only the real leads worth working reach your team. Platinum ($7,997/month) is done-for-you everything — qualifier, email nurture, branded newsletter, and appointment setting straight to your calendar. We help you pick the right one on the strategy call.",
+  },
+  {
+    q: "What's the minimum total I need to commit?",
+    a: "Minimum total monthly spend is $1,500. That covers our smallest retainer (Starter at $497) plus a minimum $1,000+/month in ad spend with a little room to scale. Larger packages and additional campaigns scale the total from there. None of the retainers above include ad spend — that's paid directly to the ad platforms.",
+  },
+  {
+    q: "Is there a setup fee?",
+    a: "Yes. There's a one-time setup fee that covers funnel buildout, ad account configuration, automation install, attribution tracking, and onboarding. We share the specific number on the strategy call once we understand your situation and which package fits.",
+  },
+  {
     q: "Do you work with my competitors in the same area?",
-    a: "No. We only take one real estate team or brokerage per city or designated service area. When you sign with us, no other team in your zip code, city, or radius can run our system at the same time. That exclusivity is part of why our clients win — and it's also why spots in competitive markets fill quickly. If your area is already taken, we maintain a short waitlist and only bring on the next team if the current one ends their engagement.",
+    a: "On our Premium and Platinum packages, no — those come with locked market exclusivity in your city or designated service area, so no other CGC client competes with you for the same audiences. The only exception is when Starter clients were already signed up in your city before you came in — those existing clients stay. But the moment you sign for Premium or Platinum, we stop accepting any new applicants in your area. On Starter, we never work with more than one team per zip code — but we may work with other agents in your city if they're in a different zip and also on Starter. If protecting your full area matters to you, Premium or Platinum is the right choice.",
+  },
+  {
+    q: "How many Starter clients can there be in one city?",
+    a: "Even on Starter, we cap each city at 5 clients total — and we never take more than one team per zip code. It's not an unlimited tier. This keeps audience overlap manageable, protects creative performance for everyone running in that city, and keeps us honest about how much volume we can actually deliver. Once a city hits the 5-client cap on Starter, we close applications for that area unless someone ends their engagement. If you want to lock down all or the remaining open slots in a city for yourself, you can also buy them out and run as the only team in the area — just ask about it on the call.",
   },
   {
     q: "What if I want to target multiple cities or markets?",
-    a: "Pricing scales with the number of markets you want exclusivity on. The first area starts at our base rate (around $2,500–$5,000/month combined retainer and ad spend depending on buyer-only, seller-only, or both). Each additional market adds incremental retainer and ad spend depending on size and competitiveness. Most teams start with one area, prove the model, then expand into adjacent zips or cities as they grow.",
-  },
-  {
-    q: "How much does it cost to work with you?",
-    a: "For a single market, plan on $2,500–$5,000/month combined between retainer and ad spend. The exact number depends on whether you're running buyer-only, seller-only, or both campaigns — and on your market's size and competitiveness. There's also a one-time setup fee covering funnel buildout, ad account configuration, automation install, and attribution tracking. Adding additional markets scales the investment. We share the specific numbers on the strategy call once we understand your situation. If a team flinches at this range, the ISA economics aren't really there yet — and the guarantee won't protect either of us.",
-  },
-  {
-    q: "Do I need a full-time ISA to work with you?",
-    a: "Not necessarily — but you need somebody with the capacity to work leads over a 6–24 month window. That's either a full-time ISA on payroll, or at least 5 agents under you who have a proven track record of converting leads months after the first touch. If you don't have an ISA, we'll dig into your long-term sales process and team workflow on the strategy call and vet whether your team can carry the lead from where we hand it off to closing. We care about the conversion infrastructure existing — not the specific title.",
+    a: "Pricing scales with the number of markets and campaigns you want to run. The first market starts at the package base rate; each additional market adds incremental retainer and ad spend depending on size and competitiveness. Most teams start with one area, prove the model, then expand into adjacent zips or cities.",
   },
   {
     q: "What's the difference between a Tier A and a Tier B market?",
     a: "Tier A markets are popular travel destinations or markets with an average price point of $1M+ — places like Miami, Aspen, the Hamptons, Naples, San Diego, Park City. Tier B markets are large cities with high-volume mid-priced homes starting around $500K+ — places like Charlotte, Tampa, Nashville, Phoenix, Raleigh. We don't work in Tier C/D markets because the lead economics and ad inventory don't support our model at scale. If you're unsure where your area falls, just ask us on the strategy call — we'll tell you straight.",
   },
   {
-    q: "How is this different from Zillow, Realtor.com, or OpCity?",
-    a: "Three differences. First — you own every lead. No 30–40% referral cut on closings. Second — the leads come from your market only, on creative and targeting we build for you specifically, not a national pool of buyers shopping three other agents. Third — we build the entire lead engine: ads, funnel, CRM routing, automated nurture, and tracking. The platforms sell you the lead and walk away. We build the system that converts the lead.",
+    q: "How is this different from Zillow, Realtor.com, or Redfin?",
+    a: "Three differences. First — you own every lead. No 30–40% referral cut on closings. Second — the leads come from your market only, on creative and targeting we build for you specifically, not a national pool of buyers shopping three other agents. Third — we run the entire lead engine: ads, funnel, CRM routing, and initial handoff. The platforms sell you the lead and walk away. We give you a lead source you actually own and control.",
   },
   {
     q: "How long until we see results?",
-    a: "Most teams see their full system live within 14–21 days of onboarding. First leads typically come within the first week of ads running. The double-your-lead-flow milestone is what we measure at 90 days. But real estate is a 6–24 month sales cycle on most leads — so closings ramp up from that window. The teams that win at this are the ones who treat it as a 6–12 month system build, not a 30-day vending machine.",
+    a: "Most teams see their campaign live within 14–21 days of onboarding. First leads typically come within the first week of ads running. The double-your-lead-flow milestone is what we measure at 90 days. But real estate is a 6–24 month sales cycle on most leads — so closings ramp up from that window. The teams that win at this are the ones who treat it as a 6–12 month build, not a 30-day vending machine.",
   },
   {
     q: "Do I need to make the ad creative myself?",
     a: "No. Our team handles all of the creative — scripting hooks, sourcing footage, editing, ad copy, and ongoing rotation. You may be asked to film selfie-style segments occasionally for higher-converting creative, but we coach you through it. The minimum is your branding and access to a few of your listings or sold properties for social proof.",
   },
   {
-    q: "What if I already have a CRM or follow-up system?",
+    q: "What if I already have a CRM?",
     a: "We work with whatever CRM you have. Most of our clients run GoHighLevel because it makes everything easier on our side, but we plug into Follow Up Boss, Sierra, KW Command, Brivity, or whatever you're using. If your CRM is genuinely holding the business back, we'll tell you and recommend a migration — but we'll never force one.",
   },
   {
     q: "What kind of agents do you work with?",
-    a: "Established solo agents with at least one ISA, small team leads, and boutique brokerage owners of any size. Tier A and B markets only. We don't work with brand-new agents, solo operators without follow-up capacity, or Tier C/D markets where the unit economics don't support our model. If you don't have an ISA, you need at least 5 agents under you with a proven track record of converting leads over a 6–24 month window.",
+    a: "Established solo agents with $25M+ in previous year sales volume, and team leads or boutique brokerage owners with $100M+ in previous year team sales volume. Tier A and Tier B markets only. We don't work with brand-new agents, low-volume operators, or Tier C/D markets where the unit economics don't support our model.",
   },
   {
-    q: "What does the application process look like? Is this a sales call?",
-    a: "Application takes about 2 minutes. If you fit our ICP, you'll be invited to a strategy session with our Cold Acquisition Advisors — a real working call where we map out your local ICP, target neighborhoods, funnel architecture, ad strategy, and ISA workflow. If there's a fit, we talk about onboarding. If there isn't, you walk away with a real plan you can take to anyone. No high-pressure pitch.",
+    q: "Do all your client campaigns look the same?",
+    a: "Not likely. Every agent serves a different kind of client — some only want investor leads, others want $1M+ buyers or sellers exclusively, others are focused on first-time homebuyers, relocations, downsizers, luxury second homes, etc. On the Strategy Call before you ever become a client, we dig into your goals and the exact type of buyer or seller you want to attract — and we build your campaign specifically around that. Two agents in similar markets but targeting different client types will have completely different campaigns.",
+  },
+  {
+    q: "What does the application process look like?",
+    a: "The application takes about 30 seconds. Our system automatically reviews your answers and decides if you meet our qualifying criteria. If you do, you're redirected to a page where you can book your Strategy Call with one of our Cold Acquisition Advisors. On that call, we map out your local market, target client, funnel approach, and ad strategy — and figure out which package fits. If we're a match, we talk about onboarding. If not, you walk away with a real plan you can take to anyone.",
   },
 ];
 
 const agentTestimonials = [
-  { quote: "I was burning cash on Zillow and Realtor.com leads that were already shopping three other agents. CGC ran the ads, the cost per buyer lead came in under $10, and I closed my first deal off the new leads in under 30 days.", author: "Marcus B.", role: "Solo Agent — Tier A Market" },
+  { quote: "I was burning cash on Zillow and Realtor.com leads that were already shopping three other agents. CGC ran the ads, the cost per buyer lead came in under $10, and I closed my first deal off the new leads in under 60 days.", author: "Marcus B.", role: "Solo Agent — Tier A Market" },
   { quote: "Our team was stagnant. Same production three years in a row. After 90 days with CGC running our ads, we hit the doubled lead flow they guaranteed and brought in $31K in commissions from those leads.", author: "Diane W.", role: "Team Lead — 5+ Agents" },
   { quote: "I didn't want to drop $5K/month to break into luxury buyers. CGC ran a focused campaign on $750/month and we pulled in 142 qualified luxury buyer leads in 6 months. Two of them turned into closings.", author: "Trent K.", role: "Luxury Team — Buyer Focus" },
-  { quote: "We wanted luxury seller leads inside one specific zip code. CGC ran the ads targeting that exact area and in 3 months we had 50 qualified seller leads — including one that turned into a $4M listing appointment.", author: "Riley & Hannah G.", role: "Boutique Team — Luxury Sellers" },
+  { quote: "We wanted luxury seller leads inside one specific zip code. CGC ran the ads targeting that exact area and in 3 months we had 50 qualified seller leads — including one that turned into a $4M listing appointment.", author: "Riley & Hannah G.", role: "Boutique Brokerage — Luxury Sellers" },
   { quote: "I was skeptical about adding another lead source on top of what we already had. CGC kept their promise — leads started coming in week 2, and we closed 3 listings that quarter from their campaigns.", author: "Annette P.", role: "Team Lead — 7 Agents" },
   { quote: "Our ISA used to get lead notifications 30+ minutes after the opt-in. CGC's setup gets every new lead in front of our ISA instantly. Same effort, way more appointments.", author: "Carlos R.", role: "Brokerage Owner — Tier B Market" },
   { quote: "I had two agents threatening to leave because the pipeline was thin. Once CGC's campaigns kicked in, every agent had leads to work and the recruiting conversations stopped.", author: "Vince M.", role: "Team Lead — 4 Agents" },
@@ -120,15 +133,15 @@ export default function AgentsPage() {
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4">
-              We Will Double Your Qualified Seller Or Buyer Leads In 90 Days{" "}
+              We Will Double Your Buyer &amp; Seller Lead Conversations In 90 Days{" "}
               <span className="gradient-text">Or We Will Refund You Every Dollar Including Ad Spend.</span>
             </h1>
 
             {/* Sub-headline */}
             <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-10 max-w-2xl">
-              We run, manage, and create paid ad campaigns that consistently put real
-              qualified and pre-filtered buyers and sellers into your team's pipelines
-              every single month. See How Below.
+              We run, manage, and create paid ad campaigns that consistently put more
+              buyer and seller leads in front of your team every single month.
+              See How Below.
             </p>
 
             {/* VSL Video */}
@@ -136,7 +149,7 @@ export default function AgentsPage() {
 
             {/* CTA Button */}
             <SurveyButton className="btn-primary !text-lg !py-5 !px-12 mb-10">
-              Apply To Work With Us
+              Apply And Book Call
             </SurveyButton>
 
             {/* Trust bar */}
@@ -160,14 +173,14 @@ export default function AgentsPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Sound Familiar?
+              Is This You Or Your Team?
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Is This <span className="gradient-text">Your Team</span> Right Now?
             </h2>
             <p className="text-white/50 text-lg">
-              We hear these from team leads and brokerage owners every single week.
-              If any of them hit close to home, you're in the right place.
+              We hear these from solo agents, team leads, and brokerage owners every
+              single week. If any of them hit close to home, you're in the right place.
             </p>
           </div>
 
@@ -175,23 +188,23 @@ export default function AgentsPage() {
             {[
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2v24M2 14h24" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /><circle cx="14" cy="14" r="12" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /></svg>,
-                title: "Overpaying For Window Shoppers",
-                desc: "Most buyer leads from Zillow, Redfin, or Realtor.com are window shoppers — and the ones that aren't are usually already talking to three other agents the same vendor shipped the lead to.",
+                title: "Your Brokerage Hands You The Leftovers",
+                desc: "By the time leads roll downhill to you, the top producers in your brokerage have already picked through the best ones. You're left working what's left — and competing for the next batch.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="4" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /><path d="M9 14h10M14 9v10" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>,
-                title: "Your Agents' Pipelines Are Drying Up",
-                desc: "The agents who joined you because “leads will be provided” are getting restless. A few have already made noise about leaving. Some have. Each departure is months of recruiting gone — plus the morale hit on whoever stayed.",
+                title: "Overpaying For Shared Leads",
+                desc: "Zillow, Redfin, Realtor.com — they all sell the same lead to multiple agents on the same phone call. You're paying premium CPLs to compete on response time, not value, and the platforms keep raising prices.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#BB9A65" strokeWidth="2" strokeLinejoin="round" opacity="0.3" /><path d="M10 18l8-8" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>,
-                title: "Profitable But Stagnant",
-                desc: "Last year looked like the year before. The year before looked like the year before that. You're alive on referrals and word-of-mouth, but you've never built a real way to add buyers and sellers on demand.",
+                title: "Living Off Referrals That Cap You",
+                desc: "Your sphere pays the bills. But it never sends enough to add another agent, expand into a new neighborhood, or actually hit the production numbers you want. You can't tell it to send you twice as many next month.",
               },
               {
                 icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 24l8-8 4 4 8-12" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>,
-                title: "40% Referral Splits On Seller Leads",
-                desc: "Most seller lead vendors take up to 40% of your commission off every closing. By the time the brokerage takes its split and the lead vendor takes theirs, the listing barely feels worth the work.",
+                title: "Profitable But Stagnant",
+                desc: "Last year looked like the year before. The year before looked like the year before that. You've got no real way to add buyers and sellers on demand — and no lever to pull when you want to grow.",
               },
             ].map((item, i) => (
               <div key={i} className="card-dark p-8 group">
@@ -207,11 +220,11 @@ export default function AgentsPage() {
           <div className="text-center mt-12">
             <p className="text-white/40 text-lg mb-6">
               We're not here to replace Zillow or Realtor.com — most successful teams use multiple
-              sources. We just deliver qualified cold leads at a lower cost so your team has more
-              shots on goal without the 40% referral hit.
+              sources. We give you a lead source you actually own and control, at a lower cost, so
+              your team has more leads that turn into closings.
             </p>
             <SurveyButton className="btn-primary">
-              Apply To Work With Us
+              Apply And Book Call
             </SurveyButton>
           </div>
         </div>
@@ -226,11 +239,11 @@ export default function AgentsPage() {
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
               Results From Real{" "}
-              <span className="gradient-text">Real Estate Teams</span>
+              <span className="gradient-text">Real Estate Agents</span>
             </h2>
             <p className="text-white/50 text-lg">
-              These aren't projections. These are real results from real estate teams
-              and brokerage owners we've built lead engines for.
+              These aren't projections. These are real results from real estate
+              agents, teams, and boutique brokerage owners we've built lead engines for.
             </p>
           </div>
 
@@ -247,11 +260,11 @@ export default function AgentsPage() {
             <div className="card-dark p-8 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
               <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Solo Agent — First Closing in 30 Days
+                Solo Agent — First Closing in 60 Days
               </p>
               <p className="text-white/40 text-sm mb-6 leading-relaxed">
                 A solo agent with one ISA wanted to add a lower-cost lead source to supplement
-                their referral pipeline. We built a buyer lead magnet funnel and Meta campaign
+                their referral pipeline. We built a custom buyer funnel and ran a Meta campaign
                 in their market. After $900 in ad spend they closed their first deal — a $590K
                 transaction — with more in the pipeline.
               </p>
@@ -381,11 +394,11 @@ export default function AgentsPage() {
               </p>
             </div>
 
-            {/* Case Study 4: Boutique Team — Hyper-Local Luxury Seller */}
+            {/* Case Study 4: Boutique Brokerage — Hyper-Local Luxury Seller */}
             <div className="card-dark p-8 relative overflow-hidden group">
               <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
               <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Boutique Team — Hyper-Local Luxury Sellers
+                Boutique Brokerage — Hyper-Local Luxury Sellers
               </p>
               <p className="text-white/40 text-sm mb-6 leading-relaxed">
                 A team wanted exclusively luxury seller leads inside a 1-mile radius. We built
@@ -451,7 +464,7 @@ export default function AgentsPage() {
               The 90-Day Guarantee
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Double Your Buyer or Seller Lead Flow in 90 Days,{" "}
+              Double Your Buyer or Seller Leads in 90 Days,{" "}
               <span className="gradient-text">or Get a Full Refund.</span>
             </h2>
             <p className="text-white/50 text-lg">
@@ -465,7 +478,7 @@ export default function AgentsPage() {
             <div className="card-dark p-7 border-brand-gold/20">
               <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">What We Promise</p>
               <p className="text-white/70 leading-relaxed">
-                Your buyer or seller lead flow doubles within 90 days of ads going live,
+                Your buyer or seller lead volume doubles within 90 days of ads going live,
                 measured against your prior 90-day baseline.
               </p>
             </div>
@@ -487,7 +500,7 @@ export default function AgentsPage() {
                     <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="text-white/70">A full-time ISA on payroll — or at least 5 agents under you with a proven track record of closing leads 6–24 months after the first touch.</span>
+                <span className="text-white/70">Previous year sales volume — $25M+ as a solo agent, or $100M+ as a team lead or boutique brokerage owner.</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
@@ -495,7 +508,7 @@ export default function AgentsPage() {
                     <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <span className="text-white/70">Willingness to invest at least $2,500/month between retainer and ad spend per market.</span>
+                <span className="text-white/70">Willingness to invest at least $1,500/month total (retainer + ad spend) for a single market.</span>
               </li>
               <li className="flex items-start gap-3">
                 <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
@@ -512,8 +525,8 @@ export default function AgentsPage() {
 
       {/* ════════════════ EXCLUSIVITY ════════════════ */}
       <RevealSection className="py-16 md:py-24" id="exclusivity">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="max-w-3xl mx-auto px-6">
+          <div className="text-center">
             <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
               Market Exclusivity
             </p>
@@ -521,147 +534,17 @@ export default function AgentsPage() {
               One Team Per Market.{" "}
               <span className="gradient-text">No Exceptions.</span>
             </h2>
-            <p className="text-white/50 text-lg">
-              We only work with one real estate team or brokerage per city or designated
-              service area. When you sign with us, no competing team in your area gets
-              the same system. That's why our clients win — and why spots fill quickly.
+            <p className="text-white/50 text-lg mb-6">
+              On our Premium and Platinum packages, we only work with one real estate
+              team or brokerage per city or designated service area. Once you sign,
+              no competing team in your zone gets the same system. That's why our
+              exclusive clients win — and why spots fill quickly.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 mb-10">
-            <div className="card-dark p-7">
-              <div className="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center mb-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#BB9A65" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold mb-2">Your Area Is Yours</h3>
-              <p className="text-white/50 text-sm leading-relaxed">
-                No other CGC client competes in your city, zip code, or designated radius.
-                Your ads, your audiences, your data — all built without another agent
-                eating into your market share.
-              </p>
-            </div>
-            <div className="card-dark p-7">
-              <div className="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center mb-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z" stroke="#BB9A65" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M9 12l2 2 4-4" stroke="#BB9A65" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold mb-2">First-Mover Advantage</h3>
-              <p className="text-white/50 text-sm leading-relaxed">
-                Lock in your area before a competitor does. Once your zone is claimed,
-                we maintain a short waitlist — and only bring on a new team if the
-                current one ends.
-              </p>
-            </div>
-            <div className="card-dark p-7">
-              <div className="w-12 h-12 rounded-xl bg-brand-gold/10 flex items-center justify-center mb-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M3 12h18M3 6h18M3 18h18" stroke="#BB9A65" strokeWidth="1.8" strokeLinecap="round" />
-                  <circle cx="6" cy="6" r="1.5" fill="#BB9A65" />
-                  <circle cx="11" cy="12" r="1.5" fill="#BB9A65" />
-                  <circle cx="16" cy="18" r="1.5" fill="#BB9A65" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold mb-2">Scale With More Territory</h3>
-              <p className="text-white/50 text-sm leading-relaxed">
-                Want to expand? Add additional cities or service areas. Pricing scales
-                with each new market based on size and competitiveness — but you keep
-                exclusivity in every one.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-brand-gold/5 border border-brand-gold/20 rounded-2xl p-6 text-center">
-            <p className="text-white/80">
-              <span className="text-brand-gold font-semibold">Spots fill quickly in Tier A markets.</span>{" "}
-              Apply now to check if your area is still available.
-            </p>
-            <p className="text-white/40 text-sm mt-3">
+            <p className="text-white/40 text-sm">
               Tier A = popular travel destinations or markets with avg price point $1M+.
               Tier B = large cities with high-volume mid-priced homes at $500K+. Not sure
               where you fall? Ask us on the call.
             </p>
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ WHAT'S INCLUDED ════════════════ */}
-      <RevealSection className="py-16 md:py-24 bg-brand-dark" id="whats-included">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              What's Included
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Everything You Need to Generate Buyer or Seller Leads{" "}
-              <span className="gradient-text">on Demand.</span>
-            </h2>
-            <p className="text-white/50 text-lg">
-              Built and managed by one team. No piecing it together. No managing five
-              vendors. We own the whole engine for you — you focus on closing.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {[
-              {
-                title: "Paid Ad Campaigns",
-                problem: "Generic ads that look like every other agent's get ignored — and ad accounts that run the same creative for months stop scaling.",
-                solution: "We build campaigns targeted to your local market and ship fresh creative every month so your account doesn't fatigue and your CPL stays low.",
-              },
-              {
-                title: "Buyer & Seller Lead Magnet Funnels",
-                problem: "Sending paid traffic to a homepage or generic IDX site is why most agents' ads don't convert.",
-                solution: "We build dedicated lead magnet funnels for each campaign — buyer or seller, luxury or local — designed to capture qualified leads and hand them straight to your ISA or team members.",
-              },
-              {
-                title: "CRM Setup & Lead Routing",
-                problem: "Leads buried in inboxes or scattered across spreadsheets never get worked.",
-                solution: "We wire your funnel into your CRM (GHL, Follow Up Boss, Sierra, KW Command, whatever you use) with clean pipeline stages and instant routing.",
-              },
-              {
-                title: "Initial Lead Handoff Automations",
-                problem: "If your ISA gets a lead notification 30 minutes after the opt-in, the deal is already cold.",
-                solution: "We build the initial automations — instant SMS confirmations, email auto-replies, ISA notifications — that hand the lead to your team in real time. From there, your team takes over the conversation.",
-              },
-              {
-                title: "Conversion Tracking & Attribution",
-                problem: "Without real tracking, you can't tell which campaigns produce closings vs. which ones burn budget.",
-                solution: "We install server-side conversion tracking and attribution so you see cost-per-lead, cost-per-appointment, and cost-per-closing in real time — not at the end of the quarter.",
-              },
-              {
-                title: "Ongoing Campaign Management",
-                problem: "Most agencies launch the campaign and disappear. You're left wondering why your CPL keeps creeping up.",
-                solution: "We monitor your account daily, rotate creative weekly, and review strategy monthly. Your campaigns get worked, not just turned on and forgotten.",
-              },
-              {
-                title: "Market Exclusivity",
-                problem: "When your lead vendor sells the same lead to three other agents in your zip, you're competing on response time, not value.",
-                solution: "Locked exclusivity in your city or designated service area. No other CGC client competes with you for the same audiences.",
-              },
-              {
-                title: "Strategy & Onboarding Support",
-                problem: "Generic launch playbooks rarely fit your specific market, team, or budget.",
-                solution: "Direct working sessions to map your local ICP, funnel architecture, ad strategy, and team workflow before we ever launch — so the system is built around your business.",
-              },
-            ].map((item, i) => (
-              <div key={i} className="card-dark p-6">
-                <div className="flex items-start gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-full gradient-bg flex items-center justify-center shrink-0">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                      <path d="M3 7l3 3 5-6" stroke="#0E0E0E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <h3 className="text-white font-semibold leading-tight">{item.title}</h3>
-                </div>
-                <p className="text-white/50 text-sm leading-relaxed pl-11">
-                  {item.solution}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </RevealSection>
@@ -689,7 +572,7 @@ export default function AgentsPage() {
                 <h3 className="text-xl font-bold">This Is For You If...</h3>
               </div>
               <ul className="space-y-4">
-                {["You're an established solo agent with at least 1 ISA, a small team lead, or a boutique brokerage owner of any size", "You operate in a Tier A or Tier B market", "You have either a full-time ISA OR 5+ agents under you with a proven track record of converting leads over a 6–24 month window", "You're able to meet our minimum spend of $2,500/month for your area", "You treat marketing as a 6–24 month investment, not a 30-day vending machine"].map((item, i) => (
+                {["You're a solo agent with $25M+ in previous year sales volume — or a team lead / boutique brokerage owner with $100M+ in previous year team sales volume", "You operate in a Tier A or Tier B market", "You're able to meet our minimum total spend of $1,500/month (retainer + ad spend) per market", "You treat marketing as a 6–24 month investment, not a 30-day vending machine", "You're ready to stop renting leads and start owning your own lead source"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <svg className="w-5 h-5 mt-0.5 shrink-0" viewBox="0 0 20 20" fill="none">
                       <path d="M5 10l4 4 6-8" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -710,7 +593,7 @@ export default function AgentsPage() {
                 <h3 className="text-xl font-bold">This Is NOT For You If...</h3>
               </div>
               <ul className="space-y-4">
-                {["You're a solo agent with no ISA and no agents under you with a proven 6–24 month conversion track record", "You operate in a Tier C or Tier D market — the unit economics don't support our model", "You aren't able to meet our minimum spend of $2,500/month for your area", "You want closings this quarter or your money back — paid lead gen is a 6–24 month game", "You're looking for a quick hack or a media buyer to dump traffic into your existing setup"].map((item, i) => (
+                {["You're a solo agent with less than $25M in previous year sales volume", "You're a team or brokerage with less than $100M in previous year team sales volume", "You operate in a Tier C or Tier D market — the unit economics don't support our model", "You aren't able to meet our minimum total spend of $1,500/month (retainer + ad spend)", "You want closings this quarter or your money back — paid lead gen is a 6–24 month game"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <svg className="w-5 h-5 mt-0.5 shrink-0" viewBox="0 0 20 20" fill="none">
                       <path d="M6 6l8 8M14 6l-8 8" stroke="#666" strokeWidth="1.5" strokeLinecap="round" />
@@ -720,6 +603,265 @@ export default function AgentsPage() {
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      </RevealSection>
+
+      {/* ════════════════ PRICING ════════════════ */}
+      <RevealSection className="py-16 md:py-24 bg-brand-dark" id="pricing">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+              Pricing
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Pick the engagement{" "}
+              <span className="gradient-text">that fits where you are.</span>
+            </h2>
+            <p className="text-white/50 text-lg">
+              Three packages. Same guarantee. Pricing scales with how much of
+              the lead engine you want us running for you.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 md:gap-5 items-stretch">
+            {/* Premium — left on desktop, second on mobile */}
+            <div className="card-dark p-8 flex flex-col order-2 md:order-1">
+              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+                Premium
+              </p>
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-4xl font-bold text-white">$3,497</span>
+                <span className="text-white/40 text-sm">/month</span>
+              </div>
+              <p className="text-white/30 text-xs leading-relaxed mb-5">
+                $2,000 one-time setup fee. Plus $1,000/month minimum ad
+                spend per campaign.
+              </p>
+              <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
+                <p className="text-brand-gold text-[10px] font-bold tracking-[0.15em] uppercase mb-2">
+                  Best For
+                </p>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  Teams unfamiliar with qualifying and building relationships
+                  with cold traffic, with slow internal speed-to-lead, who don&apos;t
+                  want their agents wasting time on rude tire-kickers.
+                </p>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                {[
+                  "Up to 3 ad campaigns",
+                  "Pre-trained lead qualifier",
+                  "Market exclusivity",
+                  "Everything in Starter",
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span className="text-white/70 text-sm">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <SurveyButton className="btn-secondary w-full text-center">
+                Apply And Book Call
+              </SurveyButton>
+            </div>
+
+            {/* Starter — middle on desktop, first on mobile */}
+            <div
+              className="card-dark p-8 flex flex-col border-brand-gold/40 relative md:-translate-y-6 order-1 md:order-2"
+              style={{ boxShadow: "0 0 60px rgba(187,154,101,0.15)" }}
+            >
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-brand-black px-4 py-1 rounded-full text-[11px] font-bold tracking-[0.15em] uppercase whitespace-nowrap">
+                Most Popular
+              </div>
+              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+                Starter
+              </p>
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-4xl font-bold gradient-text">$497</span>
+                <span className="text-white/40 text-sm">/month per campaign</span>
+              </div>
+              <p className="text-white/30 text-xs leading-relaxed mb-5">
+                $1,000 one-time setup fee. Plus $1,000/month minimum ad
+                spend per campaign.
+              </p>
+              <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
+                <p className="text-brand-gold text-[10px] font-bold tracking-[0.15em] uppercase mb-2">
+                  Best For
+                </p>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  Top-producing solo agents and lean teams with a strong
+                  follow-up process who just want a reliable, done-for-you cold
+                  traffic campaign feeding them more at-bats.
+                </p>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                {[
+                  "1 buyer or seller ad campaign",
+                  "Custom funnel built for your market",
+                  "Leads delivered straight to your CRM",
+                  "Initial handoff automations to your team",
+                  "90-day guarantee",
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span className="text-white/70 text-sm">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <SurveyButton className="btn-primary w-full text-center">
+                Apply And Book Call
+              </SurveyButton>
+            </div>
+
+            {/* Platinum — right on desktop, third on mobile */}
+            <div className="card-dark p-8 flex flex-col order-3 md:order-3">
+              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
+                Platinum
+              </p>
+              <div className="flex items-baseline gap-2 mb-1">
+                <span className="text-4xl font-bold text-white">$7,997</span>
+                <span className="text-white/40 text-sm">/month</span>
+              </div>
+              <p className="text-white/30 text-xs leading-relaxed mb-5">
+                $3,000 one-time setup fee. Plus $1,000/month minimum ad
+                spend per campaign.
+              </p>
+              <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
+                <p className="text-brand-gold text-[10px] font-bold tracking-[0.15em] uppercase mb-2">
+                  Best For
+                </p>
+                <p className="text-white/70 text-sm leading-relaxed">
+                  Larger teams who want a near plug-and-play client acquisition
+                  system — cold traffic, qualification, and ongoing nurture
+                  handled so agents can focus almost entirely on listing and
+                  showing.
+                </p>
+              </div>
+              <ul className="space-y-3 mb-8 flex-1">
+                {[
+                  "Up to 5 ad campaigns",
+                  "Market exclusivity",
+                  "Email nurture sequences",
+                  "Branded monthly newsletter",
+                  "Appointments booked on your calendar",
+                  "Everything in Premium",
+                ].map((f) => (
+                  <li key={f} className="flex items-start gap-3">
+                    <div className="w-5 h-5 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
+                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                        <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </div>
+                    <span className="text-white/70 text-sm">{f}</span>
+                  </li>
+                ))}
+              </ul>
+              <SurveyButton className="btn-secondary w-full text-center">
+                Apply And Book Call
+              </SurveyButton>
+            </div>
+          </div>
+        </div>
+      </RevealSection>
+
+      {/* ════════════════ COMPARISON TABLE ════════════════ */}
+      <RevealSection className="py-16 md:py-24" id="comparison">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+              Full Comparison
+            </p>
+            <h2 className="text-3xl md:text-4xl font-bold">
+              What&apos;s included{" "}
+              <span className="gradient-text">in each package.</span>
+            </h2>
+          </div>
+
+          <div className="card-dark overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm md:text-base">
+                <thead>
+                  <tr className="border-b border-white/10">
+                    <th className="text-left p-4 md:p-5 text-white/40 font-medium"></th>
+                    <th className="p-4 md:p-5 text-center font-semibold gradient-text relative">
+                      Starter
+                      <span className="absolute -top-1 right-1/2 translate-x-[36px] text-[9px] tracking-[0.15em] uppercase text-brand-gold/80 font-bold">Popular</span>
+                    </th>
+                    <th className="p-4 md:p-5 text-center text-white font-semibold">Premium</th>
+                    <th className="p-4 md:p-5 text-center text-white font-semibold">Platinum</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { label: "Monthly retainer", values: ["$497 per campaign", "$3,497/month", "$7,997/month"] },
+                    { label: "One-time setup fee", values: ["$1,000", "$2,000", "$3,000"] },
+                    { label: "Minimum ad spend per campaign", values: ["$1,000/mo", "$1,000/mo", "$1,000/mo"] },
+                    { label: "Paid ad campaigns", values: ["1 per retainer", "Up to 3", "Up to 5"] },
+                    { label: "Custom buyer/seller funnels", values: [true, true, true] },
+                    { label: "Leads delivered to your CRM", values: [true, true, true] },
+                    { label: "Initial handoff automations", values: [true, true, true] },
+                    { label: "Conversion tracking & dashboards", values: [true, true, true] },
+                    { label: "90-day guarantee", values: [true, true, true] },
+                    { label: "Pre-trained lead qualifier", values: [false, true, true] },
+                    { label: "Market exclusivity", values: [false, true, true] },
+                    { label: "Email nurture sequences", values: [false, false, true] },
+                    { label: "Branded monthly newsletter", values: [false, false, true] },
+                    { label: "Appointment setting on your calendar", values: [false, false, true] },
+                    { label: "Upgrade in 60 days — 50% off next setup fee", values: [true, true, false] },
+                  ].map((row, i, arr) => (
+                    <tr key={row.label} className="border-b border-white/5">
+                      <td className="p-4 md:p-5 text-white/70">{row.label}</td>
+                      {row.values.map((v, j) => (
+                        <td key={j} className={`p-4 md:p-5 text-center ${j === 0 ? "bg-brand-gold/[0.04]" : ""}`}>
+                          {typeof v === "boolean" ? (
+                            v ? (
+                              <svg className="inline-block" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M5 10l4 4 6-8" stroke="#BB9A65" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                              </svg>
+                            ) : (
+                              <span className="text-white/20 text-lg">—</span>
+                            )
+                          ) : (
+                            <span className="text-white font-medium">{v}</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                  <tr>
+                    <td className="p-4 md:p-5"></td>
+                    <td className="p-4 md:p-5 text-center bg-brand-gold/[0.04]">
+                      <Link
+                        href="/agents/more"
+                        className="inline-flex items-center gap-1.5 text-brand-gold text-sm font-medium hover:text-brand-ivory transition-colors"
+                      >
+                        Just want more campaigns?
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </Link>
+                    </td>
+                    <td className="p-4 md:p-5"></td>
+                    <td className="p-4 md:p-5"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="text-center mt-10">
+            <SurveyButton className="btn-primary !text-lg !py-5 !px-12">
+              Apply And Book Call
+            </SurveyButton>
           </div>
         </div>
       </RevealSection>
@@ -761,7 +903,7 @@ export default function AgentsPage() {
           </p>
 
           <SurveyButton className="btn-primary !text-lg !py-5 !px-12">
-            Apply To Work With Us
+            Apply And Book Call
           </SurveyButton>
 
           <p className="text-white/30 text-sm mt-6">

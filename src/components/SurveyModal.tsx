@@ -24,10 +24,17 @@ type Question = {
   type: "single" | "multi" | "text" | "textarea";
   options?: string[];
   placeholder?: string;
+  optional?: boolean;
   conditional?: { dependsOn: string; values: string[] };
 };
 
 const questions: Question[] = [
+  {
+    id: "running-ads",
+    question: "Are you currently running paid ads?",
+    type: "single",
+    options: ["Yes", "No"],
+  },
   {
     id: "role",
     question: "Which best describes you?",
@@ -39,84 +46,38 @@ const questions: Question[] = [
     ],
   },
   {
+    id: "sales-volume",
+    question: "What was your sales volume last year?",
+    subtitle:
+      "Previous year total for solo agents. Previous year team volume for teams or brokerages.",
+    type: "single",
+    options: [
+      "Under $25M",
+      "$25M – $100M",
+      "$100M+",
+    ],
+  },
+  {
     id: "market",
-    question: "What market are you located in?",
+    question: "What market are you primarily in?",
     type: "text",
     placeholder: "e.g. Charleston, SC",
   },
   {
-    id: "nearest-major-city",
-    question: "What's the nearest major city?",
-    type: "text",
-    placeholder: "e.g. Charlotte, NC",
-  },
-  {
-    id: "market-tier",
-    question: "Would you describe your market as:",
-    subtitle: "Tier A = popular travel destination or $1M+ avg price point. Tier B = large city with high-volume mid-priced homes at $500K+.",
-    type: "single",
-    options: ["Tier A", "Tier B", "Not sure"],
-  },
-  {
-    id: "isa",
-    question: "Do you have a full-time ISA on payroll?",
-    type: "single",
-    options: [
-      "Yes, full-time ISA",
-      "We're hiring an ISA in the next 30 days",
-      "No, but I have 5+ agents under me with strong conversion ability",
-      "No, and we're not interested in hiring one",
-    ],
-  },
-  {
-    id: "conversion-ability",
-    question:
-      "How would you rate your team's ability to close deals 6–24 months after the first lead contact?",
-    type: "single",
-    options: [
-      "Excellent — proven, systematized long-term follow-up",
-      "Strong — we close consistently in this window",
-      "Average — some leads convert long-term, not systematized",
-      "Not sure / haven't measured",
-    ],
-  },
-  {
-    id: "lead-focus",
-    question: "Are you looking for buyer leads, seller leads, or both?",
-    type: "single",
-    options: [
-      "Buyer leads only",
-      "Seller leads only",
-      "Both — full engagement",
-    ],
-  },
-  {
-    id: "lead-sources",
-    question: "Where do most of your leads come from right now?",
-    subtitle: "Select all that apply",
-    type: "multi",
-    options: [
-      "Referrals / past clients / sphere",
-      "Zillow / Realtor.com / Redfin / paid platforms",
-      "Google search / SEO / IDX traffic",
-      "Paid Meta or Google ads",
-      "Open houses / door knocking / cold outbound",
-      "Organic social media",
-      "Other",
-    ],
-  },
-  {
-    id: "ran-ads-with-agency",
-    question: "Have you run ads with an agency before?",
-    type: "single",
-    options: ["Yes", "No"],
-  },
-  {
     id: "investment",
     question:
-      "Are you able to invest at least $2,500/month between retainer and ad spend for a single market?",
+      "Are you able to invest at least $1,500/month total (retainer + ad spend) for a single market?",
     type: "single",
     options: ["Yes", "I'd need to discuss this on the call", "No"],
+  },
+  {
+    id: "additional-info",
+    question: "Anything else you'd like us to know? (Optional)",
+    subtitle:
+      "Tell us more about what you're struggling with or what you want to achieve — so we can be ready before the call.",
+    type: "textarea",
+    placeholder: "Optional — share as much or as little as you want...",
+    optional: true,
   },
 ];
 
@@ -320,13 +281,18 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
     }
 
     const investment = answers["investment"] as string | undefined;
-    const isa = answers["isa"] as string | undefined;
-    const disqualifiedByIsa = isa === "No, and we're not interested in hiring one";
-    const disqualifiedByInvestment = investment === "No";
-    const qualified = !disqualifiedByIsa && !disqualifiedByInvestment;
+    const role = answers["role"] as string | undefined;
+    const salesVolume = answers["sales-volume"] as string | undefined;
 
-    const leadSources = answers["lead-sources"];
-    const sourcesStr = Array.isArray(leadSources) ? leadSources.join(", ") : "";
+    const disqualifiedByInvestment = investment === "No";
+    const isSolo = role === "Solo agent";
+    const isTeam =
+      role === "Team lead with 5+ agents" || role === "Boutique brokerage owner";
+    const disqualifiedByVolume =
+      (isSolo && salesVolume === "Under $25M") ||
+      (isTeam && (salesVolume === "Under $25M" || salesVolume === "$25M – $100M"));
+
+    const qualified = !disqualifiedByInvestment && !disqualifiedByVolume;
 
     const payload = {
       first_name: contactInfo.firstName,
@@ -334,16 +300,12 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
       name: `${contactInfo.firstName} ${contactInfo.lastName}`.trim(),
       email: contactInfo.email,
       phone: contactInfo.phone,
-      role: (answers["role"] as string) || "",
+      running_ads: (answers["running-ads"] as string) || "",
+      role: role || "",
+      sales_volume: salesVolume || "",
       market: (answers["market"] as string) || "",
-      nearest_major_city: (answers["nearest-major-city"] as string) || "",
-      market_tier: (answers["market-tier"] as string) || "",
-      isa: isa || "",
-      conversion_ability: (answers["conversion-ability"] as string) || "",
-      lead_focus: (answers["lead-focus"] as string) || "",
-      lead_sources: sourcesStr,
-      ran_ads_with_agency: (answers["ran-ads-with-agency"] as string) || "",
       investment: investment || "",
+      additional_info: (answers["additional-info"] as string) || "",
       qualified: qualified ? "yes" : "no",
     };
 
@@ -406,8 +368,8 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
     currentAnswer.trim().length > 0;
   const canContinueTextarea =
     currentQuestion?.type === "textarea" &&
-    typeof currentAnswer === "string" &&
-    currentAnswer.trim().length > 0;
+    (currentQuestion.optional ||
+      (typeof currentAnswer === "string" && currentAnswer.trim().length > 0));
   const canContinueMulti =
     currentQuestion?.type === "multi" &&
     Array.isArray(currentAnswer) &&

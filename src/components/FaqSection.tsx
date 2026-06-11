@@ -111,7 +111,7 @@ export default function FaqSection({ faqs = defaultFaqs }: { faqs?: Faq[] } = {}
         <p className="text-white/40 mb-6">
           Still have questions? We'll answer everything on your strategy call.
         </p>
-        <SurveyButton className="btn-primary">Apply Now</SurveyButton>
+        <SurveyButton className="btn-primary">Apply And Book Call</SurveyButton>
       </div>
     </>
   );
