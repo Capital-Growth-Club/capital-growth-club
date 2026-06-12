@@ -13,17 +13,17 @@ import HeroVideo from "@/components/HeroVideo";
 export const metadata: Metadata = {
   title: "Buyer & Seller Leads for Real Estate Teams",
   description:
-    "We will double your buyer and seller leads in 90 days — or refund every dollar, including ad spend. Built for established real estate teams in Tier A or Tier B markets.",
+    "100 buyer leads or $3M in seller leads in 90 days. Or we work for free until we do. Built for established real estate teams in Tier A or Tier B markets.",
   openGraph: {
     title: "Buyer & Seller Leads for Real Estate Teams | Capital Growth Club",
     description:
-      "We will double your buyer and seller leads in 90 days — or refund every dollar including ad spend.",
+      "100 buyer leads or $3M in seller leads in 90 days. Or we work for free until we do.",
     url: "https://capitalgrowthclub.com/agents",
   },
   twitter: {
     title: "Buyer & Seller Leads for Real Estate Teams | Capital Growth Club",
     description:
-      "Double your buyer and seller leads in 90 days — or get a full refund including ad spend.",
+      "100 buyer leads or $3M in seller leads in 90 days. Or we work for free until we do.",
   },
   alternates: {
     canonical: "https://capitalgrowthclub.com/agents",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 const agentFaqs = [
   {
     q: "What does the lead guarantee actually mean?",
-    a: "We guarantee to double your buyer or seller lead flow in the first 90 days of ads running — or we refund the retainer and ad spend in full. The guarantee only applies when the client meets our qualifying requirements at signing: previous year sales volume of $25M+ for solo agents or $100M+ for teams, a Tier A or B market, and willingness to invest the $1,500/month minimum total (retainer + ad spend). We turn away more agents than we take precisely because the guarantee is real.",
+    a: "We guarantee to generate either 100 buyer leads or at least $3 million in seller leads within the first 90 days of ads running. If we don't hit that threshold, we keep running your campaigns for free — no additional retainer — until we do. The guarantee only applies when the client meets our qualifying requirements at signing: previous year sales volume of $25M+ for solo agents or $100M+ for teams, a Tier A or B market, and a minimum of $1,000/month in ad spend kept live for the full 90 days with no pausing and no campaign changes. The 90 days starts the day your ads go live. See terms and conditions for full details. We turn away more agents than we take precisely because the guarantee is real.",
   },
   {
     q: "What counts as a qualified lead?",
@@ -45,7 +45,7 @@ const agentFaqs = [
   },
   {
     q: "What's the minimum total I need to commit?",
-    a: "Minimum total monthly spend is $1,500. That covers our smallest retainer (Starter at $497) plus a minimum $1,000+/month in ad spend with a little room to scale. Larger packages and additional campaigns scale the total from there. None of the retainers above include ad spend — that's paid directly to the ad platforms.",
+    a: "Minimum total monthly spend to enter is $1,247 — Starter retainer ($497) plus $750/month in ad spend. To unlock our 90-day guarantee, ad spend bumps to $1,000/month (so $1,497/month total). Larger packages and additional campaigns scale the total from there. None of the retainers include ad spend — that's paid directly to the ad platforms.",
   },
   {
     q: "Is there a setup fee?",
@@ -73,7 +73,7 @@ const agentFaqs = [
   },
   {
     q: "How long until we see results?",
-    a: "Most teams see their campaign live within 14–21 days of onboarding. First leads typically come within the first week of ads running. The double-your-lead-flow milestone is what we measure at 90 days. But real estate is a 6–24 month sales cycle on most leads — so closings ramp up from that window. The teams that win at this are the ones who treat it as a 6–12 month build, not a 30-day vending machine.",
+    a: "Most teams see their campaign live within 14–21 days of onboarding. First leads typically come within the first week of ads running. The 100-buyer-lead or $3M-seller-lead milestone is what we measure at 90 days. But real estate is a 6–24 month sales cycle on most leads — so closings ramp up from that window. The teams that win at this are the ones who treat it as a 6–12 month build, not a 30-day vending machine.",
   },
   {
     q: "Do I need to make the ad creative myself?",
@@ -128,20 +128,21 @@ export default function AgentsPage() {
           <div className="flex flex-col items-center text-center">
             {/* Eyebrow */}
             <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
-              For Real Estate Professionals With An ISA
+              For $25M/yr Volume Solo Agents &amp; $100M/yr Teams
             </p>
 
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4">
-              We Will Double Your Buyer &amp; Seller Lead Conversations In 90 Days{" "}
-              <span className="gradient-text">Or We Will Refund You Every Dollar Including Ad Spend.</span>
+              We Will Generate You 100 Buyer Leads Or At Least $3M In Seller Leads In The Next 90 Days{" "}
+              <span className="gradient-text">Or We Will Work For Free Until We Do.</span>
             </h1>
 
             {/* Sub-headline */}
             <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-10 max-w-2xl">
-              We run, manage, and create paid ad campaigns that consistently put more
-              buyer and seller leads in front of your team every single month.
-              See How Below.
+              We run one Meta campaign for you in your market, drop the leads
+              into your CRM, and only work with up to 5 agents per market.
+              $497/month plus ad spend. If we don&apos;t hit your 90-day
+              numbers, we waive the fee and keep going.
             </p>
 
             {/* VSL Video */}
@@ -464,13 +465,13 @@ export default function AgentsPage() {
               The 90-Day Guarantee
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Double Your Buyer or Seller Leads in 90 Days,{" "}
-              <span className="gradient-text">or Get a Full Refund.</span>
+              100 Buyer Leads or $3M in Seller Leads in 90 Days.{" "}
+              <span className="gradient-text">Or We Work For Free Until We Do.</span>
             </h2>
             <p className="text-white/50 text-lg">
-              We put the risk on us. If we don't double your buyer or seller lead flow
-              within 90 days of ads running, we refund the retainer and ad spend in full.
-              No partial refunds. No footnotes.
+              We put the risk on us. If we don't deliver 100 buyer leads or at least
+              $3 million in seller leads within 90 days of ads going live — we keep
+              running your campaigns for free until we do.
             </p>
           </div>
 
@@ -478,15 +479,15 @@ export default function AgentsPage() {
             <div className="card-dark p-7 border-brand-gold/20">
               <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">What We Promise</p>
               <p className="text-white/70 leading-relaxed">
-                Your buyer or seller lead volume doubles within 90 days of ads going live,
-                measured against your prior 90-day baseline.
+                100 buyer leads or at least $3 million in seller leads within 90 days
+                of ads going live in your market.
               </p>
             </div>
             <div className="card-dark p-7 border-brand-gold/20">
               <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">If We Miss</p>
               <p className="text-white/70 leading-relaxed">
-                Full refund. Every dollar of retainer plus every dollar of ad spend paid
-                back, no questions asked.
+                We keep working for free — no additional retainer — until we hit the
+                threshold. You stay on ad spend, we stay on the work.
               </p>
             </div>
           </div>
@@ -494,32 +495,33 @@ export default function AgentsPage() {
           <div className="card-dark p-7 border-brand-gold/20">
             <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">To Qualify For The Guarantee, You Need To Meet These Requirements</p>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <span className="text-white/70">Previous year sales volume — $25M+ as a solo agent, or $100M+ as a team lead or boutique brokerage owner.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <span className="text-white/70">Willingness to invest at least $1,500/month total (retainer + ad spend) for a single market.</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                    <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <span className="text-white/70">Operating in a Tier A or Tier B market.</span>
-              </li>
+              {[
+                "Previous year sales volume — $25M+ as a solo agent, or $100M+ as a team lead or boutique brokerage owner.",
+                "Operating in a Tier A or Tier B market.",
+                "Minimum $1,000/month in ad spend, paid directly to the ad platform.",
+                "Ads cannot be paused or turned off for any reason during the 90-day window.",
+                "No changes to the campaigns during the 90-day window.",
+                "The 90 days starts the day your ads go live in your market.",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </div>
+                  <span className="text-white/70">{item}</span>
+                </li>
+              ))}
             </ul>
           </div>
+
+          <p className="text-center text-white/30 text-xs mt-5">
+            See{" "}
+            <a href="#" className="text-brand-gold/70 hover:text-brand-gold underline-offset-2 hover:underline transition-colors">
+              terms and conditions
+            </a>{" "}
+            for full details.
+          </p>
         </div>
       </RevealSection>
 
@@ -572,7 +574,7 @@ export default function AgentsPage() {
                 <h3 className="text-xl font-bold">This Is For You If...</h3>
               </div>
               <ul className="space-y-4">
-                {["You're a solo agent with $25M+ in previous year sales volume — or a team lead / boutique brokerage owner with $100M+ in previous year team sales volume", "You operate in a Tier A or Tier B market", "You're able to meet our minimum total spend of $1,500/month (retainer + ad spend) per market", "You treat marketing as a 6–24 month investment, not a 30-day vending machine", "You're ready to stop renting leads and start owning your own lead source"].map((item, i) => (
+                {["You're a solo agent with $25M+ in previous year sales volume — or a team lead / boutique brokerage owner with $100M+ in previous year team sales volume", "You operate in a Tier A or Tier B market", "You can meet our minimum total spend of $1,247/month per market", "You treat marketing as a 6–24 month investment, not a 30-day vending machine", "You're ready to stop renting leads and start owning your own lead source"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <svg className="w-5 h-5 mt-0.5 shrink-0" viewBox="0 0 20 20" fill="none">
                       <path d="M5 10l4 4 6-8" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -593,7 +595,7 @@ export default function AgentsPage() {
                 <h3 className="text-xl font-bold">This Is NOT For You If...</h3>
               </div>
               <ul className="space-y-4">
-                {["You're a solo agent with less than $25M in previous year sales volume", "You're a team or brokerage with less than $100M in previous year team sales volume", "You operate in a Tier C or Tier D market — the unit economics don't support our model", "You aren't able to meet our minimum total spend of $1,500/month (retainer + ad spend)", "You want closings this quarter or your money back — paid lead gen is a 6–24 month game"].map((item, i) => (
+                {["You're a solo agent with less than $25M in previous year sales volume", "You're a team or brokerage with less than $100M in previous year team sales volume", "You operate in a Tier C or Tier D market — the unit economics don't support our model", "You can't meet our $1,247/month minimum total spend per market ($497 retainer + $750 minimum ad spend)", "You want closings this quarter or your money back — paid lead gen is a 6–24 month game"].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <svg className="w-5 h-5 mt-0.5 shrink-0" viewBox="0 0 20 20" fill="none">
                       <path d="M6 6l8 8M14 6l-8 8" stroke="#666" strokeWidth="1.5" strokeLinecap="round" />
@@ -635,7 +637,7 @@ export default function AgentsPage() {
                 <span className="text-white/40 text-sm">/month</span>
               </div>
               <p className="text-white/30 text-xs leading-relaxed mb-5">
-                $2,000 one-time setup fee. Plus $1,000/month minimum ad
+                $2,000 one-time setup fee. Plus $750/month minimum ad
                 spend per campaign.
               </p>
               <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
@@ -686,7 +688,7 @@ export default function AgentsPage() {
                 <span className="text-white/40 text-sm">/month per campaign</span>
               </div>
               <p className="text-white/30 text-xs leading-relaxed mb-5">
-                $1,000 one-time setup fee. Plus $1,000/month minimum ad
+                $1,000 one-time setup fee. Plus $750/month minimum ad
                 spend per campaign.
               </p>
               <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
@@ -732,7 +734,7 @@ export default function AgentsPage() {
                 <span className="text-white/40 text-sm">/month</span>
               </div>
               <p className="text-white/30 text-xs leading-relaxed mb-5">
-                $3,000 one-time setup fee. Plus $1,000/month minimum ad
+                $3,000 one-time setup fee. Plus $750/month minimum ad
                 spend per campaign.
               </p>
               <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
@@ -804,7 +806,7 @@ export default function AgentsPage() {
                   {[
                     { label: "Monthly retainer", values: ["$497 per campaign", "$3,497/month", "$7,997/month"] },
                     { label: "One-time setup fee", values: ["$1,000", "$2,000", "$3,000"] },
-                    { label: "Minimum ad spend per campaign", values: ["$1,000/mo", "$1,000/mo", "$1,000/mo"] },
+                    { label: "Minimum ad spend per campaign", values: ["$750/mo", "$750/mo", "$750/mo"] },
                     { label: "Paid ad campaigns", values: ["1 per retainer", "Up to 3", "Up to 5"] },
                     { label: "Custom buyer/seller funnels", values: [true, true, true] },
                     { label: "Leads delivered to your CRM", values: [true, true, true] },
@@ -896,10 +898,11 @@ export default function AgentsPage() {
             <span className="gradient-text">Guaranteed.</span>
           </h2>
           <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-            We guarantee to double your buyer or seller lead flow in the first 90 days of
-            ads running — or we refund the retainer and ad spend in full. If your team
-            has the conversion capacity to work leads across the 6–24 month window, you're
-            in a Tier A or B market, and you can meet our $2,500/month minimum — apply below.
+            We guarantee to generate 100 buyer leads or $3 million in seller leads
+            within the first 90 days of ads running — or we keep working for free
+            until we do. If you closed $25M+ as a solo agent or $100M+ as a team last
+            year, you're in a Tier A or B market, and you can meet our $1,500/month
+            minimum total — apply below.
           </p>
 
           <SurveyButton className="btn-primary !text-lg !py-5 !px-12">
