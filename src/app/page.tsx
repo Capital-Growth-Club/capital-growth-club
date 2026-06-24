@@ -11,7 +11,7 @@ import HeroVideo from "@/components/HeroVideo";
 /* ─── Main Page (Server Component) ─── */
 export default function Home() {
   return (
-    <SurveyProvider>
+    <SurveyProvider questionSet="service-business">
       {/* ════════════════ NAVBAR ════════════════ */}
       <NavBar />
 
@@ -31,7 +31,7 @@ export default function Home() {
             {/* Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4">
               Most Service Businesses Don&apos;t Have a Lead Generation Problem.{" "}
-              <span className="gradient-text">They Have a Cold Client Acquisition Problem.</span>
+              <span className="gradient-text">They Have a Lead Conversion Problem.</span>
             </h1>
 
             {/* Sub-headline */}

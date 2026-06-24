@@ -3,9 +3,12 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+export type QuestionSet = "real-estate" | "service-business";
+
 interface SurveyModalProps {
   open: boolean;
   onClose: () => void;
+  questionSet?: QuestionSet;
 }
 
 interface ContactInfo {
@@ -25,10 +28,13 @@ type Question = {
   options?: string[];
   placeholder?: string;
   optional?: boolean;
+  maxLength?: number;
+  numeric?: boolean;
+  prefix?: string;
   conditional?: { dependsOn: string; values: string[] };
 };
 
-const questions: Question[] = [
+const realEstateQuestions: Question[] = [
   {
     id: "running-ads",
     question: "Are you currently running paid ads?",
@@ -81,6 +87,51 @@ const questions: Question[] = [
   },
 ];
 
+const serviceBusinessQuestions: Question[] = [
+  {
+    id: "running-ads",
+    question: "Are you currently running paid ads?",
+    type: "single",
+    options: ["Yes", "No"],
+  },
+  {
+    id: "business-type",
+    question: "What type of service business do you run?",
+    type: "single",
+    options: [
+      "Real estate (not commercial)",
+      "Home services (plumbing, HVAC, roofing, solar, etc.)",
+      "Health & wellness (med spa, dental, chiropractic, etc.)",
+      "Professional services (law, accounting, consulting, financial)",
+      "Coaching / Education / Information products",
+      "Other",
+    ],
+  },
+  {
+    id: "monthly-revenue",
+    question: "What's your current monthly revenue?",
+    subtitle: "Enter a number — digits only.",
+    type: "text",
+    numeric: true,
+    prefix: "$",
+    placeholder: "50000",
+  },
+  {
+    id: "top-lead-source",
+    question: "What is your top lead source (where your leads come from)?",
+    type: "text",
+    placeholder: "e.g. Referrals, Google Ads, Facebook Ads, SEO, cold outreach...",
+    maxLength: 250,
+  },
+  {
+    id: "lead-struggle",
+    question:
+      "Are you struggling to capture leads or convert your leads?",
+    type: "single",
+    options: ["Capturing leads", "Converting leads", "Both"],
+  },
+];
+
 function isQuestionVisible(
   q: Question,
   answers: Record<string, AnswerValue>
@@ -91,11 +142,15 @@ function isQuestionVisible(
   return q.conditional.values.includes(dep);
 }
 
-function visibleStepCount(answers: Record<string, AnswerValue>): number {
+function visibleStepCount(
+  questions: Question[],
+  answers: Record<string, AnswerValue>
+): number {
   return questions.filter((q) => isQuestionVisible(q, answers)).length;
 }
 
 function findNextVisibleStep(
+  questions: Question[],
   currentStep: number,
   answers: Record<string, AnswerValue>
 ): number {
@@ -106,6 +161,7 @@ function findNextVisibleStep(
 }
 
 function findPrevVisibleStep(
+  questions: Question[],
   currentStep: number,
   answers: Record<string, AnswerValue>
 ): number {
@@ -115,7 +171,9 @@ function findPrevVisibleStep(
   return -1;
 }
 
-export default function SurveyModal({ open, onClose }: SurveyModalProps) {
+export default function SurveyModal({ open, onClose, questionSet = "real-estate" }: SurveyModalProps) {
+  const questions =
+    questionSet === "service-business" ? serviceBusinessQuestions : realEstateQuestions;
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
@@ -132,7 +190,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
   const [otpSending, setOtpSending] = useState(false);
 
   const isContactStep = step >= questions.length;
-  const totalVisibleQuestions = visibleStepCount(answers);
+  const totalVisibleQuestions = visibleStepCount(questions, answers);
   const visibleIndex =
     step < questions.length
       ? questions
@@ -174,7 +232,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
   }
 
   function advance() {
-    const next = findNextVisibleStep(step, answers);
+    const next = findNextVisibleStep(questions, step, answers);
     setStep(next);
   }
 
@@ -183,7 +241,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
     setAnswer(id, option);
     setTimeout(() => {
       const nextAnswers = { ...answers, [id]: option };
-      const next = findNextVisibleStep(step, nextAnswers);
+      const next = findNextVisibleStep(questions, step, nextAnswers);
       setStep(next);
     }, 200);
   }
@@ -206,7 +264,7 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
       if (last >= 0) setStep(last);
       return;
     }
-    const prev = findPrevVisibleStep(step, answers);
+    const prev = findPrevVisibleStep(questions, step, answers);
     if (prev >= 0) setStep(prev);
   }
 
@@ -283,7 +341,12 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
     const investment = answers["investment"] as string | undefined;
     const role = answers["role"] as string | undefined;
     const salesVolume = answers["sales-volume"] as string | undefined;
+    const businessType = answers["business-type"] as string | undefined;
+    const monthlyRevenue = answers["monthly-revenue"] as string | undefined;
+    const topLeadSource = answers["top-lead-source"] as string | undefined;
+    const leadStruggle = answers["lead-struggle"] as string | undefined;
 
+    // Real-estate disqualifier
     const disqualifiedByInvestment = investment === "No";
     const isSolo = role === "Solo agent";
     const isTeam =
@@ -292,7 +355,14 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
       (isSolo && salesVolume === "Under $25M") ||
       (isTeam && (salesVolume === "Under $25M" || salesVolume === "$25M – $100M"));
 
-    const qualified = !disqualifiedByInvestment && !disqualifiedByVolume;
+    // Service-business disqualifier — under $50k/mo
+    const monthlyRevenueNum = parseInt((monthlyRevenue || "").replace(/\D/g, ""), 10);
+    const disqualifiedByRevenue =
+      questionSet === "service-business" &&
+      (!Number.isFinite(monthlyRevenueNum) || monthlyRevenueNum < 50000);
+
+    const qualified =
+      !disqualifiedByInvestment && !disqualifiedByVolume && !disqualifiedByRevenue;
 
     const payload = {
       first_name: contactInfo.firstName,
@@ -300,9 +370,14 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
       name: `${contactInfo.firstName} ${contactInfo.lastName}`.trim(),
       email: contactInfo.email,
       phone: contactInfo.phone,
+      question_set: questionSet,
       running_ads: (answers["running-ads"] as string) || "",
       role: role || "",
       sales_volume: salesVolume || "",
+      business_type: businessType || "",
+      monthly_revenue: monthlyRevenue || "",
+      top_lead_source: topLeadSource || "",
+      lead_struggle: leadStruggle || "",
       market: (answers["market"] as string) || "",
       investment: investment || "",
       additional_info: (answers["additional-info"] as string) || "",
@@ -330,6 +405,8 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
         phone: formatE164(contactInfo.phone),
       });
       router.push(`/qualified?${params.toString()}`);
+    } else if (questionSet === "service-business") {
+      router.push("/skooloffer");
     } else {
       router.push("/not-a-fit");
     }
@@ -724,22 +801,43 @@ export default function SurveyModal({ open, onClose }: SurveyModalProps) {
 
               {currentQuestion.type === "text" && (
                 <>
-                  <input
-                    type="text"
-                    value={(currentAnswer as string) || ""}
-                    onChange={(e) =>
-                      setAnswer(currentQuestion.id, e.target.value)
-                    }
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && canContinueText) {
-                        e.preventDefault();
-                        advance();
-                      }
-                    }}
-                    autoFocus
-                    placeholder={currentQuestion.placeholder}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/50 transition-colors"
-                  />
+                  <div className="relative">
+                    {currentQuestion.prefix && (
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none">
+                        {currentQuestion.prefix}
+                      </span>
+                    )}
+                    <input
+                      type="text"
+                      inputMode={currentQuestion.numeric ? "numeric" : undefined}
+                      pattern={currentQuestion.numeric ? "[0-9]*" : undefined}
+                      value={(currentAnswer as string) || ""}
+                      onChange={(e) => {
+                        const v = currentQuestion.numeric
+                          ? e.target.value.replace(/\D/g, "")
+                          : e.target.value;
+                        setAnswer(currentQuestion.id, v);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && canContinueText) {
+                          e.preventDefault();
+                          advance();
+                        }
+                      }}
+                      autoFocus
+                      maxLength={currentQuestion.maxLength}
+                      placeholder={currentQuestion.placeholder}
+                      className={`w-full bg-white/5 border border-white/10 rounded-lg py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/50 transition-colors ${
+                        currentQuestion.prefix ? "pl-8 pr-4" : "px-4"
+                      }`}
+                    />
+                  </div>
+                  {currentQuestion.maxLength && (
+                    <div className="mt-2 text-xs text-white/40 text-right">
+                      {((currentAnswer as string) || "").length}/
+                      {currentQuestion.maxLength}
+                    </div>
+                  )}
                   <button
                     onClick={advance}
                     disabled={!canContinueText}

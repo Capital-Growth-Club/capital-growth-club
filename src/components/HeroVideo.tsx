@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const VIDEO_URL =
+const DEFAULT_VIDEO_URL =
   "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a2a1bc3d7f65291ad92f2cc.mp4";
 const REPLAY_AFTER_MS = 20000;
 
-export default function HeroVideo() {
+export default function HeroVideo({ src = DEFAULT_VIDEO_URL }: { src?: string } = {}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const replayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const unmutedRef = useRef(false);
@@ -72,7 +72,7 @@ export default function HeroVideo() {
         <video
           ref={videoRef}
           className="w-full aspect-video object-cover"
-          src={VIDEO_URL}
+          src={src}
           autoPlay
           muted
           loop
