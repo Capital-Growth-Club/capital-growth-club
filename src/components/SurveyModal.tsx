@@ -188,6 +188,43 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
   const [otpCode, setOtpCode] = useState("");
   const [otpError, setOtpError] = useState("");
   const [otpSending, setOtpSending] = useState(false);
+  const [utmParams, setUtmParams] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const keys = [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+      "gclid",
+      "fbclid",
+      "ttclid",
+      "li_fat_id",
+      "msclkid",
+      "ref",
+    ];
+    const params = new URLSearchParams(window.location.search);
+    const captured: Record<string, string> = {};
+    keys.forEach((k) => {
+      const fromUrl = params.get(k);
+      if (fromUrl) {
+        captured[k] = fromUrl;
+        try {
+          sessionStorage.setItem(`cgc_${k}`, fromUrl);
+        } catch {}
+      } else {
+        try {
+          const stored = sessionStorage.getItem(`cgc_${k}`);
+          if (stored) captured[k] = stored;
+        } catch {}
+      }
+    });
+    if (document.referrer) captured.referrer = document.referrer;
+    captured.landing_url = window.location.href;
+    setUtmParams(captured);
+  }, []);
 
   const isContactStep = step >= questions.length;
   const totalVisibleQuestions = visibleStepCount(questions, answers);
@@ -382,6 +419,19 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       investment: investment || "",
       additional_info: (answers["additional-info"] as string) || "",
       qualified: qualified ? "yes" : "no",
+      utm_source: utmParams.utm_source || "",
+      utm_medium: utmParams.utm_medium || "",
+      utm_campaign: utmParams.utm_campaign || "",
+      utm_content: utmParams.utm_content || "",
+      utm_term: utmParams.utm_term || "",
+      gclid: utmParams.gclid || "",
+      fbclid: utmParams.fbclid || "",
+      ttclid: utmParams.ttclid || "",
+      li_fat_id: utmParams.li_fat_id || "",
+      msclkid: utmParams.msclkid || "",
+      ref: utmParams.ref || "",
+      referrer: utmParams.referrer || "",
+      landing_url: utmParams.landing_url || "",
     };
 
     try {
@@ -404,7 +454,9 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
         email: contactInfo.email,
         phone: formatE164(contactInfo.phone),
       });
-      router.push(`/qualified?${params.toString()}`);
+      const dest =
+        questionSet === "service-business" ? "/qualified" : "/qualified-agents";
+      router.push(`${dest}?${params.toString()}`);
     } else if (questionSet === "service-business") {
       router.push("/skooloffer");
     } else {

@@ -7,9 +7,9 @@ import Image from "next/image";
 
 const confettiColors = ["#BB9A65", "#FFFCD8", "#C9AE84", "#D4B87A", "#CEAE78"];
 const CALENDAR_URL =
-  "https://api.leadconnectorhq.com/widget/booking/tJZkBjFRWcpDfHBTeLlf";
+  "https://api.leadconnectorhq.com/widget/booking/safoTRE7XxjjvWJ8HIWN";
 
-export default function QualifiedClient() {
+export default function QualifiedAgentsClient() {
   const searchParams = useSearchParams();
   const firstName = searchParams.get("first_name") || "";
   const lastName = searchParams.get("last_name") || "";
@@ -72,7 +72,6 @@ export default function QualifiedClient() {
         <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-gold/[0.04] rounded-full blur-[120px] pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/[0.03] rounded-full blur-[100px] pointer-events-none" />
 
-        {/* Confetti burst from bottom */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           {burstLeft.map((p, i) => (
             <div

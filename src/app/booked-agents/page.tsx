@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function BookedPage() {
+export default function BookedAgentsPage() {
   return (
     <main className="min-h-screen bg-brand-black relative overflow-hidden">
       <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-gold/[0.03] rounded-full blur-[120px] pointer-events-none" />
@@ -36,14 +36,14 @@ export default function BookedPage() {
               Call Confirmed
             </p>
             <h1 className="text-3xl md:text-5xl font-bold mb-5 leading-tight">
-              Thanks for booking your call —{" "}
+              Your strategy call is locked in —{" "}
               <span className="gradient-text">watch this before we talk.</span>
             </h1>
             <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
               You'll get a calendar invite and a confirmation text shortly.
-              In the meantime, this short video walks you through exactly what
-              to expect on the call so we can make the most of our time
-              together.
+              In the meantime, this short video walks you through exactly how
+              the 100 buyer leads / $3M seller-lead guarantee works so we can
+              spend our call on what matters most for your market.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export default function BookedPage() {
                 306+
               </p>
               <p className="text-white/40 text-xs md:text-sm mt-2">
-                Service Businesses Served
+                Agents &amp; Teams Served
               </p>
             </div>
             <div className="text-center">
@@ -68,7 +68,7 @@ export default function BookedPage() {
                 $8.4B+
               </p>
               <p className="text-white/40 text-xs md:text-sm mt-2">
-                Revenue Generated For Clients
+                Sales Volume Generated
               </p>
             </div>
             <div className="text-center">
@@ -76,7 +76,7 @@ export default function BookedPage() {
                 52,984+
               </p>
               <p className="text-white/40 text-xs md:text-sm mt-2">
-                Qualified Leads Captured
+                Real Estate Leads Captured
               </p>
             </div>
           </div>
@@ -88,10 +88,10 @@ export default function BookedPage() {
         <div className="max-w-7xl mx-auto px-6 mb-10">
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-3">
-              From Other Service Businesses
+              From Other Top Agents
             </p>
             <h2 className="text-3xl md:text-4xl font-bold">
-              What Service Business Owners{" "}
+              What Agents &amp; Team Leads{" "}
               <span className="gradient-text">Are Saying</span>
             </h2>
           </div>
@@ -112,7 +112,7 @@ export default function BookedPage() {
               <span className="gradient-text">Answered Before You Ask</span>
             </h2>
             <p className="text-white/50 text-lg">
-              The most common questions service business owners have before
+              The most common questions agents and team leads have before
               working with us. Watch the ones that apply to you so we can spend
               the call on what matters most.
             </p>
