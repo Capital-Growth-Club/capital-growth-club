@@ -61,7 +61,7 @@ export default function StarterPlusPage() {
                   <span className="text-white/40 text-sm">/month per campaign</span>
                 </div>
                 <p className="text-white/30 text-xs leading-relaxed mb-5">
-                  $2,000 one-time setup fee. Plus $1,000/month minimum ad
+                  $1,000 one-time setup fee. Plus $750/month minimum ad
                   spend per campaign.
                 </p>
                 <p className="text-white/50 text-sm leading-relaxed mb-6">
@@ -75,7 +75,6 @@ export default function StarterPlusPage() {
                     "Leads delivered straight to your CRM",
                     "Initial handoff automations",
                     "Conversion tracking & dashboards",
-                    "90-day guarantee",
                     "50% off Expansion setup fee if you upgrade within 60 days of launch",
                   ].map((f) => (
                     <li key={f} className="flex items-start gap-3">
@@ -111,26 +110,22 @@ export default function StarterPlusPage() {
                   Expansion
                 </p>
                 <div className="flex items-baseline gap-2 mb-1">
-                  <span className="text-4xl font-bold gradient-text">$997+</span>
+                  <span className="text-4xl font-bold gradient-text">$1,497</span>
                   <span className="text-white/40 text-sm">/month</span>
                 </div>
                 <p className="text-white/30 text-xs leading-relaxed mb-5">
-                  $497/month per campaign. $3,000 one-time setup fee. Plus
-                  $1,000/month minimum ad spend per campaign.
+                  $3,000 one-time setup fee. Plus $750/month minimum ad
+                  spend per campaign.
                 </p>
                 <p className="text-white/50 text-sm leading-relaxed mb-6">
-                  Run 2 to 3 ad campaigns. Stack more in your current market,
+                  Run 3 ad campaigns. Stack more in your current market,
                   expand into new zip codes, or test new offers.
                 </p>
                 <ul className="space-y-3 mb-8 flex-1">
                   {[
-                    "2–3 ad campaigns (Meta and/or Google)",
+                    "Everything in Starter, plus:",
+                    "3 ad campaigns (Meta and/or Google)",
                     "Multiple campaigns in your market or expand into new ones",
-                    "Custom buyer or seller funnels for each campaign",
-                    "Leads delivered straight to your CRM",
-                    "Initial handoff automations",
-                    "Conversion tracking & dashboards",
-                    "90-day guarantee",
                     "50% off Market Dominator setup fee if you upgrade within 60 days of new campaigns going live",
                   ].map((f) => (
                     <li key={f} className="flex items-start gap-3">
@@ -164,7 +159,7 @@ export default function StarterPlusPage() {
                   <span className="text-white/40 text-sm">/month</span>
                 </div>
                 <p className="text-white/30 text-xs leading-relaxed mb-5">
-                  $5,000 one-time setup fee. Plus $1,000/month minimum ad
+                  $5,000 one-time setup fee. Plus $750/month minimum ad
                   spend per campaign.
                 </p>
                 <p className="text-white/50 text-sm leading-relaxed mb-6">
@@ -173,12 +168,12 @@ export default function StarterPlusPage() {
                 </p>
                 <ul className="space-y-3 mb-8 flex-1">
                   {[
+                    "Everything in Expansion, plus:",
                     "5 ad campaigns live at once",
                     "Quarterly strategy reviews with leadership",
                     "Change markets and campaigns at a reduced setup fee",
                     "Priority support",
                     "Private lead conversion consulting (email, SMS, and cold call SOPs)",
-                    "Everything in Expansion",
                   ].map((f) => (
                     <li key={f} className="flex items-start gap-3">
                       <div className="w-5 h-5 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
@@ -241,19 +236,19 @@ export default function StarterPlusPage() {
                     {[
                       {
                         label: "Concurrent ad campaigns",
-                        values: ["1", "2–3", "5"],
+                        values: ["1", "3", "5"],
                       },
                       {
                         label: "Monthly retainer",
-                        values: ["$497 per campaign", "$497 per campaign", "$2,497/month"],
+                        values: ["$497 per campaign", "$1,497/month", "$2,497/month"],
                       },
                       {
                         label: "One-time setup fee",
-                        values: ["$2,000", "$3,000", "$5,000"],
+                        values: ["$1,000", "$3,000", "$5,000"],
                       },
                       {
                         label: "Minimum ad spend per campaign",
-                        values: ["$1,000/mo", "$1,000/mo", "$1,000/mo"],
+                        values: ["$750/mo", "$750/mo", "$750/mo"],
                       },
                       {
                         label: "Meta or Google campaigns",
@@ -273,10 +268,6 @@ export default function StarterPlusPage() {
                       },
                       {
                         label: "Conversion tracking & dashboards",
-                        values: [true, true, true],
-                      },
-                      {
-                        label: "90-day guarantee",
                         values: [true, true, true],
                       },
                       {

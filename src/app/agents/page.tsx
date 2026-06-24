@@ -41,7 +41,7 @@ const agentFaqs = [
   },
   {
     q: "What are the three packages and how do I pick one?",
-    a: "Starter ($497/month per campaign) is the fastest way in — we run a campaign and deliver leads straight to your CRM, your team takes it from there. Best for agents who want to own their lead flow without the full done-for-you overhead. Premium ($3,497/month) adds a pre-trained lead qualifier and market exclusivity, so only the real leads worth working reach your team. Platinum ($7,997/month) is done-for-you everything — qualifier, email nurture, branded newsletter, and appointment setting straight to your calendar. We help you pick the right one on the strategy call.",
+    a: "Every package is priced around one lead gen campaign. Starter ($497/month) is just the campaign — we run it and deliver leads straight to your CRM, your team takes it from there. Premium ($2,497/month) adds our email and SMS nurture service for $2,000/month on top of the campaign, so leads who aren't ready today stay warm until they're ready to transact. Platinum ($6,497/month) adds our full acquisition team and system for $6,000/month on top of the campaign — trained ISAs qualifying every lead, advanced long-term nurture, and our CRM. Want more than one campaign? They're $497/month each on top of any package, or check our /more page for bundled scale-up packages.",
   },
   {
     q: "What's the minimum total I need to commit?",
@@ -633,7 +633,7 @@ export default function AgentsPage() {
                 Premium
               </p>
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-4xl font-bold text-white">$3,497</span>
+                <span className="text-4xl font-bold text-white">$2,497</span>
                 <span className="text-white/40 text-sm">/month</span>
               </div>
               <p className="text-white/30 text-xs leading-relaxed mb-5">
@@ -645,15 +645,17 @@ export default function AgentsPage() {
                   Best For
                 </p>
                 <p className="text-white/70 text-sm leading-relaxed">
-                  Teams unfamiliar with qualifying and building relationships
-                  with cold traffic, with slow internal speed-to-lead, who don&apos;t
-                  want their agents wasting time on rude tire-kickers.
+                  Teams who can handle initial calls but lose leads in the
+                  long-term follow-up window. We build the email and SMS
+                  nurture that keeps your pipeline warm until they&apos;re
+                  ready to transact.
                 </p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 {[
-                  "Up to 3 ad campaigns",
-                  "Pre-trained lead qualifier",
+                  "1 buyer or seller ad campaign",
+                  "Email and SMS nurture sequences built and installed",
+                  "Branded monthly newsletter",
                   "Market exclusivity",
                   "Everything in Starter",
                 ].map((f) => (
@@ -730,7 +732,7 @@ export default function AgentsPage() {
                 Platinum
               </p>
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-4xl font-bold text-white">$7,997</span>
+                <span className="text-4xl font-bold text-white">$6,497</span>
                 <span className="text-white/40 text-sm">/month</span>
               </div>
               <p className="text-white/30 text-xs leading-relaxed mb-5">
@@ -743,17 +745,17 @@ export default function AgentsPage() {
                 </p>
                 <p className="text-white/70 text-sm leading-relaxed">
                   Larger teams who want a near plug-and-play client acquisition
-                  system — cold traffic, qualification, and ongoing nurture
-                  handled so agents can focus almost entirely on listing and
-                  showing.
+                  system — our trained ISAs qualifying every lead, our advanced
+                  long-term nurture running in the background, and our CRM
+                  holding it all together.
                 </p>
               </div>
               <ul className="space-y-3 mb-8 flex-1">
                 {[
-                  "Up to 5 ad campaigns",
-                  "Market exclusivity",
-                  "Email nurture sequences",
-                  "Branded monthly newsletter",
+                  "1 buyer or seller ad campaign",
+                  "Our trained ISAs installed to qualify every lead",
+                  "Advanced long-term lead nurture system",
+                  "CGC CRM included",
                   "Appointments booked on your calendar",
                   "Everything in Premium",
                 ].map((f) => (
@@ -804,19 +806,21 @@ export default function AgentsPage() {
                 </thead>
                 <tbody>
                   {[
-                    { label: "Monthly retainer", values: ["$497 per campaign", "$3,497/month", "$7,997/month"] },
+                    { label: "Monthly retainer", values: ["$497 per campaign", "$2,497/month", "$6,497/month"] },
                     { label: "One-time setup fee", values: ["$1,000", "$2,000", "$3,000"] },
                     { label: "Minimum ad spend per campaign", values: ["$750/mo", "$750/mo", "$750/mo"] },
-                    { label: "Paid ad campaigns", values: ["1 per retainer", "Up to 3", "Up to 5"] },
+                    { label: "Paid ad campaigns", values: ["1 per retainer", "1 campaign", "1 campaign"] },
                     { label: "Custom buyer/seller funnels", values: [true, true, true] },
                     { label: "Leads delivered to your CRM", values: [true, true, true] },
                     { label: "Initial handoff automations", values: [true, true, true] },
                     { label: "Conversion tracking & dashboards", values: [true, true, true] },
                     { label: "90-day guarantee", values: [true, true, true] },
-                    { label: "Pre-trained lead qualifier", values: [false, true, true] },
                     { label: "Market exclusivity", values: [false, true, true] },
-                    { label: "Email nurture sequences", values: [false, false, true] },
-                    { label: "Branded monthly newsletter", values: [false, false, true] },
+                    { label: "Email and SMS nurture sequences built and installed", values: [false, true, true] },
+                    { label: "Branded monthly newsletter", values: [false, true, true] },
+                    { label: "Our trained ISAs installed to qualify every lead", values: [false, false, true] },
+                    { label: "Advanced long-term lead nurture system", values: [false, false, true] },
+                    { label: "CGC CRM included", values: [false, false, true] },
                     { label: "Appointment setting on your calendar", values: [false, false, true] },
                     { label: "Upgrade in 60 days — 50% off next setup fee", values: [true, true, false] },
                   ].map((row, i, arr) => (
