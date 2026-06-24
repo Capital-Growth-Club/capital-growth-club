@@ -1,134 +1,87 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import TestimonialScroll from "@/components/TestimonialScroll";
-import BookedThankYouVideo from "@/components/BookedThankYouVideo";
-import FaqVideoGrid from "@/components/FaqVideoGrid";
+import ScheduleEventFire from "@/components/ScheduleEventFire";
 
 export const metadata: Metadata = {
-  title: "You're Booked",
+  title: "You're Booked — Please Read Before Leaving",
   description:
-    "Your strategy call is locked in. Watch the videos below to get the most out of our conversation.",
+    "Your strategy call is confirmed. Please read the following before leaving this page.",
   robots: { index: false, follow: false },
 };
 
+const rules = [
+  "Check your email and text messages now and add the call to your calendar.",
+  "Be on time. No-shows and reschedules give your slot away to the next agent in line.",
+  "Be at a computer in a quiet space with a stable internet connection — not in the car, not between showings.",
+  "If you run a team, your decision-maker (team lead / broker / partner) must be on the call with you.",
+  "Come ready to talk numbers: last 12 months of sales volume, your primary market, average price point, and what you've already tried.",
+];
+
 export default function BookedAgentsPage() {
   return (
-    <main className="min-h-screen bg-brand-black relative overflow-hidden">
+    <main className="min-h-screen bg-brand-black relative overflow-hidden flex flex-col">
+      <ScheduleEventFire funnel="agents" />
       <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-gold/[0.03] rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/[0.02] rounded-full blur-[100px] pointer-events-none" />
 
-      {/* HERO */}
-      <section className="relative pt-12 pb-16 md:pt-16 md:pb-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex justify-center mb-10">
-            <Image
-              src="/logo.png"
-              alt="Capital Growth Club"
-              width={140}
-              height={48}
-              className="h-10 w-auto"
-              priority
-            />
-          </div>
+      <header className="relative pt-10 px-6">
+        <div className="flex justify-center">
+          <Image
+            src="/logo.png"
+            alt="Capital Growth Club"
+            width={140}
+            height={48}
+            className="h-10 w-auto"
+            priority
+          />
+        </div>
+      </header>
 
+      <section className="relative flex-1 flex items-center justify-center px-6 py-16">
+        <div className="max-w-2xl mx-auto w-full">
           <div className="text-center mb-10">
             <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
               Call Confirmed
             </p>
-            <h1 className="text-3xl md:text-5xl font-bold mb-5 leading-tight">
-              Your strategy call is locked in —{" "}
-              <span className="gradient-text">watch this before we talk.</span>
+            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-5">
+              Please read before leaving —{" "}
+              <span className="gradient-text">or we'll cancel your call.</span>
             </h1>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto leading-relaxed">
-              You'll get a calendar invite and a confirmation text shortly.
-              In the meantime, this short video walks you through exactly how
-              the 100 buyer leads / $3M seller-lead guarantee works so we can
-              spend our call on what matters most for your market.
+            <p className="text-white/60 text-lg leading-relaxed">
+              We only take on 5 agents per market and we reserve a real advisor
+              for every call. The expectations below aren't optional.
             </p>
           </div>
 
-          <BookedThankYouVideo />
-        </div>
-      </section>
-
-      {/* SOCIAL PROOF STATS */}
-      <section className="py-14 border-y border-white/5 bg-brand-dark/50">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="grid grid-cols-3 gap-6 md:gap-12">
-            <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold gradient-text">
-                306+
-              </p>
-              <p className="text-white/40 text-xs md:text-sm mt-2">
-                Agents &amp; Teams Served
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold gradient-text">
-                $8.4B+
-              </p>
-              <p className="text-white/40 text-xs md:text-sm mt-2">
-                Sales Volume Generated
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold gradient-text">
-                52,984+
-              </p>
-              <p className="text-white/40 text-xs md:text-sm mt-2">
-                Real Estate Leads Captured
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="py-16 md:py-20">
-        <div className="max-w-7xl mx-auto px-6 mb-10">
-          <div className="text-center max-w-3xl mx-auto">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-3">
-              From Other Top Agents
+          <div className="bg-brand-card border border-white/10 rounded-2xl p-6 md:p-8 mb-8">
+            <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-5 text-center">
+              Before The Call
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold">
-              What Agents &amp; Team Leads{" "}
-              <span className="gradient-text">Are Saying</span>
-            </h2>
-          </div>
-        </div>
-
-        <TestimonialScroll />
-      </section>
-
-      {/* FAQ EXPLAINER VIDEOS */}
-      <section className="py-16 md:py-24 bg-brand-dark/50 border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-3">
-              Watch Before The Call
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Common Questions —{" "}
-              <span className="gradient-text">Answered Before You Ask</span>
-            </h2>
-            <p className="text-white/50 text-lg">
-              The most common questions agents and team leads have before
-              working with us. Watch the ones that apply to you so we can spend
-              the call on what matters most.
-            </p>
+            <ul className="space-y-4">
+              {rules.map((rule, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <span className="shrink-0 w-7 h-7 rounded-full bg-brand-gold/15 border border-brand-gold/30 text-brand-gold text-sm font-bold flex items-center justify-center mt-0.5">
+                    {i + 1}
+                  </span>
+                  <span className="text-white/80 leading-relaxed pt-0.5">
+                    {rule}
+                  </span>
+                </li>
+              ))}
+            </ul>
           </div>
 
-          <FaqVideoGrid />
-        </div>
-      </section>
-
-      {/* FOOTER */}
-      <footer className="py-10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-white/30 text-sm">
-            &copy; 2026 Capital Growth Club. All rights reserved.
+          <p className="text-center text-white/40 text-sm leading-relaxed">
+            If anything changes, reply to your confirmation text at least 24
+            hours before the call. No-shows are not rescheduled.
           </p>
         </div>
+      </section>
+
+      <footer className="relative py-8 px-6">
+        <p className="text-center text-white/30 text-sm">
+          &copy; 2026 Capital Growth Club. All rights reserved.
+        </p>
       </footer>
     </main>
   );
