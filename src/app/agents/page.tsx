@@ -9,6 +9,7 @@ import AnimatedStat from "@/components/AnimatedStat";
 import FaqSection from "@/components/FaqSection";
 import TestimonialScroll from "@/components/TestimonialScroll";
 import HeroVideo from "@/components/HeroVideo";
+import HowItWorksTimeline from "@/components/HowItWorksTimeline";
 
 export const metadata: Metadata = {
   title: "Buyer & Seller Leads for Real Estate Teams",
@@ -139,10 +140,10 @@ export default function AgentsPage() {
 
             {/* Sub-headline */}
             <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-10 max-w-2xl">
-              We run one Meta campaign for you in your market, drop the leads
-              into your CRM, and only work with up to 5 agents per market.
-              $497/month plus ad spend. If we don&apos;t hit your 90-day
-              numbers, we waive the fee and keep going.
+              We run one Meta or Google ad campaign for you in your market,
+              drop the leads into your CRM, and only work with up to 5 agents
+              per market. $497/month plus ad spend. If we don&apos;t hit your
+              90-day numbers, we waive the fee and keep going.
             </p>
 
             {/* VSL Video */}
@@ -156,7 +157,7 @@ export default function AgentsPage() {
             {/* Trust bar */}
             <div className="flex items-center justify-center pt-8 border-t border-white/5 w-full max-w-xl">
               <div className="text-center flex-1">
-                <p className="text-white font-bold text-xl">52,984+</p>
+                <p className="text-white font-bold text-xl">33,922+</p>
                 <p className="text-white/40 text-xs mt-1">Real Estate Leads Captured</p>
               </div>
               <div className="w-px h-10 bg-white/10" />
@@ -251,7 +252,7 @@ export default function AgentsPage() {
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-14">
             <AnimatedStat value="$8.4B" suffix="+" label="In Sales Volume Generated" />
-            <AnimatedStat value="52,984" suffix="+" label="Real Estate Leads Captured" />
+            <AnimatedStat value="33,922" suffix="+" label="Real Estate Leads Captured" />
             <AnimatedStat value="63" suffix="%" label="Avg. Cost Per Lead Reduction" />
           </div>
 
@@ -456,6 +457,83 @@ export default function AgentsPage() {
 
         <TestimonialScroll testimonials={agentTestimonials} />
       </section>
+
+      {/* ════════════════ LEAD QUALITY PROOF ════════════════ */}
+      <RevealSection className="py-16 md:py-24 bg-brand-dark" id="lead-quality">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+              Lead Quality
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+              This is what a qualified lead{" "}
+              <span className="gradient-text">actually looks like.</span>
+            </h2>
+            <p className="text-white/55 text-lg leading-relaxed">
+              Real conversations pulled straight from our clients' pipelines.
+              Some are buying or selling in the next few weeks, some six months
+              out, some a year. But every one is a real person with real intent
+              &mdash; not a junk lead you waste your week chasing.
+            </p>
+          </div>
+
+          {/* Masonry grid — keeps natural aspect ratios, scales 1 → 2 → 3 cols */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+            {[
+              { src: "/lead-quality-1.png", w: 549, h: 420 },
+              { src: "/lead-quality-2.png", w: 462, h: 201 },
+              { src: "/lead-quality-3.png", w: 430, h: 208 },
+              { src: "/lead-quality-4.png", w: 433, h: 312 },
+              { src: "/lead-quality-5.png", w: 483, h: 267 },
+              { src: "/lead-quality-6.png", w: 496, h: 199 },
+              { src: "/lead-quality-7.png", w: 353, h: 258 },
+              { src: "/lead-quality-8.png", w: 507, h: 240 },
+              { src: "/lead-quality-9.png", w: 488, h: 223 },
+            ].map((img, i) => (
+              <div
+                key={img.src}
+                className="mb-5 break-inside-avoid rounded-xl overflow-hidden border border-white/10 bg-brand-black/40"
+              >
+                <Image
+                  src={img.src}
+                  alt={`Real lead conversation ${i + 1}`}
+                  width={img.w}
+                  height={img.h}
+                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
+                  loading="lazy"
+                  className="w-full h-auto block"
+                />
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center text-white/40 text-sm mt-10 max-w-2xl mx-auto">
+            Captured from active campaigns. Names, numbers, and identifying
+            details blurred for client confidentiality.
+          </p>
+        </div>
+      </RevealSection>
+
+      {/* ════════════════ HOW IT WORKS ════════════════ */}
+      <RevealSection className="py-16 md:py-24" id="how-it-works">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
+              How It Works
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
+              From your first call to live ads in{" "}
+              <span className="gradient-text">21 days or less.</span>
+            </h2>
+            <p className="text-white/55 text-lg leading-relaxed">
+              Four steps. Built around your market and goals. Optimized weekly,
+              forever.
+            </p>
+          </div>
+
+          <HowItWorksTimeline />
+        </div>
+      </RevealSection>
 
       {/* ════════════════ THE GUARANTEE ════════════════ */}
       <RevealSection className="py-16 md:py-24 bg-brand-dark" id="guarantee">

@@ -53,15 +53,11 @@ const realEstateQuestions: Question[] = [
   },
   {
     id: "sales-volume",
-    question: "What was your sales volume last year?",
-    subtitle:
-      "Previous year total for solo agents. Previous year team volume for teams or brokerages.",
-    type: "single",
-    options: [
-      "Under $25M",
-      "$25M – $100M",
-      "$100M+",
-    ],
+    question: "Enter your current/previous year sales volume",
+    type: "text",
+    numeric: true,
+    prefix: "$",
+    placeholder: "25000000",
   },
   {
     id: "market",
@@ -72,18 +68,16 @@ const realEstateQuestions: Question[] = [
   {
     id: "investment",
     question:
-      "Are you able to invest at least $1,500/month total (retainer + ad spend) for a single market?",
+      "Are you able to invest at least $1,247/month total ($497 retainer + $750 minimum ad spend) for a single market?",
     type: "single",
     options: ["Yes", "I'd need to discuss this on the call", "No"],
   },
   {
-    id: "additional-info",
-    question: "Anything else you'd like us to know? (Optional)",
-    subtitle:
-      "Tell us more about what you're struggling with or what you want to achieve — so we can be ready before the call.",
-    type: "textarea",
-    placeholder: "Optional — share as much or as little as you want...",
-    optional: true,
+    id: "lead-struggle",
+    question:
+      "Are you struggling to capture leads or convert your leads?",
+    type: "single",
+    options: ["Capturing leads", "Converting leads", "Both"],
   },
 ];
 
@@ -388,9 +382,16 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
     const isSolo = role === "Solo agent";
     const isTeam =
       role === "Team lead with 5+ agents" || role === "Boutique brokerage owner";
+    const salesVolumeNum = parseInt(
+      (salesVolume || "").replace(/\D/g, ""),
+      10
+    );
+    const validSalesVolume = Number.isFinite(salesVolumeNum);
     const disqualifiedByVolume =
-      (isSolo && salesVolume === "Under $25M") ||
-      (isTeam && (salesVolume === "Under $25M" || salesVolume === "$25M – $100M"));
+      questionSet === "real-estate" &&
+      (!validSalesVolume ||
+        (isSolo && salesVolumeNum < 25_000_000) ||
+        (isTeam && salesVolumeNum < 100_000_000));
 
     // Service-business disqualifier — under $50k/mo
     const monthlyRevenueNum = parseInt((monthlyRevenue || "").replace(/\D/g, ""), 10);
@@ -434,15 +435,17 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       landing_url: utmParams.landing_url || "",
     };
 
+    const webhookUrl =
+      questionSet === "service-business"
+        ? "https://services.leadconnectorhq.com/hooks/gg2Mgpn5GTYN7nAwd00W/webhook-trigger/0358546e-8759-4e2d-b640-31a01361f620"
+        : "https://services.leadconnectorhq.com/hooks/gg2Mgpn5GTYN7nAwd00W/webhook-trigger/wpLWR0drvTgP0GRt0D0U";
+
     try {
-      await fetch(
-        "https://services.leadconnectorhq.com/hooks/gg2Mgpn5GTYN7nAwd00W/webhook-trigger/0358546e-8759-4e2d-b640-31a01361f620",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        }
-      );
+      await fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
     } catch {
       // proceed even if webhook fails
     }
@@ -862,8 +865,14 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                     <input
                       type="text"
                       inputMode={currentQuestion.numeric ? "numeric" : undefined}
-                      pattern={currentQuestion.numeric ? "[0-9]*" : undefined}
-                      value={(currentAnswer as string) || ""}
+                      pattern={currentQuestion.numeric ? "[0-9,]*" : undefined}
+                      value={
+                        currentQuestion.numeric && currentAnswer
+                          ? Number(
+                              (currentAnswer as string).replace(/\D/g, "")
+                            ).toLocaleString("en-US")
+                          : (currentAnswer as string) || ""
+                      }
                       onChange={(e) => {
                         const v = currentQuestion.numeric
                           ? e.target.value.replace(/\D/g, "")
