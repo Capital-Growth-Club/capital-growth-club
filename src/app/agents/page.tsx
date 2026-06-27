@@ -594,10 +594,10 @@ export default function AgentsPage() {
           </div>
 
           <p className="text-center text-white/30 text-xs mt-5">
-            See{" "}
-            <a href="#" className="text-brand-gold/70 hover:text-brand-gold underline-offset-2 hover:underline transition-colors">
-              terms and conditions
-            </a>{" "}
+            See our{" "}
+            <Link href="/terms" className="text-brand-gold/70 hover:text-brand-gold underline-offset-2 hover:underline transition-colors">
+              Terms of Service
+            </Link>{" "}
             for full details.
           </p>
         </div>
