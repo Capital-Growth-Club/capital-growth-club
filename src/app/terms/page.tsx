@@ -220,6 +220,24 @@ export default function TermsPage() {
                 will not be grounds for any penalty against Capital Growth
                 Club.
               </p>
+              <p className="mb-3">
+                <strong className="text-white">
+                  Google Ads campaigns are expressly excluded from the 90-day
+                  guarantee.
+                </strong>{" "}
+                Google Ads performance is driven by real-time local search
+                volume, keyword competition, and consumer search behavior
+                within the client&apos;s market &mdash; factors that Capital
+                Growth Club does not control and cannot forecast with the
+                certainty required to underwrite a lead-volume guarantee. Lead
+                counts, cost per lead, and qualified-lead delivery under a
+                Google Ads campaign will therefore not be counted toward, or
+                measured against, any 90-day guarantee threshold, and Google
+                Ads engagements are not eligible for the &ldquo;work for
+                free&rdquo; remedy. The guarantee, where offered, applies only
+                to Meta (Facebook / Instagram) advertising campaigns as
+                specified in the Services Agreement.
+              </p>
               <p>
                 Nothing on the Site itself creates an enforceable guarantee.
                 Any rights or remedies under the guarantee arise only from a

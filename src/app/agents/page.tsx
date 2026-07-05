@@ -140,10 +140,10 @@ export default function AgentsPage() {
 
             {/* Sub-headline */}
             <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-10 max-w-2xl">
-              We run one Meta or Google ad campaign for you in your market,
-              drop the leads into your CRM, and only work with up to 5 agents
-              per market. $497/month plus ad spend. If we don&apos;t hit your
-              90-day numbers, we waive the fee and keep going.
+              We run one ad campaign for you in your market, drop the leads
+              into your CRM, and only work with up to 5 agents per market.
+              $497/month plus ad spend. If we don&apos;t hit your 90-day
+              numbers, we waive the fee and keep going.
             </p>
 
             {/* VSL Video */}
