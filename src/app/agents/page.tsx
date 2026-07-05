@@ -147,7 +147,7 @@ export default function AgentsPage() {
             </p>
 
             {/* VSL Video */}
-            <HeroVideo />
+            <HeroVideo src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a4aad5a1d6932df9b52d48f.mp4" />
 
             {/* CTA Button */}
             <SurveyButton className="btn-primary !text-lg !py-5 !px-12 mb-10">
