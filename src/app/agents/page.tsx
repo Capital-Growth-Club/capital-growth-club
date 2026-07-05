@@ -66,7 +66,7 @@ const agentFaqs = [
   },
   {
     q: "What's the difference between a Tier A and a Tier B market?",
-    a: "Tier A markets are popular travel destinations or markets with an average price point of $1M+ — places like Miami, Aspen, the Hamptons, Naples, San Diego, Park City. Tier B markets are large cities with high-volume mid-priced homes starting around $500K+ — places like Charlotte, Tampa, Nashville, Phoenix, Raleigh. We don't work in Tier C/D markets because the lead economics and ad inventory don't support our model at scale. If you're unsure where your area falls, just ask us on the strategy call — we'll tell you straight.",
+    a: "Simple formula: Tier A = high volume + high average price ($1M+), OR a major destination / lifestyle market people move to and buy in. Places like Miami, Nashville, Destin, Dallas, Aspen, the Hamptons, Naples, San Diego, Park City. Tier B = high-volume cities at mid-range average prices ($500K+) — places like West Palm Beach FL, Plano TX, Charlotte NC, Tampa, Phoenix, Raleigh. We don't work in Tier C/D markets because the lead economics and ad inventory don't support our model at scale. If you're unsure where your area falls, just ask us on the strategy call — we'll tell you straight.",
   },
   {
     q: "How is this different from Zillow, Realtor.com, or Redfin?",
@@ -621,9 +621,11 @@ export default function AgentsPage() {
               exclusive clients win — and why spots fill quickly.
             </p>
             <p className="text-white/40 text-sm">
-              Tier A = popular travel destinations or markets with avg price point $1M+.
-              Tier B = large cities with high-volume mid-priced homes at $500K+. Not sure
-              where you fall? Ask us on the call.
+              Tier A = high-volume markets that are either premium-priced ($1M+ avg)
+              or major destination / lifestyle cities. Think Miami, Nashville, Destin,
+              Dallas. Tier B = high-volume cities at mid-range prices ($500K+ avg) &mdash;
+              West Palm Beach FL, Plano TX, Charlotte NC. Not sure where you fall?
+              Ask us on the call.
             </p>
           </div>
         </div>
