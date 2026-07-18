@@ -179,33 +179,50 @@ export default function TermsPage() {
             </Sec>
 
             {/* 6 */}
-            <Sec n="6" title="The 90-Day Lead Generation Guarantee (Real Estate Agents Only)">
+            <Sec n="6" title="The 60-Day Real Estate Business In A Box Guarantee (Real Estate Agents Only)">
               <p className="mb-3">
-                Capital Growth Club&apos;s 90-day lead generation guarantee is
-                offered{" "}
+                Capital Growth Club&apos;s 60-day Real Estate Business In A Box guarantee
+                is offered{" "}
                 <strong className="text-white">
-                  only to real estate agents, teams, and brokerages
+                  only to real estate agents (solo agents and micro-teams)
                 </strong>{" "}
-                who engage Capital Growth Club for general lead generation
-                services under a separately signed Services Agreement. We do
-                not offer any guarantees to clients in any other niche or
-                industry.
+                who engage Capital Growth Club for the &ldquo;Brokerage In A
+                Box&rdquo; product under a separately signed Services
+                Agreement. We
+                do not offer any guarantees to clients in any other niche or
+                industry, or to clients on other product configurations.
               </p>
               <p className="mb-3">
-                The specific terms, qualifying conditions, lead volume targets,
-                budget minimums, and any goal-alignment requirements of the
-                guarantee will be reviewed and agreed to in writing during the
-                pre-engagement strategy call and in the Services Agreement. If,
-                during that pre-engagement review, we and the prospective
-                client determine that the client&apos;s stated goals or
-                circumstances are not aligned with the 90-day objective, the
-                guarantee will not apply to that engagement.
+                <strong className="text-white">The guarantee.</strong> If
+                during the first sixty (60) calendar days from the day
+                advertising goes live in the client&apos;s market, Capital
+                Growth Club does not deliver at least thirty (30) qualified
+                leads as defined in the Services Agreement, Capital Growth
+                Club will continue managing the client&apos;s system at no
+                additional monthly management fee until thirty (30) qualified
+                leads have been delivered. The client remains responsible for
+                ongoing ad spend paid directly to the advertising platform
+                throughout that period. &ldquo;Qualified leads&rdquo; means
+                real, non-duplicate leads who have submitted their information
+                through a Capital Growth Club lead generation campaign and
+                provided a real, verified phone number.
               </p>
               <p className="mb-3">
-                The guarantee applies only to the delivery of qualified leads
-                as defined in the Services Agreement. It does{" "}
+                The specific terms, minimum ad-spend commitment, market
+                qualification, goal-alignment requirements, and any other
+                conditions of the guarantee will be reviewed and agreed to in
+                writing during the pre-engagement strategy call and in the
+                Services Agreement. If, during that pre-engagement review, we
+                and the prospective client determine that the client&apos;s
+                stated goals, market, or circumstances are not aligned with the
+                60-day objective, the guarantee will not apply to that
+                engagement.
+              </p>
+              <p className="mb-3">
+                The guarantee applies only to the delivery of qualified
+                inquiries as defined above. It does{" "}
                 <strong className="text-white">
-                  not extend to whether those leads ultimately close, sign,
+                  not extend to whether those inquiries ultimately close, sign,
                   contract, or transact with the client.
                 </strong>{" "}
                 Capital Growth Club is not a party to any transaction between
@@ -213,16 +230,17 @@ export default function TermsPage() {
                 interacts with, qualifies, follows up with, or closes a lead,
                 and assumes no responsibility for the conduct or decisions of
                 either party. The final decision to engage, transact, or close
-                rests solely with the lead and the client. Failure of leads to
-                close, sign, or convert into clients, transactions, or revenue
-                will not constitute a breach of the guarantee, will not entitle
-                the client to a refund, credit, or extended free service, and
-                will not be grounds for any penalty against Capital Growth
-                Club.
+                rests solely with the lead and the client. Failure of
+                leads to close, sign, or convert into clients, transactions,
+                or revenue will not constitute a breach of the guarantee, will
+                not entitle the client to any additional refund, credit, or
+                extended free service beyond the continued-at-no-fee remedy
+                described above, and will not be grounds for any penalty
+                against Capital Growth Club.
               </p>
               <p className="mb-3">
                 <strong className="text-white">
-                  Google Ads campaigns are expressly excluded from the 90-day
+                  Google Ads campaigns are expressly excluded from the 60-day
                   guarantee.
                 </strong>{" "}
                 Google Ads performance is driven by real-time local search
@@ -232,11 +250,11 @@ export default function TermsPage() {
                 certainty required to underwrite a lead-volume guarantee. Lead
                 counts, cost per lead, and qualified-lead delivery under a
                 Google Ads campaign will therefore not be counted toward, or
-                measured against, any 90-day guarantee threshold, and Google
-                Ads engagements are not eligible for the &ldquo;work for
-                free&rdquo; remedy. The guarantee, where offered, applies only
-                to Meta (Facebook / Instagram) advertising campaigns as
-                specified in the Services Agreement.
+                measured against, the 60-day guarantee threshold, and Google
+                Ads engagements are not eligible for the continued-at-no-fee
+                remedy.
+                The guarantee applies only to Meta (Facebook / Instagram)
+                advertising campaigns as specified in the Services Agreement.
               </p>
               <p>
                 Nothing on the Site itself creates an enforceable guarantee.

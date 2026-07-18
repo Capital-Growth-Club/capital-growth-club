@@ -4,6 +4,7 @@ import Script from "next/script";
 import "./globals.css";
 
 const META_PIXEL_ID = "888354366497921";
+const GA4_ID = "G-EVRTM2BRH7";
 
 const roboto = Roboto({
   variable: "--font-roboto",
@@ -69,6 +70,16 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '${META_PIXEL_ID}');
 fbq('track', 'PageView');`}
+        </Script>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA4_ID}');`}
         </Script>
       </head>
       <body className={`${roboto.variable} antialiased`}>

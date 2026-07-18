@@ -36,48 +36,29 @@ type Question = {
 
 const realEstateQuestions: Question[] = [
   {
-    id: "running-ads",
-    question: "Are you currently running paid ads?",
-    type: "single",
-    options: ["Yes", "No"],
-  },
-  {
     id: "role",
-    question: "Which best describes you?",
+    question: "Pick what describes you best.",
     type: "single",
-    options: [
-      "Solo agent",
-      "Team lead with 5+ agents",
-      "Boutique brokerage owner",
-    ],
-  },
-  {
-    id: "sales-volume",
-    question: "Enter your current/previous year sales volume",
-    type: "text",
-    numeric: true,
-    prefix: "$",
-    placeholder: "25000000",
+    options: ["Solo agent", "Broker", "Team lead"],
   },
   {
     id: "market",
-    question: "What market are you primarily in?",
+    question: "What market are you in?",
+    subtitle: "City / County",
     type: "text",
     placeholder: "e.g. Charleston, SC",
   },
   {
-    id: "investment",
-    question:
-      "Are you able to invest at least $1,247/month total ($497 retainer + $750 minimum ad spend) for a single market?",
+    id: "annual-deals",
+    question: "How many deals do you close a year?",
     type: "single",
-    options: ["Yes", "I'd need to discuss this on the call", "No"],
+    options: ["0–10", "11–25", "26+"],
   },
   {
-    id: "lead-struggle",
-    question:
-      "Are you struggling to capture leads or convert your leads?",
-    type: "single",
-    options: ["Capturing leads", "Converting leads", "Both"],
+    id: "lead-frustration",
+    question: "What's your biggest frustration with your business right now?",
+    type: "textarea",
+    placeholder: "Tell us what's not working...",
   },
 ];
 
@@ -369,38 +350,26 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       return;
     }
 
-    const investment = answers["investment"] as string | undefined;
     const role = answers["role"] as string | undefined;
-    const salesVolume = answers["sales-volume"] as string | undefined;
+    const annualDeals = answers["annual-deals"] as string | undefined;
+    const leadFrustration = answers["lead-frustration"] as string | undefined;
     const businessType = answers["business-type"] as string | undefined;
     const monthlyRevenue = answers["monthly-revenue"] as string | undefined;
     const topLeadSource = answers["top-lead-source"] as string | undefined;
-    const leadStruggle = answers["lead-struggle"] as string | undefined;
 
-    // Real-estate disqualifier
-    const disqualifiedByInvestment = investment === "No";
-    const isSolo = role === "Solo agent";
-    const isTeam =
-      role === "Team lead with 5+ agents" || role === "Boutique brokerage owner";
-    const salesVolumeNum = parseInt(
-      (salesVolume || "").replace(/\D/g, ""),
-      10
-    );
-    const validSalesVolume = Number.isFinite(salesVolumeNum);
-    const disqualifiedByVolume =
-      questionSet === "real-estate" &&
-      (!validSalesVolume ||
-        (isSolo && salesVolumeNum < 25_000_000) ||
-        (isTeam && salesVolumeNum < 100_000_000));
+    // Real-estate flow: no auto-disqualifiers — every submission qualifies
+    // for a call. Filtering happens on the call.
 
     // Service-business disqualifier — under $50k/mo
-    const monthlyRevenueNum = parseInt((monthlyRevenue || "").replace(/\D/g, ""), 10);
+    const monthlyRevenueNum = parseInt(
+      (monthlyRevenue || "").replace(/\D/g, ""),
+      10
+    );
     const disqualifiedByRevenue =
       questionSet === "service-business" &&
       (!Number.isFinite(monthlyRevenueNum) || monthlyRevenueNum < 50000);
 
-    const qualified =
-      !disqualifiedByInvestment && !disqualifiedByVolume && !disqualifiedByRevenue;
+    const qualified = !disqualifiedByRevenue;
 
     const payload = {
       first_name: contactInfo.firstName,
@@ -409,16 +378,13 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       email: contactInfo.email,
       phone: contactInfo.phone,
       question_set: questionSet,
-      running_ads: (answers["running-ads"] as string) || "",
       role: role || "",
-      sales_volume: salesVolume || "",
+      annual_deals: annualDeals || "",
+      lead_frustration: leadFrustration || "",
+      market: (answers["market"] as string) || "",
       business_type: businessType || "",
       monthly_revenue: monthlyRevenue || "",
       top_lead_source: topLeadSource || "",
-      lead_struggle: leadStruggle || "",
-      market: (answers["market"] as string) || "",
-      investment: investment || "",
-      additional_info: (answers["additional-info"] as string) || "",
       qualified: qualified ? "yes" : "no",
       utm_source: utmParams.utm_source || "",
       utm_medium: utmParams.utm_medium || "",
@@ -512,14 +478,14 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       onClick={handleClose}
     >
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-neutral-900/60 backdrop-blur-sm" />
 
       <div
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-brand-dark border border-white/10 rounded-2xl"
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white border border-neutral-200 rounded-2xl shadow-2xl text-neutral-900"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 z-10 bg-brand-dark">
-          <div className="h-1 bg-white/5">
+        <div className="sticky top-0 z-10 bg-white">
+          <div className="h-1 bg-neutral-100">
             <div
               className="h-full gradient-bg transition-all duration-500 ease-out"
               style={{ width: `${progress}%` }}
@@ -529,7 +495,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
 
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center text-white/40 hover:text-white transition-colors rounded-full hover:bg-white/5"
+          className="absolute top-4 right-4 z-20 w-10 h-10 flex items-center justify-center text-neutral-500 hover:text-neutral-900 transition-colors rounded-full hover:bg-neutral-100"
           aria-label="Close"
         >
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -552,14 +518,14 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                 <h3 className="text-2xl md:text-3xl font-bold mb-2">
                   Where should we reach you?
                 </h3>
-                <p className="text-white/50 mb-8">
+                <p className="text-neutral-600 mb-8">
                   We'll text a 6-digit code to verify your phone after you continue.
                 </p>
 
                 <form onSubmit={handleSendOtp} className="space-y-5">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">
+                      <label className="block text-sm text-neutral-600 mb-2 font-medium">
                         First name <span className="text-brand-gold">*</span>
                       </label>
                       <input
@@ -573,12 +539,12 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                             firstName: e.target.value,
                           }))
                         }
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/50 transition-colors"
+                        className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-3.5 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-brand-gold focus:bg-white transition-colors"
                         placeholder="John"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm text-white/60 mb-2">
+                      <label className="block text-sm text-neutral-600 mb-2 font-medium">
                         Last name <span className="text-brand-gold">*</span>
                       </label>
                       <input
@@ -592,13 +558,13 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                             lastName: e.target.value,
                           }))
                         }
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/50 transition-colors"
+                        className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-3.5 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-brand-gold focus:bg-white transition-colors"
                         placeholder="Smith"
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm text-white/60 mb-2">
+                    <label className="block text-sm text-neutral-600 mb-2 font-medium">
                       Email address <span className="text-brand-gold">*</span>
                     </label>
                     <input
@@ -611,12 +577,12 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                           email: e.target.value,
                         }))
                       }
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/50 transition-colors"
+                      className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-3.5 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-brand-gold focus:bg-white transition-colors"
                       placeholder="john@company.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm text-white/60 mb-2">
+                    <label className="block text-sm text-neutral-600 mb-2 font-medium">
                       Mobile phone <span className="text-brand-gold">*</span>
                     </label>
                     <input
@@ -630,7 +596,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                           phone: e.target.value,
                         }))
                       }
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/50 transition-colors"
+                      className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-3.5 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-brand-gold focus:bg-white transition-colors"
                       placeholder="(555) 123-4567"
                     />
                   </div>
@@ -643,7 +609,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                     <button
                       type="button"
                       onClick={goBack}
-                      className="text-white/40 hover:text-white transition-colors text-sm flex items-center gap-2"
+                      className="text-neutral-500 hover:text-neutral-900 transition-colors text-sm flex items-center gap-2"
                     >
                       <svg
                         width="16"
@@ -679,7 +645,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                 <h3 className="text-2xl md:text-3xl font-bold mb-2">
                   Enter the code we sent to {maskedPhone()}
                 </h3>
-                <p className="text-white/50 mb-8">
+                <p className="text-neutral-600 mb-8">
                   We sent a 6-digit verification code via SMS. Enter it below to
                   submit your application.
                 </p>
@@ -702,7 +668,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                         setOtpCode(val);
                         setOtpError("");
                       }}
-                      className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-white text-center text-2xl tracking-[0.5em] font-mono placeholder-white/20 focus:outline-none focus:border-brand-gold/50 transition-colors"
+                      className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-4 text-neutral-900 text-center text-2xl tracking-[0.5em] font-mono placeholder-neutral-300 focus:outline-none focus:border-brand-gold focus:bg-white transition-colors"
                       placeholder="000000"
                     />
                   </div>
@@ -727,7 +693,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                         setOtpCode("");
                         setOtpError("");
                       }}
-                      className="text-white/40 hover:text-white transition-colors text-sm flex items-center gap-2"
+                      className="text-neutral-500 hover:text-neutral-900 transition-colors text-sm flex items-center gap-2"
                     >
                       <svg
                         width="16"
@@ -766,12 +732,12 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                 {currentQuestion.question}
               </h3>
               {currentQuestion.subtitle && (
-                <p className="text-white/40 text-sm mb-6">
+                <p className="text-neutral-500 text-sm mb-6">
                   {currentQuestion.subtitle}
                 </p>
               )}
               {!currentQuestion.subtitle && (
-                <p className="text-white/30 text-sm mb-6">
+                <p className="text-neutral-400 text-sm mb-6">
                   {currentQuestion.type === "single"
                     ? "Select one to continue"
                     : currentQuestion.type === "multi"
@@ -788,8 +754,8 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                       onClick={() => selectSingle(option)}
                       className={`w-full text-left px-5 py-4 rounded-xl border transition-all duration-200 ${
                         currentAnswer === option
-                          ? "bg-brand-gold/10 border-brand-gold/40 text-white"
-                          : "bg-white/[0.03] border-white/10 text-white/80 hover:bg-white/[0.06] hover:border-white/20"
+                          ? "bg-brand-gold/10 border-brand-gold/60 text-neutral-900 shadow-sm shadow-brand-gold/20"
+                          : "bg-white border-neutral-200 text-neutral-800 hover:bg-neutral-50 hover:border-brand-gold/40"
                       }`}
                     >
                       {option}
@@ -811,15 +777,15 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                           onClick={() => toggleMulti(option)}
                           className={`w-full text-left px-5 py-4 rounded-xl border transition-all duration-200 flex items-center gap-3 ${
                             selected
-                              ? "bg-brand-gold/10 border-brand-gold/40 text-white"
-                              : "bg-white/[0.03] border-white/10 text-white/80 hover:bg-white/[0.06] hover:border-white/20"
+                              ? "bg-brand-gold/10 border-brand-gold/60 text-neutral-900 shadow-sm shadow-brand-gold/20"
+                              : "bg-white border-neutral-200 text-neutral-800 hover:bg-neutral-50 hover:border-brand-gold/40"
                           }`}
                         >
                           <span
                             className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-colors ${
                               selected
                                 ? "bg-brand-gold border-brand-gold"
-                                : "border-white/30"
+                                : "border-neutral-300"
                             }`}
                           >
                             {selected && (
@@ -858,7 +824,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                 <>
                   <div className="relative">
                     {currentQuestion.prefix && (
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-white/50 pointer-events-none">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-500 pointer-events-none">
                         {currentQuestion.prefix}
                       </span>
                     )}
@@ -888,13 +854,13 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                       autoFocus
                       maxLength={currentQuestion.maxLength}
                       placeholder={currentQuestion.placeholder}
-                      className={`w-full bg-white/5 border border-white/10 rounded-lg py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/50 transition-colors ${
+                      className={`w-full bg-neutral-50 border border-neutral-200 rounded-lg py-3.5 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-brand-gold focus:bg-white transition-colors ${
                         currentQuestion.prefix ? "pl-8 pr-4" : "px-4"
                       }`}
                     />
                   </div>
                   {currentQuestion.maxLength && (
-                    <div className="mt-2 text-xs text-white/40 text-right">
+                    <div className="mt-2 text-xs text-neutral-500 text-right">
                       {((currentAnswer as string) || "").length}/
                       {currentQuestion.maxLength}
                     </div>
@@ -919,7 +885,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                     autoFocus
                     rows={5}
                     placeholder={currentQuestion.placeholder}
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3.5 text-white placeholder-white/30 focus:outline-none focus:border-brand-gold/50 transition-colors resize-none"
+                    className="w-full bg-neutral-50 border border-neutral-200 rounded-lg px-4 py-3.5 text-neutral-900 placeholder-neutral-400 focus:outline-none focus:border-brand-gold focus:bg-white transition-colors resize-none"
                   />
                   <button
                     onClick={advance}
@@ -934,7 +900,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
               {step > 0 && (
                 <button
                   onClick={goBack}
-                  className="mt-6 text-white/40 hover:text-white transition-colors text-sm flex items-center gap-2"
+                  className="mt-6 text-neutral-500 hover:text-neutral-900 transition-colors text-sm flex items-center gap-2"
                 >
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                     <path

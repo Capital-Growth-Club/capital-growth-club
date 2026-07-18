@@ -102,6 +102,47 @@ body {
   50% { box-shadow: 0 0 40px rgba(187, 154, 101, 0.4); }
 }
 
+/* Subtle wiggle for CTA buttons — fires every 8s */
+@keyframes cta-wiggle {
+  0%, 92%, 100% { transform: translateY(0) rotate(0deg); }
+  93% { transform: translateY(-1px) rotate(-1.2deg); }
+  95% { transform: translateY(-1px) rotate(1.2deg); }
+  97% { transform: translateY(-1px) rotate(-0.6deg); }
+  99% { transform: translateY(0) rotate(0.3deg); }
+}
+
+/* Soft continuous gold glow behind CTA buttons */
+@keyframes cta-glow {
+  0%, 100% { opacity: 0.45; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 0.75; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+.cta-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.cta-wrap::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 130%;
+  height: 180%;
+  background: radial-gradient(closest-side, rgba(187, 154, 101, 0.35), rgba(187, 154, 101, 0));
+  transform: translate(-50%, -50%);
+  filter: blur(16px);
+  opacity: 0.5;
+  z-index: -1;
+  pointer-events: none;
+  animation: cta-glow 4.5s ease-in-out infinite;
+}
+
+.cta-wrap > * {
+  animation: cta-wiggle 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }

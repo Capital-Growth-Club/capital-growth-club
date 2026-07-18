@@ -3,1023 +3,1046 @@ import Image from "next/image";
 import Link from "next/link";
 import SurveyProvider from "@/components/SurveyProvider";
 import SurveyButton from "@/components/SurveyButton";
-import NavBar from "@/components/NavBar";
-import RevealSection from "@/components/RevealSection";
-import AnimatedStat from "@/components/AnimatedStat";
-import FaqSection from "@/components/FaqSection";
-import TestimonialScroll from "@/components/TestimonialScroll";
 import HeroVideo from "@/components/HeroVideo";
-import HowItWorksTimeline from "@/components/HowItWorksTimeline";
 
 export const metadata: Metadata = {
-  title: "Buyer & Seller Leads for Real Estate Teams",
+  title: "Real Estate Business In A Box — Turn Facebook Into A Personal Lead Machine",
   description:
-    "100 buyer leads or $3M in seller leads in 90 days. Or we work for free until we do. Built for established real estate teams in Tier A or Tier B markets.",
+    "Done-for-you Facebook ads, CRM, and IDX website that bring buyers and sellers directly to you. $500 setup, $497/mo, cancel anytime. Built for solo agents and micro-teams.",
   openGraph: {
-    title: "Buyer & Seller Leads for Real Estate Teams | Capital Growth Club",
+    title: "Real Estate Business In A Box — Capital Growth Club",
     description:
-      "100 buyer leads or $3M in seller leads in 90 days. Or we work for free until we do.",
+      "Turn Facebook into a personal lead machine without giving your broker 30-50% of every check. Done-for-you ads + CRM + IDX for solo agents and micro-teams.",
     url: "https://capitalgrowthclub.com/agents",
-  },
-  twitter: {
-    title: "Buyer & Seller Leads for Real Estate Teams | Capital Growth Club",
-    description:
-      "100 buyer leads or $3M in seller leads in 90 days. Or we work for free until we do.",
-  },
-  alternates: {
-    canonical: "https://capitalgrowthclub.com/agents",
   },
 };
 
-const agentFaqs = [
+const isThisYou = [
+  "You're at a brokerage or team that hands you leads and systems — but nothing you actually own, control, or can scale yourself.",
+  "Every deal you close — whether it came from a referral you dug up yourself or a lead your team handed you — 30–50% of the check still walks. Because the brand on the sign isn't yours.",
+  "You know you're capable of running your own book of business. The struggle was never ability — it's always been “how do I generate sales volume like these bigger brokerages and teams do — but for myself?”",
+  "You'd rather run a proof of concept — build your own real estate business alongside your current setup and watch it produce — before jumping all in and hoping for the best.",
+];
+
+const deliverables = [
   {
-    q: "What does the lead guarantee actually mean?",
-    a: "We guarantee to generate either 100 buyer leads or at least $3 million in seller leads within the first 90 days of ads running. If we don't hit that threshold, we keep running your campaigns for free — no additional retainer — until we do. The guarantee only applies when the client meets our qualifying requirements at signing: previous year sales volume of $25M+ for solo agents or $100M+ for teams, a Tier A or B market, and a minimum of $1,000/month in ad spend kept live for the full 90 days with no pausing and no campaign changes. The 90 days starts the day your ads go live. See terms and conditions for full details. We turn away more agents than we take precisely because the guarantee is real.",
+    title: "A Full Specialist Team — Not Just Software",
+    body: "Every Real Estate Business In A Box includes a dedicated lead generation marketing team, a lead nurture specialist, and an advanced automations specialist working behind the scenes on your business. You don't hire them. You don't manage them. They build, tune, and improve your system every month while you focus on your calls and closings.",
+    image: "/deliverable-1.png",
+    imageW: 1536,
+    imageH: 1024,
+    framed: true,
+    imageNote:
+      "Image for representation — our entire team is fully remote.",
   },
   {
-    q: "What counts as a qualified lead?",
-    a: "A qualified lead is someone who (1) submitted their information through one of our lead generation campaigns, (2) provided a real, verified phone number, and (3) acknowledged interest in buying or selling a property within the next 6–24 months. That's the only kind of lead that counts toward our 90-day guarantee — bots, fake numbers, duplicates, and prospects outside that intent window don't count.",
+    title: "Proven Lead Generation Campaigns",
+    body: "We install the same proven lead-gen campaigns top brokerages use to keep their agents' pipelines full — except now every lead comes and goes through you first.",
+    note: "Includes our verified lead guarantee — every lead has a real, valid phone number before it hits your CRM.",
+    stackedImages: [
+      // Back layer — newest two, huge, overflowing edges
+      {
+        src: "/sms-6.png",
+        w: 896,
+        h: 594,
+        cls: "w-[110%] -translate-x-[22%] -translate-y-[16%] z-0 shadow-lg",
+      },
+      {
+        src: "/sms-7.jpg",
+        w: 1284,
+        h: 731,
+        cls: "w-[110%] translate-x-[24%] translate-y-[20%] z-0 shadow-lg",
+      },
+      // Middle layer — older SMS proofs at corners, larger
+      {
+        src: "/sms-1.png",
+        w: 283,
+        h: 172,
+        cls: "w-[70%] -translate-x-[38%] -translate-y-[36%] z-10 shadow-xl",
+      },
+      {
+        src: "/sms-2.png",
+        w: 282,
+        h: 162,
+        cls: "w-[72%] translate-x-[38%] -translate-y-[38%] z-10 shadow-xl",
+      },
+      {
+        src: "/sms-3.png",
+        w: 272,
+        h: 195,
+        cls: "w-[70%] -translate-x-[38%] translate-y-[38%] z-10 shadow-xl",
+      },
+      {
+        src: "/sms-4.png",
+        w: 288,
+        h: 177,
+        cls: "w-[72%] translate-x-[38%] translate-y-[40%] z-10 shadow-xl",
+      },
+      // Front layer — hero center card, shifted up-left
+      {
+        src: "/sms-5.png",
+        w: 443,
+        h: 240,
+        cls: "w-[72%] -translate-x-[8%] -translate-y-[18%] z-20 shadow-2xl",
+      },
+    ],
   },
   {
-    q: "What are the three packages and how do I pick one?",
-    a: "Every package is priced around one lead gen campaign. Starter ($497/month) is just the campaign — we run it and deliver leads straight to your CRM, your team takes it from there. Premium ($2,497/month) adds our email and SMS nurture service for $2,000/month on top of the campaign, so leads who aren't ready today stay warm until they're ready to transact. Platinum ($6,497/month) adds our full acquisition team and system for $6,000/month on top of the campaign — trained ISAs qualifying every lead, advanced long-term nurture, and our CRM. Want more than one campaign? They're $497/month each on top of any package, or check our /more page for bundled scale-up packages.",
+    title: "CRM + IDX Website — Fully Set Up",
+    body: "Captures every lead, tags them by interest, and auto-nurtures them for life. You get a real, proven, high-converting website with live MLS listings — not a static landing page.",
+    image: "/deliverable-3.png",
+    imageW: 1920,
+    imageH: 1080,
   },
   {
-    q: "What's the minimum total I need to commit?",
-    a: "Minimum total monthly spend to enter is $1,247 — Starter retainer ($497) plus $750/month in ad spend. To unlock our 90-day guarantee, ad spend bumps to $1,000/month (so $1,497/month total). Larger packages and additional campaigns scale the total from there. None of the retainers include ad spend — that's paid directly to the ad platforms.",
+    title: "Automated Text + Email Follow-Up",
+    body: "Speed-to-lead SMS the second they opt in. Long-term nurture emails that keep every lead warm until they're ready. No one falls through the cracks.",
+    image: "/deliverable-4.png",
+    imageW: 1920,
+    imageH: 1080,
   },
   {
-    q: "Is there a setup fee?",
-    a: "Yes. There's a one-time setup fee that covers funnel buildout, ad account configuration, automation install, attribution tracking, and onboarding. We share the specific number on the strategy call once we understand your situation and which package fits.",
+    title: "Lead Behavior Tracking & Alerts",
+    body: "The system watches what every lead does on your site — which listings they view, how often, when they come back — and tells you exactly who to prioritize calling next based on their behavior.",
+    image: "/deliverable-5.png",
+    imageW: 1138,
+    imageH: 986,
+    imageClass: "w-2/3 h-auto mx-auto drop-shadow-lg",
   },
   {
-    q: "Do you work with my competitors in the same area?",
-    a: "On our Premium and Platinum packages, no — those come with locked market exclusivity in your city or designated service area, so no other CGC client competes with you for the same audiences. The only exception is when Starter clients were already signed up in your city before you came in — those existing clients stay. But the moment you sign for Premium or Platinum, we stop accepting any new applicants in your area. On Starter, we never work with more than one team per zip code — but we may work with other agents in your city if they're in a different zip and also on Starter. If protecting your full area matters to you, Premium or Platinum is the right choice.",
+    title: "Sales & Marketing Dashboards",
+    body: "See how your business is running at a glance. From sales performance across your whole team to which marketing efforts are driving the highest ROI — every number that matters, in one view.",
+    image: "/deliverable-6.png",
+    imageW: 1920,
+    imageH: 1080,
+    imageClass: "w-full h-auto scale-110 origin-center drop-shadow-xl",
   },
   {
-    q: "How many Starter clients can there be in one city?",
-    a: "Even on Starter, we cap each city at 5 clients total — and we never take more than one team per zip code. It's not an unlimited tier. This keeps audience overlap manageable, protects creative performance for everyone running in that city, and keeps us honest about how much volume we can actually deliver. Once a city hits the 5-client cap on Starter, we close applications for that area unless someone ends their engagement. If you want to lock down all or the remaining open slots in a city for yourself, you can also buy them out and run as the only team in the area — just ask about it on the call.",
-  },
-  {
-    q: "What if I want to target multiple cities or markets?",
-    a: "Pricing scales with the number of markets and campaigns you want to run. The first market starts at the package base rate; each additional market adds incremental retainer and ad spend depending on size and competitiveness. Most teams start with one area, prove the model, then expand into adjacent zips or cities.",
-  },
-  {
-    q: "What's the difference between a Tier A and a Tier B market?",
-    a: "Simple formula: Tier A = high volume + high average price ($1M+), OR a major destination / lifestyle market people move to and buy in. Places like Miami, Nashville, Destin, Dallas, Aspen, the Hamptons, Naples, San Diego, Park City. Tier B = high-volume cities at mid-range average prices ($500K+) — places like West Palm Beach FL, Plano TX, Charlotte NC, Tampa, Phoenix, Raleigh. We don't work in Tier C/D markets because the lead economics and ad inventory don't support our model at scale. If you're unsure where your area falls, just ask us on the strategy call — we'll tell you straight.",
-  },
-  {
-    q: "How is this different from Zillow, Realtor.com, or Redfin?",
-    a: "Three differences. First — you own every lead. No 30–40% referral cut on closings. Second — the leads come from your market only, on creative and targeting we build for you specifically, not a national pool of buyers shopping three other agents. Third — we run the entire lead engine: ads, funnel, CRM routing, and initial handoff. The platforms sell you the lead and walk away. We give you a lead source you actually own and control.",
-  },
-  {
-    q: "How long until we see results?",
-    a: "Most teams see their campaign live within 14–21 days of onboarding. First leads typically come within the first week of ads running. The 100-buyer-lead or $3M-seller-lead milestone is what we measure at 90 days. But real estate is a 6–24 month sales cycle on most leads — so closings ramp up from that window. The teams that win at this are the ones who treat it as a 6–12 month build, not a 30-day vending machine.",
-  },
-  {
-    q: "Do I need to make the ad creative myself?",
-    a: "No. Our team handles all of the creative — scripting hooks, sourcing footage, editing, ad copy, and ongoing rotation. You may be asked to film selfie-style segments occasionally for higher-converting creative, but we coach you through it. The minimum is your branding and access to a few of your listings or sold properties for social proof.",
-  },
-  {
-    q: "What if I already have a CRM?",
-    a: "We work with whatever CRM you have. Most of our clients run GoHighLevel because it makes everything easier on our side, but we plug into Follow Up Boss, Sierra, KW Command, Brivity, or whatever you're using. If your CRM is genuinely holding the business back, we'll tell you and recommend a migration — but we'll never force one.",
-  },
-  {
-    q: "What kind of agents do you work with?",
-    a: "Established solo agents with $25M+ in previous year sales volume, and team leads or boutique brokerage owners with $100M+ in previous year team sales volume. Tier A and Tier B markets only. We don't work with brand-new agents, low-volume operators, or Tier C/D markets where the unit economics don't support our model.",
-  },
-  {
-    q: "Do all your client campaigns look the same?",
-    a: "Not likely. Every agent serves a different kind of client — some only want investor leads, others want $1M+ buyers or sellers exclusively, others are focused on first-time homebuyers, relocations, downsizers, luxury second homes, etc. On the Strategy Call before you ever become a client, we dig into your goals and the exact type of buyer or seller you want to attract — and we build your campaign specifically around that. Two agents in similar markets but targeting different client types will have completely different campaigns.",
-  },
-  {
-    q: "What does the application process look like?",
-    a: "The application takes about 30 seconds. Our system automatically reviews your answers and decides if you meet our qualifying criteria. If you do, you're redirected to a page where you can book your Strategy Call with one of our Cold Acquisition Advisors. On that call, we map out your local market, target client, funnel approach, and ad strategy — and figure out which package fits. If we're a match, we talk about onboarding. If not, you walk away with a real plan you can take to anyone.",
+    title: "Full Team Scaling System",
+    body: "When you're ready, plug in new agents or ISAs at any time. Full training and support team included so you scale quickly instead of getting stuck training people yourself.",
+    image: "/deliverable-7.png",
+    imageW: 1254,
+    imageH: 1254,
+    imageClass: "w-2/3 h-auto mx-auto rounded-full drop-shadow-lg",
   },
 ];
 
-const agentTestimonials = [
-  { quote: "I was burning cash on Zillow and Realtor.com leads that were already shopping three other agents. CGC ran the ads, the cost per buyer lead came in under $10, and I closed my first deal off the new leads in under 60 days.", author: "Marcus B.", role: "Solo Agent — Tier A Market" },
-  { quote: "Our team was stagnant. Same production three years in a row. After 90 days with CGC running our ads, we hit the doubled lead flow they guaranteed and brought in $31K in commissions from those leads.", author: "Diane W.", role: "Team Lead — 5+ Agents" },
-  { quote: "I didn't want to drop $5K/month to break into luxury buyers. CGC ran a focused campaign on $750/month and we pulled in 142 qualified luxury buyer leads in 6 months. Two of them turned into closings.", author: "Trent K.", role: "Luxury Team — Buyer Focus" },
-  { quote: "We wanted luxury seller leads inside one specific zip code. CGC ran the ads targeting that exact area and in 3 months we had 50 qualified seller leads — including one that turned into a $4M listing appointment.", author: "Riley & Hannah G.", role: "Boutique Brokerage — Luxury Sellers" },
-  { quote: "I was skeptical about adding another lead source on top of what we already had. CGC kept their promise — leads started coming in week 2, and we closed 3 listings that quarter from their campaigns.", author: "Annette P.", role: "Team Lead — 7 Agents" },
-  { quote: "Our ISA used to get lead notifications 30+ minutes after the opt-in. CGC's setup gets every new lead in front of our ISA instantly. Same effort, way more appointments.", author: "Carlos R.", role: "Brokerage Owner — Tier B Market" },
-  { quote: "I had two agents threatening to leave because the pipeline was thin. Once CGC's campaigns kicked in, every agent had leads to work and the recruiting conversations stopped.", author: "Vince M.", role: "Team Lead — 4 Agents" },
-  { quote: "Tried running my own Google ads for a year and burned through $3K/month with nothing to show for it. CGC took over and within 60 days I had a real cost-per-lead I could trust and appointments showing up on my calendar.", author: "Whitney L.", role: "Solo Agent — Coastal Market" },
-  { quote: "Worked with two other 'real estate marketing agencies' before CGC. Both took the money and disappeared. CGC actually delivered — we hit their 90-day guarantee with two weeks to spare.", author: "Brandon T.", role: "Team Lead — Suburban" },
-  { quote: "I wanted to add a reliable lead source without taking another 30% referral cut on every closing. CGC ran the ads and our cost per buyer lead came in under $20. We close them ourselves and keep the full commission.", author: "Renata S.", role: "Brokerage Owner — Tier A" },
-  { quote: "We needed first-time buyer leads at volume. CGC ran the ads and now we're getting 80+ qualified leads a month. Our agents stay busy and I never have to touch the marketing.", author: "Olivia D.", role: "Team Lead — Urban Market" },
-  { quote: "I avoided paid ads for years because nothing ever felt trustworthy. CGC was the first agency that actually explained what they'd do, executed on it, and made it work. Six months in, it's one of my most reliable lead sources.", author: "Logan H.", role: "Solo Agent — Mountain Market" },
+const steps = [
+  {
+    label: "Step 1",
+    title: "Strategy Call",
+    duration: "Day 0",
+    body: "We map your market, price points, target buyers, and goals. If we're not a fit, we tell you on the call.",
+  },
+  {
+    label: "Step 2",
+    title: "Build & Launch",
+    duration: "Under 10 days",
+    body: "We build your Real Estate Business In A Box end-to-end — ads, funnel, CRM, IDX site, nurture sequences — and go live in under 10 days.",
+  },
+  {
+    label: "Step 3",
+    title: "Optimize & Scale",
+    duration: "Ongoing",
+    body: "We tune the ads and nurture based on real conversations and real closings. You stay in your zone of genius. We stay in ours.",
+  },
+];
+
+const faqs = [
+  {
+    q: "Do I need to leave my brokerage to work with you?",
+    a: "No. Most of our clients start this while they're still active at their current team or brokerage. Same phone, same closings, same paychecks. The machine runs in parallel — building your own pipeline in your own name. Once you see the results, you decide if you want to negotiate a better split, launch your own team, or stay put with extra income. That decision is yours, not ours.",
+  },
+  {
+    q: "What if my brokerage or team agreement doesn't allow this?",
+    a: "Every agreement is different, but most brokerages allow agents to build a personal brand and generate their own leads. Check your agreement first. If it's unclear, we've helped many agents structure this to fit inside their existing contract without triggering any conflicts. This isn't designed to compete with your brokerage's leads. It's designed to build YOUR book of business on the side.",
+  },
+  {
+    q: "What exactly counts as a \"qualified lead\" for the 60-day guarantee?",
+    a: "A qualified lead is a real, non-duplicate person who submitted their info through one of our campaigns and provided a verified working phone number. Bots, fake numbers, and duplicates don't count. Every lead we count toward the guarantee has been phone-verified before it lands in your CRM.",
+  },
+  {
+    q: "How does the 60-day guarantee actually work?",
+    a: "If we don't deliver at least 30 qualified leads inside the first 60 days of your ads going live, we keep running your entire system at no additional management fee until we do. You keep paying ad spend directly to Facebook. We keep working — for free — until we hit the number. The guarantee applies to Facebook / Meta campaigns and is spelled out in your Services Agreement and our Terms of Service.",
+  },
+  {
+    q: "What if I'm not techy?",
+    a: "That's exactly who this is built for. We build and run everything. You don't touch Facebook Ads Manager, you don't set up automations, you don't hire a developer. You just handle the calls and closings — the same thing you already do today.",
+  },
+  {
+    q: "How much ad spend do I need?",
+    a: "Most agents start at $15–$30 a day ($450–$900/month), then scale once they see deals landing. Ad spend is paid directly to Facebook — no per-lead fees, no markup on our end.",
+  },
+  {
+    q: "What's the total monthly cost?",
+    a: "Three parts: (1) our $497/month management fee, (2) $500/month minimum ad spend paid directly to Facebook, and (3) $100/month for an IDX Broker Engage plan — that's the IDX provider that directly integrates with your Real Estate Business In A Box to power the live MLS listings on your site. Total: $1,097/month minimum. If you already have IDX through another provider, we still need you on IDX Broker for the integration to work — whether you keep or cancel your old subscription is your call. We help you set up IDX Broker, buy a domain if you need one, and configure everything else.",
+  },
+  {
+    q: "How long is the commitment?",
+    a: "Cancel anytime after the initial under-10-day build. No long-term contract, no cancellation penalty. If we're not performing, you leave. That's exactly why the guarantee is what it is — if we don't hit 30 qualified leads in 60 days, we run your system for free until we do.",
+  },
+  {
+    q: "What if I want to eventually build a team or add ISAs?",
+    a: "That's exactly what the Full Team Scaling System is for. When you're ready to add agents or ISAs, we plug them into your existing infrastructure and handle the training and support so you don't get stuck onboarding people yourself. Your machine stays yours. The scale just goes up without you spending your weekends training new hires.",
+  },
+  {
+    q: "How do I know when it's time to leave my brokerage?",
+    a: "You'll know when the split math stops making sense. Most of our clients hit a moment where the leads their own machine is producing outperform what they're getting from their broker — and the 30–50% commission cut just becomes a math problem. When you hit that moment, you'll know. We'll help you think through it if you want.",
+  },
+  {
+    q: "How do I transfer my existing leads into the new system?",
+    a: "If your current CRM allows a bulk export, we import them straight into your new system. Some platforms you don't own or control block that — in which case one of our VAs can do it manually for an added cost, or you cherry-pick and move only your hottest leads by hand. Either way, you don't lose your pipeline.",
+  },
+  {
+    q: "What makes your leads different than Zillow / Realtor.com / other lead sources?",
+    a: "The lead itself isn't the difference — the system around it is. We combine targeted ads + your own CRM + IDX website + lifetime automated nurture + speed-to-lead SMS + lead behavior alerts. Same buyer would be a $200 Zillow lead sold to four other agents. Through your Real Estate Business In A Box, they're exclusively yours, dropped straight into your CRM, at a fraction of the cost.",
+  },
+  {
+    q: "How is this different from Realgeeks or other CRM software?",
+    a: "Realgeeks and similar tools give you the software and hand you the keys. Great — if you have the time, the tech skills, and the ad budget to figure it all out yourself. We're the opposite. Software plus a service team that builds it, runs it, and optimizes it for you. Same tools you'd get from a software company, plus the people who actually operate them. Software pricing, done-for-you service.",
+  },
+  {
+    q: "Do I need my own website already?",
+    a: "You can absolutely have your own site for anything else — personal blog, static landing pages, whatever. But for the MLS listing site that pairs with your Real Estate Business In A Box, we use our own proven high-converting, modern, minimal design and theme it to your brand — logo, colors, fonts, style. It's not a template you have to customize. It's a system that's already been tested and optimized, adapted to look like yours.",
+  },
+];
+
+const leadQualityImages = [
+  { src: "/lead-quality-2.png", w: 462, h: 201 },
+  { src: "/lead-quality-3.png", w: 430, h: 208 },
+  { src: "/lead-quality-4.png", w: 433, h: 312 },
+  { src: "/lead-quality-5.png", w: 483, h: 267 },
+  { src: "/lead-quality-6.png", w: 496, h: 199 },
+  { src: "/lead-quality-7.png", w: 353, h: 258 },
+  { src: "/lead-quality-8.png", w: 507, h: 240 },
+  { src: "/lead-quality-9.png", w: 488, h: 223 },
+  { src: "/lead-quality-1.png", w: 549, h: 420 },
 ];
 
 export default function AgentsPage() {
   return (
-    <SurveyProvider>
-      {/* ════════════════ NAVBAR ════════════════ */}
-      <NavBar />
+    <SurveyProvider questionSet="real-estate">
+      <main className="min-h-screen bg-white text-neutral-900 relative overflow-hidden">
+        {/* Ambient gold glows — the "techy premium" backdrop */}
+        <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-brand-gold/[0.10] rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-[70vh] left-0 w-[700px] h-[700px] bg-brand-gold/[0.06] rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-[160vh] right-0 w-[600px] h-[600px] bg-brand-gold/[0.05] rounded-full blur-[100px] pointer-events-none" />
 
-      {/* ════════════════ HERO ════════════════ */}
-      <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
-        {/* Background gradient orb */}
-        <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-gold/[0.03] rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/[0.02] rounded-full blur-[100px] pointer-events-none" />
+        {/* Subtle grid pattern — SaaS techy feel */}
+        <div
+          className="absolute inset-0 pointer-events-none opacity-[0.025]"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, #0E0E0E 1px, transparent 1px), linear-gradient(to bottom, #0E0E0E 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+          }}
+        />
 
-        <div className="max-w-4xl mx-auto px-6 w-full">
-          <div className="flex flex-col items-center text-center">
-            {/* Eyebrow */}
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
-              For $25M/yr Volume Solo Agents &amp; $100M/yr Teams
-            </p>
-
-            {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] mb-4">
-              We Will Generate You 100 Buyer Leads Or At Least $3M In Seller Leads In The Next 90 Days{" "}
-              <span className="gradient-text">Or We Will Work For Free Until We Do.</span>
-            </h1>
-
-            {/* Sub-headline */}
-            <p className="text-lg md:text-xl text-white/60 leading-relaxed mb-10 max-w-2xl">
-              We run one ad campaign for you in your market, drop the leads
-              into your CRM, and only work with up to 5 agents per market.
-              $497/month plus ad spend. If we don&apos;t hit your 90-day
-              numbers, we waive the fee and keep going.
-            </p>
-
-            {/* VSL Video */}
-            <HeroVideo src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a4aad5a1d6932df9b52d48f.mp4" />
-
-            {/* CTA Button */}
-            <SurveyButton className="btn-primary !text-lg !py-5 !px-12 mb-10">
-              Apply And Book Call
-            </SurveyButton>
-
-            {/* Trust bar */}
-            <div className="flex items-center justify-center pt-8 border-t border-white/5 w-full max-w-xl">
-              <div className="text-center flex-1">
-                <p className="text-white font-bold text-xl">33,922+</p>
-                <p className="text-white/40 text-xs mt-1">Real Estate Leads Captured</p>
-              </div>
-              <div className="w-px h-10 bg-white/10" />
-              <div className="text-center flex-1">
-                <p className="text-white font-bold text-xl">$8.4B+</p>
-                <p className="text-white/40 text-xs mt-1">Sales Volume Generated</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ════════════════ PAIN POINTS — "Is This You?" ════════════════ */}
-      <RevealSection className="py-16 md:py-24 bg-brand-dark" id="pain-points">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Is This You Or Your Team?
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              Is This <span className="gradient-text">Your Team</span> Right Now?
-            </h2>
-            <p className="text-white/50 text-lg">
-              We hear these from solo agents, team leads, and brokerage owners every
-              single week. If any of them hit close to home, you're in the right place.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {[
-              {
-                icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 2v24M2 14h24" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /><circle cx="14" cy="14" r="12" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /></svg>,
-                title: "Your Brokerage Hands You The Leftovers",
-                desc: "By the time leads roll downhill to you, the top producers in your brokerage have already picked through the best ones. You're left working what's left — and competing for the next batch.",
-              },
-              {
-                icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="3" width="22" height="22" rx="4" stroke="#BB9A65" strokeWidth="2" opacity="0.3" /><path d="M9 14h10M14 9v10" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>,
-                title: "Overpaying For Shared Leads",
-                desc: "Zillow, Redfin, Realtor.com — they all sell the same lead to multiple agents on the same phone call. You're paying premium CPLs to compete on response time, not value, and the platforms keep raising prices.",
-              },
-              {
-                icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M14 4l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-6z" stroke="#BB9A65" strokeWidth="2" strokeLinejoin="round" opacity="0.3" /><path d="M10 18l8-8" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" /></svg>,
-                title: "Living Off Referrals That Cap You",
-                desc: "Your sphere pays the bills. But it never sends enough to add another agent, expand into a new neighborhood, or actually hit the production numbers you want. You can't tell it to send you twice as many next month.",
-              },
-              {
-                icon: <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><path d="M4 24l8-8 4 4 8-12" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>,
-                title: "Profitable But Stagnant",
-                desc: "Last year looked like the year before. The year before looked like the year before that. You've got no real way to add buyers and sellers on demand — and no lever to pull when you want to grow.",
-              },
-            ].map((item, i) => (
-              <div key={i} className="card-dark p-8 group">
-                <div className="w-14 h-14 rounded-xl bg-brand-gold/10 flex items-center justify-center mb-5 group-hover:bg-brand-gold/20 transition-colors">
-                  {item.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-white/50 leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <p className="text-white/40 text-lg mb-6">
-              We're not here to replace Zillow or Realtor.com — most successful teams use multiple
-              sources. We give you a lead source you actually own and control, at a lower cost, so
-              your team has more leads that turn into closings.
-            </p>
-            <SurveyButton className="btn-primary">
-              Apply And Book Call
-            </SurveyButton>
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ SOCIAL PROOF — Results ════════════════ */}
-      <RevealSection className="py-16 md:py-24" id="results">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Proven Results
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
-              Results From Real{" "}
-              <span className="gradient-text">Real Estate Agents</span>
-            </h2>
-            <p className="text-white/50 text-lg">
-              These aren't projections. These are real results from real estate
-              agents, teams, and boutique brokerage owners we've built lead engines for.
-            </p>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-14">
-            <AnimatedStat value="$8.4B" suffix="+" label="In Sales Volume Generated" />
-            <AnimatedStat value="33,922" suffix="+" label="Real Estate Leads Captured" />
-            <AnimatedStat value="63" suffix="%" label="Avg. Cost Per Lead Reduction" />
-          </div>
-
-          {/* Case Study Cards */}
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Case Study 1: Solo Agent — Buyer */}
-            <div className="card-dark p-8 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Solo Agent — First Closing in 60 Days
-              </p>
-              <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                A solo agent with one ISA wanted to add a lower-cost lead source to supplement
-                their referral pipeline. We built a custom buyer funnel and ran a Meta campaign
-                in their market. After $900 in ad spend they closed their first deal — a $590K
-                transaction — with more in the pipeline.
-              </p>
-              <div className="space-y-4 mb-6">
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Cost Per Buyer Lead</span>
-                  <span className="text-white font-semibold">$5</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Ad Spend</span>
-                  <span className="text-white font-semibold">$900</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">First Closing</span>
-                  <span className="text-white font-semibold">$590,000</span>
-                </div>
-                <div className="flex justify-between items-center pt-1">
-                  <span className="text-white/40 text-sm">Estimated ROAS</span>
-                  <span className="text-brand-gold font-bold text-xl">10x+</span>
-                </div>
-              </div>
-
-              <div className="space-y-3 max-w-xs mx-auto">
-                <div className="rounded-xl overflow-hidden border border-white/10">
-                  <Image
-                    src="/solo-agent-text-2.jpg"
-                    alt="Text message from solo agent confirming the first closing"
-                    width={1320}
-                    height={769}
-                    className="w-full h-auto block"
-                  />
-                </div>
-                <div className="rounded-xl overflow-hidden border border-white/10">
-                  <Image
-                    src="/solo-agent-text-1.jpg"
-                    alt="Text message from solo agent after the campaign launched"
-                    width={1320}
-                    height={1236}
-                    className="w-full h-auto block"
-                  />
-                </div>
-              </div>
-              <p className="text-white/40 text-xs text-center mt-3">
-                Real text messages from the agent after launching the campaign
-              </p>
-            </div>
-
-            {/* Case Study 2: Team — Google Seller Leads */}
-            <div className="card-dark p-8 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Team Lead — Seller Listings via Google
-              </p>
-              <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                A team wanted to add seller listings to their pipeline. We built a seller lead
-                magnet funnel and ran Google search ads targeting high-intent seller keywords.
-                In 3 months they generated qualified seller leads at $77 each and converted
-                them into $31,325 in commissions.
-              </p>
-              <div className="space-y-4 mb-6">
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Avg. Cost Per Seller Lead</span>
-                  <span className="text-white font-semibold">$77</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Timeframe</span>
-                  <span className="text-white font-semibold">3 Months</span>
-                </div>
-                <div className="flex justify-between items-center pt-1">
-                  <span className="text-white/40 text-sm">Commissions Earned</span>
-                  <span className="text-brand-gold font-bold text-xl">$31,325</span>
-                </div>
-              </div>
-
-              <div className="rounded-xl overflow-hidden border border-white/10 bg-brand-black/40">
-                <Image
-                  src="/77-cpl-seller-leads.png"
-                  alt="$77 average cost per qualified seller lead via Google search ads"
-                  width={1200}
-                  height={800}
-                  className="w-full h-auto"
-                />
-              </div>
-              <p className="text-white/40 text-xs text-center mt-3">
-                $77 average cost per qualified seller lead
-              </p>
-            </div>
-
-            {/* Case Study 3: Team — Luxury Buyer ($1M+) */}
-            <div className="card-dark p-8 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Luxury Team — $1M+ Buyer Campaign
-              </p>
-              <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                A team wanted to focus exclusively on buyers searching for $1M+ properties.
-                We built a targeted Meta campaign and luxury buyer lead magnet funnel on a
-                lean budget. In 6 months they captured 142 qualified luxury buyer leads at
-                $34 each on $750/month in ad spend.
-              </p>
-              <div className="space-y-4 mb-6">
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Cost Per Luxury Lead</span>
-                  <span className="text-white font-semibold">$34.04</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Total Leads (6mo)</span>
-                  <span className="text-white font-semibold">142</span>
-                </div>
-                <div className="flex justify-between items-center pt-1">
-                  <span className="text-white/40 text-sm">Total Ad Spend</span>
-                  <span className="text-brand-gold font-bold text-xl">$750/month</span>
-                </div>
-              </div>
-
-              <div className="rounded-xl overflow-hidden border border-white/10 bg-brand-black/40">
-                <Image
-                  src="/142-luxury-leads.png"
-                  alt="142 luxury buyer leads captured on $750/month in ad spend"
-                  width={1200}
-                  height={800}
-                  className="w-full h-auto"
-                />
-              </div>
-              <p className="text-white/40 text-xs text-center mt-3">
-                142 qualified luxury buyer leads at $34.04 each
-              </p>
-            </div>
-
-            {/* Case Study 4: Boutique Brokerage — Hyper-Local Luxury Seller */}
-            <div className="card-dark p-8 relative overflow-hidden group">
-              <div className="absolute top-0 left-0 w-full h-1 gradient-bg opacity-60" />
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Boutique Brokerage — Hyper-Local Luxury Sellers
-              </p>
-              <p className="text-white/40 text-sm mb-6 leading-relaxed">
-                A team wanted exclusively luxury seller leads inside a 1-mile radius. We built
-                a hyper-local Facebook campaign and a seller lead magnet funnel targeting
-                homeowners in that zone. 50 seller leads in 3 months at an average property
-                value of $1.48M — including 20 leads on homes worth $2M+ and a listing
-                appointment for a $4M property.
-              </p>
-              <div className="space-y-4 mb-6">
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">Avg. Property Value</span>
-                  <span className="text-white font-semibold">$1.48M</span>
-                </div>
-                <div className="flex justify-between items-center border-b border-white/5 pb-3">
-                  <span className="text-white/40 text-sm">$2M+ Leads</span>
-                  <span className="text-white font-semibold">20 of 50</span>
-                </div>
-                <div className="flex justify-between items-center pt-1">
-                  <span className="text-white/40 text-sm">Sales Volume Generated</span>
-                  <span className="text-brand-gold font-bold text-xl">$71M</span>
-                </div>
-              </div>
-
-              <div className="rounded-xl overflow-hidden border border-white/10 bg-brand-black/40">
-                <Image
-                  src="/71m-sales-volume.png"
-                  alt="$71M in seller leads captured in under 3 months"
-                  width={1200}
-                  height={800}
-                  className="w-full h-auto"
-                />
-              </div>
-              <p className="text-white/40 text-xs text-center mt-3">
-                $71M in seller leads captured in under 3 months
-              </p>
-            </div>
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ TESTIMONIALS MARQUEE ════════════════ */}
-      <section className="py-16 md:py-24 border-y border-white/5">
-        <div className="max-w-7xl mx-auto px-6 mb-12">
-          <div className="text-center max-w-3xl mx-auto">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Straight From Our Clients
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              What Real Estate Teams & Brokerage Owners{" "}
-              <span className="gradient-text">Are Saying</span>
-            </h2>
-          </div>
-        </div>
-
-        <TestimonialScroll testimonials={agentTestimonials} />
-      </section>
-
-      {/* ════════════════ LEAD QUALITY PROOF ════════════════ */}
-      <RevealSection className="py-16 md:py-24 bg-brand-dark" id="lead-quality">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Lead Quality
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
-              This is what a qualified lead{" "}
-              <span className="gradient-text">actually looks like.</span>
-            </h2>
-            <p className="text-white/55 text-lg leading-relaxed">
-              Real conversations pulled straight from our clients' pipelines.
-              Some are buying or selling in the next few weeks, some six months
-              out, some a year. But every one is a real person with real intent
-              &mdash; not a junk lead you waste your week chasing.
-            </p>
-          </div>
-
-          {/* Masonry grid — keeps natural aspect ratios, scales 1 → 2 → 3 cols */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
-            {[
-              { src: "/lead-quality-1.png", w: 549, h: 420 },
-              { src: "/lead-quality-2.png", w: 462, h: 201 },
-              { src: "/lead-quality-3.png", w: 430, h: 208 },
-              { src: "/lead-quality-4.png", w: 433, h: 312 },
-              { src: "/lead-quality-5.png", w: 483, h: 267 },
-              { src: "/lead-quality-6.png", w: 496, h: 199 },
-              { src: "/lead-quality-7.png", w: 353, h: 258 },
-              { src: "/lead-quality-8.png", w: 507, h: 240 },
-              { src: "/lead-quality-9.png", w: 488, h: 223 },
-            ].map((img, i) => (
-              <div
-                key={img.src}
-                className="mb-5 break-inside-avoid rounded-xl overflow-hidden border border-white/10 bg-brand-black/40"
-              >
-                <Image
-                  src={img.src}
-                  alt={`Real lead conversation ${i + 1}`}
-                  width={img.w}
-                  height={img.h}
-                  sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
-                  loading="lazy"
-                  className="w-full h-auto block"
-                />
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center text-white/40 text-sm mt-10 max-w-2xl mx-auto">
-            Captured from active campaigns. Names, numbers, and identifying
-            details blurred for client confidentiality.
-          </p>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ HOW IT WORKS ════════════════ */}
-      <RevealSection className="py-16 md:py-24" id="how-it-works">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              How It Works
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight">
-              From your first call to live ads in{" "}
-              <span className="gradient-text">21 days or less.</span>
-            </h2>
-            <p className="text-white/55 text-lg leading-relaxed">
-              Four steps. Built around your market and goals. Optimized weekly,
-              forever.
-            </p>
-          </div>
-
-          <HowItWorksTimeline />
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ THE GUARANTEE ════════════════ */}
-      <RevealSection className="py-16 md:py-24 bg-brand-dark" id="guarantee">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              The 90-Day Guarantee
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              100 Buyer Leads or $3M in Seller Leads in 90 Days.{" "}
-              <span className="gradient-text">Or We Work For Free Until We Do.</span>
-            </h2>
-            <p className="text-white/50 text-lg">
-              We put the risk on us. If we don't deliver 100 buyer leads or at least
-              $3 million in seller leads within 90 days of ads going live — we keep
-              running your campaigns for free until we do.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 mb-10">
-            <div className="card-dark p-7 border-brand-gold/20">
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">What We Promise</p>
-              <p className="text-white/70 leading-relaxed">
-                100 buyer leads or at least $3 million in seller leads within 90 days
-                of ads going live in your market.
-              </p>
-            </div>
-            <div className="card-dark p-7 border-brand-gold/20">
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-3">If We Miss</p>
-              <p className="text-white/70 leading-relaxed">
-                We keep working for free — no additional retainer — until we hit the
-                threshold. You stay on ad spend, we stay on the work.
-              </p>
-            </div>
-          </div>
-
-          <div className="card-dark p-7 border-brand-gold/20">
-            <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">To Qualify For The Guarantee, You Need To Meet These Requirements</p>
-            <ul className="space-y-3">
-              {[
-                "Previous year sales volume — $25M+ as a solo agent, or $100M+ as a team lead or boutique brokerage owner.",
-                "Operating in a Tier A or Tier B market.",
-                "Minimum $1,000/month in ad spend, paid directly to the ad platform.",
-                "Ads cannot be paused or turned off for any reason during the 90-day window.",
-                "No changes to the campaigns during the 90-day window.",
-                "The 90 days starts the day your ads go live in your market.",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
-                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                      <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <span className="text-white/70">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <p className="text-center text-white/30 text-xs mt-5">
-            See our{" "}
-            <Link href="/terms" className="text-brand-gold/70 hover:text-brand-gold underline-offset-2 hover:underline transition-colors">
-              Terms of Service
-            </Link>{" "}
-            for full details.
-          </p>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ EXCLUSIVITY ════════════════ */}
-      <RevealSection className="py-16 md:py-24" id="exclusivity">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Market Exclusivity
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              One Team Per Market.{" "}
-              <span className="gradient-text">No Exceptions.</span>
-            </h2>
-            <p className="text-white/50 text-lg mb-6">
-              On our Premium and Platinum packages, we only work with one real estate
-              team or brokerage per city or designated service area. Once you sign,
-              no competing team in your zone gets the same system. That's why our
-              exclusive clients win — and why spots fill quickly.
-            </p>
-            <p className="text-white/40 text-sm">
-              Tier A = high-volume markets that are either premium-priced ($1M+ avg)
-              or major destination / lifestyle cities. Think Miami, Nashville, Destin,
-              Dallas. Tier B = high-volume cities at mid-range prices ($500K+ avg) &mdash;
-              West Palm Beach FL, Plano TX, Charlotte NC. Not sure where you fall?
-              Ask us on the call.
-            </p>
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ WHO THIS IS FOR / NOT FOR ════════════════ */}
-      <RevealSection className="py-16 md:py-24" id="who">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Qualification
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              This Is <span className="gradient-text">Not For Everyone</span>
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="card-dark p-8 border-brand-gold/20">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full gradient-bg flex items-center justify-center">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M5 10l4 4 6-8" stroke="#0E0E0E" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">This Is For You If...</h3>
-              </div>
-              <ul className="space-y-4">
-                {["You're a solo agent with $25M+ in previous year sales volume — or a team lead / boutique brokerage owner with $100M+ in previous year team sales volume", "You operate in a Tier A or Tier B market", "You can meet our minimum total spend of $1,247/month per market", "You treat marketing as a 6–24 month investment, not a 30-day vending machine", "You're ready to stop renting leads and start owning your own lead source"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 mt-0.5 shrink-0" viewBox="0 0 20 20" fill="none">
-                      <path d="M5 10l4 4 6-8" stroke="#BB9A65" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                    <span className="text-white/70">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="card-dark p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                    <path d="M6 6l8 8M14 6l-8 8" stroke="#666" strokeWidth="2.5" strokeLinecap="round" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold">This Is NOT For You If...</h3>
-              </div>
-              <ul className="space-y-4">
-                {["You're a solo agent with less than $25M in previous year sales volume", "You're a team or brokerage with less than $100M in previous year team sales volume", "You operate in a Tier C or Tier D market — the unit economics don't support our model", "You can't meet our $1,247/month minimum total spend per market ($497 retainer + $750 minimum ad spend)", "You want closings this quarter or your money back — paid lead gen is a 6–24 month game"].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 mt-0.5 shrink-0" viewBox="0 0 20 20" fill="none">
-                      <path d="M6 6l8 8M14 6l-8 8" stroke="#666" strokeWidth="1.5" strokeLinecap="round" />
-                    </svg>
-                    <span className="text-white/40">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ PRICING ════════════════ */}
-      <RevealSection className="py-16 md:py-24 bg-brand-dark" id="pricing">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Pricing
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
-              Pick the engagement{" "}
-              <span className="gradient-text">that fits where you are.</span>
-            </h2>
-            <p className="text-white/50 text-lg">
-              Three packages. Same guarantee. Pricing scales with how much of
-              the lead engine you want us running for you.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 md:gap-5 items-stretch">
-            {/* Premium — left on desktop, second on mobile */}
-            <div className="card-dark p-8 flex flex-col order-2 md:order-1">
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Premium
-              </p>
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-4xl font-bold text-white">$2,497</span>
-                <span className="text-white/40 text-sm">/month</span>
-              </div>
-              <p className="text-white/30 text-xs leading-relaxed mb-5">
-                $2,000 one-time setup fee. Plus $750/month minimum ad
-                spend per campaign.
-              </p>
-              <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
-                <p className="text-brand-gold text-[10px] font-bold tracking-[0.15em] uppercase mb-2">
-                  Best For
-                </p>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  Teams who can handle initial calls but lose leads in the
-                  long-term follow-up window. We build the email and SMS
-                  nurture that keeps your pipeline warm until they&apos;re
-                  ready to transact.
-                </p>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                {[
-                  "1 buyer or seller ad campaign",
-                  "Email and SMS nurture sequences built and installed",
-                  "Branded monthly newsletter",
-                  "Market exclusivity",
-                  "Everything in Starter",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
-                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                        <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                    <span className="text-white/70 text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <SurveyButton className="btn-secondary w-full text-center">
-                Apply And Book Call
-              </SurveyButton>
-            </div>
-
-            {/* Starter — middle on desktop, first on mobile */}
-            <div
-              className="card-dark p-8 flex flex-col border-brand-gold/40 relative md:-translate-y-6 order-1 md:order-2"
-              style={{ boxShadow: "0 0 60px rgba(187,154,101,0.15)" }}
-            >
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 gradient-bg text-brand-black px-4 py-1 rounded-full text-[11px] font-bold tracking-[0.15em] uppercase whitespace-nowrap">
-                Most Popular
-              </div>
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Starter
-              </p>
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-4xl font-bold gradient-text">$497</span>
-                <span className="text-white/40 text-sm">/month per campaign</span>
-              </div>
-              <p className="text-white/30 text-xs leading-relaxed mb-5">
-                $1,000 one-time setup fee. Plus $750/month minimum ad
-                spend per campaign.
-              </p>
-              <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
-                <p className="text-brand-gold text-[10px] font-bold tracking-[0.15em] uppercase mb-2">
-                  Best For
-                </p>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  Top-producing solo agents and lean teams with a strong
-                  follow-up process who just want a reliable, done-for-you cold
-                  traffic campaign feeding them more at-bats.
-                </p>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                {[
-                  "1 buyer or seller ad campaign",
-                  "Custom funnel built for your market",
-                  "Leads delivered straight to your CRM",
-                  "Initial handoff automations to your team",
-                  "90-day guarantee",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
-                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                        <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                    <span className="text-white/70 text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <SurveyButton className="btn-primary w-full text-center">
-                Apply And Book Call
-              </SurveyButton>
-            </div>
-
-            {/* Platinum — right on desktop, third on mobile */}
-            <div className="card-dark p-8 flex flex-col order-3 md:order-3">
-              <p className="text-brand-gold text-xs font-semibold tracking-[0.2em] uppercase mb-4">
-                Platinum
-              </p>
-              <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-4xl font-bold text-white">$6,497</span>
-                <span className="text-white/40 text-sm">/month</span>
-              </div>
-              <p className="text-white/30 text-xs leading-relaxed mb-5">
-                $3,000 one-time setup fee. Plus $750/month minimum ad
-                spend per campaign.
-              </p>
-              <div className="bg-brand-gold/5 border border-brand-gold/15 rounded-xl p-4 mb-6">
-                <p className="text-brand-gold text-[10px] font-bold tracking-[0.15em] uppercase mb-2">
-                  Best For
-                </p>
-                <p className="text-white/70 text-sm leading-relaxed">
-                  Larger teams who want a near plug-and-play client acquisition
-                  system — our trained ISAs qualifying every lead, our advanced
-                  long-term nurture running in the background, and our CRM
-                  holding it all together.
-                </p>
-              </div>
-              <ul className="space-y-3 mb-8 flex-1">
-                {[
-                  "1 buyer or seller ad campaign",
-                  "Our trained ISAs installed to qualify every lead",
-                  "Advanced long-term lead nurture system",
-                  "CGC CRM included",
-                  "Appointments booked on your calendar",
-                  "Everything in Premium",
-                ].map((f) => (
-                  <li key={f} className="flex items-start gap-3">
-                    <div className="w-5 h-5 rounded-full gradient-bg flex items-center justify-center shrink-0 mt-0.5">
-                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                        <path d="M2.5 6l2.5 2.5L9.5 3" stroke="#0E0E0E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </div>
-                    <span className="text-white/70 text-sm">{f}</span>
-                  </li>
-                ))}
-              </ul>
-              <SurveyButton className="btn-secondary w-full text-center">
-                Apply And Book Call
-              </SurveyButton>
-            </div>
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ COMPARISON TABLE ════════════════ */}
-      <RevealSection className="py-16 md:py-24" id="comparison">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-10">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Full Comparison
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold">
-              What&apos;s included{" "}
-              <span className="gradient-text">in each package.</span>
-            </h2>
-          </div>
-
-          <div className="card-dark overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm md:text-base">
-                <thead>
-                  <tr className="border-b border-white/10">
-                    <th className="text-left p-4 md:p-5 text-white/40 font-medium"></th>
-                    <th className="p-4 md:p-5 text-center font-semibold gradient-text relative">
-                      Starter
-                      <span className="absolute -top-1 right-1/2 translate-x-[36px] text-[9px] tracking-[0.15em] uppercase text-brand-gold/80 font-bold">Popular</span>
-                    </th>
-                    <th className="p-4 md:p-5 text-center text-white font-semibold">Premium</th>
-                    <th className="p-4 md:p-5 text-center text-white font-semibold">Platinum</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {[
-                    { label: "Monthly retainer", values: ["$497 per campaign", "$2,497/month", "$6,497/month"] },
-                    { label: "One-time setup fee", values: ["$1,000", "$2,000", "$3,000"] },
-                    { label: "Minimum ad spend per campaign", values: ["$750/mo", "$750/mo", "$750/mo"] },
-                    { label: "Paid ad campaigns", values: ["1 per retainer", "1 campaign", "1 campaign"] },
-                    { label: "Custom buyer/seller funnels", values: [true, true, true] },
-                    { label: "Leads delivered to your CRM", values: [true, true, true] },
-                    { label: "Initial handoff automations", values: [true, true, true] },
-                    { label: "Conversion tracking & dashboards", values: [true, true, true] },
-                    { label: "90-day guarantee", values: [true, true, true] },
-                    { label: "Market exclusivity", values: [false, true, true] },
-                    { label: "Email and SMS nurture sequences built and installed", values: [false, true, true] },
-                    { label: "Branded monthly newsletter", values: [false, true, true] },
-                    { label: "Our trained ISAs installed to qualify every lead", values: [false, false, true] },
-                    { label: "Advanced long-term lead nurture system", values: [false, false, true] },
-                    { label: "CGC CRM included", values: [false, false, true] },
-                    { label: "Appointment setting on your calendar", values: [false, false, true] },
-                    { label: "Upgrade in 60 days — 50% off next setup fee", values: [true, true, false] },
-                  ].map((row, i, arr) => (
-                    <tr key={row.label} className="border-b border-white/5">
-                      <td className="p-4 md:p-5 text-white/70">{row.label}</td>
-                      {row.values.map((v, j) => (
-                        <td key={j} className={`p-4 md:p-5 text-center ${j === 0 ? "bg-brand-gold/[0.04]" : ""}`}>
-                          {typeof v === "boolean" ? (
-                            v ? (
-                              <svg className="inline-block" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M5 10l4 4 6-8" stroke="#BB9A65" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                              </svg>
-                            ) : (
-                              <span className="text-white/20 text-lg">—</span>
-                            )
-                          ) : (
-                            <span className="text-white font-medium">{v}</span>
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                  <tr>
-                    <td className="p-4 md:p-5"></td>
-                    <td className="p-4 md:p-5 text-center bg-brand-gold/[0.04]">
-                      <Link
-                        href="/agents/more"
-                        className="inline-flex items-center gap-1.5 text-brand-gold text-sm font-medium hover:text-brand-ivory transition-colors"
-                      >
-                        Just want more campaigns?
-                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                          <path d="M3 7h8m0 0L8 4m3 3L8 10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </Link>
-                    </td>
-                    <td className="p-4 md:p-5"></td>
-                    <td className="p-4 md:p-5"></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div className="text-center mt-10">
-            <SurveyButton className="btn-primary !text-lg !py-5 !px-12">
-              Apply And Book Call
-            </SurveyButton>
-          </div>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ FAQ ════════════════ */}
-      <RevealSection className="py-16 md:py-24" id="faq">
-        <div className="max-w-3xl mx-auto px-6">
-          <div className="text-center mb-12">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Got Questions?
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">
-              Frequently <span className="gradient-text">Asked Questions</span>
-            </h2>
-          </div>
-
-          <FaqSection faqs={agentFaqs} />
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ FINAL CTA ════════════════ */}
-      <RevealSection className="py-16 md:py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-dark to-brand-black pointer-events-none" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-gold/[0.04] rounded-full blur-[120px] pointer-events-none" />
-
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-6">
-            Ready To Scale?
-          </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight">
-            Add Buyer or Seller Leads to Your Pipeline —{" "}
-            <span className="gradient-text">Guaranteed.</span>
-          </h2>
-          <p className="text-white/50 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-            We guarantee to generate 100 buyer leads or $3 million in seller leads
-            within the first 90 days of ads running — or we keep working for free
-            until we do. If you closed $25M+ as a solo agent or $100M+ as a team last
-            year, you're in a Tier A or B market, and you can meet our $1,500/month
-            minimum total — apply below.
-          </p>
-
-          <SurveyButton className="btn-primary !text-lg !py-5 !px-12">
-            Apply And Book Call
-          </SurveyButton>
-
-          <p className="text-white/30 text-sm mt-6">
-            We take a very limited number of partners at a time. When we're at capacity, we close applications.
-          </p>
-        </div>
-      </RevealSection>
-
-      {/* ════════════════ FOOTER ════════════════ */}
-      <footer className="py-12 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="flex items-center gap-3">
+        {/* Nav */}
+        <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/logo.png"
                 alt="Capital Growth Club"
-                width={100}
-                height={34}
-                className="h-7 w-auto"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+                priority
               />
-              <span className="text-white/30 text-sm">Capital Growth Club</span>
+              <span className="hidden sm:inline text-neutral-500 text-sm font-medium border-l border-neutral-200 pl-3">
+                Capital Growth Club
+              </span>
+            </Link>
+            <SurveyButton location="nav" className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-sm py-2.5 px-5 rounded-lg hover:bg-neutral-800 transition-colors">
+              Book Your Discovery Call
+            </SurveyButton>
+          </div>
+        </nav>
+
+        {/* ═════════════ HERO ═════════════ */}
+        <section className="relative pt-32 pb-10 md:pt-36 md:pb-12">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="flex flex-col items-center text-center">
+              {/* Product tag */}
+              <div className="inline-flex items-center gap-2 bg-brand-gold/[0.08] border border-brand-gold/25 rounded-full px-4 py-1.5 mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
+                <span className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase">
+                  Full Real Estate Business In A Box
+                </span>
+              </div>
+
+              {/* Headline */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.15] tracking-tight uppercase text-neutral-900 max-w-4xl">
+                Start building{" "}
+                <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
+                  your own real estate business
+                </span>{" "}
+                without needing to build a big personal brand or spend multiple
+                5–6 figures a month on marketing.
+              </h1>
+
+              {/* Subhead */}
+              <p className="mt-7 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl">
+                We'll install and manage the exact lead generation and
+                long-term nurture systems billion-dollar brokerages and teams
+                use — built for you, run for you, owned by you. We bring you
+                the clients, you handle the calls and closings.
+              </p>
+
+              {/* Credibility line */}
+              <p className="mt-5 text-sm text-neutral-500">
+                Built for ambitious agents ready to own their book of business.
+              </p>
+
+              {/* Video */}
+              <div className="mt-10 w-full max-w-3xl">
+                <HeroVideo
+                  src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a5bece41a0f048050ae93ec.mp4"
+                  className="mb-0"
+                />
+              </div>
+
+              {/* CTA */}
+              <div className="mt-6 flex flex-col items-center gap-4">
+                <span className="cta-wrap"><SurveyButton location="hero" className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-lg py-4 px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
+                  Book Your Discovery Call
+                  <span className="text-brand-gold">→</span>
+                </SurveyButton></span>
+                <p className="text-xs text-neutral-500">
+                  No brokerage exit required — most clients start alongside
+                  their current setup.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ SMS PROOF ═════════════ */}
+        <section className="relative py-12 md:py-16">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <p className="text-neutral-900 text-2xl md:text-3xl lg:text-4xl font-black tracking-tight uppercase">
+                Real Texts. From Real Clients.
+              </p>
             </div>
 
-            <p className="text-white/20 text-sm">
-              &copy; 2025 Capital Growth Club. All rights reserved.
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance] max-w-5xl mx-auto">
+              {[
+                { src: "/sms-1.png", w: 283, h: 172 },
+                { src: "/sms-2.png", w: 282, h: 162 },
+                { src: "/sms-3.png", w: 272, h: 195 },
+                { src: "/sms-4.png", w: 288, h: 177 },
+                { src: "/sms-5.png", w: 443, h: 240 },
+                { src: "/sms-6.png", w: 896, h: 594 },
+                { src: "/sms-7.jpg", w: 1284, h: 731 },
+              ].map((img, i) => (
+                <div
+                  key={img.src}
+                  className="mb-6 break-inside-avoid rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-md shadow-neutral-900/5"
+                >
+                  <Image
+                    src={img.src}
+                    alt={`SMS conversation ${i + 1}`}
+                    width={img.w}
+                    height={img.h}
+                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
+                    loading="lazy"
+                    className="w-full h-auto block"
+                  />
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </section>
+
+        {/* ═════════════ IS THIS YOU ═════════════ */}
+        <section className="relative pt-10 pb-20 md:pt-12 md:pb-28">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center mb-12">
+              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
+                Qualifying
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900">
+                Is this you?
+              </h2>
+            </div>
+
+            <div className="grid gap-3">
+              {isThisYou.map((item, i) => (
+                <div
+                  key={i}
+                  className="flex items-start gap-4 bg-white border border-neutral-200 rounded-2xl p-5 md:p-6 shadow-sm"
+                >
+                  <div className="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-brand-gold to-[#D4B87A] flex items-center justify-center shadow-sm shadow-brand-gold/30">
+                    <svg
+                      width="18"
+                      height="18"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                    >
+                      <path
+                        d="M5 10l4 4 6-8"
+                        stroke="#0E0E0E"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <p className="text-base md:text-lg text-neutral-800 leading-relaxed pt-1">
+                    {item}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Section CTA */}
+            <div className="mt-10 flex justify-center">
+              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
+                Book Your Discovery Call
+                <span className="text-brand-gold">→</span>
+              </SurveyButton></span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ RUN ALONGSIDE YOUR BROKERAGE ═════════════ */}
+        <section className="relative py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="relative bg-gradient-to-br from-brand-gold/[0.08] via-white to-white border border-brand-gold/25 rounded-3xl p-8 md:p-12 shadow-lg">
+              <div className="text-center max-w-2xl mx-auto mb-10">
+                <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
+                  Parallel, Not Replacement
+                </p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
+                  You don't need to quit your brokerage{" "}
+                  <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                    to start building yours.
+                  </span>
+                </h2>
+                <p className="text-neutral-600 text-lg leading-relaxed">
+                  Most of our clients start this while they're still active at
+                  their team or brokerage. Same closings. Same paychecks. Same
+                  Monday morning meetings.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5 mb-10">
+                <div className="bg-white border border-neutral-200 rounded-2xl p-5 md:p-6">
+                  <p className="text-neutral-400 font-mono text-xs mb-2">
+                    Today
+                  </p>
+                  <p className="text-neutral-900 font-bold text-lg mb-2">
+                    Nothing changes on the surface.
+                  </p>
+                  <p className="text-neutral-600 text-[15px] leading-relaxed">
+                    Keep servicing your current pipeline. Keep your
+                    brokerage-provided leads. Keep the paycheck coming.
+                  </p>
+                </div>
+                <div className="bg-white border border-brand-gold/30 rounded-2xl p-5 md:p-6">
+                  <p className="text-brand-gold font-mono text-xs mb-2">
+                    In the background
+                  </p>
+                  <p className="text-neutral-900 font-bold text-lg mb-2">
+                    A machine you own starts producing.
+                  </p>
+                  <p className="text-neutral-600 text-[15px] leading-relaxed">
+                    Leads captured in your name. On your domain. Feeding a
+                    pipeline that belongs to you.
+                  </p>
+                </div>
+              </div>
+
+              <div className="text-center max-w-2xl mx-auto">
+                <p className="text-neutral-700 text-base md:text-lg leading-relaxed mb-6">
+                  Once it's producing — usually within 60 days — you're looking
+                  at split math with real numbers instead of guesses. Negotiate
+                  a better split. Launch your own team. Go fully independent.
+                  Or just pocket the extra commission while you stay put.
+                </p>
+                <p className="text-neutral-900 font-bold text-lg md:text-xl italic border-t border-neutral-200 pt-6 mb-8">
+                  The point isn't to leave. The point is to have the option.
+                </p>
+
+                {/* Section CTA */}
+                <div className="flex justify-center">
+                  <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
+                    Book Your Discovery Call
+                    <span className="text-brand-gold">→</span>
+                  </SurveyButton></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ WHAT YOU GET ═════════════ */}
+        <section className="relative py-20 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              {/* Product intro pill */}
+              <p className="text-neutral-500 text-xs font-bold tracking-[0.4em] uppercase mb-4">
+                Introducing
+              </p>
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-gold/[0.14] via-brand-gold/[0.08] to-brand-gold/[0.14] border border-brand-gold/35 rounded-full px-6 py-3 mb-8 shadow-md shadow-brand-gold/10">
+                <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+                <span className="text-neutral-900 text-sm md:text-base font-black tracking-[0.15em] uppercase">
+                  Full Real Estate Business In A Box
+                </span>
+              </div>
+
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
+                Install the same systems billion-dollar brokerages and teams
+                run off,{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  but this one's yours — and only $497/month.
+                </span>
+              </h2>
+              <p className="text-neutral-600 text-lg leading-relaxed">
+                Leads. CRM. IDX site. Lifetime nurture. Follow-up alerts.
+                Weekly reporting. Everything a broker or team uses to get you
+                to hang your license with them — but built for you. Run for
+                you. Reported to you.
+              </p>
+            </div>
+
+            {/* Alternating rows */}
+            <div className="space-y-16 md:space-y-24">
+              {deliverables.map((d, i) => {
+                const imageOnLeft = i % 2 === 1;
+                return (
+                  <div
+                    key={i}
+                    className="grid md:grid-cols-2 gap-8 md:gap-14 items-center"
+                  >
+                    {/* Text */}
+                    <div className={imageOnLeft ? "md:order-2" : ""}>
+                      <div className="inline-flex items-center gap-3 mb-5">
+                        <span className="text-brand-gold font-mono text-sm font-bold">
+                          0{i + 1}
+                        </span>
+                        <span className="h-px w-10 bg-brand-gold/40" />
+                      </div>
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-neutral-900 mb-5 leading-tight">
+                        {d.title}
+                      </h3>
+                      <p className="text-neutral-600 leading-relaxed text-base md:text-lg">
+                        {d.body}
+                      </p>
+                      {"note" in d && d.note && (
+                        <p className="mt-4 text-neutral-500 text-sm font-light leading-relaxed">
+                          [ {d.note} ]
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Image or placeholder */}
+                    <div className={imageOnLeft ? "md:order-1" : ""}>
+                      {"image" in d && d.image && "framed" in d && d.framed ? (
+                        // Framed image — inside the gold-gradient container
+                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-200 bg-gradient-to-br from-brand-gold/[0.10] via-white to-brand-gold/[0.05] shadow-xl shadow-brand-gold/10">
+                          <Image
+                            src={d.image}
+                            alt={d.title}
+                            fill
+                            sizes="(max-width: 768px) 92vw, 45vw"
+                            className="object-cover"
+                          />
+                        </div>
+                      ) : "image" in d && d.image ? (
+                        // Free-standing image
+                        <Image
+                          src={d.image}
+                          alt={d.title}
+                          width={d.imageW || 1920}
+                          height={d.imageH || 1080}
+                          sizes="(max-width: 768px) 100vw, 55vw"
+                          className={
+                            "imageClass" in d && d.imageClass
+                              ? d.imageClass
+                              : "w-full h-auto scale-125 origin-center drop-shadow-xl"
+                          }
+                        />
+                      ) : "stackedImages" in d && d.stackedImages ? (
+                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-200 bg-gradient-to-br from-brand-gold/[0.10] via-white to-brand-gold/[0.05] shadow-xl shadow-brand-gold/10">
+                          {/* Dark solid backdrop so no white peeks through */}
+                          <div className="absolute inset-0 bg-neutral-900" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            {d.stackedImages.map((img, idx) => (
+                              <div
+                                key={img.src}
+                                className={`absolute rounded-xl overflow-hidden ${img.cls}`}
+                              >
+                                <Image
+                                  src={img.src}
+                                  alt={`${d.title} — proof ${idx + 1}`}
+                                  width={img.w}
+                                  height={img.h}
+                                  sizes="(max-width: 768px) 80vw, 40vw"
+                                  className="w-full h-auto block"
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-200 bg-gradient-to-br from-brand-gold/[0.10] via-white to-brand-gold/[0.05] shadow-xl shadow-brand-gold/10">
+                          {/* Subtle grid overlay */}
+                          <div
+                            className="absolute inset-0 opacity-[0.06]"
+                            style={{
+                              backgroundImage:
+                                "linear-gradient(to right, #0E0E0E 1px, transparent 1px), linear-gradient(to bottom, #0E0E0E 1px, transparent 1px)",
+                              backgroundSize: "32px 32px",
+                            }}
+                          />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+                            <svg
+                              className="w-12 h-12 text-brand-gold/40"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="1.5"
+                            >
+                              <rect
+                                x="3"
+                                y="3"
+                                width="18"
+                                height="18"
+                                rx="2"
+                                ry="2"
+                              />
+                              <circle cx="8.5" cy="8.5" r="1.5" />
+                              <path d="M21 15l-5-5L5 21" />
+                            </svg>
+                            <span className="text-brand-gold/70 text-xs font-bold tracking-[0.25em] uppercase">
+                              /deliverable-{i + 1}.png
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                      {"imageNote" in d && d.imageNote && (
+                        <p className="mt-3 text-neutral-500 text-xs text-center italic">
+                          {d.imageNote}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-10 text-center">
+              <p className="inline-block text-neutral-700 font-semibold text-lg italic border-t border-b border-neutral-200 py-4 px-6">
+                You don't learn more tech. You get a machine that just runs.
+              </p>
+            </div>
+
+            {/* Section CTA */}
+            <div className="mt-10 flex justify-center">
+              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
+                Book Your Discovery Call
+                <span className="text-brand-gold">→</span>
+              </SurveyButton></span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ HOW IT WORKS ═════════════ */}
+        <section className="relative py-20 md:py-28">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
+                How It Works
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
+                Live in{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  under 10 days.
+                </span>
+              </h2>
+              <p className="text-neutral-600 text-lg">
+                Three steps. No consultants. No project managers. No handoffs.
+              </p>
+            </div>
+
+            {/* Steps grid */}
+            <div className="grid md:grid-cols-3 gap-5">
+              {steps.map((s, i) => (
+                <div
+                  key={i}
+                  className="relative bg-white border border-neutral-200 rounded-2xl p-6 md:p-7 shadow-sm"
+                >
+                  {/* Connector arrow (desktop only, between cards) */}
+                  {i < steps.length - 1 && (
+                    <div className="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 z-10">
+                      <div className="w-8 h-8 rounded-full bg-white border border-neutral-200 flex items-center justify-center shadow-sm">
+                        <span className="text-brand-gold text-sm">→</span>
+                      </div>
+                    </div>
+                  )}
+
+                  <div className="flex items-center justify-between mb-5">
+                    <span className="inline-block bg-brand-gold/10 text-brand-gold text-[10px] font-bold tracking-[0.2em] uppercase py-1 px-2.5 rounded">
+                      {s.label}
+                    </span>
+                    <span className="text-neutral-400 font-mono text-xs">
+                      {s.duration}
+                    </span>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-neutral-900 mb-3">
+                    {s.title}
+                  </h3>
+                  <p className="text-neutral-600 leading-relaxed text-[15px]">
+                    {s.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Section CTA */}
+            <div className="mt-12 flex justify-center">
+              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
+                Book Your Discovery Call
+                <span className="text-brand-gold">→</span>
+              </SurveyButton></span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ PRICING ═════════════ */}
+        <section className="relative py-20 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
+                Pricing
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
+                Simple pricing.{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  No splits.
+                </span>
+              </h2>
+              <p className="text-neutral-600 text-lg">
+                One offer. One price. Everything included.
+              </p>
+            </div>
+
+            <div className="relative bg-white border-2 border-brand-gold/30 rounded-3xl p-8 md:p-10 shadow-xl shadow-brand-gold/10">
+              {/* Ribbon */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max max-w-[calc(100%-2rem)]">
+                <span className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold to-[#D4B87A] text-neutral-900 text-[11px] md:text-xs font-bold tracking-[0.14em] uppercase py-2 px-5 rounded-full shadow-md whitespace-nowrap">
+                  Real Estate Business In A Box
+                </span>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8 items-start">
+                {/* Left — price */}
+                <div>
+                  <div className="flex items-baseline gap-1 mb-3">
+                    <span className="text-5xl md:text-6xl font-black text-neutral-900 font-mono">
+                      $497
+                    </span>
+                    <span className="text-neutral-500 text-lg font-medium">
+                      /month
+                    </span>
+                  </div>
+                  <p className="text-neutral-600 mb-6 flex items-center gap-2">
+                    <span className="font-mono text-neutral-400">+</span>
+                    <span className="font-mono font-semibold text-neutral-900">
+                      $500
+                    </span>{" "}
+                    one-time setup fee
+                  </p>
+
+                  <div className="space-y-2 text-sm text-neutral-500 border-t border-neutral-200 pt-5">
+                    <div className="flex justify-between">
+                      <span>Contract</span>
+                      <span className="text-neutral-900 font-semibold">
+                        Cancel anytime
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Ad spend</span>
+                      <span className="text-neutral-900 font-semibold">
+                        Paid to Facebook direct
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Typical start</span>
+                      <span className="text-neutral-900 font-semibold">
+                        $15–$30/day
+                      </span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Time to live</span>
+                      <span className="text-neutral-900 font-semibold">
+                        Under 10 days
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right — what's inside */}
+                <div>
+                  <p className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase mb-4">
+                    Everything Included
+                  </p>
+                  <ul className="space-y-3">
+                    {[
+                      "Full specialist team (lead gen, nurture, automations)",
+                      "Proven lead generation campaign — built + managed",
+                      "CRM + IDX website — fully set up",
+                      "Lifetime automated nurture (text + email)",
+                      "Lead behavior tracking + alerts",
+                      "Sales & marketing dashboards",
+                      "Full team scaling system (when you're ready)",
+                      "60-day lead guarantee (see below)",
+                    ].map((f, i) => (
+                      <li key={i} className="flex items-start gap-3">
+                        <svg
+                          className="w-5 h-5 mt-0.5 shrink-0"
+                          viewBox="0 0 20 20"
+                          fill="none"
+                        >
+                          <path
+                            d="M5 10l4 4 6-8"
+                            stroke="#BB9A65"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        <span className="text-neutral-700 text-[15px] leading-snug">
+                          {f}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-6 border-t border-neutral-200 text-center">
+                <span className="cta-wrap"><SurveyButton location="pricing" className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-4 px-8 rounded-xl hover:bg-neutral-800 transition-colors shadow-lg shadow-neutral-900/10">
+                  Book Your Discovery Call
+                  <span className="text-brand-gold">→</span>
+                </SurveyButton></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ GUARANTEE ═════════════ */}
+        <section className="relative py-20 md:py-28">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="bg-gradient-to-br from-brand-gold/[0.08] via-white to-white border border-brand-gold/25 rounded-3xl p-8 md:p-12 shadow-lg">
+              <div className="flex flex-col items-center text-center">
+                <div className="inline-flex items-center gap-2 bg-white border border-brand-gold/30 rounded-full px-3 py-1 mb-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
+                  <span className="text-brand-gold text-[10px] font-bold tracking-[0.25em] uppercase">
+                    Our 60-Day Lead Guarantee
+                  </span>
+                </div>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-6">
+                  30 qualified leads in under 60 days,{" "}
+                  <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                    or we work for free until we do.
+                  </span>
+                </h2>
+                <p className="text-neutral-700 text-lg md:text-xl leading-relaxed max-w-2xl">
+                  If we don't deliver at least 30 qualified leads inside the
+                  first 60 days of your ads going live, we work for free until
+                  we do.
+                </p>
+                <p className="text-neutral-500 text-sm mt-6 mb-8">
+                  Applies only to Facebook / Meta campaigns. See{" "}
+                  <Link
+                    href="/terms"
+                    className="text-brand-gold hover:underline"
+                  >
+                    Terms of Service
+                  </Link>{" "}
+                  for full details.
+                </p>
+
+                {/* Section CTA */}
+                <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
+                  Book Your Discovery Call
+                  <span className="text-brand-gold">→</span>
+                </SurveyButton></span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ SIMPLE PROOF ═════════════ */}
+        <section className="relative py-20 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
+                Real Lead Flow
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
+                This is what a qualified lead{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  actually looks like.
+                </span>
+              </h2>
+              <p className="text-neutral-600 text-lg leading-relaxed">
+                Real conversations pulled straight from client pipelines. Some
+                are buying or selling in the next few weeks, some six months
+                out, some a year. But every one is a real person with real
+                intent — not a junk lead you waste your week chasing.
+              </p>
+            </div>
+
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
+              {leadQualityImages.map((img, i) => (
+                <div
+                  key={img.src}
+                  className="mb-5 break-inside-avoid rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-sm"
+                >
+                  <Image
+                    src={img.src}
+                    alt={`Real lead conversation ${i + 1}`}
+                    width={img.w}
+                    height={img.h}
+                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
+                    loading="lazy"
+                    className="w-full h-auto block"
+                  />
+                </div>
+              ))}
+            </div>
+
+            <p className="text-center text-neutral-500 text-sm mt-10 max-w-2xl mx-auto">
+              Captured from active campaigns. Names, numbers, and identifying
+              details blurred for client confidentiality.
+            </p>
+
+            {/* Section CTA */}
+            <div className="mt-10 flex justify-center">
+              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
+                Book Your Discovery Call
+                <span className="text-brand-gold">→</span>
+              </SurveyButton></span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ FAQ ═════════════ */}
+        <section className="relative py-20 md:py-28">
+          <div className="max-w-3xl mx-auto px-6">
+            <div className="text-center mb-14">
+              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
+                FAQ
+              </p>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900">
+                Questions we get{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  every week.
+                </span>
+              </h2>
+            </div>
+
+            <div className="divide-y divide-neutral-200 border-y border-neutral-200">
+              {faqs.map((f, i) => (
+                <details key={i} className="group py-5">
+                  <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
+                    <span className="text-base md:text-lg font-semibold text-neutral-900 leading-snug">
+                      {f.q}
+                    </span>
+                    <span className="shrink-0 w-8 h-8 rounded-full bg-neutral-100 border border-neutral-200 group-open:bg-brand-gold group-open:border-brand-gold flex items-center justify-center transition-colors">
+                      <svg
+                        className="w-3 h-3 text-neutral-500 group-open:text-neutral-900 group-open:rotate-45 transition-transform"
+                        viewBox="0 0 12 12"
+                        fill="none"
+                      >
+                        <path
+                          d="M6 1v10M1 6h10"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="mt-4 text-neutral-600 leading-relaxed text-[15px] pr-12">
+                    {f.a}
+                  </p>
+                </details>
+              ))}
+            </div>
+
+            {/* Section CTA */}
+            <div className="mt-12 flex flex-col items-center gap-3">
+              <p className="text-neutral-500 text-sm text-center">
+                Still have questions? Ask them on the call.
+              </p>
+              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
+                Book Your Discovery Call
+                <span className="text-brand-gold">→</span>
+              </SurveyButton></span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ FINAL CTA ═════════════ */}
+        <section className="relative py-20 md:py-28 bg-neutral-900 text-white overflow-hidden">
+          {/* Gold glow inside dark section */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-gold/[0.15] rounded-full blur-[120px] pointer-events-none" />
+
+          <div className="relative max-w-3xl mx-auto px-6 text-center">
+            <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-5">
+              Ready?
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-6">
+              Start building the machine.{" "}
+              <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                Decide your future once it's producing.
+              </span>
+            </h2>
+            <p className="text-white/70 text-lg leading-relaxed max-w-xl mx-auto mb-10">
+              Book the strategy call. We map your market, walk you through
+              exactly what we'd build for you, and tell you straight if you're
+              a fit. No brokerage exit required to say yes.
+            </p>
+            <span className="cta-wrap"><SurveyButton location="final_cta" className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold to-[#D4B87A] text-neutral-900 font-bold text-lg py-4 px-8 rounded-xl hover:shadow-xl hover:shadow-brand-gold/30 transition-all hover:-translate-y-0.5">
+              Book Your Discovery Call
+              <span>→</span>
+            </SurveyButton></span>
+            <p className="text-white/40 text-xs mt-5">
+              No pressure. No brokerage exit required to say yes.
             </p>
           </div>
-        </div>
-      </footer>
+        </section>
+
+        {/* ═════════════ FOOTER ═════════════ */}
+        <footer className="relative py-10 border-t border-neutral-200 bg-white">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-neutral-500 text-sm">
+              &copy; 2026 Capital Growth Club. All rights reserved.
+            </p>
+            <div className="flex items-center gap-6 text-sm">
+              <Link
+                href="/terms"
+                className="text-neutral-500 hover:text-neutral-900 transition-colors"
+              >
+                Terms of Service
+              </Link>
+              <a
+                href="mailto:support@capitalgrowthclub.com"
+                className="text-neutral-500 hover:text-neutral-900 transition-colors"
+              >
+                Contact
+              </a>
+            </div>
+          </div>
+        </footer>
+      </main>
     </SurveyProvider>
   );
 }
