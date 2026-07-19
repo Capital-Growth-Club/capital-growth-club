@@ -53,6 +53,7 @@ export default function HeroVideo({
         track("video_pause", {
           video_src: src,
           current_time_sec: Math.round(v.currentTime),
+          current_time_num: Math.round(v.currentTime),
         });
       }
     };
@@ -71,7 +72,9 @@ export default function HeroVideo({
           track("video_progress", {
             video_src: src,
             percent: mark,
+            percent_num: mark,
             current_time_sec: Math.round(v.currentTime),
+            current_time_num: Math.round(v.currentTime),
           });
         }
       }
@@ -87,8 +90,11 @@ export default function HeroVideo({
       track("video_watch_end", {
         video_src: src,
         last_position_sec: currentSec,
+        last_position_num: currentSec,
         duration_sec: totalSec,
+        duration_num: totalSec,
         percent_watched: percent,
+        percent_watched_num: percent,
         stopped_reason: reason,
       });
     };
@@ -160,6 +166,7 @@ export default function HeroVideo({
       track("video_resume", {
         video_src: src,
         current_time_sec: Math.round(v.currentTime),
+        current_time_num: Math.round(v.currentTime),
       });
     } else {
       v.pause();
@@ -176,7 +183,9 @@ export default function HeroVideo({
       video_src: src,
       direction: delta > 0 ? "forward" : "rewind",
       amount_sec: Math.abs(delta),
+      amount_num: Math.abs(delta),
       current_time_sec: Math.round(v.currentTime),
+      current_time_num: Math.round(v.currentTime),
     });
   };
 
@@ -187,7 +196,11 @@ export default function HeroVideo({
     const nextSpeed = SPEEDS[nextIndex];
     v.playbackRate = nextSpeed;
     setSpeedIndex(nextIndex);
-    track("video_speed_change", { video_src: src, speed: nextSpeed });
+    track("video_speed_change", {
+      video_src: src,
+      speed: nextSpeed,
+      speed_num: nextSpeed,
+    });
   };
 
   useEffect(() => {
