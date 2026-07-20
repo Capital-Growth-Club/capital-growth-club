@@ -45,6 +45,7 @@ Examples:
 | `dropoff-seconds` | The top 20 exact seconds where viewers bail — for finding re-film targets |
 | `cta-clicks` | CTA clicks grouped by location (nav, hero, pricing, final_cta, unspecified) |
 | `retention-funnel` | Full conversion funnel — landed → played → 25/50/75/100% → CTA → scheduled |
+| `variant-comparison` | Side-by-side A/B split for /agents — all top-line metrics per variant |
 
 ## Adding your own
 
