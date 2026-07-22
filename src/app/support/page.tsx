@@ -3,9 +3,22 @@ import Image from "next/image";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Book a Call With Our Team",
+  title: "Book A Support Call With Our Team",
   description:
-    "Schedule time with our team for training, strategy, or support on your campaigns and systems.",
+    "Schedule time with the Capital Growth Club team for training, strategy, or support on your campaigns, CRM, and follow-up systems.",
+  openGraph: {
+    title: "Book A Support Call | Capital Growth Club",
+    description:
+      "Schedule time with our team for training, strategy, or support on your campaigns and systems.",
+    url: "https://capitalgrowthclub.com/support",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Book A Support Call | Capital Growth Club",
+    description:
+      "Schedule time with our team for training, strategy, or support on your campaigns and systems.",
+  },
   robots: { index: false, follow: false },
 };
 

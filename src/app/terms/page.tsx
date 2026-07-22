@@ -6,6 +6,22 @@ export const metadata: Metadata = {
   title: "Terms of Service",
   description:
     "Terms governing use of the Capital Growth Club website (capitalgrowthclub.com).",
+  openGraph: {
+    title: "Terms of Service | Capital Growth Club",
+    description:
+      "Terms governing use of the Capital Growth Club website (capitalgrowthclub.com).",
+    url: "https://capitalgrowthclub.com/terms",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Terms of Service | Capital Growth Club",
+    description:
+      "Terms governing use of the Capital Growth Club website.",
+  },
+  alternates: {
+    canonical: "https://capitalgrowthclub.com/terms",
+  },
   robots: { index: true, follow: true },
 };
 

@@ -3,9 +3,22 @@ import Image from "next/image";
 import ScheduleEventFire from "@/components/ScheduleEventFire";
 
 export const metadata: Metadata = {
-  title: "You're Booked — Please Read Before Leaving",
+  title: "Strategy Call Booked — Please Read Before Leaving",
   description:
-    "Your strategy call is confirmed. Please read the following before leaving this page.",
+    "Your Capital Growth Club strategy call is confirmed. Read the pre-call requirements before leaving this page so we make the most of our time together.",
+  openGraph: {
+    title: "Strategy Call Booked | Capital Growth Club",
+    description:
+      "Your strategy call is confirmed. Read the pre-call requirements before leaving this page.",
+    url: "https://capitalgrowthclub.com/booked",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Strategy Call Booked | Capital Growth Club",
+    description:
+      "Your strategy call is confirmed. Read the pre-call requirements before leaving this page.",
+  },
   robots: { index: false, follow: false },
 };
 

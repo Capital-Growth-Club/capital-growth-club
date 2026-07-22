@@ -4,9 +4,22 @@ import SurveyProvider from "@/components/SurveyProvider";
 import SurveyButton from "@/components/SurveyButton";
 
 export const metadata: Metadata = {
-  title: "Starter, Expansion & Market Dominator Packages",
+  title: "Real Estate Packages — Starter, Expansion & Market Dominator",
   description:
-    "Scale your real estate lead gen by adding more campaigns. Same engine, more reach. Pricing for Starter, Expansion, and Market Dominator packages.",
+    "Scale your real estate lead gen by adding more campaigns. Same engine, more reach. Pricing for the Starter, Expansion, and Market Dominator packages.",
+  openGraph: {
+    title: "Real Estate Packages | Capital Growth Club",
+    description:
+      "Scale your real estate lead gen by adding more campaigns. Starter, Expansion, and Market Dominator packages.",
+    url: "https://capitalgrowthclub.com/agents/more",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Real Estate Packages | Capital Growth Club",
+    description:
+      "Starter, Expansion, and Market Dominator packages for real estate teams.",
+  },
   robots: { index: false, follow: false },
 };
 

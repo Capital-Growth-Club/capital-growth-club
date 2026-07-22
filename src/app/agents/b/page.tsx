@@ -6,15 +6,26 @@ import SurveyButton from "@/components/SurveyButton";
 import HeroVideo from "@/components/HeroVideo";
 
 export const metadata: Metadata = {
-  title: "Real Estate Business In A Box — Turn Facebook Into A Personal Lead Machine",
+  title: "Real Estate Business In A Box — Start Building Your Own Book Of Business",
   description:
-    "Done-for-you Facebook ads, CRM, and IDX website that bring buyers and sellers directly to you. $500 setup, $497/mo, cancel anytime. Built for solo agents and micro-teams.",
+    "Done-for-you Facebook ads, CRM, and IDX website that bring buyers and sellers directly to you. $500 setup, $497/mo, cancel anytime. Built for solo agents and micro-teams building their own real estate business.",
   openGraph: {
-    title: "Real Estate Business In A Box — Capital Growth Club",
+    title: "Real Estate Business In A Box | Capital Growth Club",
     description:
-      "Turn Facebook into a personal lead machine without giving your broker 30-50% of every check. Done-for-you ads + CRM + IDX for solo agents and micro-teams.",
+      "Start building your own real estate business without needing to build a big personal brand or spend multiple 5–6 figures a month on marketing. Done-for-you ads + CRM + IDX.",
     url: "https://capitalgrowthclub.com/agents",
+    type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Real Estate Business In A Box | Capital Growth Club",
+    description:
+      "Done-for-you Facebook ads + CRM + IDX website. Built for solo agents building their own book of business without leaving their brokerage.",
+  },
+  alternates: {
+    canonical: "https://capitalgrowthclub.com/agents",
+  },
+  robots: { index: false, follow: false },
 };
 
 const isThisYou = [

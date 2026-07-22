@@ -15,35 +15,25 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   metadataBase: new URL("https://capitalgrowthclub.com"),
   title: {
-    default: "Capital Growth Club | Real Estate Lead Generation Engine",
+    default: "Capital Growth Club — Done-For-You Cold Client Acquisition",
     template: "%s | Capital Growth Club",
   },
   description:
-    "We run, manage, and create paid ad campaigns that consistently put qualified buyers and sellers into your real estate team's pipeline every month.",
-  keywords: [
-    "real estate lead generation",
-    "real estate ads",
-    "buyer leads",
-    "seller leads",
-    "real estate marketing agency",
-    "facebook ads for real estate",
-    "google ads for real estate",
-    "real estate team leads",
-  ],
+    "We build service businesses the entire cold client acquisition machine — paid ads, sales funnels, CRM, automated follow-up, and tracking. All built and managed by one team.",
   applicationName: "Capital Growth Club",
   openGraph: {
     type: "website",
     siteName: "Capital Growth Club",
-    title: "Capital Growth Club | Real Estate Lead Generation Engine",
+    title: "Capital Growth Club — Done-For-You Cold Client Acquisition",
     description:
-      "We run, manage, and create paid ad campaigns that consistently put qualified buyers and sellers into your real estate team's pipeline every month.",
+      "We build service businesses the entire cold client acquisition machine — paid ads, sales funnels, CRM, automated follow-up, and tracking.",
     url: "https://capitalgrowthclub.com",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Capital Growth Club | Real Estate Lead Generation Engine",
+    title: "Capital Growth Club — Done-For-You Cold Client Acquisition",
     description:
-      "Qualified buyer and seller leads delivered to your real estate team's pipeline every month — guaranteed.",
+      "The entire cold client acquisition machine — ads, funnels, CRM, follow-up — built and managed for you.",
   },
   robots: {
     index: true,

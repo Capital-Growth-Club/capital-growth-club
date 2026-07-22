@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import SurveyProvider from "@/components/SurveyProvider";
 import SurveyButton from "@/components/SurveyButton";
@@ -7,6 +8,28 @@ import AnimatedStat from "@/components/AnimatedStat";
 import FaqSection from "@/components/FaqSection";
 import TestimonialScroll from "@/components/TestimonialScroll";
 import HeroVideo from "@/components/HeroVideo";
+
+export const metadata: Metadata = {
+  title: "You Don't Have A Lead Gen Problem — You Have A Lead Conversion Problem",
+  description:
+    "For service businesses doing $250K+/mo. We build the entire cold client acquisition machine — paid ads, funnels, CRM, follow-up, tracking — so you stop depending on referrals and start scaling on demand.",
+  openGraph: {
+    title: "You Don't Have A Lead Gen Problem — You Have A Lead Conversion Problem",
+    description:
+      "We build service businesses the entire machine that turns cold strangers into profitable customers. Paid ads, funnels, CRM, and follow-up — all done for you.",
+    url: "https://capitalgrowthclub.com",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lead Conversion Problem — Capital Growth Club",
+    description:
+      "The entire cold client acquisition machine for service businesses doing $250K+/mo. Ads, funnels, CRM, follow-up — done for you.",
+  },
+  alternates: {
+    canonical: "https://capitalgrowthclub.com",
+  },
+};
 
 /* ─── Main Page (Server Component) ─── */
 export default function Home() {

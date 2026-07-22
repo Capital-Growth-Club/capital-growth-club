@@ -3,9 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Application Reviewed",
+  title: "Application Reviewed — Capital Growth Club",
   description:
-    "Based on your application, you don't meet the qualifying criteria for our offer right now.",
+    "Based on your application, you don't meet the qualifying criteria for our done-for-you offer right now.",
+  openGraph: {
+    title: "Application Reviewed | Capital Growth Club",
+    description:
+      "Based on your application, you don't meet the qualifying criteria for our done-for-you offer right now.",
+    url: "https://capitalgrowthclub.com/not-a-fit",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Application Reviewed | Capital Growth Club",
+    description:
+      "Application reviewed — you don't meet our current qualifying criteria.",
+  },
   robots: { index: false, follow: false },
 };
 

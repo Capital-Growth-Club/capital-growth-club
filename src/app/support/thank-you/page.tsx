@@ -3,8 +3,22 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Call Confirmed",
-  description: "Your call with our team has been booked.",
+  title: "Support Call Confirmed",
+  description:
+    "Your support call with the Capital Growth Club team has been booked. Check your email for the calendar invite and prep instructions.",
+  openGraph: {
+    title: "Support Call Confirmed | Capital Growth Club",
+    description:
+      "Your support call has been booked. Check your email for the calendar invite and prep instructions.",
+    url: "https://capitalgrowthclub.com/support/thank-you",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Support Call Confirmed | Capital Growth Club",
+    description:
+      "Your support call has been booked. Check your email for the calendar invite and prep instructions.",
+  },
   robots: { index: false, follow: false },
 };
 

@@ -18,8 +18,10 @@ export const metadata: Metadata = {
     description:
       "We run paid ad campaigns that put qualified borrower leads into your lending team's pipeline every month.",
     url: "https://capitalgrowthclub.com/lenders",
+    type: "website",
   },
   twitter: {
+    card: "summary_large_image",
     title: "Lead Generation for Private Lenders | Capital Growth Club",
     description:
       "Qualified borrower leads delivered to your lending team's pipeline every month.",

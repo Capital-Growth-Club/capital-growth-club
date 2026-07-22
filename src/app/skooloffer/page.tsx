@@ -4,9 +4,22 @@ import Link from "next/link";
 import HeroVideo from "@/components/HeroVideo";
 
 export const metadata: Metadata = {
-  title: "Cold Acquisition Mastery — Capital Growth Club",
+  title: "Cold Acquisition Mastery — Learn To Build Your Own Client Acquisition Machine",
   description:
-    "The only community that teaches service-based business owners how to build and scale cold client acquisition systems.",
+    "The Skool community that teaches service-based business owners how to build and scale cold client acquisition systems — ads, funnels, CRM, follow-up, and tracking.",
+  openGraph: {
+    title: "Cold Acquisition Mastery | Capital Growth Club",
+    description:
+      "Learn to build and scale your own cold client acquisition systems — ads, funnels, CRM, follow-up, tracking. Skool community for service business owners.",
+    url: "https://capitalgrowthclub.com/skooloffer",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cold Acquisition Mastery | Capital Growth Club",
+    description:
+      "The Skool community teaching service business owners to build their own cold client acquisition machine.",
+  },
   robots: { index: false, follow: false },
 };
 
