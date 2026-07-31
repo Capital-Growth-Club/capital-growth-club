@@ -49,10 +49,13 @@ const realEstateQuestions: Question[] = [
     placeholder: "e.g. Charleston, SC",
   },
   {
-    id: "annual-deals",
-    question: "How many deals do you close a year?",
-    type: "single",
-    options: ["0–10", "11–25", "26+"],
+    id: "annual-sales-volume",
+    question: "What was your sales volume last year?",
+    subtitle: "Enter a number — digits only.",
+    type: "text",
+    numeric: true,
+    prefix: "$",
+    placeholder: "2,500,000",
   },
   {
     id: "lead-frustration",
@@ -351,7 +354,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
     }
 
     const role = answers["role"] as string | undefined;
-    const annualDeals = answers["annual-deals"] as string | undefined;
+    const annualSalesVolume = answers["annual-sales-volume"] as string | undefined;
     const leadFrustration = answers["lead-frustration"] as string | undefined;
     const businessType = answers["business-type"] as string | undefined;
     const monthlyRevenue = answers["monthly-revenue"] as string | undefined;
@@ -379,7 +382,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       phone: contactInfo.phone,
       question_set: questionSet,
       role: role || "",
-      annual_deals: annualDeals || "",
+      annual_sales_volume: annualSalesVolume || "",
       lead_frustration: leadFrustration || "",
       market: (answers["market"] as string) || "",
       business_type: businessType || "",

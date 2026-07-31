@@ -1,26 +1,42 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import localFont from "next/font/local";
 import SurveyProvider from "@/components/SurveyProvider";
 import SurveyButton from "@/components/SurveyButton";
 import HeroVideo from "@/components/HeroVideo";
 
+const editorialSerif = localFont({
+  src: "../../../../public/fonts/maison-galliard-serif.otf",
+  weight: "400",
+  style: "normal",
+  display: "swap",
+});
+
+const helveticaBold = localFont({
+  src: "../../../../public/fonts/HelveticaNeueBold.otf",
+  weight: "700",
+  style: "normal",
+  display: "swap",
+  variable: "--font-heading",
+});
+
 export const metadata: Metadata = {
-  title: "Real Estate Business In A Box — Start Building Your Own Book Of Business",
+  title: "From Solo Agent To Team Leader In 12 Months",
   description:
-    "Done-for-you Facebook ads, CRM, and IDX website that bring buyers and sellers directly to you. $500 setup, $497/mo, cancel anytime. Built for solo agents and micro-teams building their own real estate business.",
+    "The team-ready growth machine we build and run for top-producing real estate agents. Multi-agent CRM, market-tested ad funnels, and long-term nurture that keeps your pipeline alive for years.",
   openGraph: {
-    title: "Real Estate Business In A Box | Capital Growth Club",
+    title: "From Solo Agent To Team Leader In 12 Months | Capital Growth Club",
     description:
-      "Start building your own real estate business without needing to build a big personal brand or spend multiple 5–6 figures a month on marketing. Done-for-you ads + CRM + IDX.",
+      "The team-ready growth machine we build and run for top-producing real estate agents. Multi-agent CRM, market-tested ad funnels, and long-term nurture that scales your business.",
     url: "https://capitalgrowthclub.com/agents",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Real Estate Business In A Box | Capital Growth Club",
+    title: "From Solo Agent To Team Leader In 12 Months | Capital Growth Club",
     description:
-      "Done-for-you Facebook ads + CRM + IDX website. Built for solo agents building their own book of business without leaving their brokerage.",
+      "The team-ready growth machine for top-producing agents. Multi-agent CRM, market-tested funnels, long-term nurture.",
   },
   alternates: {
     canonical: "https://capitalgrowthclub.com/agents",
@@ -28,218 +44,223 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const isThisYou = [
-  "You're at a brokerage or team that hands you leads and systems — but nothing you actually own, control, or can scale yourself.",
-  "Every deal you close — whether it came from a referral you dug up yourself or a lead your team handed you — 30–50% of the check still walks. Because the brand on the sign isn't yours.",
-  "You know you're capable of running your own book of business. The struggle was never ability — it's always been “how do I generate sales volume like these bigger brokerages and teams do — but for myself?”",
-  "You'd rather run a proof of concept — build your own real estate business alongside your current setup and watch it produce — before jumping all in and hoping for the best.",
+const smsProof = [
+  { src: "/sms-5.png", w: 443, h: 240 },
+  { src: "/sms-6.png", w: 896, h: 594 },
+  { src: "/sms-7.jpg", w: 1284, h: 731 },
+  { src: "/sms-2.png", w: 282, h: 162 },
+  { src: "/sms-3.png", w: 272, h: 195 },
+  { src: "/sms-4.png", w: 288, h: 177 },
 ];
 
-const deliverables = [
+const problemBullets = [
   {
-    title: "A Full Specialist Team — Not Just Software",
-    body: "Every Real Estate Business In A Box includes a dedicated lead generation marketing team, a lead nurture specialist, and an advanced automations specialist working behind the scenes on your business. You don't hire them. You don't manage them. They build, tune, and improve your system every month while you focus on your calls and closings.",
-    image: "/deliverable-1.png",
-    imageW: 1536,
-    imageH: 1024,
-    framed: true,
-    imageNote:
-      "Image for representation — our entire team is fully remote.",
+    title: "You're the entire operation.",
+    body: "Top producer, marketer, follow-up team, ops manager — all in one seat. If you stop moving, the business stops moving with you.",
   },
   {
-    title: "Proven Lead Generation Campaigns",
-    body: "We install the same proven lead-gen campaigns top brokerages use to keep their agents' pipelines full — except now every lead comes and goes through you first.",
-    note: "Includes our verified lead guarantee — every lead has a real, valid phone number before it hits your CRM.",
-    stackedImages: [
-      // Back layer — newest two, huge, overflowing edges
-      {
-        src: "/sms-6.png",
-        w: 896,
-        h: 594,
-        cls: "w-[110%] -translate-x-[22%] -translate-y-[16%] z-0 shadow-lg",
-      },
-      {
-        src: "/sms-7.jpg",
-        w: 1284,
-        h: 731,
-        cls: "w-[110%] translate-x-[24%] translate-y-[20%] z-0 shadow-lg",
-      },
-      // Middle layer — older SMS proofs at corners, larger
-      {
-        src: "/sms-1.png",
-        w: 283,
-        h: 172,
-        cls: "w-[70%] -translate-x-[38%] -translate-y-[36%] z-10 shadow-xl",
-      },
-      {
-        src: "/sms-2.png",
-        w: 282,
-        h: 162,
-        cls: "w-[72%] translate-x-[38%] -translate-y-[38%] z-10 shadow-xl",
-      },
-      {
-        src: "/sms-3.png",
-        w: 272,
-        h: 195,
-        cls: "w-[70%] -translate-x-[38%] translate-y-[38%] z-10 shadow-xl",
-      },
-      {
-        src: "/sms-4.png",
-        w: 288,
-        h: 177,
-        cls: "w-[72%] translate-x-[38%] translate-y-[40%] z-10 shadow-xl",
-      },
-      // Front layer — hero center card, shifted up-left
-      {
-        src: "/sms-5.png",
-        w: 443,
-        h: 240,
-        cls: "w-[72%] -translate-x-[8%] -translate-y-[18%] z-20 shadow-2xl",
-      },
+    title: "You want to grind smarter, not harder.",
+    body: "Not more hours. Not more calls. You're ready to step into the CEO seat — leading a team, building infrastructure, and letting the business produce for you instead of through you.",
+  },
+  {
+    title: "You're done with tools that just add more work.",
+    body: "Another CRM. Another lead vendor. Another AI hack. Every “solution” has ended up as one more thing you have to manage. You want the actual machine — built and run for you, not one more subscription on your plate.",
+  },
+];
+
+const dreamBullets = [
+  {
+    title: "Wake up to a full pipeline.",
+    body: "Proven campaigns, refined for years across every real estate market we've touched. Your pipeline fills overnight — fresh buyer and seller inquiries in your CRM by the time you get to your first coffee.",
+  },
+  {
+    title: "Call the hottest lead — every time.",
+    body: "Every action every lead takes on your site is tracked — property views, return visits, time on page. Your dashboard tells you who's heating up so you spend your time on the ones ready to move, not the ones just browsing.",
+  },
+  {
+    title: "1,000 days of follow-up. Zero effort.",
+    body: "Every lead you don't close today gets rolled into a 1,000-day nurture — texts, emails, property alerts, timely check-ins. It restarts conversations for you and your team on autopilot so no opportunity ever slips through the cracks.",
+  },
+  {
+    title: "So much demand, you have to hire.",
+    body: "When your pipeline is producing more real conversations than you can work alone, hiring stops being a scary risk — it becomes the obvious next move. Your growth stops being about you and starts being about the team you build.",
+  },
+];
+
+const mechanismSteps = [
+  {
+    n: "01",
+    title: "Book your strategy call.",
+    body: "We map out your goals, your market, and what a top-producer team actually looks like for you. No pitch, no obligation.",
+    cta: true,
+  },
+  {
+    n: "02",
+    title: "We build your launch system.",
+    body: "Your own custom-branded IDX website, CRM, automations, and proven lead-gen funnels — all built and wired for you in under 10 days.",
+  },
+  {
+    n: "03",
+    title: "We launch your ads.",
+    body: "Proven campaigns go live in your market. Fresh buyer and/or seller inquiries start landing directly in your CRM within days.",
+  },
+  {
+    n: "04",
+    title: "You work the leads.",
+    body: "Show up, take the calls, close the deals. Or train your ISA and agents to take the calls and handle the closings for you — while you focus on leading the business.",
+  },
+];
+
+
+const includedItems = [
+  {
+    n: "01",
+    title: "Custom-Branded, High-Converting IDX Site",
+    bullets: [
+      "Live MLS listings, updated in real time",
+      "Fully custom-branded around you and your market",
+      "Design proven with tens of thousands in ad spend behind it",
+      "Turns cold browsers into real, verified buyer inquiries",
     ],
+    image: "/idx-site-book-black.png",
+    value: "$5,000",
+    valueNum: 5000,
+    lineLabel: "High-Converting IDX Site",
+    lineValue: "$5,000",
   },
   {
-    title: "CRM + IDX Website — Fully Set Up",
-    body: "Captures every lead, tags them by interest, and auto-nurtures them for life. You get a real, proven, high-converting website with live MLS listings — not a static landing page.",
-    image: "/deliverable-3.png",
-    imageW: 1920,
-    imageH: 1080,
+    n: "02",
+    title: "The 1,000-Day Lead Nurture System",
+    bullets: [
+      "Instant speed-to-lead SMS the moment they opt in",
+      "Automated email property updates matched to their interest",
+      "1,000+ days of check-ins and re-engagement, on autopilot",
+      "No lead ever falls through the cracks — even years later",
+    ],
+    image: "/lead-nurture-book-black.png",
+    value: "$4,000",
+    valueNum: 4000,
+    lineLabel: "1,000-Day Nurture System",
+    lineValue: "$4,000",
   },
   {
-    title: "Automated Text + Email Follow-Up",
-    body: "Speed-to-lead SMS the second they opt in. Long-term nurture emails that keep every lead warm until they're ready. No one falls through the cracks.",
-    image: "/deliverable-4.png",
-    imageW: 1920,
-    imageH: 1080,
+    n: "03",
+    title: "Behavior Tracking Pro",
+    bullets: [
+      "Tracks every property view, save, and return visit",
+      "Scores leads based on real intent signals — not guesswork",
+      "Tells your team exactly who to call next, in order",
+      "So you spend time on the hottest leads first, always",
+    ],
+    image: "/behavior-tracking-book-black.png",
+    value: "$1,500",
+    valueNum: 1500,
+    lineLabel: "Behavior Tracking Pro",
+    lineValue: "$1,500",
   },
   {
-    title: "Lead Behavior Tracking & Alerts",
-    body: "The system watches what every lead does on your site — which listings they view, how often, when they come back — and tells you exactly who to prioritize calling next based on their behavior.",
-    image: "/deliverable-5.png",
-    imageW: 1138,
-    imageH: 986,
-    imageClass: "w-2/3 h-auto mx-auto drop-shadow-lg",
+    n: "04",
+    title: "Proven Meta & Google Lead-Gen Campaigns",
+    bullets: [
+      "Powered by $28M+ in managed ad spend",
+      "Funnels stress-tested across dozens of markets and price points",
+      "Every lead comes with a verified phone number, <strong><em>guaranteed</em></strong>",
+      "No fakes, no bots, no landlines — just real people",
+    ],
+    image: "/lead-gen-book-black.png",
+    value: "$5,000",
+    valueNum: 5000,
+    lineLabel: "Lead-Gen Campaigns",
+    lineValue: "$5,000",
   },
   {
-    title: "Sales & Marketing Dashboards",
-    body: "See how your business is running at a glance. From sales performance across your whole team to which marketing efforts are driving the highest ROI — every number that matters, in one view.",
-    image: "/deliverable-6.png",
-    imageW: 1920,
-    imageH: 1080,
-    imageClass: "w-full h-auto scale-110 origin-center drop-shadow-xl",
-  },
-  {
-    title: "Full Team Scaling System",
-    body: "When you're ready, plug in new agents or ISAs at any time. Full training and support team included so you scale quickly instead of getting stuck training people yourself.",
-    image: "/deliverable-7.png",
-    imageW: 1254,
-    imageH: 1254,
-    imageClass: "w-2/3 h-auto mx-auto rounded-full drop-shadow-lg",
+    n: "05",
+    title: "A Full Marketing Agency Behind It All",
+    bullets: [
+      "Dedicated lead-gen, nurture, and automation specialists",
+      "Managed and optimized every single month",
+      "No software login you have to figure out yourself",
+      "You focus on leading — we focus on producing",
+    ],
+    image: "/top-producer-bundle.png",
+    value: "$5,000/mo",
+    valueNum: 60000,
+    lineLabel: "Full-Service Agency (12 months)",
+    lineValue: "$60,000",
   },
 ];
 
-const steps = [
-  {
-    label: "Step 1",
-    title: "Strategy Call",
-    duration: "Day 0",
-    body: "We map your market, price points, target buyers, and goals. If we're not a fit, we tell you on the call.",
-  },
-  {
-    label: "Step 2",
-    title: "Build & Launch",
-    duration: "Under 10 days",
-    body: "We build your Real Estate Business In A Box end-to-end — ads, funnel, CRM, IDX site, nurture sequences — and go live in under 10 days.",
-  },
-  {
-    label: "Step 3",
-    title: "Optimize & Scale",
-    duration: "Ongoing",
-    body: "We tune the ads and nurture based on real conversations and real closings. You stay in your zone of genius. We stay in ours.",
-  },
+const forYou = [
+  "Treat real estate like a real business — not a family-and-friends banquet",
+  "Are willing to invest in lead gen and systems to scale year over year",
+  "Understand speed-to-lead and long-term follow-up are what turn leads into deals",
+  "Are ready to grow and eventually lead a small team of 3–5 agents",
+];
+
+const notForYou = [
+  "Brand-new or part-time agents who still need sales coaching",
+  "Ultra-luxury agents selling $5M+ homes — we're built for volume, not trophy sales",
+  "Agents who want leads without doing the follow-up work",
+  "Agents who need today's leads to pay tomorrow's bills",
 ];
 
 const faqs = [
   {
-    q: "Do I need to leave my brokerage to work with you?",
-    a: "No. Most of our clients start this while they're still active at their current team or brokerage. Same phone, same closings, same paychecks. The machine runs in parallel — building your own pipeline in your own name. Once you see the results, you decide if you want to negotiate a better split, launch your own team, or stay put with extra income. That decision is yours, not ours.",
+    q: "Can I do this under my current brokerage?",
+    a: "Yes. Everything we build lives under your name, in your CRM, on your domain. Whatever splits, MLS access, or transaction rules your brokerage requires stay exactly the same — we don't touch that. What we build is the client-generation and pipeline machine that runs in parallel with whatever your brokerage provides.",
   },
   {
-    q: "What if my brokerage or team agreement doesn't allow this?",
-    a: "Every agreement is different, but most brokerages allow agents to build a personal brand and generate their own leads. Check your agreement first. If it's unclear, we've helped many agents structure this to fit inside their existing contract without triggering any conflicts. This isn't designed to compete with your brokerage's leads. It's designed to build YOUR book of business on the side.",
+    q: "How fast do leads start coming in?",
+    a: "Usually within 48–72 hours of your ads going live. Full install — site, CRM, campaigns, automations, dashboards — takes under 10 days from your discovery call. Once live, expect a steady weekly cadence of new inquiries. Most Tier A/B markets see 30+ qualified inquiries in the first 60 days.",
   },
   {
-    q: "What exactly counts as a \"qualified lead\" for the 60-day guarantee?",
-    a: "A qualified lead is a real, non-duplicate person who submitted their info through one of our campaigns and provided a verified working phone number. Bots, fake numbers, and duplicates don't count. Every lead we count toward the guarantee has been phone-verified before it lands in your CRM.",
+    q: "What ad budget do I need in my market?",
+    a: "Depends on your tier. Tier A lifestyle markets (30A, Scottsdale, Naples): $15–20/day minimum — big audiences move on smaller spend. Tier B life-milestone markets (Plano, Chandler, Charleston): $25–35/day minimum. Tier C hidden-gem markets: $40–50+/day since smaller audiences need heavier saturation to produce steady volume. We set the exact number with you on the call before you commit to anything.",
   },
   {
-    q: "How does the 60-day guarantee actually work?",
-    a: "If we don't deliver at least 30 qualified leads inside the first 60 days of your ads going live, we keep running your entire system at no additional management fee until we do. You keep paying ad spend directly to Facebook. We keep working — for free — until we hit the number. The guarantee applies to Facebook / Meta campaigns and is spelled out in your Services Agreement and our Terms of Service.",
+    q: "What are the additional costs beyond your management fee?",
+    a: "Beyond our $497/month management fee, you'll have two other recurring costs. (1) Your Facebook ad spend — paid directly to Meta, usually $15–$50/day depending on your market tier. (2) An IDX Broker Engage plan at $100/month — billed directly to IDX Broker (not us), since we integrate with their MLS feed to power the live listings on your site. You can cancel your IDX Broker subscription with them anytime. Plus a one-time $500 setup fee to us for the initial build.",
   },
   {
-    q: "What if I'm not techy?",
-    a: "That's exactly who this is built for. We build and run everything. You don't touch Facebook Ads Manager, you don't set up automations, you don't hire a developer. You just handle the calls and closings — the same thing you already do today.",
+    q: "How many ad campaigns can I run?",
+    a: "Your base $497/month includes one buyer campaign. Additional campaigns run alongside it: $297/month per additional buyer campaign, or $497/month per seller campaign. Each new campaign also requires a one-time setup fee no greater than $500 depending on the complexity of the request.",
   },
   {
-    q: "How much ad spend do I need?",
-    a: "Most agents start at $15–$30 a day ($450–$900/month), then scale once they see deals landing. Ad spend is paid directly to Facebook — no per-lead fees, no markup on our end.",
+    q: "Do you offer custom branding — logos, colors, fonts?",
+    a: "Yes. We can build a full brand template — logo, color system, font choices, and design language — that carries across your IDX site, ads, emails, and everything else we produce. Bring it up on your discovery call if you want a full brand build; pricing depends on scope and is separate from the base management fee.",
   },
   {
-    q: "What's the total monthly cost?",
-    a: "Three parts: (1) our $497/month management fee, (2) $500/month minimum ad spend paid directly to Facebook, and (3) $100/month for an IDX Broker Engage plan — that's the IDX provider that directly integrates with your Real Estate Business In A Box to power the live MLS listings on your site. Total: $1,097/month minimum. If you already have IDX through another provider, we still need you on IDX Broker for the integration to work — whether you keep or cancel your old subscription is your call. We help you set up IDX Broker, buy a domain if you need one, and configure everything else.",
+    q: "Can you do my social media too?",
+    a: "Yes, but with a specific scope: we produce the first 10–20 conversion-optimized posts (billed separately) to establish a starting brand presence. You do NOT need a big personal brand or thousands of followers to start closing deals — we've grown multiple agents and teams from zero and closed deals for them before they ever hit 500 followers. Ongoing content creation isn't part of the base package, but the launch brand build is available.",
   },
   {
-    q: "How long is the commitment?",
-    a: "Cancel anytime after the initial under-10-day build. No long-term contract, no cancellation penalty. If we're not performing, you leave. That's exactly why the guarantee is what it is — if we don't hit 30 qualified leads in 60 days, we run your system for free until we do.",
+    q: "How does the lead guarantee actually work?",
+    a: "We qualify you for the guarantee on your discovery call — it depends on your market's audience size and whether you can commit to the minimum ad spend for 60 days straight (no pausing campaigns, no switching them mid-flight). If you qualify and hold the commitment, we guarantee at least 30 real, phone-verified buyer leads a month. If we don't hit that number, we keep running your entire system at no management fee until we do.",
   },
   {
-    q: "What if I want to eventually build a team or add ISAs?",
-    a: "That's exactly what the Full Team Scaling System is for. When you're ready to add agents or ISAs, we plug them into your existing infrastructure and handle the training and support so you don't get stuck onboarding people yourself. Your machine stays yours. The scale just goes up without you spending your weekends training new hires.",
+    q: "What happens if my market doesn't qualify for the guarantee?",
+    a: "You can still work with us — same install, same system, same team behind you. The volume guarantee just doesn't apply because smaller-population markets produce less predictable volume. You'll get everything else, and we'll set realistic expectations based on your actual audience size on the call.",
   },
   {
-    q: "How do I know when it's time to leave my brokerage?",
-    a: "You'll know when the split math stops making sense. Most of our clients hit a moment where the leads their own machine is producing outperform what they're getting from their broker — and the 30–50% commission cut just becomes a math problem. When you hit that moment, you'll know. We'll help you think through it if you want.",
+    q: "What if I don't want to build a team?",
+    a: "This system is built to scale — and building a team is usually part of that — but you can get really far running it solo too. Most agents eventually hit a point where they have to choose between hiring more agents or bringing on a trained ISA (Inside Sales Agent). Our preferred route for the fastest results is the ISA — one person handling the calls and appointment-setting while you focus on the closings. Either way, the machine keeps producing regardless of your team size.",
   },
   {
-    q: "How do I transfer my existing leads into the new system?",
-    a: "If your current CRM allows a bulk export, we import them straight into your new system. Some platforms you don't own or control block that — in which case one of our VAs can do it manually for an added cost, or you cherry-pick and move only your hottest leads by hand. Either way, you don't lose your pipeline.",
+    q: "Do you call my leads or set appointments for me?",
+    a: "No. Everything up to the phone call is on us — capture, tagging, alerts, routing, nurture. The moment a lead is warm and ready, you (or your ISA when you hire one) do the calling. If you want done-for-you calling, we can refer you to a partner ISA provider — but it's not part of the base system.",
   },
-  {
-    q: "What makes your leads different than Zillow / Realtor.com / other lead sources?",
-    a: "The lead itself isn't the difference — the system around it is. We combine targeted ads + your own CRM + IDX website + lifetime automated nurture + speed-to-lead SMS + lead behavior alerts. Same buyer would be a $200 Zillow lead sold to four other agents. Through your Real Estate Business In A Box, they're exclusively yours, dropped straight into your CRM, at a fraction of the cost.",
-  },
-  {
-    q: "How is this different from Realgeeks or other CRM software?",
-    a: "Realgeeks and similar tools give you the software and hand you the keys. Great — if you have the time, the tech skills, and the ad budget to figure it all out yourself. We're the opposite. Software plus a service team that builds it, runs it, and optimizes it for you. Same tools you'd get from a software company, plus the people who actually operate them. Software pricing, done-for-you service.",
-  },
-  {
-    q: "Do I need my own website already?",
-    a: "You can absolutely have your own site for anything else — personal blog, static landing pages, whatever. But for the MLS listing site that pairs with your Real Estate Business In A Box, we use our own proven high-converting, modern, minimal design and theme it to your brand — logo, colors, fonts, style. It's not a template you have to customize. It's a system that's already been tested and optimized, adapted to look like yours.",
-  },
-];
-
-const leadQualityImages = [
-  { src: "/lead-quality-2.png", w: 462, h: 201 },
-  { src: "/lead-quality-3.png", w: 430, h: 208 },
-  { src: "/lead-quality-4.png", w: 433, h: 312 },
-  { src: "/lead-quality-5.png", w: 483, h: 267 },
-  { src: "/lead-quality-6.png", w: 496, h: 199 },
-  { src: "/lead-quality-7.png", w: 353, h: 258 },
-  { src: "/lead-quality-8.png", w: 507, h: 240 },
-  { src: "/lead-quality-9.png", w: 488, h: 223 },
-  { src: "/lead-quality-1.png", w: 549, h: 420 },
 ];
 
 export default function AgentsPage() {
   return (
     <SurveyProvider questionSet="real-estate">
-      <main className="min-h-screen bg-white text-neutral-900 relative overflow-hidden">
-        {/* Ambient gold glows — the "techy premium" backdrop */}
+      <main className={`${helveticaBold.variable} min-h-screen bg-white text-neutral-900 relative overflow-hidden`}>
+        {/* Ambient gold glows */}
         <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-brand-gold/[0.10] rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute top-[70vh] left-0 w-[700px] h-[700px] bg-brand-gold/[0.06] rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute top-[160vh] right-0 w-[600px] h-[600px] bg-brand-gold/[0.05] rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-[80vh] left-0 w-[700px] h-[700px] bg-brand-gold/[0.06] rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-[180vh] right-0 w-[600px] h-[600px] bg-brand-gold/[0.05] rounded-full blur-[100px] pointer-events-none" />
 
-        {/* Subtle grid pattern — SaaS techy feel */}
+        {/* Subtle grid pattern */}
         <div
           className="absolute inset-0 pointer-events-none opacity-[0.025]"
           style={{
@@ -265,49 +286,53 @@ export default function AgentsPage() {
                 Capital Growth Club
               </span>
             </Link>
-            <SurveyButton location="nav" className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-sm py-2.5 px-5 rounded-lg hover:bg-neutral-800 transition-colors">
-              Book Your Discovery Call
+            <SurveyButton
+              location="nav"
+              className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-sm py-2.5 px-5 rounded-lg hover:bg-neutral-800 transition-colors"
+            >
+              Book Your Strategy Call
             </SurveyButton>
           </div>
         </nav>
 
-        {/* ═════════════ HERO ═════════════ */}
-        <section className="relative pt-32 pb-10 md:pt-36 md:pb-12">
+        {/* ═════════════ 1. HERO ═════════════ */}
+        <section className="relative pt-32 pb-14 md:pt-36 md:pb-16">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex flex-col items-center text-center">
-              {/* Product tag */}
-              <div className="inline-flex items-center gap-2 bg-brand-gold/[0.08] border border-brand-gold/25 rounded-full px-4 py-1.5 mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                <span className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase">
-                  Full Real Estate Business In A Box
+              <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full px-4 py-2 mb-8 shadow-sm shadow-neutral-900/10">
+                <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
+                <span className="text-neutral-900 text-xs md:text-sm font-black tracking-[0.15em] uppercase">
+                  For Ambitious Real Estate Agents Only
                 </span>
               </div>
 
-              {/* Headline */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-[1.15] tracking-tight uppercase text-neutral-900 max-w-4xl">
-                Start building{" "}
+              <h1 className={`${helveticaBold.className} text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight uppercase text-neutral-900 max-w-5xl`}>
+                From Solo Agent To{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
-                  your own real estate business
+                  Team Leader
                 </span>{" "}
-                without needing to build a big personal brand or spend multiple
-                5–6 figures a month on marketing.
+                In 90 Days
               </h1>
 
-              {/* Subhead */}
               <p className="mt-7 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl">
-                We'll install and manage the exact lead generation and
-                long-term nurture systems billion-dollar brokerages and teams
-                use — built for you, run for you, owned by you. We bring you
-                the clients, you handle the calls and closings.
+                Complete done-for-you real estate marketing agency that builds and manages your IDX
+                site, lead gen, and long-term nurture — so you can focus on building a team that
+                handles the calls and closings for you.
               </p>
 
-              {/* Credibility line */}
-              <p className="mt-5 text-sm text-neutral-500">
-                Built for ambitious agents ready to own their book of business.
+              <p className="mt-5 text-sm md:text-base text-neutral-500 italic">
+                Built for ambitious real estate agents looking to close more deals and scale their
+                real estate business.
               </p>
 
-              {/* Video */}
-              <div className="mt-10 w-full max-w-3xl">
+              <p className="mt-8 text-brand-gold text-base md:text-lg font-bold tracking-wide inline-flex items-center gap-3">
+                <span aria-hidden>↓</span>
+                Watch Free Scale Your Business Training Video
+                <span aria-hidden>↓</span>
+              </p>
+
+              {/* VSL */}
+              <div className="mt-5 w-full max-w-3xl">
                 <HeroVideo
                   src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a5bece41a0f048050ae93ec.mp4"
                   className="mb-0"
@@ -315,46 +340,87 @@ export default function AgentsPage() {
               </div>
 
               {/* CTA */}
-              <div className="mt-6 flex flex-col items-center gap-4">
-                <span className="cta-wrap"><SurveyButton location="hero" className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-lg py-4 px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
-                  Book Your Discovery Call
-                  <span className="text-brand-gold">→</span>
-                </SurveyButton></span>
-                <p className="text-xs text-neutral-500">
-                  No brokerage exit required — most clients start alongside
-                  their current setup.
+              <div className="mt-8 flex flex-col items-center gap-4">
+                <span className="cta-wrap">
+                  <SurveyButton
+                    location="hero"
+                    className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-lg py-4 px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5"
+                  >
+                    Book Your Strategy Call
+                    <span className="text-brand-gold">→</span>
+                  </SurveyButton>
+                </span>
+                <p className="text-xs text-neutral-500 max-w-md text-center">
+                  No obligation. Only for agents serious about scaling their real estate business.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ═════════════ SMS PROOF ═════════════ */}
-        <section className="relative py-12 md:py-16">
+        {/* ═════════════ 2. RESULTS STRIP ═════════════ */}
+        <section className="relative py-10 md:py-14 bg-neutral-50/70 border-y border-neutral-200/70">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="grid grid-cols-3 items-center gap-4 md:gap-10">
+              <div className="text-center">
+                <p className={`${editorialSerif.className} text-4xl md:text-6xl text-neutral-900 leading-none`}>
+                  8<span className="text-brand-gold">+</span>
+                </p>
+                <p className={`${editorialSerif.className} mt-3 text-xs md:text-sm text-neutral-500 tracking-widest uppercase leading-tight`}>
+                  Years servicing real estate agents
+                </p>
+              </div>
+              <div className="text-center border-x border-neutral-200 px-2 md:px-6">
+                <p className={`${editorialSerif.className} text-4xl md:text-6xl text-neutral-900 leading-none`}>
+                  $150M<span className="text-brand-gold">+</span>
+                </p>
+                <p className={`${editorialSerif.className} mt-3 text-xs md:text-sm text-neutral-500 tracking-widest uppercase leading-tight`}>
+                  In attributed sales volume
+                </p>
+              </div>
+              <div className="text-center">
+                <p className={`${editorialSerif.className} text-4xl md:text-6xl text-neutral-900 leading-none`}>
+                  $28M<span className="text-brand-gold">+</span>
+                </p>
+                <p className={`${editorialSerif.className} mt-3 text-xs md:text-sm text-neutral-500 tracking-widest uppercase leading-tight`}>
+                  In ad spend managed
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ 2b. SMS PROOF ═════════════ */}
+        <section className="relative py-20 md:py-24">
           <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center max-w-2xl mx-auto mb-10">
-              <p className="text-neutral-900 text-2xl md:text-3xl lg:text-4xl font-black tracking-tight uppercase">
-                Real Texts. From Real Clients.
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
+                <span className={`${editorialSerif.className} text-neutral-900 text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
+                  Real Texts. Real Clients.
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900 mb-5">
+                Here&apos;s what our clients are{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  actually texting us.
+                </span>
+              </h2>
+              <p className="text-neutral-600 text-lg leading-relaxed">
+                Two deals under contract in 47 days on $1,000 of ad spend. Five closings in five
+                months on $2,200. Ads carrying more than half the business — while working{" "}
+                <em>less</em> than they were before.
               </p>
             </div>
 
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance] max-w-5xl mx-auto">
-              {[
-                { src: "/sms-1.png", w: 283, h: 172 },
-                { src: "/sms-2.png", w: 282, h: 162 },
-                { src: "/sms-3.png", w: 272, h: 195 },
-                { src: "/sms-4.png", w: 288, h: 177 },
-                { src: "/sms-5.png", w: 443, h: 240 },
-                { src: "/sms-6.png", w: 896, h: 594 },
-                { src: "/sms-7.jpg", w: 1284, h: 731 },
-              ].map((img, i) => (
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance] max-w-5xl mx-auto">
+              {smsProof.map((img, i) => (
                 <div
                   key={img.src}
-                  className="mb-6 break-inside-avoid rounded-2xl overflow-hidden border border-neutral-200 bg-white shadow-md shadow-neutral-900/5"
+                  className="mb-5 break-inside-avoid rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-sm"
                 >
                   <Image
                     src={img.src}
-                    alt={`SMS conversation ${i + 1}`}
+                    alt={`Real client text ${i + 1}`}
                     width={img.w}
                     height={img.h}
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
@@ -365,34 +431,436 @@ export default function AgentsPage() {
               ))}
             </div>
 
+            <p className="mt-8 text-center text-neutral-500 text-sm max-w-2xl mx-auto italic">
+              Names, numbers, and identifying details blurred for client confidentiality.
+            </p>
           </div>
         </section>
 
-        {/* ═════════════ IS THIS YOU ═════════════ */}
-        <section className="relative pt-10 pb-20 md:pt-12 md:pb-28">
+        {/* ═════════════ 3. PROBLEM ═════════════ */}
+        <section className="relative pt-8 md:pt-12 pb-20 md:pb-28">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-12">
-              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
-                Qualifying
-              </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900">
-                Is this you?
+              <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
+                <span className={`${editorialSerif.className} text-neutral-900 text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
+                  The Bottleneck
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
+                You can sell. You can close. You can prospect.{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  You can do it all — and that&apos;s exactly the problem.
+                </span>
               </h2>
             </div>
 
-            <div className="grid gap-3">
-              {isThisYou.map((item, i) => (
+            <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+              {problemBullets.map((b, i) => (
                 <div
                   key={i}
-                  className="flex items-start gap-4 bg-white border border-neutral-200 rounded-2xl p-5 md:p-6 shadow-sm"
+                  className="relative bg-white border border-neutral-200 rounded-xl p-7 md:p-8 shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className="shrink-0 w-9 h-9 rounded-lg bg-gradient-to-br from-brand-gold to-[#D4B87A] flex items-center justify-center shadow-sm shadow-brand-gold/30">
-                    <svg
-                      width="18"
-                      height="18"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                    >
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className={`${editorialSerif.className} text-brand-gold text-base md:text-lg tracking-widest`}>
+                      0{i + 1}
+                    </span>
+                    <span className="h-px w-8 bg-brand-gold/40" />
+                  </div>
+                  <h3 className="text-lg md:text-xl font-bold text-neutral-900 leading-snug mb-3 font-[family-name:var(--font-heading)]">
+                    {b.title}
+                  </h3>
+                  <p className="text-neutral-600 leading-relaxed text-[15px] md:text-base">
+                    {b.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-14 md:mt-16 text-center">
+              <p className="text-2xl md:text-3xl font-bold text-neutral-900 mb-6 leading-tight font-[family-name:var(--font-heading)]">
+                Get a team that does it all for you.
+              </p>
+              <span className="cta-wrap inline-block">
+                <SurveyButton
+                  location="bottleneck"
+                  className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5"
+                >
+                  Book Your Strategy Call
+                  <span className="text-brand-gold">→</span>
+                </SurveyButton>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ 4. DREAM OUTCOME ═════════════ */}
+        <section className="relative py-20 md:py-28 bg-[#0E0E0E]">
+          <div className="relative max-w-4xl mx-auto px-6">
+            <div className="text-center mb-14">
+              <div className="mx-auto flex w-fit items-center justify-center bg-gradient-to-r from-brand-gold/[0.14] via-brand-gold/[0.08] to-brand-gold/[0.14] border border-brand-gold/40 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-md shadow-brand-gold/20">
+                <span className={`${editorialSerif.className} text-brand-gold text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
+                  The Outcome
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-white">
+                What the next year{" "}
+                <span className={`${editorialSerif.className} font-normal bg-gradient-to-r from-[#BB9A65] to-[#FFFCD8] bg-clip-text text-transparent`}>
+                  could look like for you.
+                </span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+              {dreamBullets.map((b, i) => (
+                <div
+                  key={i}
+                  className="relative bg-neutral-900/60 border border-white/10 rounded-xl p-7 md:p-8 backdrop-blur-sm hover:border-brand-gold/40 transition-colors"
+                >
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className={`${editorialSerif.className} text-brand-gold text-base md:text-lg tracking-widest`}>
+                      0{i + 1}
+                    </span>
+                    <span className="h-px w-8 bg-brand-gold/50" />
+                  </div>
+                  <h3 className="text-lg md:text-xl font-bold text-white leading-snug mb-3">
+                    {b.title}
+                  </h3>
+                  <p className="text-neutral-400 leading-relaxed text-[15px] md:text-base">
+                    {b.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-14 md:mt-16 text-center">
+              <p className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight font-[family-name:var(--font-heading)]">
+                Only focus on what helps close deals — our team will do the rest.
+              </p>
+              <span className="cta-wrap inline-block">
+                <SurveyButton
+                  location="dream"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-lg shadow-brand-gold/30 hover:shadow-xl hover:-translate-y-0.5"
+                >
+                  Book Your Strategy Call
+                  <span className="text-neutral-900">→</span>
+                </SurveyButton>
+              </span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ 5. MECHANISM ═════════════ */}
+        <section className="relative py-20 md:py-28">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <p className="text-neutral-500 text-xs font-bold tracking-[0.4em] uppercase mb-4">
+                The Mechanism
+              </p>
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-gold/[0.14] via-brand-gold/[0.08] to-brand-gold/[0.14] border border-brand-gold/35 rounded-full px-6 py-3 mb-8 shadow-md shadow-brand-gold/10">
+                <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
+                <span className="text-neutral-900 text-sm md:text-base font-black tracking-[0.15em] uppercase">
+                  The Team-Ready Growth System
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
+                How it{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  actually works.
+                </span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {mechanismSteps.map((s) => (
+                <div
+                  key={s.n}
+                  className="bg-white border border-neutral-200 rounded-2xl p-6 md:p-7 shadow-sm relative flex flex-col"
+                >
+                  <div className={`${editorialSerif.className} absolute -top-3 left-6 bg-gradient-to-br from-brand-gold to-[#D4B87A] text-neutral-900 text-xs tracking-widest rounded-md px-2.5 pt-2 pb-1 leading-none shadow-md shadow-brand-gold/30`}>
+                    STAGE {s.n}
+                  </div>
+                  <h3 className="mt-4 text-lg md:text-xl font-bold text-neutral-900 mb-3 leading-snug font-[family-name:var(--font-heading)]">
+                    {s.title}
+                  </h3>
+                  <p className="text-neutral-600 leading-relaxed text-[15px] flex-1">
+                    {s.body}
+                  </p>
+                  {s.cta && (
+                    <div className="mt-5">
+                      <span className="cta-wrap block">
+                        <SurveyButton
+                          location="mechanism-stage-1"
+                          className="w-full inline-flex items-center justify-center gap-2 bg-neutral-900 text-white font-semibold text-sm py-3 px-4 rounded-lg hover:bg-neutral-800 transition-colors"
+                        >
+                          Book Your Strategy Call
+                          <span className="text-brand-gold">→</span>
+                        </SurveyButton>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ 5b. FIT CHECK ═════════════ */}
+        <section className="relative py-12 md:py-16 bg-neutral-50/70 border-y border-neutral-200/70">
+          <div className="max-w-5xl mx-auto px-6">
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
+                <span className={`${editorialSerif.className} text-neutral-900 text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
+                  Fit Check
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
+                Is this the{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  right fit for you?
+                </span>
+              </h2>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              {/* For */}
+              <div className="bg-white border border-brand-gold/30 rounded-2xl p-7 md:p-8 shadow-md shadow-brand-gold/10">
+                <p className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase mb-5">
+                  Built for agents who…
+                </p>
+                <ul className="space-y-4">
+                  {forYou.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <div className="shrink-0 w-6 h-6 rounded-md bg-gradient-to-br from-brand-gold to-[#D4B87A] flex items-center justify-center mt-0.5">
+                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                          <path
+                            d="M5 10l4 4 6-8"
+                            stroke="#0E0E0E"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+                      <p className="text-neutral-800 leading-relaxed text-base">{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Not for */}
+              <div className="bg-white border border-neutral-200 rounded-2xl p-7 md:p-8 shadow-sm">
+                <p className="text-neutral-500 text-xs font-bold tracking-[0.2em] uppercase mb-5">
+                  Not for…
+                </p>
+                <ul className="space-y-4">
+                  {notForYou.map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <div className="shrink-0 w-6 h-6 rounded-md bg-neutral-900 flex items-center justify-center mt-0.5">
+                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                          <path
+                            d="M6 6l8 8M14 6l-8 8"
+                            stroke="#BB9A65"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+                      </div>
+                      <p className="text-neutral-500 leading-relaxed text-base">{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ 7. OFFER STACK ═════════════ */}
+        <section className="relative py-20 md:py-28">
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-14">
+              <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
+                <span className={`${editorialSerif.className} text-neutral-900 text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
+                  What You Get
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900 mb-5">
+                Everything you need to run a growing team —{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  none of it run by you.
+                </span>
+              </h2>
+              <p className="text-neutral-600 text-lg leading-relaxed">
+                Clear division of labor. We handle the machine. You and your people work the
+                pipeline it feeds you.
+              </p>
+            </div>
+
+            <div className="mt-10 relative w-full max-w-3xl mx-auto mb-14 md:mb-16">
+              <Image
+                src="/top-producer-bundle.png"
+                alt="Top Producer Team Launch System — the full bundle"
+                width={2906}
+                height={1627}
+                className="w-full h-auto drop-shadow-2xl"
+                priority
+              />
+            </div>
+
+            {/* Section divider heading */}
+            <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
+              <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 leading-tight font-[family-name:var(--font-heading)]">
+                5 systems. All built and managed for you.
+              </h3>
+              <p className="mt-3 text-neutral-600 text-base md:text-lg leading-relaxed">
+                Here&apos;s every piece — and what it&apos;d cost you à la carte.
+              </p>
+            </div>
+
+            {/* 5 Alternating item rows */}
+            <div className="space-y-20 md:space-y-28">
+              {includedItems.map((item, i) => {
+                const imageOnLeft = i % 2 === 0;
+                return (
+                  <div
+                    key={item.n}
+                    className="grid md:grid-cols-2 gap-8 md:gap-14 items-center"
+                  >
+                    <div className={imageOnLeft ? "md:order-1" : "md:order-2"}>
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        width={3000}
+                        height={3000}
+                        sizes={
+                          item.image === "/top-producer-bundle.png"
+                            ? "(max-width: 768px) 95vw, 50vw"
+                            : "(max-width: 768px) 80vw, 40vw"
+                        }
+                        className={
+                          item.image === "/top-producer-bundle.png"
+                            ? "w-full max-w-2xl h-auto mx-auto drop-shadow-2xl"
+                            : "w-3/4 md:w-full max-w-md h-auto mx-auto drop-shadow-2xl"
+                        }
+                      />
+                    </div>
+                    <div className={imageOnLeft ? "md:order-2" : "md:order-1"}>
+                      <p className={`${editorialSerif.className} text-brand-gold text-base md:text-lg tracking-widest mb-3`}>
+                        INCLUDED &middot; {item.n}
+                      </p>
+                      <h3 className="text-2xl md:text-3xl font-bold text-neutral-900 leading-tight mb-5 font-[family-name:var(--font-heading)]">
+                        {item.title}
+                      </h3>
+                      <ul className="space-y-2.5 mb-6">
+                        {item.bullets.map((b) => (
+                          <li key={b} className="flex items-start gap-3">
+                            <div className="shrink-0 w-5 h-5 rounded-md bg-gradient-to-br from-brand-gold to-[#D4B87A] flex items-center justify-center mt-0.5">
+                              <svg width="12" height="12" viewBox="0 0 20 20" fill="none">
+                                <path
+                                  d="M5 10l4 4 6-8"
+                                  stroke="#0E0E0E"
+                                  strokeWidth="2.5"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            </div>
+                            <p
+                              className="text-neutral-700 leading-snug text-[15px] md:text-base"
+                              dangerouslySetInnerHTML={{ __html: b }}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="inline-flex items-baseline gap-3 bg-neutral-100 border border-neutral-200 rounded-lg px-4 py-2.5">
+                        <span className="text-neutral-500 text-[11px] font-bold uppercase tracking-widest">
+                          Valued at
+                        </span>
+                        <span className="text-neutral-900 text-xl md:text-2xl font-black">
+                          {item.value}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Totals + Pricing Block */}
+            <div className="mt-20 md:mt-28 max-w-2xl mx-auto bg-white border border-neutral-200 rounded-2xl p-8 md:p-10 shadow-lg">
+              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-6 text-center">
+                Do The Math
+              </p>
+
+              <div className="space-y-3 mb-6 text-[15px] md:text-base">
+                {includedItems.map((item) => (
+                  <div
+                    key={item.n}
+                    className="flex justify-between items-baseline text-neutral-700"
+                  >
+                    <span>{item.lineLabel}</span>
+                    <span className="text-neutral-900 text-lg font-semibold">
+                      {item.lineValue}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="border-t border-neutral-200 pt-5 mb-6">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-neutral-900 text-lg font-bold">
+                    A la carte total
+                  </span>
+                  <span className="text-neutral-400 text-2xl md:text-3xl font-black line-through decoration-red-500/70 decoration-4">
+                    $75,500
+                  </span>
+                </div>
+              </div>
+
+              <div className="mb-8 -mx-2">
+                <Image
+                  src="/top-producer-bundle.png"
+                  alt="Real Estate Business In A Box — the full bundle"
+                  width={2906}
+                  height={1627}
+                  sizes="(max-width: 768px) 90vw, 500px"
+                  className="w-full h-auto drop-shadow-xl"
+                />
+              </div>
+
+              <div className="text-center bg-gradient-to-br from-brand-gold/10 via-white to-brand-gold/5 border border-brand-gold/40 rounded-xl p-6 md:p-7 shadow-sm">
+                <p className="text-brand-gold text-xs font-bold tracking-[0.28em] uppercase mb-3">
+                  Your Price
+                </p>
+                <div className="flex items-baseline justify-center gap-1">
+                  <span className="text-5xl md:text-6xl font-black text-neutral-900 leading-none">
+                    $497
+                  </span>
+                  <span className="text-neutral-500 text-lg">/month</span>
+                </div>
+                <p className="text-neutral-500 text-sm mt-2 font-semibold">
+                  + one-time $500 setup fee
+                </p>
+                <p className="text-neutral-500 text-sm mt-3">
+                  All of it. Every month. No a la carte pricing games.
+                </p>
+                <p className="text-neutral-400 text-xs mt-3 italic leading-relaxed max-w-md mx-auto">
+                  Does not include the separate IDX plan needed to host your MLS feed.{" "}
+                  <strong className="text-neutral-500">Don&apos;t purchase before speaking to
+                  us.</strong>
+                </p>
+              </div>
+            </div>
+
+            {/* Terms */}
+            <div className="mt-10 max-w-2xl mx-auto space-y-3">
+              {[
+                "Month-to-month — cancel anytime with just 30 days notice.",
+                "You own all your contacts and data, forever. We don't hold anything hostage.",
+                "No long-term contracts. If we're not performing, you're free to walk.",
+              ].map((line) => (
+                <div key={line} className="flex items-start gap-3">
+                  <div className="shrink-0 w-6 h-6 rounded-md bg-gradient-to-br from-brand-gold to-[#D4B87A] flex items-center justify-center mt-0.5">
+                    <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
                       <path
                         d="M5 10l4 4 6-8"
                         stroke="#0E0E0E"
@@ -402,556 +870,99 @@ export default function AgentsPage() {
                       />
                     </svg>
                   </div>
-                  <p className="text-base md:text-lg text-neutral-800 leading-relaxed pt-1">
-                    {item}
+                  <p className="text-neutral-700 text-base md:text-lg leading-relaxed">
+                    {line}
                   </p>
                 </div>
               ))}
             </div>
 
-            {/* Section CTA */}
-            <div className="mt-10 flex justify-center">
-              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
-                Book Your Discovery Call
-                <span className="text-brand-gold">→</span>
-              </SurveyButton></span>
-            </div>
-          </div>
-        </section>
-
-        {/* ═════════════ RUN ALONGSIDE YOUR BROKERAGE ═════════════ */}
-        <section className="relative py-20 md:py-28">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="relative bg-gradient-to-br from-brand-gold/[0.08] via-white to-white border border-brand-gold/25 rounded-3xl p-8 md:p-12 shadow-lg">
-              <div className="text-center max-w-2xl mx-auto mb-10">
-                <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
-                  Parallel, Not Replacement
-                </p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
-                  You don't need to quit your brokerage{" "}
-                  <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                    to start building yours.
-                  </span>
-                </h2>
-                <p className="text-neutral-600 text-lg leading-relaxed">
-                  Most of our clients start this while they're still active at
-                  their team or brokerage. Same closings. Same paychecks. Same
-                  Monday morning meetings.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-5 mb-10">
-                <div className="bg-white border border-neutral-200 rounded-2xl p-5 md:p-6">
-                  <p className="text-neutral-400 font-mono text-xs mb-2">
-                    Today
-                  </p>
-                  <p className="text-neutral-900 font-bold text-lg mb-2">
-                    Nothing changes on the surface.
-                  </p>
-                  <p className="text-neutral-600 text-[15px] leading-relaxed">
-                    Keep servicing your current pipeline. Keep your
-                    brokerage-provided leads. Keep the paycheck coming.
-                  </p>
-                </div>
-                <div className="bg-white border border-brand-gold/30 rounded-2xl p-5 md:p-6">
-                  <p className="text-brand-gold font-mono text-xs mb-2">
-                    In the background
-                  </p>
-                  <p className="text-neutral-900 font-bold text-lg mb-2">
-                    A machine you own starts producing.
-                  </p>
-                  <p className="text-neutral-600 text-[15px] leading-relaxed">
-                    Leads captured in your name. On your domain. Feeding a
-                    pipeline that belongs to you.
-                  </p>
-                </div>
-              </div>
-
-              <div className="text-center max-w-2xl mx-auto">
-                <p className="text-neutral-700 text-base md:text-lg leading-relaxed mb-6">
-                  Once it's producing — usually within 60 days — you're looking
-                  at split math with real numbers instead of guesses. Negotiate
-                  a better split. Launch your own team. Go fully independent.
-                  Or just pocket the extra commission while you stay put.
-                </p>
-                <p className="text-neutral-900 font-bold text-lg md:text-xl italic border-t border-neutral-200 pt-6 mb-8">
-                  The point isn't to leave. The point is to have the option.
-                </p>
-
-                {/* Section CTA */}
-                <div className="flex justify-center">
-                  <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
-                    Book Your Discovery Call
-                    <span className="text-brand-gold">→</span>
-                  </SurveyButton></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═════════════ WHAT YOU GET ═════════════ */}
-        <section className="relative py-20 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-14">
-              {/* Product intro pill */}
-              <p className="text-neutral-500 text-xs font-bold tracking-[0.4em] uppercase mb-4">
-                Introducing
-              </p>
-              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-brand-gold/[0.14] via-brand-gold/[0.08] to-brand-gold/[0.14] border border-brand-gold/35 rounded-full px-6 py-3 mb-8 shadow-md shadow-brand-gold/10">
-                <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-                <span className="text-neutral-900 text-sm md:text-base font-black tracking-[0.15em] uppercase">
-                  Full Real Estate Business In A Box
-                </span>
-              </div>
-
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
-                Install the same systems billion-dollar brokerages and teams
-                run off,{" "}
-                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                  but this one's yours — and only $497/month.
-                </span>
-              </h2>
-              <p className="text-neutral-600 text-lg leading-relaxed">
-                Leads. CRM. IDX site. Lifetime nurture. Follow-up alerts.
-                Weekly reporting. Everything a broker or team uses to get you
-                to hang your license with them — but built for you. Run for
-                you. Reported to you.
-              </p>
-            </div>
-
-            {/* Alternating rows */}
-            <div className="space-y-16 md:space-y-24">
-              {deliverables.map((d, i) => {
-                const imageOnLeft = i % 2 === 1;
-                return (
-                  <div
-                    key={i}
-                    className="grid md:grid-cols-2 gap-8 md:gap-14 items-center"
-                  >
-                    {/* Text */}
-                    <div className={imageOnLeft ? "md:order-2" : ""}>
-                      <div className="inline-flex items-center gap-3 mb-5">
-                        <span className="text-brand-gold font-mono text-sm font-bold">
-                          0{i + 1}
-                        </span>
-                        <span className="h-px w-10 bg-brand-gold/40" />
-                      </div>
-                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-black text-neutral-900 mb-5 leading-tight">
-                        {d.title}
-                      </h3>
-                      <p className="text-neutral-600 leading-relaxed text-base md:text-lg">
-                        {d.body}
-                      </p>
-                      {"note" in d && d.note && (
-                        <p className="mt-4 text-neutral-500 text-sm font-light leading-relaxed">
-                          [ {d.note} ]
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Image or placeholder */}
-                    <div className={imageOnLeft ? "md:order-1" : ""}>
-                      {"image" in d && d.image && "framed" in d && d.framed ? (
-                        // Framed image — inside the gold-gradient container
-                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-200 bg-gradient-to-br from-brand-gold/[0.10] via-white to-brand-gold/[0.05] shadow-xl shadow-brand-gold/10">
-                          <Image
-                            src={d.image}
-                            alt={d.title}
-                            fill
-                            sizes="(max-width: 768px) 92vw, 45vw"
-                            className="object-cover"
-                          />
-                        </div>
-                      ) : "image" in d && d.image ? (
-                        // Free-standing image
-                        <Image
-                          src={d.image}
-                          alt={d.title}
-                          width={d.imageW || 1920}
-                          height={d.imageH || 1080}
-                          sizes="(max-width: 768px) 100vw, 55vw"
-                          className={
-                            "imageClass" in d && d.imageClass
-                              ? d.imageClass
-                              : "w-full h-auto scale-125 origin-center drop-shadow-xl"
-                          }
-                        />
-                      ) : "stackedImages" in d && d.stackedImages ? (
-                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-200 bg-gradient-to-br from-brand-gold/[0.10] via-white to-brand-gold/[0.05] shadow-xl shadow-brand-gold/10">
-                          {/* Dark solid backdrop so no white peeks through */}
-                          <div className="absolute inset-0 bg-neutral-900" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            {d.stackedImages.map((img, idx) => (
-                              <div
-                                key={img.src}
-                                className={`absolute rounded-xl overflow-hidden ${img.cls}`}
-                              >
-                                <Image
-                                  src={img.src}
-                                  alt={`${d.title} — proof ${idx + 1}`}
-                                  width={img.w}
-                                  height={img.h}
-                                  sizes="(max-width: 768px) 80vw, 40vw"
-                                  className="w-full h-auto block"
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      ) : (
-                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-neutral-200 bg-gradient-to-br from-brand-gold/[0.10] via-white to-brand-gold/[0.05] shadow-xl shadow-brand-gold/10">
-                          {/* Subtle grid overlay */}
-                          <div
-                            className="absolute inset-0 opacity-[0.06]"
-                            style={{
-                              backgroundImage:
-                                "linear-gradient(to right, #0E0E0E 1px, transparent 1px), linear-gradient(to bottom, #0E0E0E 1px, transparent 1px)",
-                              backgroundSize: "32px 32px",
-                            }}
-                          />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                            <svg
-                              className="w-12 h-12 text-brand-gold/40"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="1.5"
-                            >
-                              <rect
-                                x="3"
-                                y="3"
-                                width="18"
-                                height="18"
-                                rx="2"
-                                ry="2"
-                              />
-                              <circle cx="8.5" cy="8.5" r="1.5" />
-                              <path d="M21 15l-5-5L5 21" />
-                            </svg>
-                            <span className="text-brand-gold/70 text-xs font-bold tracking-[0.25em] uppercase">
-                              /deliverable-{i + 1}.png
-                            </span>
-                          </div>
-                        </div>
-                      )}
-                      {"imageNote" in d && d.imageNote && (
-                        <p className="mt-3 text-neutral-500 text-xs text-center italic">
-                          {d.imageNote}
-                        </p>
-                      )}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className="mt-10 text-center">
-              <p className="inline-block text-neutral-700 font-semibold text-lg italic border-t border-b border-neutral-200 py-4 px-6">
-                You don't learn more tech. You get a machine that just runs.
-              </p>
-            </div>
-
-            {/* Section CTA */}
-            <div className="mt-10 flex justify-center">
-              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
-                Book Your Discovery Call
-                <span className="text-brand-gold">→</span>
-              </SurveyButton></span>
-            </div>
-          </div>
-        </section>
-
-        {/* ═════════════ HOW IT WORKS ═════════════ */}
-        <section className="relative py-20 md:py-28">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-14">
-              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
-                How It Works
-              </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
-                Live in{" "}
-                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                  under 10 days.
-                </span>
-              </h2>
-              <p className="text-neutral-600 text-lg">
-                Three steps. No consultants. No project managers. No handoffs.
-              </p>
-            </div>
-
-            {/* Steps grid */}
-            <div className="grid md:grid-cols-3 gap-5">
-              {steps.map((s, i) => (
-                <div
-                  key={i}
-                  className="relative bg-white border border-neutral-200 rounded-2xl p-6 md:p-7 shadow-sm"
-                >
-                  {/* Connector arrow (desktop only, between cards) */}
-                  {i < steps.length - 1 && (
-                    <div className="hidden md:block absolute top-1/2 -right-4 -translate-y-1/2 z-10">
-                      <div className="w-8 h-8 rounded-full bg-white border border-neutral-200 flex items-center justify-center shadow-sm">
-                        <span className="text-brand-gold text-sm">→</span>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="flex items-center justify-between mb-5">
-                    <span className="inline-block bg-brand-gold/10 text-brand-gold text-[10px] font-bold tracking-[0.2em] uppercase py-1 px-2.5 rounded">
-                      {s.label}
-                    </span>
-                    <span className="text-neutral-400 font-mono text-xs">
-                      {s.duration}
-                    </span>
-                  </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-neutral-900 mb-3">
-                    {s.title}
-                  </h3>
-                  <p className="text-neutral-600 leading-relaxed text-[15px]">
-                    {s.body}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Section CTA */}
+            {/* CTA */}
             <div className="mt-12 flex justify-center">
-              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
-                Book Your Discovery Call
-                <span className="text-brand-gold">→</span>
-              </SurveyButton></span>
+              <span className="cta-wrap">
+                <SurveyButton
+                  location="offer"
+                  className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-lg py-4 px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5"
+                >
+                  Book Your Strategy Call
+                  <span className="text-brand-gold">→</span>
+                </SurveyButton>
+              </span>
             </div>
           </div>
         </section>
 
-        {/* ═════════════ PRICING ═════════════ */}
+        {/* ═════════════ 6. GUARANTEE ═════════════ */}
         <section className="relative py-20 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
-                Pricing
-              </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
-                Simple pricing.{" "}
-                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                  No splits.
-                </span>
-              </h2>
-              <p className="text-neutral-600 text-lg">
-                One offer. One price. Everything included.
-              </p>
-            </div>
-
-            <div className="relative bg-white border-2 border-brand-gold/30 rounded-3xl p-8 md:p-10 shadow-xl shadow-brand-gold/10">
-              {/* Ribbon */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-max max-w-[calc(100%-2rem)]">
-                <span className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold to-[#D4B87A] text-neutral-900 text-[11px] md:text-xs font-bold tracking-[0.14em] uppercase py-2 px-5 rounded-full shadow-md whitespace-nowrap">
-                  Real Estate Business In A Box
+          <div className="max-w-3xl mx-auto px-6">
+            {/* Kicker pill */}
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 shadow-sm shadow-neutral-900/10">
+                <span className={`${editorialSerif.className} text-neutral-900 text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
+                  Our Lead Guarantee
                 </span>
               </div>
+            </div>
 
-              <div className="grid md:grid-cols-2 gap-8 items-start">
-                {/* Left — price */}
-                <div>
-                  <div className="flex items-baseline gap-1 mb-3">
-                    <span className="text-5xl md:text-6xl font-black text-neutral-900 font-mono">
-                      $497
-                    </span>
-                    <span className="text-neutral-500 text-lg font-medium">
-                      /month
-                    </span>
-                  </div>
-                  <p className="text-neutral-600 mb-6 flex items-center gap-2">
-                    <span className="font-mono text-neutral-400">+</span>
-                    <span className="font-mono font-semibold text-neutral-900">
-                      $500
-                    </span>{" "}
-                    one-time setup fee
-                  </p>
+            {/* THE BADGE */}
+            <div className="relative max-w-2xl mx-auto">
+              {/* Gold gradient outer frame */}
+              <div className="bg-gradient-to-br from-brand-gold via-[#D4B87A] to-brand-gold rounded-3xl p-[3px] shadow-2xl shadow-brand-gold/25">
+                {/* Inner cream card */}
+                <div className="bg-gradient-to-br from-white via-[#FFFDF7] to-[#FDF6E5] rounded-[calc(1.5rem-3px)] p-8 md:p-14 relative overflow-hidden">
+                  {/* Decorative corner marks */}
+                  <div className="absolute top-5 left-5 w-6 h-6 border-t-2 border-l-2 border-brand-gold/50 rounded-tl-md pointer-events-none" />
+                  <div className="absolute top-5 right-5 w-6 h-6 border-t-2 border-r-2 border-brand-gold/50 rounded-tr-md pointer-events-none" />
+                  <div className="absolute bottom-5 left-5 w-6 h-6 border-b-2 border-l-2 border-brand-gold/50 rounded-bl-md pointer-events-none" />
+                  <div className="absolute bottom-5 right-5 w-6 h-6 border-b-2 border-r-2 border-brand-gold/50 rounded-br-md pointer-events-none" />
 
-                  <div className="space-y-2 text-sm text-neutral-500 border-t border-neutral-200 pt-5">
-                    <div className="flex justify-between">
-                      <span>Contract</span>
-                      <span className="text-neutral-900 font-semibold">
-                        Cancel anytime
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Ad spend</span>
-                      <span className="text-neutral-900 font-semibold">
-                        Paid to Facebook direct
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Typical start</span>
-                      <span className="text-neutral-900 font-semibold">
-                        $15–$30/day
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Time to live</span>
-                      <span className="text-neutral-900 font-semibold">
-                        Under 10 days
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right — what's inside */}
-                <div>
-                  <p className="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase mb-4">
-                    Everything Included
-                  </p>
-                  <ul className="space-y-3">
-                    {[
-                      "Full specialist team (lead gen, nurture, automations)",
-                      "Proven lead generation campaign — built + managed",
-                      "CRM + IDX website — fully set up",
-                      "Lifetime automated nurture (text + email)",
-                      "Lead behavior tracking + alerts",
-                      "Sales & marketing dashboards",
-                      "Full team scaling system (when you're ready)",
-                      "60-day lead guarantee (see below)",
-                    ].map((f, i) => (
-                      <li key={i} className="flex items-start gap-3">
-                        <svg
-                          className="w-5 h-5 mt-0.5 shrink-0"
-                          viewBox="0 0 20 20"
-                          fill="none"
-                        >
+                  {/* Medallion */}
+                  <div className="flex justify-center mb-6">
+                    <div className="relative w-20 h-20">
+                      <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-gold via-[#D4B87A] to-brand-gold shadow-lg shadow-brand-gold/40" />
+                      <div className="absolute inset-[3px] rounded-full bg-white flex items-center justify-center">
+                        <svg width="34" height="34" viewBox="0 0 32 32" fill="none">
                           <path
-                            d="M5 10l4 4 6-8"
+                            d="M8 16.5l5.5 5.5L24 10"
                             stroke="#BB9A65"
-                            strokeWidth="2.5"
+                            strokeWidth="3.5"
                             strokeLinecap="round"
                             strokeLinejoin="round"
                           />
                         </svg>
-                        <span className="text-neutral-700 text-[15px] leading-snug">
-                          {f}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Promise */}
+                  <p className="text-center text-xl md:text-2xl font-bold text-neutral-900 leading-snug font-[family-name:var(--font-heading)] relative">
+                    We guarantee to fill your pipeline with real verified phone buyer leads —{" "}
+                    <span className={`${editorialSerif.className} font-normal bg-gradient-to-r from-[#BB9A65] to-[#D4B87A] bg-clip-text text-transparent`}>
+                      or we work for free until we do.
+                    </span>
+                  </p>
                 </div>
               </div>
-
-              <div className="mt-8 pt-6 border-t border-neutral-200 text-center">
-                <span className="cta-wrap"><SurveyButton location="pricing" className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-4 px-8 rounded-xl hover:bg-neutral-800 transition-colors shadow-lg shadow-neutral-900/10">
-                  Book Your Discovery Call
-                  <span className="text-brand-gold">→</span>
-                </SurveyButton></span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═════════════ GUARANTEE ═════════════ */}
-        <section className="relative py-20 md:py-28">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="bg-gradient-to-br from-brand-gold/[0.08] via-white to-white border border-brand-gold/25 rounded-3xl p-8 md:p-12 shadow-lg">
-              <div className="flex flex-col items-center text-center">
-                <div className="inline-flex items-center gap-2 bg-white border border-brand-gold/30 rounded-full px-3 py-1 mb-6">
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-gold" />
-                  <span className="text-brand-gold text-[10px] font-bold tracking-[0.25em] uppercase">
-                    Our 60-Day Lead Guarantee
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-6">
-                  30 qualified leads in under 60 days,{" "}
-                  <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                    or we work for free until we do.
-                  </span>
-                </h2>
-                <p className="text-neutral-700 text-lg md:text-xl leading-relaxed max-w-2xl">
-                  If we don't deliver at least 30 qualified leads inside the
-                  first 60 days of your ads going live, we work for free until
-                  we do.
-                </p>
-                <p className="text-neutral-500 text-sm mt-6 mb-8">
-                  Applies only to Facebook / Meta campaigns. See{" "}
-                  <Link
-                    href="/terms"
-                    className="text-brand-gold hover:underline"
-                  >
-                    Terms of Service
-                  </Link>{" "}
-                  for full details.
-                </p>
-
-                {/* Section CTA */}
-                <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
-                  Book Your Discovery Call
-                  <span className="text-brand-gold">→</span>
-                </SurveyButton></span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═════════════ SIMPLE PROOF ═════════════ */}
-        <section className="relative py-20 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
-          <div className="max-w-6xl mx-auto px-6">
-            <div className="text-center max-w-3xl mx-auto mb-12">
-              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
-                Real Lead Flow
-              </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900 mb-5">
-                This is what a qualified lead{" "}
-                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                  actually looks like.
-                </span>
-              </h2>
-              <p className="text-neutral-600 text-lg leading-relaxed">
-                Real conversations pulled straight from client pipelines. Some
-                are buying or selling in the next few weeks, some six months
-                out, some a year. But every one is a real person with real
-                intent — not a junk lead you waste your week chasing.
-              </p>
             </div>
 
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance]">
-              {leadQualityImages.map((img, i) => (
-                <div
-                  key={img.src}
-                  className="mb-5 break-inside-avoid rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-sm"
-                >
-                  <Image
-                    src={img.src}
-                    alt={`Real lead conversation ${i + 1}`}
-                    width={img.w}
-                    height={img.h}
-                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
-                    loading="lazy"
-                    className="w-full h-auto block"
-                  />
-                </div>
-              ))}
-            </div>
-
-            <p className="text-center text-neutral-500 text-sm mt-10 max-w-2xl mx-auto">
-              Captured from active campaigns. Names, numbers, and identifying
-              details blurred for client confidentiality.
+            {/* Disclaimer */}
+            <p className="mt-8 text-center text-neutral-500 text-sm italic max-w-xl mx-auto">
+              Guarantee volume and eligibility depend on your market and ad budget — we walk
+              through both on your discovery call.
             </p>
-
-            {/* Section CTA */}
-            <div className="mt-10 flex justify-center">
-              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
-                Book Your Discovery Call
-                <span className="text-brand-gold">→</span>
-              </SurveyButton></span>
-            </div>
           </div>
         </section>
 
-        {/* ═════════════ FAQ ═════════════ */}
+        {/* ═════════════ 9. FAQ ═════════════ */}
         <section className="relative py-20 md:py-28">
           <div className="max-w-3xl mx-auto px-6">
             <div className="text-center mb-14">
-              <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-4">
-                FAQ
-              </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight text-neutral-900">
+              <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
+                <span className={`${editorialSerif.className} text-neutral-900 text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
+                  FAQ
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
                 Questions we get{" "}
                 <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
                   every week.
@@ -963,93 +974,60 @@ export default function AgentsPage() {
               {faqs.map((f, i) => (
                 <details key={i} className="group py-5">
                   <summary className="flex items-start justify-between gap-6 cursor-pointer list-none">
-                    <span className="text-base md:text-lg font-semibold text-neutral-900 leading-snug">
+                    <p className="text-base md:text-lg font-bold text-neutral-900 leading-snug">
                       {f.q}
-                    </span>
-                    <span className="shrink-0 w-8 h-8 rounded-full bg-neutral-100 border border-neutral-200 group-open:bg-brand-gold group-open:border-brand-gold flex items-center justify-center transition-colors">
-                      <svg
-                        className="w-3 h-3 text-neutral-500 group-open:text-neutral-900 group-open:rotate-45 transition-transform"
-                        viewBox="0 0 12 12"
-                        fill="none"
-                      >
-                        <path
-                          d="M6 1v10M1 6h10"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                      </svg>
+                    </p>
+                    <span className="shrink-0 mt-1 text-brand-gold text-xl leading-none transition-transform group-open:rotate-45">
+                      +
                     </span>
                   </summary>
-                  <p className="mt-4 text-neutral-600 leading-relaxed text-[15px] pr-12">
-                    {f.a}
-                  </p>
+                  <p className="mt-4 text-neutral-600 leading-relaxed text-base">{f.a}</p>
                 </details>
               ))}
-            </div>
-
-            {/* Section CTA */}
-            <div className="mt-12 flex flex-col items-center gap-3">
-              <p className="text-neutral-500 text-sm text-center">
-                Still have questions? Ask them on the call.
-              </p>
-              <span className="cta-wrap"><SurveyButton className="inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-base md:text-lg py-3.5 px-7 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5">
-                Book Your Discovery Call
-                <span className="text-brand-gold">→</span>
-              </SurveyButton></span>
             </div>
           </div>
         </section>
 
         {/* ═════════════ FINAL CTA ═════════════ */}
-        <section className="relative py-20 md:py-28 bg-neutral-900 text-white overflow-hidden">
-          {/* Gold glow inside dark section */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-gold/[0.15] rounded-full blur-[120px] pointer-events-none" />
-
+        <section className="relative py-24 md:py-32 bg-[#0E0E0E]">
           <div className="relative max-w-3xl mx-auto px-6 text-center">
-            <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-5">
-              Ready?
-            </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight mb-6">
-              Start building the machine.{" "}
-              <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                Decide your future once it's producing.
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-white mb-6">
+              Every month you wait to build your own is another month you let{" "}
+              <span className={`${editorialSerif.className} font-normal bg-gradient-to-r from-[#BB9A65] to-[#FFFCD8] bg-clip-text text-transparent`}>
+                someone else control your success and your growth.
               </span>
             </h2>
-            <p className="text-white/70 text-lg leading-relaxed max-w-xl mx-auto mb-10">
-              Book the strategy call. We map your market, walk you through
-              exactly what we'd build for you, and tell you straight if you're
-              a fit. No brokerage exit required to say yes.
-            </p>
-            <span className="cta-wrap"><SurveyButton location="final_cta" className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold to-[#D4B87A] text-neutral-900 font-bold text-lg py-4 px-8 rounded-xl hover:shadow-xl hover:shadow-brand-gold/30 transition-all hover:-translate-y-0.5">
-              Book Your Discovery Call
-              <span>→</span>
-            </SurveyButton></span>
-            <p className="text-white/40 text-xs mt-5">
-              No pressure. No brokerage exit required to say yes.
-            </p>
+
+            <div className="mt-10 flex flex-col items-center gap-4">
+              <span className="cta-wrap">
+                <SurveyButton
+                  location="final"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-lg md:text-xl py-5 px-10 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:-translate-y-0.5"
+                >
+                  Book Your Strategy Call
+                  <span className="text-neutral-900">→</span>
+                </SurveyButton>
+              </span>
+              <p className="text-xs text-neutral-400 max-w-md">
+                No obligation. Only for agents serious about scaling their real estate business.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* ═════════════ FOOTER ═════════════ */}
-        <footer className="relative py-10 border-t border-neutral-200 bg-white">
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-neutral-500 text-sm">
+        {/* Footer */}
+        <footer className="relative py-10 border-t border-neutral-200">
+          <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-neutral-400 text-sm">
               &copy; 2026 Capital Growth Club. All rights reserved.
             </p>
-            <div className="flex items-center gap-6 text-sm">
+            <div className="flex gap-6 text-sm">
               <Link
                 href="/terms"
                 className="text-neutral-500 hover:text-neutral-900 transition-colors"
               >
-                Terms of Service
+                Terms
               </Link>
-              <a
-                href="mailto:support@capitalgrowthclub.com"
-                className="text-neutral-500 hover:text-neutral-900 transition-colors"
-              >
-                Contact
-              </a>
             </div>
           </div>
         </footer>
