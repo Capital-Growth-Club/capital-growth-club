@@ -18,12 +18,16 @@ export default function HeroVideo({
   const progressMarksRef = useRef<Set<number>>(new Set());
   const [unmuted, setUnmuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [speedIndex, setSpeedIndex] = useState(0);
+  const [hasStartedOnce, setHasStartedOnce] = useState(false);
+  const [speedIndex, setSpeedIndex] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
+
+    // Set default playback rate (1.2x)
+    v.playbackRate = SPEEDS[1];
 
     const clearReplayTimer = () => {
       if (replayTimerRef.current) {
@@ -45,6 +49,7 @@ export default function HeroVideo({
 
     const onPlay = () => {
       setIsPlaying(true);
+      if (unmutedRef.current) setHasStartedOnce(true);
       if (!unmutedRef.current) startReplayTimer();
     };
     const onPause = () => {
@@ -151,7 +156,7 @@ export default function HeroVideo({
       clearTimeout(replayTimerRef.current);
       replayTimerRef.current = null;
     }
-    if (v.currentTime < 1) v.currentTime = 0;
+    v.currentTime = 0;
     v.play().catch(() => {});
     // Reset progress marks so we count checkpoints for the "real" watch
     progressMarksRef.current = new Set();
@@ -172,21 +177,6 @@ export default function HeroVideo({
       v.pause();
       // pause event fires "video_pause" via the listener above
     }
-  };
-
-  const seekBy = (delta: number) => {
-    const v = videoRef.current;
-    if (!v) return;
-    const duration = v.duration || 0;
-    v.currentTime = Math.max(0, Math.min(duration, v.currentTime + delta));
-    track("video_seek", {
-      video_src: src,
-      direction: delta > 0 ? "forward" : "rewind",
-      amount_sec: Math.abs(delta),
-      amount_num: Math.abs(delta),
-      current_time_sec: Math.round(v.currentTime),
-      current_time_num: Math.round(v.currentTime),
-    });
   };
 
   const cycleSpeed = () => {
@@ -249,7 +239,7 @@ export default function HeroVideo({
       >
         <video
           ref={videoRef}
-          className="w-full aspect-video object-cover"
+          className="w-full aspect-[1670/1080] object-cover"
           src={src}
           autoPlay
           muted
@@ -278,70 +268,46 @@ export default function HeroVideo({
           </button>
         )}
 
-        {/* Custom controls — hover to reveal, fade in/out */}
+        {/* Click-anywhere play/pause overlay + right-side controls */}
         {unmuted && (
-          <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between gap-2 px-3 py-3 md:px-4 md:py-4 bg-gradient-to-t from-black/70 via-black/40 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300">
-            <div className="flex items-center gap-2 pointer-events-auto">
-              {/* Rewind 10s */}
-              <button
-                onClick={() => seekBy(-10)}
-                aria-label="Rewind 10 seconds"
-                className="relative w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center backdrop-blur-md transition-colors"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M3 12a9 9 0 1 0 9-9" />
-                  <path d="M3 4v5h5" />
-                </svg>
-                <span className="absolute -bottom-0.5 text-[9px] font-bold">10</span>
-              </button>
+          <>
+            {/* Full-area click target for play/pause */}
+            <button
+              onClick={togglePlay}
+              aria-label={isPlaying ? "Pause video" : "Play video"}
+              className="absolute inset-0 z-10 cursor-pointer bg-transparent"
+            />
 
-              {/* Play / Pause */}
-              <button
-                onClick={togglePlay}
-                aria-label={isPlaying ? "Pause" : "Play"}
-                className="w-12 h-12 rounded-full bg-white hover:bg-white/90 text-neutral-900 flex items-center justify-center shadow-lg transition-all"
-              >
-                {isPlaying ? (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="6" y="5" width="4" height="14" rx="1" />
-                    <rect x="14" y="5" width="4" height="14" rx="1" />
-                  </svg>
-                ) : (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            {/* Center play indicator — only visible when paused (after first play) */}
+            {hasStartedOnce && !isPlaying && (
+              <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none bg-black/25 transition-opacity">
+                <div className="w-20 h-20 rounded-full bg-white/95 flex items-center justify-center shadow-2xl">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-neutral-900 ml-1">
                     <path d="M8 5v14l11-7L8 5z" />
                   </svg>
-                )}
-              </button>
+                </div>
+              </div>
+            )}
 
-              {/* Forward 10s */}
+            {/* Right-side controls: speed + fullscreen */}
+            <div className="absolute right-3 md:right-4 bottom-3 md:bottom-4 z-20 flex items-center gap-2 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300">
               <button
-                onClick={() => seekBy(10)}
-                aria-label="Forward 10 seconds"
-                className="relative w-10 h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center backdrop-blur-md transition-colors"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 12a9 9 0 1 1-9-9" />
-                  <path d="M21 4v5h-5" />
-                </svg>
-                <span className="absolute -bottom-0.5 text-[9px] font-bold">10</span>
-              </button>
-            </div>
-
-            <div className="flex items-center gap-2 pointer-events-auto">
-              {/* Speed */}
-              <button
-                onClick={cycleSpeed}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  cycleSpeed();
+                }}
                 aria-label="Playback speed"
-                className="min-w-[52px] h-8 md:h-9 px-3 rounded-full bg-white/15 hover:bg-white/25 text-white text-xs md:text-sm font-bold backdrop-blur-md transition-colors"
+                className="min-w-[52px] h-8 md:h-9 px-3 rounded-full bg-white/20 hover:bg-white/30 text-white text-xs md:text-sm font-bold backdrop-blur-md transition-colors shadow-md"
               >
                 {SPEEDS[speedIndex]}x
               </button>
-
-              {/* Fullscreen */}
               <button
-                onClick={toggleFullscreen}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleFullscreen();
+                }}
                 aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-                className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/15 hover:bg-white/25 text-white flex items-center justify-center backdrop-blur-md transition-colors"
+                className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center backdrop-blur-md transition-colors shadow-md"
               >
                 {isFullscreen ? (
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -360,7 +326,7 @@ export default function HeroVideo({
                 )}
               </button>
             </div>
-          </div>
+          </>
         )}
       </div>
       <div className="absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-brand-gold/20 rounded-br-2xl pointer-events-none" />

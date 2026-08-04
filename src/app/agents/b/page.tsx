@@ -45,22 +45,26 @@ export const metadata: Metadata = {
 };
 
 const smsProof = [
-  { src: "/sms-5.png", w: 443, h: 240 },
-  { src: "/sms-6.png", w: 896, h: 594 },
-  { src: "/sms-7.jpg", w: 1284, h: 731 },
-  { src: "/sms-2.png", w: 282, h: 162 },
-  { src: "/sms-3.png", w: 272, h: 195 },
-  { src: "/sms-4.png", w: 288, h: 177 },
+  { src: "/sms-5.png", w: 443, h: 240, headline: "$1.2M closed in 90 days on ~$1,300 in ad spend" },
+  { src: "/sms-6.png", w: 896, h: 594, headline: "$590K sale on $900 in ads — a 10x return" },
+  { src: "/sms-7.jpg", w: 1284, h: 731, headline: "$9,150 in new business on $751 in ad spend" },
+  { src: "/sms-2.png", w: 282, h: 162, headline: "$1.2M+ under contract in 47 days on $1,000" },
+  { src: "/sms-3.png", w: 272, h: 195, headline: "$2.9M closed — 5 deals in 5 months on $2,200" },
+  { src: "/sms-4.png", w: 288, h: 177, headline: "2 deals + 80+ leads on just $15/day" },
 ];
 
 const problemBullets = [
   {
-    title: "You're the entire operation.",
+    title: "You're the entire business.",
     body: "Top producer, marketer, follow-up team, ops manager — all in one seat. If you stop moving, the business stops moving with you.",
   },
   {
-    title: "You want to grind smarter, not harder.",
-    body: "Not more hours. Not more calls. You're ready to step into the CEO seat — leading a team, building infrastructure, and letting the business produce for you instead of through you.",
+    title: "Half your day goes to non-money-making activities.",
+    body: "The calls. The closings. Sitting with buyers and sellers. That's the sales work that actually pays — everything else (CRM, ads, follow-up, tech stack) is time you'd rather spend closing another deal.",
+  },
+  {
+    title: "Too busy working in the business to work on the business.",
+    body: "Every hour goes to closing today's deal — not building the systems that produce tomorrow's. You want to work on the business, but the business won't let you out of it long enough to actually do it.",
   },
   {
     title: "You're done with tools that just add more work.",
@@ -70,20 +74,20 @@ const problemBullets = [
 
 const dreamBullets = [
   {
-    title: "Wake up to a full pipeline.",
-    body: "Proven campaigns, refined for years across every real estate market we've touched. Your pipeline fills overnight — fresh buyer and seller inquiries in your CRM by the time you get to your first coffee.",
+    title: "You lead the business. We handle the systems that allow it to grow.",
+    body: "You stop being your own marketer, follow-up team, and ops manager. Our specialists own every operational piece of the pipeline — so growth stops depending on how many hours you can personally squeeze in.",
   },
   {
-    title: "Call the hottest lead — every time.",
-    body: "Every action every lead takes on your site is tracked — property views, return visits, time on page. Your dashboard tells you who's heating up so you spend your time on the ones ready to move, not the ones just browsing.",
+    title: "Every hour on your calendar becomes a growth activity.",
+    body: "Ads, CRM, nurture, tracking, reporting — all handled in the background. Your day becomes 100% calls, closings, and leadership — the activities that directly grow the top line.",
   },
   {
-    title: "1,000 days of follow-up. Zero effort.",
-    body: "Every lead you don't close today gets rolled into a 1,000-day nurture — texts, emails, property alerts, timely check-ins. It restarts conversations for you and your team on autopilot so no opportunity ever slips through the cracks.",
+    title: "Actually build the business — hire, lead, and scale.",
+    body: "With us running the day-to-day, you get your CEO hours back. Time to hire agents, train an ISA, negotiate better splits, and turn your solo practice into a real, growing operation.",
   },
   {
-    title: "So much demand, you have to hire.",
-    body: "When your pipeline is producing more real conversations than you can work alone, hiring stops being a scary risk — it becomes the obvious next move. Your growth stops being about you and starts being about the team you build.",
+    title: "A pipeline that grows on its own — every single week.",
+    body: "No new CRM to master. No new dashboards. Just a fully-managed system producing new inquiries, new appointments, and new closings — predictably, week after week, at whatever scale you're ready for.",
   },
 ];
 
@@ -106,6 +110,11 @@ const mechanismSteps = [
   },
   {
     n: "04",
+    title: "We nurture your leads.",
+    body: "Speed-to-lead SMS, automated property alerts, and 1,000-day check-ins fire on every lead the moment they hit your CRM — so leads stay warm and re-engage for years, without you touching a thing.",
+  },
+  {
+    n: "05",
     title: "You work the leads.",
     body: "Show up, take the calls, close the deals. Or train your ISA and agents to take the calls and handle the closings for you — while you focus on leading the business.",
   },
@@ -115,7 +124,7 @@ const mechanismSteps = [
 const includedItems = [
   {
     n: "01",
-    title: "Custom-Branded, High-Converting IDX Site",
+    title: "Turn Website Browsers Into High-Intent Leads",
     bullets: [
       "Live MLS listings, updated in real time",
       "Fully custom-branded around you and your market",
@@ -130,7 +139,7 @@ const includedItems = [
   },
   {
     n: "02",
-    title: "The 1,000-Day Lead Nurture System",
+    title: "Convert Complete Strangers Into Profitable Clients",
     bullets: [
       "Instant speed-to-lead SMS the moment they opt in",
       "Automated email property updates matched to their interest",
@@ -145,7 +154,7 @@ const includedItems = [
   },
   {
     n: "03",
-    title: "Behavior Tracking Pro",
+    title: "Know Which Leads Are Closer To Buying",
     bullets: [
       "Tracks every property view, save, and return visit",
       "Scores leads based on real intent signals — not guesswork",
@@ -160,7 +169,7 @@ const includedItems = [
   },
   {
     n: "04",
-    title: "Proven Meta & Google Lead-Gen Campaigns",
+    title: "Flood Your Pipeline With Phone-Verified Leads",
     bullets: [
       "Powered by $28M+ in managed ad spend",
       "Funnels stress-tested across dozens of markets and price points",
@@ -175,7 +184,7 @@ const includedItems = [
   },
   {
     n: "05",
-    title: "A Full Marketing Agency Behind It All",
+    title: "Get A Full Marketing Agency Managing It All",
     bullets: [
       "Dedicated lead-gen, nurture, and automation specialists",
       "Managed and optimized every single month",
@@ -306,35 +315,29 @@ export default function AgentsPage() {
                 </span>
               </div>
 
-              <h1 className={`${helveticaBold.className} text-5xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight uppercase text-neutral-900 max-w-5xl`}>
-                From Solo Agent To{" "}
+              <h1 className={`${helveticaBold.className} text-3xl md:text-4xl lg:text-4xl leading-[1.2] tracking-tight uppercase text-neutral-900 max-w-6xl`}>
+                This secret real estate business scaling system is allowing solo agents with no brand or 5-figure marketing budget to{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
-                  Team Leader
-                </span>{" "}
-                In 90 Days
+                  double their business in less than 12 months
+                </span>
               </h1>
 
               <p className="mt-7 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl">
                 Complete done-for-you real estate marketing agency that builds and manages your IDX
-                site, lead gen, and long-term nurture — so you can focus on building a team that
-                handles the calls and closings for you.
-              </p>
-
-              <p className="mt-5 text-sm md:text-base text-neutral-500 italic">
-                Built for ambitious real estate agents looking to close more deals and scale their
-                real estate business.
+                site, lead gen, and long-term nurture — so all you have to focus on is
+                making calls and closing deals.
               </p>
 
               <p className="mt-8 text-brand-gold text-base md:text-lg font-bold tracking-wide inline-flex items-center gap-3">
                 <span aria-hidden>↓</span>
-                Watch Free Scale Your Business Training Video
+                How We&apos;re Scaling Solo Agents Businesses
                 <span aria-hidden>↓</span>
               </p>
 
               {/* VSL */}
               <div className="mt-5 w-full max-w-3xl">
                 <HeroVideo
-                  src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a5bece41a0f048050ae93ec.mp4"
+                  src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a7237bb2138bf7f5a3712ff.mp4"
                   className="mb-0"
                 />
               </div>
@@ -391,49 +394,47 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 2b. SMS PROOF ═════════════ */}
-        <section className="relative py-20 md:py-24">
+        <section className="relative pt-20 md:pt-24 pb-8 md:pb-10">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
                 <span className={`${editorialSerif.className} text-neutral-900 text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
-                  Real Texts. Real Clients.
+                  Our Happy Clients
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900 mb-5">
-                Here&apos;s what our clients are{" "}
+                Real Texts From{" "}
                 <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                  actually texting us.
+                  Real Clients
                 </span>
               </h2>
               <p className="text-neutral-600 text-lg leading-relaxed">
-                Two deals under contract in 47 days on $1,000 of ad spend. Five closings in five
-                months on $2,200. Ads carrying more than half the business — while working{" "}
-                <em>less</em> than they were before.
+                We didn&apos;t ask for these — clients just sent them after their first big wins
+                on our system.
               </p>
             </div>
 
             <div className="columns-1 sm:columns-2 lg:columns-3 gap-5 [column-fill:_balance] max-w-5xl mx-auto">
               {smsProof.map((img, i) => (
-                <div
-                  key={img.src}
-                  className="mb-5 break-inside-avoid rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-sm"
-                >
-                  <Image
-                    src={img.src}
-                    alt={`Real client text ${i + 1}`}
-                    width={img.w}
-                    height={img.h}
-                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
-                    loading="lazy"
-                    className="w-full h-auto block"
-                  />
+                <div key={img.src} className="mb-6 break-inside-avoid">
+                  <p className="text-sm md:text-base font-bold text-neutral-900 mb-2.5 leading-snug px-1">
+                    {img.headline}
+                  </p>
+                  <div className="rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-sm">
+                    <Image
+                      src={img.src}
+                      alt={`Real client text ${i + 1} — ${img.headline}`}
+                      width={img.w}
+                      height={img.h}
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
+                      loading="lazy"
+                      className="w-full h-auto block"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
 
-            <p className="mt-8 text-center text-neutral-500 text-sm max-w-2xl mx-auto italic">
-              Names, numbers, and identifying details blurred for client confidentiality.
-            </p>
           </div>
         </section>
 
@@ -447,14 +448,14 @@ export default function AgentsPage() {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
-                You can sell. You can close. You can prospect.{" "}
+                You&apos;re running your whole business.{" "}
                 <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                  You can do it all — and that&apos;s exactly the problem.
+                  And that&apos;s the problem.
                 </span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
               {problemBullets.map((b, i) => (
                 <div
                   key={i}
@@ -503,9 +504,9 @@ export default function AgentsPage() {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-white">
-                What the next year{" "}
+                What we handle for you{" "}
                 <span className={`${editorialSerif.className} font-normal bg-gradient-to-r from-[#BB9A65] to-[#FFFCD8] bg-clip-text text-transparent`}>
-                  could look like for you.
+                  guaranteed.
                 </span>
               </h2>
             </div>
@@ -534,7 +535,7 @@ export default function AgentsPage() {
 
             <div className="mt-14 md:mt-16 text-center">
               <p className="text-2xl md:text-3xl font-bold text-white mb-6 leading-tight font-[family-name:var(--font-heading)]">
-                Only focus on what helps close deals — our team will do the rest.
+                You focus on calls and closing. We do the rest.
               </p>
               <span className="cta-wrap inline-block">
                 <SurveyButton
@@ -563,14 +564,14 @@ export default function AgentsPage() {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
-                How it{" "}
+                How to{" "}
                 <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                  actually works.
+                  get started.
                 </span>
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-5">
               {mechanismSteps.map((s) => (
                 <div
                   key={s.n}
@@ -785,10 +786,20 @@ export default function AgentsPage() {
               })}
             </div>
 
+            {/* Cost transition headline */}
+            <div className="text-center max-w-3xl mx-auto mt-20 md:mt-28 mb-10">
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
+                What does this{" "}
+                <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
+                  cost?
+                </span>
+              </h3>
+            </div>
+
             {/* Totals + Pricing Block */}
-            <div className="mt-20 md:mt-28 max-w-2xl mx-auto bg-white border border-neutral-200 rounded-2xl p-8 md:p-10 shadow-lg">
+            <div className="max-w-2xl mx-auto bg-white border border-neutral-200 rounded-2xl p-8 md:p-10 shadow-lg">
               <p className="text-brand-gold text-xs font-bold tracking-[0.25em] uppercase mb-6 text-center">
-                Do The Math
+                Cost Of Doing It Yourself
               </p>
 
               <div className="space-y-3 mb-6 text-[15px] md:text-base">
@@ -921,14 +932,21 @@ export default function AgentsPage() {
                     <div className="relative w-20 h-20">
                       <div className="absolute inset-0 rounded-full bg-gradient-to-br from-brand-gold via-[#D4B87A] to-brand-gold shadow-lg shadow-brand-gold/40" />
                       <div className="absolute inset-[3px] rounded-full bg-white flex items-center justify-center">
-                        <svg width="34" height="34" viewBox="0 0 32 32" fill="none">
-                          <path
-                            d="M8 16.5l5.5 5.5L24 10"
-                            stroke="#BB9A65"
-                            strokeWidth="3.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
+                        <svg
+                          width="34"
+                          height="34"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#BB9A65"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M8 21h8" />
+                          <path d="M12 17v4" />
+                          <path d="M7 4h10v5a5 5 0 0 1-10 0V4z" />
+                          <path d="M17 4h3c0 2.5-1.5 4.5-3 5" />
+                          <path d="M7 4H4c0 2.5 1.5 4.5 3 5" />
                         </svg>
                       </div>
                     </div>
@@ -963,9 +981,9 @@ export default function AgentsPage() {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
-                Questions we get{" "}
+                Frequently{" "}
                 <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
-                  every week.
+                  Asked Questions
                 </span>
               </h2>
             </div>
