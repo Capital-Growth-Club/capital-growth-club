@@ -315,7 +315,7 @@ export default function AgentsPage() {
                 </span>
               </div>
 
-              <h1 className={`${helveticaBold.className} text-3xl md:text-4xl lg:text-4xl leading-[1.2] tracking-tight uppercase text-neutral-900 max-w-6xl`}>
+              <h1 className={`${helveticaBold.className} text-3xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 max-w-6xl`}>
                 This secret real estate business scaling system is allowing solo agents with no brand or 5-figure marketing budget to{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
                   double their business in less than 12 months
