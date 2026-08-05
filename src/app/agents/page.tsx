@@ -326,7 +326,8 @@ export default function AgentsPage() {
 
               <p className="mt-7 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl">
                 We build and run your IDX site, lead gen, and long‑term nurture so you can stop
-                being the marketing department and just handle calls and closings.
+                being the marketing department and just handle calls and closings without giving
+                up your split.
               </p>
 
               <p className="mt-8 text-brand-gold text-base md:text-lg font-bold tracking-wide inline-flex items-center gap-3">
@@ -441,7 +442,7 @@ export default function AgentsPage() {
 
         {/* ═════════════ 3. PROBLEM ═════════════ */}
         <section data-section-name="bottleneck" className="relative pt-8 md:pt-12 pb-20 md:pb-28">
-          <div className="max-w-4xl mx-auto px-6">
+          <div className="max-w-6xl mx-auto px-6">
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
                 <span className={`${editorialSerif.className} text-neutral-900 text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
@@ -456,7 +457,7 @@ export default function AgentsPage() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-5">
               {problemBullets.map((b, i) => (
                 <div
                   key={i}
@@ -497,7 +498,7 @@ export default function AgentsPage() {
 
         {/* ═════════════ 4. DREAM OUTCOME ═════════════ */}
         <section data-section-name="dream-outcome" className="relative py-20 md:py-28 bg-[#0E0E0E]">
-          <div className="relative max-w-4xl mx-auto px-6">
+          <div className="relative max-w-6xl mx-auto px-6">
             <div className="text-center mb-14">
               <div className="mx-auto flex w-fit items-center justify-center bg-gradient-to-r from-brand-gold/[0.14] via-brand-gold/[0.08] to-brand-gold/[0.14] border border-brand-gold/40 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-md shadow-brand-gold/20">
                 <span className={`${editorialSerif.className} text-brand-gold text-xs md:text-sm tracking-[0.28em] uppercase leading-none`}>
@@ -512,7 +513,7 @@ export default function AgentsPage() {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-5">
               {dreamBullets.map((b, i) => (
                 <div
                   key={i}
@@ -553,7 +554,7 @@ export default function AgentsPage() {
 
         {/* ═════════════ 5. MECHANISM ═════════════ */}
         <section data-section-name="mechanism" className="relative py-20 md:py-28">
-          <div className="max-w-5xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-14">
               <p className="text-neutral-500 text-xs font-bold tracking-[0.4em] uppercase mb-4">
                 The Mechanism
@@ -852,6 +853,12 @@ export default function AgentsPage() {
                 <p className="text-neutral-500 text-sm mt-2 font-semibold">
                   + one-time $500 setup fee
                 </p>
+                <div className="inline-flex items-center gap-1.5 bg-red-500/10 border border-red-500/40 rounded-full px-3 py-1 mt-4">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                  <span className="text-red-600 text-[11px] md:text-xs font-bold tracking-[0.15em] uppercase">
+                    Price increase coming
+                  </span>
+                </div>
                 <p className="text-neutral-500 text-sm mt-3">
                   All of it. Every month. No a la carte pricing games.
                 </p>
@@ -866,9 +873,8 @@ export default function AgentsPage() {
             {/* Terms */}
             <div className="mt-10 max-w-2xl mx-auto space-y-3">
               {[
-                "Month-to-month — cancel anytime with just 30 days notice.",
                 "You own all your contacts and data, forever. We don't hold anything hostage.",
-                "No long-term contracts. If we're not performing, you're free to walk.",
+                "One team runs the whole system — one point of contact, not five vendors to chase.",
               ].map((line) => (
                 <div key={line} className="flex items-start gap-3">
                   <div className="shrink-0 w-6 h-6 rounded-md bg-gradient-to-br from-brand-gold to-[#D4B87A] flex items-center justify-center mt-0.5">
