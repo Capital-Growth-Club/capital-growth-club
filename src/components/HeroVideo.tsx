@@ -254,7 +254,7 @@ export default function HeroVideo({
       >
         <video
           ref={videoRef}
-          className="w-full aspect-[1670/1080] object-cover"
+          className="w-full aspect-video object-cover"
           src={src}
           autoPlay
           muted

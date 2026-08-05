@@ -45,7 +45,7 @@ const HL = ({ children }: { children: React.ReactNode }) => (
 const InlineCTA = ({ label = "Book Your Discovery Call", location = "inline" }: { label?: string; location?: string }) => (
   <div className="my-14 py-10 px-6 md:px-8 bg-white border border-[#E5DBC5] rounded-2xl flex flex-col md:flex-row items-center gap-6 md:gap-10 shadow-sm">
     <Image
-      src="/bundle-dark.png"
+      src="/bundle-dark.webp"
       alt="Real Estate Business In A Box"
       width={2600}
       height={1627}
@@ -110,7 +110,7 @@ export default function AgentsStoryPage() {
           <div className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Capital Growth Club"
                 width={120}
                 height={40}

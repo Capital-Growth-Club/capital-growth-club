@@ -34,7 +34,7 @@ export default function StarterPlusPage() {
         <header className="relative pt-10 px-6">
           <div className="flex justify-center">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Capital Growth Club"
               width={140}
               height={48}

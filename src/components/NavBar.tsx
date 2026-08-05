@@ -22,7 +22,7 @@ export default function NavBar() {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-3 group">
           <Image
-            src="/logo.png"
+            src="/logo.webp"
             alt="Capital Growth Club"
             width={120}
             height={40}

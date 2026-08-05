@@ -46,12 +46,12 @@ export const metadata: Metadata = {
 };
 
 const smsProof = [
-  { src: "/sms-5.png", w: 443, h: 240, headline: "$1.2M closed in 90 days on ~$1,300 in ad spend" },
-  { src: "/sms-6.png", w: 896, h: 594, headline: "$590K sale on $900 in ads — a 10x return" },
+  { src: "/sms-5.webp", w: 443, h: 240, headline: "$1.2M closed in 90 days on ~$1,300 in ad spend" },
+  { src: "/sms-6.webp", w: 896, h: 594, headline: "$590K sale on $900 in ads — a 10x return" },
   { src: "/sms-7.jpg", w: 1284, h: 731, headline: "$9,150 in new business on $751 in ad spend" },
-  { src: "/sms-2.png", w: 282, h: 162, headline: "$1.2M+ under contract in 47 days on $1,000" },
-  { src: "/sms-3.png", w: 272, h: 195, headline: "$2.9M closed — 5 deals in 5 months on $2,200" },
-  { src: "/sms-4.png", w: 288, h: 177, headline: "2 deals + 80+ leads on just $15/day" },
+  { src: "/sms-2.webp", w: 282, h: 162, headline: "$1.2M+ under contract in 47 days on $1,000" },
+  { src: "/sms-3.webp", w: 272, h: 195, headline: "$2.9M closed — 5 deals in 5 months on $2,200" },
+  { src: "/sms-4.webp", w: 288, h: 177, headline: "2 deals + 80+ leads on just $15/day" },
 ];
 
 const problemBullets = [
@@ -132,7 +132,7 @@ const includedItems = [
       "Design proven with tens of thousands in ad spend behind it",
       "Turns cold browsers into real, verified buyer inquiries",
     ],
-    image: "/idx-site-book-black.png",
+    image: "/idx-site-book-black.webp",
     value: "$5,000",
     valueNum: 5000,
     lineLabel: "High-Converting IDX Site",
@@ -147,7 +147,7 @@ const includedItems = [
       "1,000+ days of check-ins and re-engagement, on autopilot",
       "No lead ever falls through the cracks — even years later",
     ],
-    image: "/lead-nurture-book-black.png",
+    image: "/lead-nurture-book-black.webp",
     value: "$4,000",
     valueNum: 4000,
     lineLabel: "1,000-Day Nurture System",
@@ -162,7 +162,7 @@ const includedItems = [
       "Tells your team exactly who to call next, in order",
       "So you spend time on the hottest leads first, always",
     ],
-    image: "/behavior-tracking-book-black.png",
+    image: "/behavior-tracking-book-black.webp",
     value: "$1,500",
     valueNum: 1500,
     lineLabel: "Behavior Tracking Pro",
@@ -177,7 +177,7 @@ const includedItems = [
       "Every lead comes with a verified phone number, <strong><em>guaranteed</em></strong>",
       "No fakes, no bots, no landlines — just real people",
     ],
-    image: "/lead-gen-book-black.png",
+    image: "/lead-gen-book-black.webp",
     value: "$5,000",
     valueNum: 5000,
     lineLabel: "Lead-Gen Campaigns",
@@ -192,7 +192,7 @@ const includedItems = [
       "No software login you have to figure out yourself",
       "You focus on leading — we focus on producing",
     ],
-    image: "/top-producer-bundle.png",
+    image: "/top-producer-bundle.webp",
     value: "$5,000/mo",
     valueNum: 60000,
     lineLabel: "Full-Service Agency (12 months)",
@@ -286,7 +286,7 @@ export default function AgentsPage() {
           <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Capital Growth Club"
                 width={120}
                 height={40}
@@ -338,7 +338,7 @@ export default function AgentsPage() {
               {/* VSL */}
               <div className="mt-5 w-full max-w-3xl">
                 <HeroVideo
-                  src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a7237bb2138bf7f5a3712ff.mp4"
+                  src="https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a73945a329b76ca7bc3dae6.mp4"
                   className="mb-0"
                 />
               </div>
@@ -699,7 +699,7 @@ export default function AgentsPage() {
 
             <div className="mt-10 relative w-full max-w-3xl mx-auto mb-14 md:mb-16">
               <Image
-                src="/top-producer-bundle.png"
+                src="/top-producer-bundle.webp"
                 alt="Top Producer Team Launch System — the full bundle"
                 width={2906}
                 height={1627}
@@ -734,12 +734,12 @@ export default function AgentsPage() {
                         width={3000}
                         height={3000}
                         sizes={
-                          item.image === "/top-producer-bundle.png"
+                          item.image === "/top-producer-bundle.webp"
                             ? "(max-width: 768px) 95vw, 50vw"
                             : "(max-width: 768px) 80vw, 40vw"
                         }
                         className={
-                          item.image === "/top-producer-bundle.png"
+                          item.image === "/top-producer-bundle.webp"
                             ? "w-full max-w-2xl h-auto mx-auto drop-shadow-2xl"
                             : "w-3/4 md:w-full max-w-md h-auto mx-auto drop-shadow-2xl"
                         }
@@ -830,7 +830,7 @@ export default function AgentsPage() {
 
               <div className="mb-8 -mx-2">
                 <Image
-                  src="/top-producer-bundle.png"
+                  src="/top-producer-bundle.webp"
                   alt="Real Estate Business In A Box — the full bundle"
                   width={2906}
                   height={1627}

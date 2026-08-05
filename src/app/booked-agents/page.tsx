@@ -59,7 +59,7 @@ export default function BookedAgentsPage() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-3">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Capital Growth Club"
               width={120}
               height={40}

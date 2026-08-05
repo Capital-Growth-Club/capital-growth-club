@@ -37,7 +37,7 @@ export default function TermsPage() {
         <div className="flex justify-center">
           <Link href="/">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Capital Growth Club"
               width={140}
               height={48}

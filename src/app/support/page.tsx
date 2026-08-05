@@ -40,7 +40,7 @@ export default function SupportBookingPage() {
         <div className="relative max-w-4xl mx-auto px-6 pt-12 pb-24">
           <div className="flex justify-center mb-10">
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               alt="Capital Growth Club"
               width={140}
               height={48}

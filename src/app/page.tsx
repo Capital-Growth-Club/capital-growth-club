@@ -783,7 +783,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Capital Growth Club"
                 width={100}
                 height={34}
