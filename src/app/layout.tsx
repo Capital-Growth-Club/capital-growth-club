@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import Script from "next/script";
+import ClickIdCapture from "@/components/ClickIdCapture";
+import PageDwellTracker from "@/components/PageDwellTracker";
 import "./globals.css";
 
 const META_PIXEL_ID = "888354366497921";
@@ -82,6 +84,8 @@ gtag('config', '${GA4_ID}');`}
             alt=""
           />
         </noscript>
+        <ClickIdCapture />
+        <PageDwellTracker />
         {children}
       </body>
     </html>

@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from "react";
 import { track } from "@/lib/analytics";
 
 const DEFAULT_VIDEO_URL =
-  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a2a1bc3d7f65291ad92f2cc.mp4";
+  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a73945a329b76ca7bc3dae6.mp4";
 const REPLAY_AFTER_MS = 20000;
-const SPEEDS = [1, 1.2, 1.5, 1.75, 2] as const;
+const DEFAULT_PLAYBACK_RATE = 1;
 
 export default function HeroVideo({
   src = DEFAULT_VIDEO_URL,
@@ -16,18 +16,19 @@ export default function HeroVideo({
   const replayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const unmutedRef = useRef(false);
   const progressMarksRef = useRef<Set<number>>(new Set());
+  const engagedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const engagedFiredRef = useRef(false);
   const [unmuted, setUnmuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasStartedOnce, setHasStartedOnce] = useState(false);
-  const [speedIndex, setSpeedIndex] = useState(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
 
-    // Set default playback rate (1.2x)
-    v.playbackRate = SPEEDS[1];
+    // Locked to 1.2x — no user-facing speed control.
+    v.playbackRate = DEFAULT_PLAYBACK_RATE;
 
     const clearReplayTimer = () => {
       if (replayTimerRef.current) {
@@ -47,13 +48,40 @@ export default function HeroVideo({
       }, REPLAY_AFTER_MS);
     };
 
+    const armEngagedGate = () => {
+      // Fire `video_engaged_view` if the user is still playing 2.5s in.
+      // Anything under that mark is almost certainly a bot / accidental
+      // click / instant bounce. One-shot per page load.
+      if (engagedFiredRef.current || engagedTimerRef.current) return;
+      engagedTimerRef.current = setTimeout(() => {
+        engagedTimerRef.current = null;
+        if (engagedFiredRef.current) return;
+        if (!videoRef.current || videoRef.current.paused) return;
+        engagedFiredRef.current = true;
+        track("video_engaged_view", {
+          video_src: src,
+          threshold_ms: 2500,
+          threshold_num: 2500,
+          unmuted: unmutedRef.current,
+        });
+      }, 2500);
+    };
+    const cancelEngagedGate = () => {
+      if (engagedTimerRef.current) {
+        clearTimeout(engagedTimerRef.current);
+        engagedTimerRef.current = null;
+      }
+    };
+
     const onPlay = () => {
       setIsPlaying(true);
       if (unmutedRef.current) setHasStartedOnce(true);
       if (!unmutedRef.current) startReplayTimer();
+      armEngagedGate();
     };
     const onPause = () => {
       setIsPlaying(false);
+      cancelEngagedGate();
       if (unmutedRef.current) {
         track("video_pause", {
           video_src: src,
@@ -142,6 +170,7 @@ export default function HeroVideo({
       document.removeEventListener("visibilitychange", onVisibilityChange);
       window.removeEventListener("beforeunload", onBeforeUnload);
       clearReplayTimer();
+      cancelEngagedGate();
     };
   }, [src]);
 
@@ -177,20 +206,6 @@ export default function HeroVideo({
       v.pause();
       // pause event fires "video_pause" via the listener above
     }
-  };
-
-  const cycleSpeed = () => {
-    const v = videoRef.current;
-    if (!v) return;
-    const nextIndex = (speedIndex + 1) % SPEEDS.length;
-    const nextSpeed = SPEEDS[nextIndex];
-    v.playbackRate = nextSpeed;
-    setSpeedIndex(nextIndex);
-    track("video_speed_change", {
-      video_src: src,
-      speed: nextSpeed,
-      speed_num: nextSpeed,
-    });
   };
 
   useEffect(() => {
@@ -289,18 +304,8 @@ export default function HeroVideo({
               </div>
             )}
 
-            {/* Right-side controls: speed + fullscreen */}
+            {/* Right-side controls: fullscreen only */}
             <div className="absolute right-3 md:right-4 bottom-3 md:bottom-4 z-20 flex items-center gap-2 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  cycleSpeed();
-                }}
-                aria-label="Playback speed"
-                className="min-w-[52px] h-8 md:h-9 px-3 rounded-full bg-white/20 hover:bg-white/30 text-white text-xs md:text-sm font-bold backdrop-blur-md transition-colors shadow-md"
-              >
-                {SPEEDS[speedIndex]}x
-              </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();

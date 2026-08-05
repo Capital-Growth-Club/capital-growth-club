@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { track } from "@/lib/analytics";
+import { getClickIds } from "@/lib/click-ids";
 
 export type QuestionSet = "real-estate" | "service-business";
 
@@ -140,43 +142,6 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
   const [otpCode, setOtpCode] = useState("");
   const [otpError, setOtpError] = useState("");
   const [otpSending, setOtpSending] = useState(false);
-  const [utmParams, setUtmParams] = useState<Record<string, string>>({});
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const keys = [
-      "utm_source",
-      "utm_medium",
-      "utm_campaign",
-      "utm_content",
-      "utm_term",
-      "gclid",
-      "fbclid",
-      "ttclid",
-      "li_fat_id",
-      "msclkid",
-      "ref",
-    ];
-    const params = new URLSearchParams(window.location.search);
-    const captured: Record<string, string> = {};
-    keys.forEach((k) => {
-      const fromUrl = params.get(k);
-      if (fromUrl) {
-        captured[k] = fromUrl;
-        try {
-          sessionStorage.setItem(`cgc_${k}`, fromUrl);
-        } catch {}
-      } else {
-        try {
-          const stored = sessionStorage.getItem(`cgc_${k}`);
-          if (stored) captured[k] = stored;
-        } catch {}
-      }
-    });
-    if (document.referrer) captured.referrer = document.referrer;
-    captured.landing_url = window.location.href;
-    setUtmParams(captured);
-  }, []);
 
   const isContactStep = step >= questions.length;
   const totalVisibleQuestions = visibleStepCount(questions, answers);
@@ -293,6 +258,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       }
 
       setContactStage("verify");
+      track("lead_submit_info", { question_set: questionSet });
     } catch {
       setOtpError("Failed to send verification code. Please try again.");
     }
@@ -348,6 +314,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
 
     const qualified = !disqualifiedByRevenue;
 
+    const clickIds = getClickIds();
     const payload = {
       first_name: contactInfo.firstName,
       last_name: contactInfo.lastName,
@@ -363,19 +330,9 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       monthly_revenue: monthlyRevenue || "",
       top_lead_source: topLeadSource || "",
       qualified: qualified ? "yes" : "no",
-      utm_source: utmParams.utm_source || "",
-      utm_medium: utmParams.utm_medium || "",
-      utm_campaign: utmParams.utm_campaign || "",
-      utm_content: utmParams.utm_content || "",
-      utm_term: utmParams.utm_term || "",
-      gclid: utmParams.gclid || "",
-      fbclid: utmParams.fbclid || "",
-      ttclid: utmParams.ttclid || "",
-      li_fat_id: utmParams.li_fat_id || "",
-      msclkid: utmParams.msclkid || "",
-      ref: utmParams.ref || "",
-      referrer: utmParams.referrer || "",
-      landing_url: utmParams.landing_url || "",
+      ...clickIds,
+      referrer: typeof document !== "undefined" ? document.referrer : "",
+      landing_url: typeof window !== "undefined" ? window.location.href : "",
     };
 
     const webhookUrl =
@@ -392,6 +349,16 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
     } catch {
       // proceed even if webhook fails
     }
+
+    // NOTE: Do NOT fire the standard Meta Pixel `Lead` event here — Meta
+    // has been observed mis-attributing it as a Schedule conversion on the
+    // ad, double-counting bookings. `lead_verified` fires as a custom event
+    // only (via track() → fbq trackCustom), keeping the standard Schedule
+    // event on /booked-agents as the sole Meta conversion for this funnel.
+    track("lead_verified", {
+      question_set: questionSet,
+      qualified: qualified ? "yes" : "no",
+    });
 
     if (qualified) {
       const params = new URLSearchParams({

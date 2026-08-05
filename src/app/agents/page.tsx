@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import SurveyProvider from "@/components/SurveyProvider";
 import SurveyButton from "@/components/SurveyButton";
 import HeroVideo from "@/components/HeroVideo";
+import SectionTracker from "@/components/SectionTracker";
 
 const editorialSerif = localFont({
   src: "../../../public/fonts/maison-galliard-serif.otf",
@@ -263,6 +264,7 @@ const faqs = [
 export default function AgentsPage() {
   return (
     <SurveyProvider questionSet="real-estate">
+      <SectionTracker />
       <main className={`${helveticaBold.variable} min-h-screen bg-white text-neutral-900 relative overflow-hidden`}>
         {/* Ambient gold glows */}
         <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-brand-gold/[0.10] rounded-full blur-[140px] pointer-events-none" />
@@ -305,7 +307,7 @@ export default function AgentsPage() {
         </nav>
 
         {/* ═════════════ 1. HERO ═════════════ */}
-        <section className="relative pt-32 pb-14 md:pt-36 md:pb-16">
+        <section data-section-name="hero" className="relative pt-32 pb-14 md:pt-36 md:pb-16">
           <div className="max-w-6xl mx-auto px-6">
             <div className="flex flex-col items-center text-center">
               <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full px-4 py-2 mb-8 shadow-sm shadow-neutral-900/10">
@@ -361,7 +363,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 2. RESULTS STRIP ═════════════ */}
-        <section className="relative py-10 md:py-14 bg-neutral-50/70 border-y border-neutral-200/70">
+        <section data-section-name="results-strip" className="relative py-10 md:py-14 bg-neutral-50/70 border-y border-neutral-200/70">
           <div className="max-w-5xl mx-auto px-6">
             <div className="grid grid-cols-3 items-center gap-4 md:gap-10">
               <div className="text-center">
@@ -393,7 +395,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 2b. SMS PROOF ═════════════ */}
-        <section className="relative pt-20 md:pt-24 pb-8 md:pb-10">
+        <section data-section-name="sms-proof" className="relative pt-20 md:pt-24 pb-8 md:pb-10">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
@@ -438,7 +440,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 3. PROBLEM ═════════════ */}
-        <section className="relative pt-8 md:pt-12 pb-20 md:pb-28">
+        <section data-section-name="bottleneck" className="relative pt-8 md:pt-12 pb-20 md:pb-28">
           <div className="max-w-4xl mx-auto px-6">
             <div className="text-center mb-12">
               <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
@@ -494,7 +496,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 4. DREAM OUTCOME ═════════════ */}
-        <section className="relative py-20 md:py-28 bg-[#0E0E0E]">
+        <section data-section-name="dream-outcome" className="relative py-20 md:py-28 bg-[#0E0E0E]">
           <div className="relative max-w-4xl mx-auto px-6">
             <div className="text-center mb-14">
               <div className="mx-auto flex w-fit items-center justify-center bg-gradient-to-r from-brand-gold/[0.14] via-brand-gold/[0.08] to-brand-gold/[0.14] border border-brand-gold/40 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-md shadow-brand-gold/20">
@@ -550,7 +552,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 5. MECHANISM ═════════════ */}
-        <section className="relative py-20 md:py-28">
+        <section data-section-name="mechanism" className="relative py-20 md:py-28">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-14">
               <p className="text-neutral-500 text-xs font-bold tracking-[0.4em] uppercase mb-4">
@@ -605,7 +607,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 5b. FIT CHECK ═════════════ */}
-        <section className="relative py-12 md:py-16 bg-neutral-50/70 border-y border-neutral-200/70">
+        <section data-section-name="fit-check" className="relative py-12 md:py-16 bg-neutral-50/70 border-y border-neutral-200/70">
           <div className="max-w-5xl mx-auto px-6">
             <div className="text-center mb-14">
               <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
@@ -675,7 +677,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 7. OFFER STACK ═════════════ */}
-        <section className="relative py-20 md:py-28">
+        <section data-section-name="offer-stack" className="relative py-20 md:py-28">
           <div className="max-w-6xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-14">
               <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
@@ -903,7 +905,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 6. GUARANTEE ═════════════ */}
-        <section className="relative py-20 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
+        <section data-section-name="guarantee" className="relative py-20 md:py-28 bg-neutral-50/70 border-y border-neutral-200/70">
           <div className="max-w-3xl mx-auto px-6">
             {/* Kicker pill */}
             <div className="text-center mb-8">
@@ -971,7 +973,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ 9. FAQ ═════════════ */}
-        <section className="relative py-20 md:py-28">
+        <section data-section-name="faq" className="relative py-20 md:py-28">
           <div className="max-w-3xl mx-auto px-6">
             <div className="text-center mb-14">
               <div className="inline-flex items-center bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full pl-[calc(1rem+0.28em)] pr-4 pt-3 pb-2 mb-5 shadow-sm shadow-neutral-900/10">
@@ -1006,7 +1008,7 @@ export default function AgentsPage() {
         </section>
 
         {/* ═════════════ FINAL CTA ═════════════ */}
-        <section className="relative py-24 md:py-32 bg-[#0E0E0E]">
+        <section data-section-name="final-cta" className="relative py-24 md:py-32 bg-[#0E0E0E]">
           <div className="relative max-w-3xl mx-auto px-6 text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-white mb-6">
               Every month you wait to build your own is another month you let{" "}

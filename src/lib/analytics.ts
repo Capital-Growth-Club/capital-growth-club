@@ -3,9 +3,13 @@
  * Sends the event to Google Analytics 4 (gtag) and Meta Pixel (fbq) if either is loaded.
  * Safe to call from server-side code — becomes a no-op.
  *
- * Also auto-attaches the `agents_variant` cookie value (set by middleware.ts)
- * to every event, so every metric can be sliced by A vs B in GA4.
+ * Every event is auto-enriched with:
+ *   - `agents_variant` cookie (set by src/proxy.ts) for A/B slicing
+ *   - all non-empty click IDs / UTMs (fbclid, gclid, ttclid, utm_*) so BigQuery
+ *     can join click ID → user actions from a CSV export
  */
+import { getNonEmptyClickIds } from "./click-ids";
+
 declare global {
   interface Window {
     gtag?: (
@@ -29,9 +33,12 @@ export function track(
 ): void {
   if (typeof window === "undefined") return;
 
-  // Auto-attach the A/B variant if the cookie is set
   const variant = getAgentsVariant();
-  const enriched = variant ? { ...params, agents_variant: variant } : params;
+  const enriched: Record<string, unknown> = {
+    ...params,
+    ...getNonEmptyClickIds(),
+  };
+  if (variant) enriched.agents_variant = variant;
 
   // Google Analytics 4
   if (typeof window.gtag === "function") {
