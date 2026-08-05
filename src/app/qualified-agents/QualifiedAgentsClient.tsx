@@ -2,10 +2,10 @@
 
 import { useEffect, useMemo } from "react";
 import Script from "next/script";
-import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
+import { useSearchParams } from "next/navigation";
 
-const confettiColors = ["#BB9A65", "#FFFCD8", "#C9AE84", "#D4B87A", "#CEAE78"];
 const CALENDAR_URL =
   "https://api.leadconnectorhq.com/widget/booking/safoTRE7XxjjvWJ8HIWN";
 
@@ -25,38 +25,6 @@ export default function QualifiedAgentsClient() {
     return url.toString();
   }, [firstName, lastName, email, phone]);
 
-  const burstLeft = useMemo(
-    () =>
-      Array.from({ length: 24 }).map((_, i) => ({
-        left: `${40 + Math.random() * 20}%`,
-        width: `${5 + Math.random() * 8}px`,
-        height: `${5 + Math.random() * 8}px`,
-        backgroundColor: confettiColors[i % confettiColors.length],
-        animationDuration: `${1.2 + Math.random() * 2}s`,
-        animationDelay: `${Math.random() * 0.3}s`,
-        burstX: `${20 + Math.random() * 200}px`,
-        burstY: `${-200 - Math.random() * 350}px`,
-        rotation: `${360 + Math.random() * 720}deg`,
-      })),
-    []
-  );
-
-  const burstRight = useMemo(
-    () =>
-      Array.from({ length: 24 }).map((_, i) => ({
-        left: `${40 + Math.random() * 20}%`,
-        width: `${5 + Math.random() * 8}px`,
-        height: `${5 + Math.random() * 8}px`,
-        backgroundColor: confettiColors[i % confettiColors.length],
-        animationDuration: `${1.2 + Math.random() * 2}s`,
-        animationDelay: `${Math.random() * 0.3}s`,
-        burstX: `${-20 - Math.random() * 200}px`,
-        burstY: `${-200 - Math.random() * 350}px`,
-        rotation: `${-360 - Math.random() * 720}deg`,
-      })),
-    []
-  );
-
   useEffect(() => {
     document.body.style.overflow = "";
   }, []);
@@ -68,94 +36,59 @@ export default function QualifiedAgentsClient() {
         strategy="afterInteractive"
       />
 
-      <main className="min-h-screen bg-brand-black relative overflow-hidden">
-        <div className="absolute top-1/4 -right-1/4 w-[800px] h-[800px] bg-brand-gold/[0.04] rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-gold/[0.03] rounded-full blur-[100px] pointer-events-none" />
+      <main className="min-h-screen bg-white text-neutral-900 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[900px] h-[900px] bg-brand-gold/[0.10] rounded-full blur-[140px] pointer-events-none" />
+        <div className="absolute top-[60vh] left-0 w-[700px] h-[700px] bg-brand-gold/[0.06] rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {burstLeft.map((p, i) => (
-            <div
-              key={`bl-${i}`}
-              className="confetti-burst-left"
-              style={
-                {
-                  left: p.left,
-                  bottom: "0%",
-                  width: p.width,
-                  height: p.height,
-                  backgroundColor: p.backgroundColor,
-                  animationDuration: p.animationDuration,
-                  animationDelay: p.animationDelay,
-                  "--burst-x": p.burstX,
-                  "--burst-y": p.burstY,
-                  "--rotation": p.rotation,
-                } as React.CSSProperties
-              }
-            />
-          ))}
-          {burstRight.map((p, i) => (
-            <div
-              key={`br-${i}`}
-              className="confetti-burst-right"
-              style={
-                {
-                  left: p.left,
-                  bottom: "0%",
-                  width: p.width,
-                  height: p.height,
-                  backgroundColor: p.backgroundColor,
-                  animationDuration: p.animationDuration,
-                  animationDelay: p.animationDelay,
-                  "--burst-x": p.burstX,
-                  "--burst-y": p.burstY,
-                  "--rotation": p.rotation,
-                } as React.CSSProperties
-              }
-            />
-          ))}
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-6 pt-16 pb-24">
-          <div className="flex justify-center mb-10">
-            <Image
-              src="/logo.png"
-              alt="Capital Growth Club"
-              width={140}
-              height={48}
-              className="h-10 w-auto"
-              priority
-            />
+        <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-neutral-200/70">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <Link href="/" className="flex items-center gap-3">
+              <Image
+                src="/logo.png"
+                alt="Capital Growth Club"
+                width={120}
+                height={40}
+                className="h-8 w-auto"
+                priority
+              />
+              <span className="hidden sm:inline text-neutral-500 text-sm font-medium border-l border-neutral-200 pl-3">
+                Capital Growth Club
+              </span>
+            </Link>
           </div>
+        </nav>
 
-          <div className="text-center mb-10">
-            <p className="text-brand-gold text-sm font-semibold tracking-[0.25em] uppercase mb-4">
-              Application Approved
-            </p>
-            <h1 className="text-3xl md:text-5xl font-bold mb-5 leading-tight">
-              Congrats — you qualify, and{" "}
-              <span className="gradient-text">applications are currently open.</span>
-            </h1>
-            <p className="text-white/60 text-lg max-w-2xl mx-auto">
-              Book a call with one of our Cold Acquisition Advisors below to see
-              how we can help. We'll review your application beforehand so we
-              can cover the right ground when we connect.
+        <section className="relative pt-32 pb-20 md:pt-36 md:pb-24">
+          <div className="max-w-4xl mx-auto px-6">
+            <div className="text-center max-w-3xl mx-auto mb-10">
+              <h1 className="text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-5 font-[family-name:var(--font-heading)]">
+                Pick a time for your{" "}
+                <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
+                  strategy call.
+                </span>
+              </h1>
+
+              <p className="text-neutral-600 text-lg leading-relaxed">
+                Choose an open slot below. You&apos;ll get an instant text and email
+                confirmation once you&apos;re booked in.
+              </p>
+            </div>
+
+            <div className="bg-white border border-neutral-200 rounded-2xl overflow-hidden shadow-sm shadow-neutral-900/5">
+              <iframe
+                src={calendarUrl}
+                style={{ width: "100%", border: "none", overflow: "hidden" }}
+                scrolling="no"
+                id="ghl-booking"
+                className="min-h-[800px]"
+              />
+            </div>
+
+            <p className="text-center text-neutral-500 text-sm mt-8">
+              Spots are limited. Booking takes less than 60 seconds.
             </p>
           </div>
-
-          <div className="bg-brand-dark border border-white/10 rounded-2xl overflow-hidden">
-            <iframe
-              src={calendarUrl}
-              style={{ width: "100%", border: "none", overflow: "hidden" }}
-              scrolling="no"
-              id="ghl-booking"
-              className="min-h-[800px]"
-            />
-          </div>
-
-          <p className="text-center text-white/30 text-sm mt-8">
-            Spots are limited. Booking takes less than 60 seconds.
-          </p>
-        </div>
+        </section>
       </main>
     </>
   );

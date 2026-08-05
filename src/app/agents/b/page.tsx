@@ -315,17 +315,16 @@ export default function AgentsPage() {
                 </span>
               </div>
 
-              <h1 className={`${helveticaBold.className} text-3xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 max-w-6xl`}>
-                This secret real estate business scaling system is allowing solo agents with no brand or 5-figure marketing budget to{" "}
+              <h1 className={`${helveticaBold.className} text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 max-w-6xl`}>
+                You handle the calls and closings.{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
-                  double their business in less than 12 months
+                  We make sure you never run out.
                 </span>
               </h1>
 
               <p className="mt-7 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl">
-                Complete done-for-you real estate marketing agency that builds and manages your IDX
-                site, lead gen, and long-term nurture — so all you have to focus on is
-                making calls and closing deals.
+                We build and run your IDX site, lead gen, and long‑term nurture so you can stop
+                being the marketing department and just handle calls and closings.
               </p>
 
               <p className="mt-8 text-brand-gold text-base md:text-lg font-bold tracking-wide inline-flex items-center gap-3">
@@ -375,7 +374,7 @@ export default function AgentsPage() {
               </div>
               <div className="text-center border-x border-neutral-200 px-2 md:px-6">
                 <p className={`${editorialSerif.className} text-4xl md:text-6xl text-neutral-900 leading-none`}>
-                  $150M<span className="text-brand-gold">+</span>
+                  $213M<span className="text-brand-gold">+</span>
                 </p>
                 <p className={`${editorialSerif.className} mt-3 text-xs md:text-sm text-neutral-500 tracking-widest uppercase leading-tight`}>
                   In attributed sales volume

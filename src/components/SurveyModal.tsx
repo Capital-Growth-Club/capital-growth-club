@@ -34,36 +34,10 @@ type Question = {
   conditional?: { dependsOn: string; values: string[] };
 };
 
-const realEstateQuestions: Question[] = [
-  {
-    id: "role",
-    question: "Pick what describes you best.",
-    type: "single",
-    options: ["Solo agent", "Broker", "Team lead"],
-  },
-  {
-    id: "market",
-    question: "What market are you in?",
-    subtitle: "City / County",
-    type: "text",
-    placeholder: "e.g. Charleston, SC",
-  },
-  {
-    id: "annual-sales-volume",
-    question: "What was your sales volume last year?",
-    subtitle: "Enter a number — digits only.",
-    type: "text",
-    numeric: true,
-    prefix: "$",
-    placeholder: "2,500,000",
-  },
-  {
-    id: "lead-frustration",
-    question: "What's your biggest frustration with your business right now?",
-    type: "textarea",
-    placeholder: "Tell us what's not working...",
-  },
-];
+// Real-estate flow currently skips qualifying questions to maximize
+// booking volume — CTA opens straight to the info + OTP step, filtering
+// happens on the call. Push questions back into this array to re-enable.
+const realEstateQuestions: Question[] = [];
 
 const serviceBusinessQuestions: Question[] = [
   {
@@ -516,13 +490,13 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
             contactStage === "info" ? (
               <div>
                 <p className="text-brand-gold text-sm font-semibold tracking-[0.2em] uppercase mb-3">
-                  Almost done
+                  Book your call
                 </p>
-                <h3 className="text-2xl md:text-3xl font-bold mb-2">
-                  Where should we reach you?
+                <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                  Enter your info to continue.
                 </h3>
                 <p className="text-neutral-600 mb-8">
-                  We'll text a 6-digit code to verify your phone after you continue.
+                  You'll pick a time on the next page.
                 </p>
 
                 <form onSubmit={handleSendOtp} className="space-y-5">
@@ -609,27 +583,29 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
                   )}
 
                   <div className="flex items-center gap-4 pt-2">
-                    <button
-                      type="button"
-                      onClick={goBack}
-                      className="text-neutral-500 hover:text-neutral-900 transition-colors text-sm flex items-center gap-2"
-                    >
-                      <svg
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
+                    {questions.length > 0 && (
+                      <button
+                        type="button"
+                        onClick={goBack}
+                        className="text-neutral-500 hover:text-neutral-900 transition-colors text-sm flex items-center gap-2"
                       >
-                        <path
-                          d="M10 12L6 8l4-4"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                      Back
-                    </button>
+                        <svg
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
+                        >
+                          <path
+                            d="M10 12L6 8l4-4"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                        Back
+                      </button>
+                    )}
                     <button
                       type="submit"
                       disabled={submitting}

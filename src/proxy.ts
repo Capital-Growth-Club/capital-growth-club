@@ -17,7 +17,7 @@ import { NextRequest, NextResponse } from "next/server";
  * `capitalgrowthclub.com/agents`. The split happens invisibly at the edge.
  */
 
-const VARIANT_B_PERCENT = 0;
+const VARIANT_B_PERCENT = 50;
 
 const COOKIE_NAME = "agents_variant";
 const VARIANTS = ["a", "b"] as const;
@@ -31,6 +31,22 @@ export function proxy(request: NextRequest) {
   // Only act on the /agents entry point (not /agents/b, /agents/more, etc.)
   if (request.nextUrl.pathname !== "/agents") {
     return NextResponse.next();
+  }
+
+  // Override via ?variant=a or ?variant=b — for QA / previews / screenshots.
+  // Also refreshes the cookie so subsequent visits stay on the forced variant.
+  const forcedRaw = request.nextUrl.searchParams.get("variant");
+  if (isVariant(forcedRaw)) {
+    const response =
+      forcedRaw === "b"
+        ? NextResponse.rewrite(new URL("/agents/b", request.url))
+        : NextResponse.next();
+    response.cookies.set(COOKIE_NAME, forcedRaw, {
+      maxAge: 60 * 60 * 24 * 365,
+      path: "/",
+      sameSite: "lax",
+    });
+    return response;
   }
 
   // Kill switch — split disabled, everyone sees the control
