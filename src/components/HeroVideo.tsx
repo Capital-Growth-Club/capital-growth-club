@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { track } from "@/lib/analytics";
 
 const DEFAULT_VIDEO_URL =
-  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a73945a329b76ca7bc3dae6.mp4";
+  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a2a1bc3d7f65291ad92f2cc.mp4";
 const REPLAY_AFTER_MS = 20000;
 const DEFAULT_PLAYBACK_RATE = 1;
 

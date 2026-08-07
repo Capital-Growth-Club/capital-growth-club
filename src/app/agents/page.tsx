@@ -56,39 +56,39 @@ const smsProof = [
 
 const problemBullets = [
   {
-    title: "You're the entire business.",
-    body: "Top producer, marketer, follow-up team, ops manager — all in one seat. If you stop moving, the business stops moving with you.",
+    title: "You are the ceiling.",
+    body: "Every deal, every follow-up, every ad decision runs through you. You've built yourself to the top of your market — and now the business can't grow past what one person can do in a day.",
   },
   {
-    title: "Half your day goes to non-money-making activities.",
-    body: "The calls. The closings. Sitting with buyers and sellers. That's the sales work that actually pays — everything else (CRM, ads, follow-up, tech stack) is time you'd rather spend closing another deal.",
+    title: "Every hour on marketing is an hour not closing.",
+    body: "CRM, ad tweaks, follow-up sequences, tech-stack fires. That's work an agent doing $80k should do — not one closing at your level. Every hour there is an hour not sitting in front of a buyer or seller.",
   },
   {
-    title: "Too busy working in the business to work on the business.",
-    body: "Every hour goes to closing today's deal — not building the systems that produce tomorrow's. You want to work on the business, but the business won't let you out of it long enough to actually do it.",
+    title: "You can't build the business while you're stuck running the business.",
+    body: "You want to hire an ISA, recruit agents, actually build the team. But every hour goes to today's deal instead of tomorrow's machine — so the business you want to build never gets built.",
   },
   {
-    title: "You're done with tools that just add more work.",
-    body: "Another CRM. Another lead vendor. Another AI hack. Every “solution” has ended up as one more thing you have to manage. You want the actual machine — built and run for you, not one more subscription on your plate.",
+    title: "You've tried the tools. None of them built you a business.",
+    body: "New CRM. New coach. New AI hack. Every “solution” ended up as one more thing YOU have to manage. What you actually need is infrastructure — the systems and specialists an ISA or new agent can plug into — not another dashboard.",
   },
 ];
 
 const dreamBullets = [
   {
-    title: "You lead the business. We handle the systems that allow it to grow.",
-    body: "You stop being your own marketer, follow-up team, and ops manager. Our specialists own every operational piece of the pipeline — so growth stops depending on how many hours you can personally squeeze in.",
+    title: "You lead the business. We install the systems that scale it past you.",
+    body: "Stop being your own marketer, follow-up team, and ops manager. Our specialists own every operational piece of the pipeline — so growth stops depending on how many hours you can personally squeeze in.",
   },
   {
-    title: "Every hour on your calendar becomes a growth activity.",
-    body: "Ads, CRM, nurture, tracking, reporting — all handled in the background. Your day becomes 100% calls, closings, and leadership — the activities that directly grow the top line.",
+    title: "Every hour on your calendar becomes CEO work.",
+    body: "Ads, CRM, nurture, tracking, reporting — all handled in the background. Your day becomes closings, hiring, training, and leading — the work that actually builds a business, not the work that maintains one.",
   },
   {
-    title: "Actually build the business — hire, lead, and scale.",
-    body: "With us running the day-to-day, you get your CEO hours back. Time to hire agents, train an ISA, negotiate better splits, and turn your solo practice into a real, growing operation.",
+    title: "Hire your first ISA. Recruit your first agents. Build the team.",
+    body: "With lead-gen and nurture handled, you get your CEO hours back. Time to train an ISA, recruit closers, negotiate splits, and turn your solo practice into a real, growing operation.",
   },
   {
-    title: "A pipeline that grows on its own — every single week.",
-    body: "No new CRM to master. No new dashboards. Just a fully-managed system producing new inquiries, new appointments, and new closings — predictably, week after week, at whatever scale you're ready for.",
+    title: "A pipeline your team can actually work — not one that dies when you take a week off.",
+    body: "No new CRM to master. No new dashboards. Just a fully-managed system producing new inquiries and appointments predictably, week after week — at whatever team size you're ready for.",
   },
 ];
 
@@ -201,16 +201,16 @@ const includedItems = [
 ];
 
 const forYou = [
-  "Treat real estate like a real business — not a family-and-friends banquet",
-  "Are willing to invest in lead gen and systems to scale year over year",
-  "Understand speed-to-lead and long-term follow-up are what turn leads into deals",
-  "Are ready to grow and eventually lead a small team of 3–5 agents",
+  "Are already top 20–30% in your market (12–30+ sides a year) and know it",
+  "Want to build a team or small brokerage in the next 2–3 years — not just close more this month",
+  "Know you're the bottleneck — and are done being the one who has to do everything",
+  "Are willing to invest cash into systems that pay you back in team leverage, not one more coaching program",
 ];
 
 const notForYou = [
-  "Brand-new or part-time agents who still need sales coaching",
+  "Brand-new or part-time agents still learning to close — this is infrastructure, not sales coaching",
   "Ultra-luxury agents selling $5M+ homes — we're built for volume, not trophy sales",
-  "Agents who want leads without doing the follow-up work",
+  "Agents who want leads but aren't planning to hire, train, or build past themselves",
   "Agents who need today's leads to pay tomorrow's bills",
 ];
 
@@ -318,15 +318,15 @@ export default function AgentsPage() {
               </div>
 
               <h1 className={`${helveticaBold.className} text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 max-w-6xl`}>
-                Fire yourself as the marketing department.{" "}
+                You built the top producer.{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
-                  Keep yourself as the rainmaker.
+                  Now let&apos;s build the business.
                 </span>
               </h1>
 
               <p className="mt-7 text-lg md:text-xl text-neutral-600 leading-relaxed max-w-3xl">
-                We build and run your IDX site, lead gen, and long‑term nurture so you can stop
-                being the marketing department and just handle calls and closings without giving
+                We install the lead-gen and long‑term nurture systems top producers need to hire
+                and scale — the infrastructure your ISA and future team will run. Without giving
                 up your split.
               </p>
 
@@ -450,7 +450,7 @@ export default function AgentsPage() {
                 </span>
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight font-[family-name:var(--font-heading)] text-neutral-900">
-                You&apos;re running your whole business.{" "}
+                You&apos;ve maxed out what one person can do.{" "}
                 <span className="bg-gradient-to-r from-brand-gold to-[#D4B87A] bg-clip-text text-transparent">
                   And that&apos;s the problem.
                 </span>
@@ -481,7 +481,7 @@ export default function AgentsPage() {
 
             <div className="mt-14 md:mt-16 text-center">
               <p className="text-2xl md:text-3xl font-bold text-neutral-900 mb-6 leading-tight font-[family-name:var(--font-heading)]">
-                Get a team that does it all for you.
+                Get the machine your team will run.
               </p>
               <span className="cta-wrap inline-block">
                 <SurveyButton
