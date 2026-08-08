@@ -23,9 +23,8 @@ const helveticaBold = localFont({
   variable: "--font-heading",
 });
 
-// TODO: swap for the actual team case-study video when it's ready.
 const CASE_STUDY_VIDEO =
-  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a73945a329b76ca7bc3dae6.mp4";
+  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a767eec488896ad5e424a11.mp4";
 
 export const metadata: Metadata = {
   title: "Never Let Your Agents' Pipelines Run Thin Again",
@@ -70,6 +69,7 @@ const forYou = [
 const notForYou = [
   "You're a brand-new solo agent with no team",
   "You aren't ready to spend on ads",
+  "You're looking for today's leads to pay tomorrow's rent",
   "You want \"set and forget\" with zero agent follow-up",
 ];
 
@@ -94,7 +94,7 @@ const howSteps = [
 const faqs = [
   {
     q: "What does this cost?",
-    a: "For a single campaign we charge $497/month. Adding more campaigns increases the management fee. On ad spend, we recommend $15/day for smaller teams still dialing in their sales operations, and $50+/day for larger teams who just need more volume. All ad spend is paid directly to Meta. We'll walk through exact numbers for your team on the call.",
+    a: "Depends on your goals, how many agents you have, and how many campaigns you want us to run (buyer, seller, or both). We'll walk through the exact numbers for your team on the call. That said — if $1,000/month in combined ad spend + management fees feels like a lot to invest in your business, this probably isn't a good fit for either of us.",
   },
   {
     q: "Do you replace our CRM?",
@@ -171,22 +171,25 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </div>
               <h1
-                className={`${heading} text-3xl md:text-4xl lg:text-5xl tracking-tight mb-5`}
+                className={`${helveticaBold.className} text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-5`}
               >
-                How one team added 9 extra closings and $4.9M in volume in 4
-                months on{" "}
-                <span className="italic font-normal text-brand-gold">
-                  $30/day
-                </span>{" "}
-                in Facebook ads.
+                The Facebook funnel real estate teams are using to{" "}
+                <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
+                  turn ad spend into deals on demand.
+                </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-                Watch the case study of how we did it — and how it could work
-                for your team.
+                Watch the case study of how we helped a team in Frisco add an
+                extra $122k in GCI in a little over 4 months with Facebook
+                ads — only spending $33/day.
               </p>
             </div>
 
-            <HeroVideo src={CASE_STUDY_VIDEO} className="mb-8" />
+            <HeroVideo
+              src={CASE_STUDY_VIDEO}
+              className="mb-8"
+              previewSeconds={15}
+            />
 
             <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
               We run done-for-you Facebook campaigns for real estate teams,
@@ -220,18 +223,18 @@ export default function AgentsCaseStudyPage() {
               </h2>
             </div>
 
-            {/* Featured — the main "9 closings on $30/day" client testimonial */}
+            {/* Featured — the main "9 closings on $33/day" client testimonial */}
             <div className="max-w-3xl mx-auto mb-14 md:mb-16">
               <p
                 className={`${helveticaBold.className} text-neutral-900 text-lg md:text-xl mb-3 leading-snug px-1`}
               >
-                9 extra closings and $4.9M in volume in 4 months on $30/day in
+                9 extra closings and $4.9M in volume in 4 months on $33/day in
                 Facebook ads
               </p>
               <div className="rounded-xl overflow-hidden border border-neutral-200 shadow-sm bg-white">
                 <Image
                   src="/case-study-featured.webp"
-                  alt="Client text — 9 extra closings and $4.9M in volume in 4 months on $30/day in Facebook ads"
+                  alt="Client text — 9 extra closings and $4.9M in volume in 4 months on $33/day in Facebook ads"
                   width={1320}
                   height={963}
                   sizes="(max-width: 768px) 92vw, 720px"

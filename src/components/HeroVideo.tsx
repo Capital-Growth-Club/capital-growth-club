@@ -5,13 +5,18 @@ import { track } from "@/lib/analytics";
 
 const DEFAULT_VIDEO_URL =
   "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a2a1bc3d7f65291ad92f2cc.mp4";
-const REPLAY_AFTER_MS = 20000;
+const DEFAULT_PREVIEW_SECONDS = 20;
 const DEFAULT_PLAYBACK_RATE = 1;
 
 export default function HeroVideo({
   src = DEFAULT_VIDEO_URL,
   className = "mb-10",
-}: { src?: string; className?: string } = {}) {
+  previewSeconds = DEFAULT_PREVIEW_SECONDS,
+}: {
+  src?: string;
+  className?: string;
+  previewSeconds?: number;
+} = {}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const replayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const unmutedRef = useRef(false);
@@ -45,7 +50,7 @@ export default function HeroVideo({
           videoRef.current.play().catch(() => {});
           startReplayTimer();
         }
-      }, REPLAY_AFTER_MS);
+      }, previewSeconds * 1000);
     };
 
     const armEngagedGate = () => {
@@ -172,7 +177,7 @@ export default function HeroVideo({
       clearReplayTimer();
       cancelEngagedGate();
     };
-  }, [src]);
+  }, [src, previewSeconds]);
 
   const handleUnmute = () => {
     const v = videoRef.current;
