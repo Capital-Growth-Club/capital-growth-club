@@ -288,7 +288,7 @@ export default function HeroVideo({
           </button>
         )}
 
-        {/* Click-anywhere play/pause overlay + right-side controls */}
+        {/* Click-anywhere play/pause overlay (only when unmuted) */}
         {unmuted && (
           <>
             {/* Full-area click target for play/pause */}
@@ -308,36 +308,36 @@ export default function HeroVideo({
                 </div>
               </div>
             )}
-
-            {/* Right-side controls: fullscreen only */}
-            <div className="absolute right-3 md:right-4 bottom-3 md:bottom-4 z-20 flex items-center gap-2 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300">
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleFullscreen();
-                }}
-                aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
-                className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center backdrop-blur-md transition-colors shadow-md"
-              >
-                {isFullscreen ? (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M8 3v3a2 2 0 0 1-2 2H3" />
-                    <path d="M21 8h-3a2 2 0 0 1-2-2V3" />
-                    <path d="M3 16h3a2 2 0 0 1 2 2v3" />
-                    <path d="M16 21v-3a2 2 0 0 1 2-2h3" />
-                  </svg>
-                ) : (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 8V5a2 2 0 0 1 2-2h3" />
-                    <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
-                    <path d="M3 16v3a2 2 0 0 0 2 2h3" />
-                    <path d="M21 16v3a2 2 0 0 1-2 2h-3" />
-                  </svg>
-                )}
-              </button>
-            </div>
           </>
         )}
+
+        {/* Fullscreen — always available, above both overlays */}
+        <div className="absolute right-3 md:right-4 bottom-3 md:bottom-4 z-30 flex items-center gap-2">
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleFullscreen();
+            }}
+            aria-label={isFullscreen ? "Exit fullscreen" : "Enter fullscreen"}
+            className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center backdrop-blur-md transition-colors shadow-md"
+          >
+            {isFullscreen ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M8 3v3a2 2 0 0 1-2 2H3" />
+                <path d="M21 8h-3a2 2 0 0 1-2-2V3" />
+                <path d="M3 16h3a2 2 0 0 1 2 2v3" />
+                <path d="M16 21v-3a2 2 0 0 1 2-2h3" />
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 8V5a2 2 0 0 1 2-2h3" />
+                <path d="M21 8V5a2 2 0 0 0-2-2h-3" />
+                <path d="M3 16v3a2 2 0 0 0 2 2h3" />
+                <path d="M21 16v3a2 2 0 0 1-2 2h-3" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
       <div className="absolute -bottom-3 -right-3 w-24 h-24 border-b-2 border-r-2 border-brand-gold/20 rounded-br-2xl pointer-events-none" />
       <div className="absolute -top-3 -left-3 w-24 h-24 border-t-2 border-l-2 border-brand-gold/20 rounded-tl-2xl pointer-events-none" />
