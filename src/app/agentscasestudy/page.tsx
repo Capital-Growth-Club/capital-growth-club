@@ -4,6 +4,7 @@ import Link from "next/link";
 import localFont from "next/font/local";
 import HeroVideo from "@/components/HeroVideo";
 import SectionTracker from "@/components/SectionTracker";
+import SocialProofWidget from "@/components/SocialProofWidget";
 import SurveyProvider from "@/components/SurveyProvider";
 import SurveyButton from "@/components/SurveyButton";
 
@@ -136,6 +137,7 @@ export default function AgentsCaseStudyPage() {
         className={`${helveticaBold.variable} ${editorialSerif.variable} min-h-screen bg-white text-neutral-900`}
       >
         <SectionTracker />
+        <SocialProofWidget />
 
         {/* Nav */}
         <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-neutral-100">
