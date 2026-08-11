@@ -5,7 +5,7 @@ import localFont from "next/font/local";
 import ScheduleEventFire from "@/components/ScheduleEventFire";
 
 const editorialSerif = localFont({
-  src: "../../../public/fonts/maison-galliard-serif.otf",
+  src: "../../../public/fonts/maison-galliard-serif.woff2",
   weight: "400",
   style: "normal",
   display: "swap",
@@ -13,7 +13,7 @@ const editorialSerif = localFont({
 });
 
 const helveticaBold = localFont({
-  src: "../../../public/fonts/HelveticaNeueBold.otf",
+  src: "../../../public/fonts/HelveticaNeueBold.woff2",
   weight: "700",
   style: "normal",
   display: "swap",

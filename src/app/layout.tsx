@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import Script from "next/script";
 import ClickIdCapture from "@/components/ClickIdCapture";
 import PageDwellTracker from "@/components/PageDwellTracker";
+import WebVitalsTracker from "@/components/WebVitalsTracker";
 import "./globals.css";
 
 const META_PIXEL_ID = "888354366497921";
@@ -86,6 +87,7 @@ gtag('config', '${GA4_ID}');`}
         </noscript>
         <ClickIdCapture />
         <PageDwellTracker />
+        <WebVitalsTracker />
         {children}
       </body>
     </html>
