@@ -25,7 +25,7 @@ const helveticaBold = localFont({
 });
 
 const CASE_STUDY_VIDEO =
-  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a767eec488896ad5e424a11.mp4";
+  "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a7b4f7d9115899f0337e401.mp4";
 
 export const metadata: Metadata = {
   title: "Never Let Your Agents' Pipelines Run Thin Again",
