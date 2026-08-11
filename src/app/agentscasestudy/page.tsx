@@ -181,9 +181,9 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-                Watch the case study of how we helped a team in Frisco add an
-                extra $122k in GCI in a little over 4 months with Facebook
-                ads — only spending $33/day.
+                Watch the full breakdown of how we helped a team in Frisco
+                close $4.9m in sales volume in a little over 4 months with
+                Facebook ads — only spending $33/day.
               </p>
             </div>
 
