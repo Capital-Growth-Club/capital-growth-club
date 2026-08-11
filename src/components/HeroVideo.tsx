@@ -12,10 +12,12 @@ export default function HeroVideo({
   src = DEFAULT_VIDEO_URL,
   className = "mb-10",
   previewSeconds = DEFAULT_PREVIEW_SECONDS,
+  poster,
 }: {
   src?: string;
   className?: string;
   previewSeconds?: number;
+  poster?: string;
 } = {}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const replayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -261,10 +263,12 @@ export default function HeroVideo({
           ref={videoRef}
           className="w-full aspect-video object-cover"
           src={src}
+          poster={poster}
           autoPlay
           muted
           loop
           playsInline
+          preload="metadata"
         />
 
         {/* Tap-to-unmute overlay */}
