@@ -50,6 +50,17 @@ export const metadata: Metadata = {
   },
 };
 
+const smsProof = [
+  { src: "/sms-5.webp", w: 443, h: 240, headline: "$1.2M closed in 90 days on ~$1,300 in ad spend" },
+  { src: "/sms-6.webp", w: 896, h: 594, headline: "$590K sale on $900 in ads — a 10x return" },
+  { src: "/sms-7.jpg", w: 1284, h: 731, headline: "$9,150 in new business on $751 in ad spend" },
+  { src: "/sms-2.webp", w: 282, h: 162, headline: "$1.2M+ under contract in 47 days on $1,000" },
+  { src: "/sms-3.webp", w: 272, h: 195, headline: "$2.9M closed — 5 deals in 5 months on $2,200" },
+  { src: "/sms-4.webp", w: 288, h: 177, headline: "2 deals + 80+ leads on just $15/day" },
+];
+
+const eyebrow = `${editorialSerif.className} text-neutral-500 text-xs tracking-[0.28em] uppercase leading-none`;
+const heading = `${helveticaBold.className} text-neutral-900 leading-tight`;
 const primaryCta =
   "inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-lg py-4 px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5";
 const navCta =
@@ -59,13 +70,13 @@ export default function AgentsCaseStudyPage() {
   return (
     <SurveyProvider questionSet="real-estate">
       <main
-        className={`${helveticaBold.variable} ${editorialSerif.variable} min-h-[100svh] bg-white text-neutral-900 flex flex-col`}
+        className={`${helveticaBold.variable} ${editorialSerif.variable} min-h-screen bg-white text-neutral-900`}
       >
         <SectionTracker />
 
         {/* Nav */}
-        <nav className="shrink-0 z-40 bg-white/80 backdrop-blur-md border-b border-neutral-100">
-          <div className="max-w-6xl mx-auto px-6 py-3 md:py-4 flex items-center justify-between">
+        <nav className="fixed top-0 left-0 right-0 z-40 bg-white/80 backdrop-blur-md border-b border-neutral-100">
+          <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
             <Link href="/" className="flex items-center gap-3">
               <Image
                 src="/logo.webp"
@@ -83,14 +94,14 @@ export default function AgentsCaseStudyPage() {
           </div>
         </nav>
 
-        {/* Hero — fills remaining viewport, no other sections below */}
+        {/* ═════════════ 1. HERO (case study) ═════════════ */}
         <section
           data-section-name="hero"
-          className="flex-1 flex items-center justify-center"
+          className="relative pt-28 pb-12 md:pt-32 md:pb-14"
         >
-          <div className="w-full max-w-3xl mx-auto px-6 py-6 md:py-8">
-            <div className="text-center mb-6 md:mb-8">
-              <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full px-4 py-2 mb-5 md:mb-6 shadow-sm shadow-neutral-900/10">
+          <div className="max-w-3xl mx-auto px-6">
+            <div className="text-center mb-10">
+              <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full px-4 py-2 mb-6 shadow-sm shadow-neutral-900/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
                 <span className="text-neutral-900 text-xs md:text-sm font-black tracking-[0.15em] uppercase">
                   For Real Estate Team Leaders Only
@@ -113,11 +124,11 @@ export default function AgentsCaseStudyPage() {
 
             <HeroVideo
               src={CASE_STUDY_VIDEO}
-              className="mb-6 md:mb-8"
+              className="mb-8"
               poster="/video-poster.webp"
             />
 
-            <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8 text-center">
+            <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
               We run done-for-you Facebook campaigns for real estate teams,
               proven across $28M in ad spend, to help keep your agents supplied
               with new high-intent buyers and sellers daily.
@@ -133,6 +144,107 @@ export default function AgentsCaseStudyPage() {
             </div>
           </div>
         </section>
+
+        {/* ═════════════ 2. RESULTS (texted proof) ═════════════ */}
+        <section
+          data-section-name="texted-case-studies"
+          className="relative border-t border-neutral-100 pt-12 md:pt-16 pb-20 md:pb-28"
+        >
+          <div className="max-w-6xl mx-auto px-6">
+            <div className="text-center mb-14">
+              <p className={`${eyebrow} mb-5`}>More case studies</p>
+              <h2
+                className={`${heading} text-3xl md:text-4xl lg:text-5xl tracking-tight`}
+              >
+                More wins texted in from teams like yours.
+              </h2>
+            </div>
+
+            {/* Featured — the main "9 closings on $33/day" client testimonial */}
+            <div className="max-w-3xl mx-auto mb-14 md:mb-16">
+              <p
+                className={`${helveticaBold.className} text-neutral-900 text-lg md:text-xl mb-3 leading-snug px-1`}
+              >
+                9 extra closings and $4.9M in volume in 4 months on $33/day in
+                Facebook ads
+              </p>
+              <div className="rounded-xl overflow-hidden border border-neutral-200 shadow-sm bg-white">
+                <Image
+                  src="/case-study-featured.webp"
+                  alt="Client text — 9 extra closings and $4.9M in volume in 4 months on $33/day in Facebook ads"
+                  width={1320}
+                  height={963}
+                  sizes="(max-width: 768px) 92vw, 720px"
+                  className="w-full h-auto block"
+                />
+              </div>
+            </div>
+
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 [column-fill:_balance] max-w-5xl mx-auto">
+              {smsProof.map((item, i) => (
+                <div key={item.src} className="mb-6 break-inside-avoid">
+                  <p
+                    className={`${helveticaBold.className} text-neutral-900 text-sm md:text-base mb-2.5 leading-snug px-1`}
+                  >
+                    {item.headline}
+                  </p>
+                  <div className="rounded-xl overflow-hidden border border-neutral-200 bg-white shadow-sm">
+                    <Image
+                      src={item.src}
+                      alt={`Client text ${i + 1} — ${item.headline}`}
+                      width={item.w}
+                      height={item.h}
+                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw"
+                      loading="lazy"
+                      className="w-full h-auto block"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═════════════ FINAL CTA — build it for them ═════════════ */}
+        <section
+          data-section-name="final-cta"
+          className="relative py-24 md:py-32 bg-[#0E0E0E]"
+        >
+          <div className="relative max-w-3xl mx-auto px-6 text-center">
+            <h2
+              className={`${helveticaBold.className} text-3xl md:text-4xl lg:text-5xl leading-tight text-white mb-8`}
+            >
+              Want us to build this{" "}
+              <span
+                className={`${editorialSerif.className} font-normal bg-gradient-to-r from-[#BB9A65] to-[#FFFCD8] bg-clip-text text-transparent`}
+              >
+                for your team as soon as tomorrow?
+              </span>
+            </h2>
+            <div className="flex flex-col items-center gap-4">
+              <span className="cta-wrap inline-block">
+                <SurveyButton
+                  location="final"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-lg md:text-xl py-5 px-10 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:-translate-y-0.5"
+                >
+                  Book Your Free Strategy Call
+                  <span aria-hidden>→</span>
+                </SurveyButton>
+              </span>
+              <p className="text-xs text-neutral-400 max-w-md">
+                15–20 minutes. No hard pitch. We&apos;ll tell you straight up
+                if this doesn&apos;t fit your team.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="relative py-8 px-6 border-t border-neutral-200 bg-white">
+          <p className="text-center text-neutral-500 text-xs">
+            &copy; 2026 Capital Growth Club. All rights reserved.
+          </p>
+        </footer>
       </main>
     </SurveyProvider>
   );
