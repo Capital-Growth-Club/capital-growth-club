@@ -5,7 +5,7 @@ import { track } from "@/lib/analytics";
 
 const DEFAULT_VIDEO_URL =
   "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a2a1bc3d7f65291ad92f2cc.mp4";
-const DEFAULT_PREVIEW_SECONDS = 20;
+const DEFAULT_PREVIEW_SECONDS = 10;
 const DEFAULT_PLAYBACK_RATE = 1;
 
 export default function HeroVideo({
@@ -271,14 +271,14 @@ export default function HeroVideo({
           preload="metadata"
         />
 
-        {/* Tap-to-unmute overlay */}
+        {/* Tap-to-watch overlay — kills the muted preview loop and starts the full video with sound. */}
         {!unmuted && (
           <button
             onClick={handleUnmute}
-            className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
-            aria-label="Tap to unmute"
+            className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/40 hover:bg-black/50 transition-colors group"
+            aria-label="Tap to watch the video"
           >
-            <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center group-hover:scale-110 transition-transform">
+            <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
                 <path
                   d="M12 8l16 8-16 8V8z"
@@ -289,6 +289,9 @@ export default function HeroVideo({
                 />
               </svg>
             </div>
+            <span className="text-white text-base md:text-lg font-semibold tracking-wide drop-shadow-lg">
+              Tap to watch the video
+            </span>
           </button>
         )}
 
