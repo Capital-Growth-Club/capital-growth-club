@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { track } from "@/lib/analytics";
 import { getClickIds } from "@/lib/click-ids";
 
-export type QuestionSet = "real-estate" | "service-business";
+export type QuestionSet = "real-estate" | "service-business" | "lenders";
 
 interface SurveyModalProps {
   open: boolean;
@@ -40,6 +40,30 @@ type Question = {
 // booking volume — CTA opens straight to the info + OTP step, filtering
 // happens on the call. Push questions back into this array to re-enable.
 const realEstateQuestions: Question[] = [];
+
+// Lender flow (/lenderscasestudy) mirrors real-estate: no qualifying
+// questions, straight to the info + OTP step, filtering happens on the call.
+const lendersQuestions: Question[] = [];
+
+const GHL_HOOK_BASE =
+  "https://services.leadconnectorhq.com/hooks/gg2Mgpn5GTYN7nAwd00W/webhook-trigger";
+
+/**
+ * Inbound GHL workflow per funnel. Every payload carries `question_set`, so a
+ * shared trigger can still branch on funnel inside GHL.
+ */
+const WEBHOOK_URLS: Record<QuestionSet, string> = {
+  "service-business": `${GHL_HOOK_BASE}/0358546e-8759-4e2d-b640-31a01361f620`,
+  "real-estate": `${GHL_HOOK_BASE}/wpLWR0drvTgP0GRt0D0U`,
+  lenders: `${GHL_HOOK_BASE}/hIKifbcJy4Ndpmg79A5Z`,
+};
+
+/** Calendar page each qualified submission is routed to. */
+const QUALIFIED_ROUTES: Record<QuestionSet, string> = {
+  "service-business": "/qualified",
+  "real-estate": "/qualified-agents",
+  lenders: "/qualified-lenders",
+};
 
 const serviceBusinessQuestions: Question[] = [
   {
@@ -127,7 +151,11 @@ function findPrevVisibleStep(
 
 export default function SurveyModal({ open, onClose, questionSet = "real-estate" }: SurveyModalProps) {
   const questions =
-    questionSet === "service-business" ? serviceBusinessQuestions : realEstateQuestions;
+    questionSet === "service-business"
+      ? serviceBusinessQuestions
+      : questionSet === "lenders"
+        ? lendersQuestions
+        : realEstateQuestions;
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Record<string, AnswerValue>>({});
@@ -335,10 +363,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
       landing_url: typeof window !== "undefined" ? window.location.href : "",
     };
 
-    const webhookUrl =
-      questionSet === "service-business"
-        ? "https://services.leadconnectorhq.com/hooks/gg2Mgpn5GTYN7nAwd00W/webhook-trigger/0358546e-8759-4e2d-b640-31a01361f620"
-        : "https://services.leadconnectorhq.com/hooks/gg2Mgpn5GTYN7nAwd00W/webhook-trigger/wpLWR0drvTgP0GRt0D0U";
+    const webhookUrl = WEBHOOK_URLS[questionSet];
 
     try {
       await fetch(webhookUrl, {
@@ -367,9 +392,7 @@ export default function SurveyModal({ open, onClose, questionSet = "real-estate"
         email: contactInfo.email,
         phone: formatE164(contactInfo.phone),
       });
-      const dest =
-        questionSet === "service-business" ? "/qualified" : "/qualified-agents";
-      router.push(`${dest}?${params.toString()}`);
+      router.push(`${QUALIFIED_ROUTES[questionSet]}?${params.toString()}`);
     } else if (questionSet === "service-business") {
       router.push("/skooloffer");
     } else {
