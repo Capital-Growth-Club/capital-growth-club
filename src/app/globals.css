@@ -13,12 +13,17 @@
 
 html {
   scroll-behavior: smooth;
+  /* Decorative bleed — the .cta-wrap glow is 130% of its button, the hero blur
+     orbs sit past the edge — must not create a horizontal scrollbar. Pages are
+     white over a dark body, so any sideways scroll exposes a black gutter. */
+  overflow-x: hidden;
 }
 
 body {
   background: #0E0E0E;
   color: #FFFFFF;
   font-family: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 .gradient-text {
