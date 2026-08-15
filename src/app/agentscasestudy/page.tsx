@@ -132,10 +132,45 @@ export default function AgentsCaseStudyPage() {
               autoSound
             />
 
-            <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
-              Let us build the whole funnel for your business and run it for 14
-              days — $99 to see it work before you commit to anything.
-            </p>
+            {/* Offer callout — dashed card + chevrons aiming at the CTA */}
+            <div className="max-w-2xl mx-auto mb-5">
+              <div className="rounded-2xl border-2 border-dashed border-brand-gold/70 bg-brand-gold/[0.07] px-5 py-6 md:px-8 md:py-7 text-center shadow-sm shadow-brand-gold/10">
+                <p className="text-[11px] md:text-xs font-black tracking-[0.22em] uppercase text-brand-gold mb-3">
+                  The Trial Offer
+                </p>
+                <p
+                  className={`${helveticaBold.className} text-neutral-900 text-xl md:text-2xl leading-snug`}
+                >
+                  Let us build the whole funnel for your business and run it
+                  for 14 days &mdash;{" "}
+                  <span className="text-brand-gold">$99</span> to see it work
+                  before you commit to anything.
+                </p>
+              </div>
+            </div>
+
+            <div
+              aria-hidden
+              className="flex justify-center items-center gap-2 mb-4"
+            >
+              {["0ms", "150ms", "300ms"].map((delay) => (
+                <svg
+                  key={delay}
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-brand-gold animate-bounce"
+                  style={{ animationDelay: delay }}
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              ))}
+            </div>
 
             <div className="text-center">
               <span className="cta-wrap inline-block w-full sm:w-auto">
