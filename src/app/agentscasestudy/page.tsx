@@ -117,9 +117,10 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-                Watch the video first. If it makes sense for you, we&apos;ll
-                install that same system in your market &mdash; 14 days of live
-                leads for $99, then you decide whether to keep it running.
+                In the video we show you the ad accounts, the ad creatives, and
+                the sales process turning ad spend into predictable closings.
+                If it makes sense for you, book a call to start your $99 14-day
+                trial.
               </p>
             </div>
 
