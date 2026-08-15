@@ -131,11 +131,10 @@ export default function AgentsCaseStudyPage() {
             />
 
             <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
-              In the video above we break down how a team in Frisco closed
-              $4.9M in sales volume in a little over 4 months on $33/day in
-              Facebook ads. Same done-for-you system, proven across $28M in ad
-              spend — and for $99 we&apos;ll install it for you and run it for
-              14 days before you commit to anything.
+              Everything in that breakdown is what we build and install for you
+              — the campaigns, the creative, the targeting, all of it. Proven
+              across $28M in ad spend. The only thing you do is work the leads
+              that come in.
             </p>
 
             <div className="text-center">
