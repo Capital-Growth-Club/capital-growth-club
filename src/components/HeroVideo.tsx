@@ -8,16 +8,26 @@ const DEFAULT_VIDEO_URL =
 const DEFAULT_PREVIEW_SECONDS = 10;
 const DEFAULT_PLAYBACK_RATE = 1;
 
+/**
+ * `autoSound` asks the browser to start the video with audio on page load.
+ * Browsers usually refuse: Chrome only allows it once the visitor has built
+ * up a Media Engagement score on the domain, and iOS Safari blocks it outright
+ * without a gesture. A rejected play() leaves the video stopped, so failure
+ * falls straight back to the muted preview loop + tap-for-sound overlay.
+ * Every attempt reports `video_autoplay_sound` with whether it was allowed.
+ */
 export default function HeroVideo({
   src = DEFAULT_VIDEO_URL,
   className = "mb-10",
   previewSeconds = DEFAULT_PREVIEW_SECONDS,
   poster,
+  autoSound = false,
 }: {
   src?: string;
   className?: string;
   previewSeconds?: number;
   poster?: string;
+  autoSound?: boolean;
 } = {}) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const replayTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -29,6 +39,7 @@ export default function HeroVideo({
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasStartedOnce, setHasStartedOnce] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [soundBlocked, setSoundBlocked] = useState(false);
 
   useEffect(() => {
     const v = videoRef.current;
@@ -163,7 +174,32 @@ export default function HeroVideo({
     v.addEventListener("timeupdate", onTimeUpdate);
     document.addEventListener("visibilitychange", onVisibilityChange);
     window.addEventListener("beforeunload", onBeforeUnload);
-    v.play().catch(() => {});
+
+    if (autoSound) {
+      // Set unmutedRef BEFORE play() so onPlay doesn't arm the muted preview
+      // loop — the loop would seek back to 0 every previewSeconds mid-watch.
+      unmutedRef.current = true;
+      v.muted = false;
+      v.loop = false;
+      v.play()
+        .then(() => {
+          setUnmuted(true);
+          setHasStartedOnce(true);
+          track("video_autoplay_sound", { video_src: src, allowed: true });
+        })
+        .catch(() => {
+          // Blocked. Restore the muted preview loop and let the user opt in.
+          unmutedRef.current = false;
+          v.muted = true;
+          v.loop = true;
+          setUnmuted(false);
+          setSoundBlocked(true);
+          v.play().catch(() => {});
+          track("video_autoplay_sound", { video_src: src, allowed: false });
+        });
+    } else {
+      v.play().catch(() => {});
+    }
 
     return () => {
       // Fire a final watch-end if we're unmounting mid-play
@@ -179,13 +215,14 @@ export default function HeroVideo({
       clearReplayTimer();
       cancelEngagedGate();
     };
-  }, [src, previewSeconds]);
+  }, [src, previewSeconds, autoSound]);
 
   const handleUnmute = () => {
     const v = videoRef.current;
     if (!v) return;
     unmutedRef.current = true;
     setUnmuted(true);
+    setSoundBlocked(false);
     v.muted = false;
     v.loop = false;
     if (replayTimerRef.current) {
@@ -196,7 +233,7 @@ export default function HeroVideo({
     v.play().catch(() => {});
     // Reset progress marks so we count checkpoints for the "real" watch
     progressMarksRef.current = new Set();
-    track("video_unmute_play", { video_src: src });
+    track("video_unmute_play", { video_src: src, sound_was_blocked: soundBlocked });
   };
 
   const togglePlay = () => {
@@ -271,26 +308,37 @@ export default function HeroVideo({
           preload="metadata"
         />
 
-        {/* Tap-to-watch overlay — kills the muted preview loop and starts the full video with sound. */}
+        {/* Tap-to-watch overlay — kills the muted preview loop and starts the full video with sound.
+            When autoSound was blocked the video is already rolling, so the ask is sound, not play. */}
         {!unmuted && (
           <button
             onClick={handleUnmute}
             className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/40 hover:bg-black/50 transition-colors group"
-            aria-label="Tap to watch the video"
+            aria-label={
+              soundBlocked ? "Tap to turn on sound" : "Tap to watch the video"
+            }
           >
             <div className="w-20 h-20 rounded-full gradient-bg flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <path
-                  d="M12 8l16 8-16 8V8z"
-                  fill="#0E0E0E"
-                  stroke="#0E0E0E"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                />
-              </svg>
+              {soundBlocked ? (
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0E0E0E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M11 5 6 9H2v6h4l5 4V5z" fill="#0E0E0E" />
+                  <line x1="23" y1="9" x2="17" y2="15" />
+                  <line x1="17" y1="9" x2="23" y2="15" />
+                </svg>
+              ) : (
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path
+                    d="M12 8l16 8-16 8V8z"
+                    fill="#0E0E0E"
+                    stroke="#0E0E0E"
+                    strokeWidth="2"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              )}
             </div>
             <span className="text-white text-base md:text-lg font-semibold tracking-wide drop-shadow-lg">
-              Tap to watch the video
+              {soundBlocked ? "Tap for sound" : "Tap to watch the video"}
             </span>
           </button>
         )}

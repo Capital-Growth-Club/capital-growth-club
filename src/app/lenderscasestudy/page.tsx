@@ -109,7 +109,7 @@ export default function LendersCaseStudyPage() {
               </p>
             </div>
 
-            <HeroVideo src={CASE_STUDY_VIDEO} className="mb-8" />
+            <HeroVideo src={CASE_STUDY_VIDEO} className="mb-8" autoSound />
 
             <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
               We run done-for-you Facebook campaigns for private lenders, proven

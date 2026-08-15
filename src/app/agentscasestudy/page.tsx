@@ -126,6 +126,7 @@ export default function AgentsCaseStudyPage() {
               src={CASE_STUDY_VIDEO}
               className="mb-8"
               poster="/video-poster.webp"
+              autoSound
             />
 
             <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
