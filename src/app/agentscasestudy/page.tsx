@@ -140,7 +140,7 @@ export default function AgentsCaseStudyPage() {
             <div className="text-center">
               <span className="cta-wrap inline-block w-full sm:w-auto">
                 <SurveyButton location="hero" className={primaryCta}>
-                  Book $99 Trial Discovery Call
+                  Book Trial Offer Discovery Call
                   <span aria-hidden className="text-brand-gold">→</span>
                 </SurveyButton>
               </span>
@@ -230,7 +230,7 @@ export default function AgentsCaseStudyPage() {
                   location="final"
                   className="inline-flex w-full sm:w-auto justify-center items-center gap-2 whitespace-nowrap bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-[clamp(1rem,4.5vw,1.5rem)] py-6 px-4 sm:px-10 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:-translate-y-0.5"
                 >
-                  Book $99 Trial Discovery Call
+                  Book Trial Offer Discovery Call
                   <span aria-hidden>→</span>
                 </SurveyButton>
               </span>
