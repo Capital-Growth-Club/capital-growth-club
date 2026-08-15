@@ -130,12 +130,10 @@ export default function AgentsCaseStudyPage() {
             />
 
             <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
-              Want to test it in your market for 14 days first? Book a call
-              below and we&apos;ll show you exactly how we&apos;d build it — a
-              custom high intent Facebook lead funnel, installed end to end for
-              $99. Same playbook we&apos;ve run across $28M in ad spend. You
-              work the leads that come in, and after 14 days you decide whether
-              it keeps running.
+              Let us build the whole funnel for your business and run it for 14
+              days — $99 to see it work before you commit to anything. Same
+              playbook we&apos;ve run across $28M in ad spend. You just work the
+              leads that come in.
             </p>
 
             <div className="text-center">
