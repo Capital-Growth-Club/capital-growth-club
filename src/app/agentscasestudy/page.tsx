@@ -108,9 +108,10 @@ export default function AgentsCaseStudyPage() {
               <h1
                 className={`${helveticaBold.className} text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-5`}
               >
-                $15/day is all it takes to keep your pipeline full of{" "}
+                $15/day is all it takes to turn high intent Facebook leads
+                into{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
-                  high intent real estate leads from Facebook
+                  a predictable source of real estate closings
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
