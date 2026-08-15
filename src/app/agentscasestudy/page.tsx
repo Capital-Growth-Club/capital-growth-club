@@ -110,11 +110,11 @@ export default function AgentsCaseStudyPage() {
               <h1
                 className={`${helveticaBold.className} text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-5`}
               >
-                You get{" "}
+                Real estate agents: watch how our high intent Facebook leads
+                system is turning{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
-                  14 days of high intent real estate leads for $99
-                </span>{" "}
-                &mdash; we install the whole system for you
+                  $15/day into predictable closings
+                </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
                 You pay $99. We build and install the entire system for you.
