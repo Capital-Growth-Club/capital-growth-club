@@ -104,7 +104,7 @@ export default function AgentsCaseStudyPage() {
               <div className="inline-flex items-center gap-2.5 bg-brand-gold/10 border border-brand-gold/40 rounded-full px-4 py-2 mb-6 shadow-sm shadow-brand-gold/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
                 <span className="text-neutral-900 text-xs md:text-sm font-black tracking-[0.15em] uppercase">
-                  Start Your 14-Day $99 Trial Before You Commit
+                  Limited offer: 14-Day Trial &middot; $99 &middot; No Obligation
                 </span>
               </div>
               <h1
