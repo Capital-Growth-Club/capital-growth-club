@@ -27,21 +27,23 @@ const CASE_STUDY_VIDEO =
   "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a7b4f7d9115899f0337e401.mp4";
 
 export const metadata: Metadata = {
-  title: "Never Let Your Pipeline Run Thin Again",
+  title: "Install Our Real Estate Facebook Lead System — $99 For 14 Days",
   description:
-    "Done-for-you Facebook lead-gen for real estate agents and teams, proven on $28M in ad spend. Fill your pipeline with new high-intent leads daily.",
+    "Pay $99, we install our high intent Facebook lead system for you and run it for a full 14 days. Only then do you decide whether to continue. Proven on $28M in ad spend.",
   openGraph: {
-    title: "Never Let Your Pipeline Run Thin Again | Capital Growth Club",
+    title:
+      "Install Our Real Estate Facebook Lead System — $99 For 14 Days | Capital Growth Club",
     description:
-      "Done-for-you Facebook lead-gen for real estate agents and teams. See the case study + book a free Agent Pipeline Strategy Call.",
+      "Pay $99, we install the whole system and run it for 14 days before you commit to anything. See the case study + book your call.",
     url: "https://capitalgrowthclub.com/agentscasestudy",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Never Let Your Pipeline Run Thin Again | Capital Growth Club",
+    title:
+      "Install Our Real Estate Facebook Lead System — $99 For 14 Days | Capital Growth Club",
     description:
-      "Done-for-you Facebook lead-gen for real estate agents and teams. See the case study + book a free Agent Pipeline Strategy Call.",
+      "Pay $99, we install the whole system and run it for 14 days before you commit to anything. See the case study + book your call.",
   },
   alternates: {
     canonical: "https://capitalgrowthclub.com/agentscasestudy",
@@ -86,7 +88,7 @@ export default function AgentsCaseStudyPage() {
               />
             </Link>
             <SurveyButton location="nav" className={navCta}>
-              Book Your Strategy Call
+              Start Your $99 Trial
               <span aria-hidden className="text-brand-gold">→</span>
             </SurveyButton>
           </div>
@@ -115,9 +117,9 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-                Watch the full breakdown of how we helped a team in Frisco
-                close $4.9m in sales volume in a little over 4 months with
-                Facebook ads — only spending $33/day.
+                You pay $99. We build and install the entire system for you.
+                Then you get live leads for a full 14 days before you decide
+                whether to continue.
               </p>
             </div>
 
@@ -129,15 +131,17 @@ export default function AgentsCaseStudyPage() {
             />
 
             <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
-              We run done-for-you Facebook campaigns for real estate agents and
-              teams, proven across $28M in ad spend, to help keep your pipeline
-              supplied with new high-intent buyers and sellers daily.
+              In the video above we break down how a team in Frisco closed
+              $4.9M in sales volume in a little over 4 months on $33/day in
+              Facebook ads. Same done-for-you system, proven across $28M in ad
+              spend — and for $99 we&apos;ll install it for you and run it for
+              14 days before you commit to anything.
             </p>
 
             <div className="text-center">
               <span className="cta-wrap inline-block">
                 <SurveyButton location="hero" className={primaryCta}>
-                  Book Your Free Strategy Call
+                  Book Your Call To Start Your $99 Trial
                   <span aria-hidden className="text-brand-gold">→</span>
                 </SurveyButton>
               </span>
@@ -214,11 +218,11 @@ export default function AgentsCaseStudyPage() {
             <h2
               className={`${helveticaBold.className} text-3xl md:text-4xl lg:text-5xl leading-tight text-white mb-8`}
             >
-              Want us to build this{" "}
+              Want the whole system installed and{" "}
               <span
                 className={`${editorialSerif.className} font-normal bg-gradient-to-r from-[#BB9A65] to-[#FFFCD8] bg-clip-text text-transparent`}
               >
-                for you as soon as tomorrow?
+                feeding you leads inside 14 days?
               </span>
             </h2>
             <div className="flex flex-col items-center gap-4">
@@ -227,13 +231,14 @@ export default function AgentsCaseStudyPage() {
                   location="final"
                   className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-lg md:text-xl py-5 px-10 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:-translate-y-0.5"
                 >
-                  Book Your Free Strategy Call
+                  Book Your Call To Start Your $99 Trial
                   <span aria-hidden>→</span>
                 </SurveyButton>
               </span>
               <p className="text-xs text-neutral-400 max-w-md">
-                15–20 minutes. No hard pitch. We&apos;ll tell you straight up
-                if this isn&apos;t a fit.
+                15–20 minutes to map it to your market. If we&apos;re a fit,
+                you&apos;re live for $99 and you decide what happens after the
+                14 days. If we&apos;re not, we&apos;ll tell you straight up.
               </p>
             </div>
           </div>
