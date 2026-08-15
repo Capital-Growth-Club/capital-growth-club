@@ -108,9 +108,9 @@ export default function AgentsCaseStudyPage() {
               <h1
                 className={`${helveticaBold.className} text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-5`}
               >
-                The Facebook funnel real estate agents and teams are using to{" "}
+                See How Our High Intent Facebook Lead Campaigns Are Turning{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
-                  turn ad spend into deals on demand.
+                  $15/day Into Predictable Deal Flow
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
