@@ -110,7 +110,7 @@ export default function AgentsCaseStudyPage() {
               >
                 $15/day is all it takes to keep your pipeline full of{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
-                  high intent Facebook leads
+                  high intent real estate leads from Facebook
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
