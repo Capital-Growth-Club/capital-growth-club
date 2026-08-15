@@ -117,9 +117,9 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-                You pay $99. We build and install the entire system for you.
-                Then you get live leads for a full 14 days before you decide
-                whether to continue.
+                Watch the video first. If it makes sense for you, we&apos;ll
+                install that same system in your market &mdash; 14 days of live
+                leads for $99, then you decide whether to keep it running.
               </p>
             </div>
 
