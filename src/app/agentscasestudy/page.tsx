@@ -27,23 +27,21 @@ const CASE_STUDY_VIDEO =
   "https://assets.cdn.filesafe.space/gg2Mgpn5GTYN7nAwd00W/media/6a7b4f7d9115899f0337e401.mp4";
 
 export const metadata: Metadata = {
-  title: "Never Let Your Agents' Pipelines Run Thin Again",
+  title: "Never Let Your Pipeline Run Thin Again",
   description:
-    "Done-for-you Facebook lead-gen for real estate teams, proven on $28M in ad spend. Fill your team's pipelines with new high-intent leads daily.",
+    "Done-for-you Facebook lead-gen for real estate agents and teams, proven on $28M in ad spend. Fill your pipeline with new high-intent leads daily.",
   openGraph: {
-    title:
-      "Never Let Your Agents' Pipelines Run Thin Again | Capital Growth Club",
+    title: "Never Let Your Pipeline Run Thin Again | Capital Growth Club",
     description:
-      "Done-for-you Facebook lead-gen for real estate teams. See the case study + book a free Agent Pipeline Strategy Call.",
+      "Done-for-you Facebook lead-gen for real estate agents and teams. See the case study + book a free Agent Pipeline Strategy Call.",
     url: "https://capitalgrowthclub.com/agentscasestudy",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "Never Let Your Agents' Pipelines Run Thin Again | Capital Growth Club",
+    title: "Never Let Your Pipeline Run Thin Again | Capital Growth Club",
     description:
-      "Done-for-you Facebook lead-gen for real estate teams. See the case study + book a free Agent Pipeline Strategy Call.",
+      "Done-for-you Facebook lead-gen for real estate agents and teams. See the case study + book a free Agent Pipeline Strategy Call.",
   },
   alternates: {
     canonical: "https://capitalgrowthclub.com/agentscasestudy",
@@ -110,7 +108,7 @@ export default function AgentsCaseStudyPage() {
               <h1
                 className={`${helveticaBold.className} text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-5`}
               >
-                The Facebook funnel real estate teams are using to{" "}
+                The Facebook funnel real estate agents and teams are using to{" "}
                 <span className="bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold bg-clip-text text-transparent">
                   turn ad spend into deals on demand.
                 </span>
@@ -130,9 +128,9 @@ export default function AgentsCaseStudyPage() {
             />
 
             <p className="text-neutral-600 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 text-center">
-              We run done-for-you Facebook campaigns for real estate teams,
-              proven across $28M in ad spend, to help keep your agents supplied
-              with new high-intent buyers and sellers daily.
+              We run done-for-you Facebook campaigns for real estate agents and
+              teams, proven across $28M in ad spend, to help keep your pipeline
+              supplied with new high-intent buyers and sellers daily.
             </p>
 
             <div className="text-center">
@@ -157,7 +155,7 @@ export default function AgentsCaseStudyPage() {
               <h2
                 className={`${heading} text-3xl md:text-4xl lg:text-5xl tracking-tight`}
               >
-                More wins texted in from teams like yours.
+                More wins texted in from agents and teams like yours.
               </h2>
             </div>
 
@@ -219,7 +217,7 @@ export default function AgentsCaseStudyPage() {
               <span
                 className={`${editorialSerif.className} font-normal bg-gradient-to-r from-[#BB9A65] to-[#FFFCD8] bg-clip-text text-transparent`}
               >
-                for your team as soon as tomorrow?
+                for you as soon as tomorrow?
               </span>
             </h2>
             <div className="flex flex-col items-center gap-4">
@@ -234,7 +232,7 @@ export default function AgentsCaseStudyPage() {
               </span>
               <p className="text-xs text-neutral-400 max-w-md">
                 15–20 minutes. No hard pitch. We&apos;ll tell you straight up
-                if this doesn&apos;t fit your team.
+                if this isn&apos;t a fit.
               </p>
             </div>
           </div>
