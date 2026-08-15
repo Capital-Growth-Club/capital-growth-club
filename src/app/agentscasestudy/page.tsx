@@ -91,7 +91,7 @@ export default function AgentsCaseStudyPage() {
               />
             </Link>
             <SurveyButton location="nav" className={navCta}>
-              Start Your $99 Trial
+              Book Discovery Call
               <span aria-hidden className="text-brand-gold">→</span>
             </SurveyButton>
           </div>
