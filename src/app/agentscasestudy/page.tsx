@@ -104,7 +104,7 @@ export default function AgentsCaseStudyPage() {
               <div className="inline-flex items-center gap-2.5 bg-gradient-to-r from-neutral-900/[0.06] via-neutral-900/[0.03] to-neutral-900/[0.06] border border-neutral-900/25 rounded-full px-4 py-2 mb-6 shadow-sm shadow-neutral-900/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
                 <span className="text-neutral-900 text-xs md:text-sm font-black tracking-[0.15em] uppercase">
-                  Real Estate Agents &amp; Teams Only
+                  For Real Estate Agents &amp; Teams Only
                 </span>
               </div>
               <h1
