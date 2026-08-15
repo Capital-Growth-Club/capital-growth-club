@@ -61,10 +61,11 @@ const smsProof = [
 
 const eyebrow = `${editorialSerif.className} text-neutral-500 text-xs tracking-[0.28em] uppercase leading-none`;
 const heading = `${helveticaBold.className} text-neutral-900 leading-tight`;
-// whitespace-nowrap keeps the CTA label on one line; the label is kept short
-// enough that it still fits inside a 320px viewport at the mobile type size.
+// The CTA label is long and must stay on one line (whitespace-nowrap), so on
+// phones the button goes full width and its type scales with the viewport —
+// that keeps it as large as the screen allows without ever wrapping.
 const primaryCta =
-  "inline-flex items-center gap-2 whitespace-nowrap bg-neutral-900 text-white font-semibold text-base md:text-lg py-4 px-6 md:px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5";
+  "inline-flex w-full sm:w-auto justify-center items-center gap-2 whitespace-nowrap bg-neutral-900 text-white font-semibold text-[clamp(1rem,4.5vw,1.25rem)] py-5 px-4 sm:px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5";
 const navCta =
   "inline-flex items-center gap-2 whitespace-nowrap bg-neutral-900 text-white font-semibold text-sm py-2.5 px-5 rounded-lg hover:bg-neutral-800 transition-colors";
 
@@ -137,10 +138,10 @@ export default function AgentsCaseStudyPage() {
             </p>
 
             <div className="text-center">
-              <span className="cta-wrap inline-block">
+              <span className="cta-wrap inline-block w-full sm:w-auto">
                 <SurveyButton location="hero" className={primaryCta}>
                   Book $99 Trial Discovery Call
-                  <span aria-hidden className="hidden sm:inline text-brand-gold">→</span>
+                  <span aria-hidden className="text-brand-gold">→</span>
                 </SurveyButton>
               </span>
             </div>
@@ -224,13 +225,13 @@ export default function AgentsCaseStudyPage() {
               </span>
             </h2>
             <div className="flex flex-col items-center gap-4">
-              <span className="cta-wrap inline-block">
+              <span className="cta-wrap inline-block w-full sm:w-auto">
                 <SurveyButton
                   location="final"
-                  className="inline-flex items-center gap-2 whitespace-nowrap bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-base md:text-xl py-5 px-6 md:px-10 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:-translate-y-0.5"
+                  className="inline-flex w-full sm:w-auto justify-center items-center gap-2 whitespace-nowrap bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-[clamp(1rem,4.5vw,1.5rem)] py-6 px-4 sm:px-10 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:-translate-y-0.5"
                 >
                   Book $99 Trial Discovery Call
-                  <span aria-hidden className="hidden sm:inline">→</span>
+                  <span aria-hidden>→</span>
                 </SurveyButton>
               </span>
               <p className="text-xs text-neutral-400 max-w-md">
