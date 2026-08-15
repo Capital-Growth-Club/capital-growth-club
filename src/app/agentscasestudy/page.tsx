@@ -61,10 +61,12 @@ const smsProof = [
 
 const eyebrow = `${editorialSerif.className} text-neutral-500 text-xs tracking-[0.28em] uppercase leading-none`;
 const heading = `${helveticaBold.className} text-neutral-900 leading-tight`;
+// whitespace-nowrap keeps the CTA label on one line; the label is kept short
+// enough that it still fits inside a 320px viewport at the mobile type size.
 const primaryCta =
-  "inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-lg py-4 px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5";
+  "inline-flex items-center gap-2 whitespace-nowrap bg-neutral-900 text-white font-semibold text-base md:text-lg py-4 px-6 md:px-8 rounded-xl hover:bg-neutral-800 transition-all shadow-lg shadow-neutral-900/10 hover:shadow-xl hover:-translate-y-0.5";
 const navCta =
-  "inline-flex items-center gap-2 bg-neutral-900 text-white font-semibold text-sm py-2.5 px-5 rounded-lg hover:bg-neutral-800 transition-colors";
+  "inline-flex items-center gap-2 whitespace-nowrap bg-neutral-900 text-white font-semibold text-sm py-2.5 px-5 rounded-lg hover:bg-neutral-800 transition-colors";
 
 export default function AgentsCaseStudyPage() {
   return (
@@ -137,7 +139,7 @@ export default function AgentsCaseStudyPage() {
             <div className="text-center">
               <span className="cta-wrap inline-block">
                 <SurveyButton location="hero" className={primaryCta}>
-                  Book Your Call To Start Your $99 Trial
+                  Book My $99 Trial Call
                   <span aria-hidden className="text-brand-gold">→</span>
                 </SurveyButton>
               </span>
@@ -225,9 +227,9 @@ export default function AgentsCaseStudyPage() {
               <span className="cta-wrap inline-block">
                 <SurveyButton
                   location="final"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-lg md:text-xl py-5 px-10 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:-translate-y-0.5"
+                  className="inline-flex items-center gap-2 whitespace-nowrap bg-gradient-to-r from-brand-gold via-[#D4B87A] to-brand-gold text-neutral-900 font-semibold text-base md:text-xl py-5 px-6 md:px-10 rounded-xl hover:from-[#D4B87A] hover:via-brand-gold hover:to-[#D4B87A] transition-all shadow-xl shadow-brand-gold/30 hover:shadow-2xl hover:-translate-y-0.5"
                 >
-                  Book Your Call To Start Your $99 Trial
+                  Book My $99 Trial Call
                   <span aria-hidden>→</span>
                 </SurveyButton>
               </span>
