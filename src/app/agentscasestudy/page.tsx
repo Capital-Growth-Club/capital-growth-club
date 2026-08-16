@@ -100,10 +100,10 @@ export default function AgentsCaseStudyPage() {
         {/* ═════════════ 1. HERO (case study) ═════════════ */}
         <section
           data-section-name="hero"
-          className="relative pt-28 pb-12 md:pt-32 md:pb-14"
+          className="relative pt-24 pb-12 md:pt-32 md:pb-14"
         >
           <div className="max-w-3xl mx-auto px-6">
-            <div className="text-center mb-10">
+            <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2.5 bg-brand-gold/10 border border-brand-gold/40 rounded-full px-4 py-2 mb-6 shadow-sm shadow-brand-gold/10">
                 <span className="w-1.5 h-1.5 rounded-full bg-brand-gold animate-pulse" />
                 <span className="text-neutral-900 text-xs md:text-sm font-black tracking-[0.15em] uppercase">
@@ -111,7 +111,7 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </div>
               <h1
-                className={`${helveticaBold.className} text-4xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-5`}
+                className={`${helveticaBold.className} text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-4`}
               >
                 Real estate agents: watch how our high intent Facebook leads
                 system produced{" "}
