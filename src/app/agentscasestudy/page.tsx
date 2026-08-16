@@ -120,8 +120,9 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-                In the video we show you the ad accounts, the ad creatives, and
-                the sales process turning ad spend into predictable closings.
+                Never wonder where your next closing is coming from. In the
+                video we open up the ad accounts, the ad creatives, and the
+                sales process that make it predictable.
               </p>
             </div>
 
