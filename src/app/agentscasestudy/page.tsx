@@ -119,10 +119,26 @@ export default function AgentsCaseStudyPage() {
                   9 extra closings in 4 months
                 </span>
               </h1>
-              <p className="text-lg md:text-xl text-neutral-600 leading-relaxed">
-                Never wonder where your next closing is coming from. In the
-                video we open up the ad accounts, the ad creatives, and the
-                sales process that make it predictable.
+              {/* Serif deck line — contrasts with the uppercase sans H1 rather
+                  than competing with it, then hands off to a smaller sans line. */}
+              <p
+                className={`${editorialSerif.className} text-xl md:text-2xl text-neutral-900 leading-snug mb-3`}
+              >
+                Never wonder where your next closing is coming from.
+              </p>
+              <p className="text-sm md:text-base text-neutral-500 leading-relaxed max-w-xl mx-auto">
+                In the video we open up the ad accounts, the ad creatives, and
+                the sales process that make it{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10 font-semibold text-neutral-800">
+                    predictable
+                  </span>
+                  <span
+                    aria-hidden
+                    className="absolute left-0 right-0 bottom-[0.08em] h-[0.42em] bg-brand-gold/30 rounded-sm"
+                  />
+                </span>
+                .
               </p>
             </div>
 
