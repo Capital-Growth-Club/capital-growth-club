@@ -120,13 +120,14 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </h1>
               {/* Subordinate to the H1 by weight and colour, not typeface —
-                  the bold lead-in carries the outcome, the rest recedes. */}
+                  qualifying line recedes, the two directives carry the weight. */}
               <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-xl mx-auto">
-                <span className="font-semibold text-neutral-900">
-                  Closings on the calendar every month.
-                </span>{" "}
-                In the video we open up the ad accounts, the ad creatives, and
-                the sales process behind them.
+                If you&apos;re a real estate agent or team trying to generate
+                clients more predictably, our high intent lead system was made
+                for you.
+              </p>
+              <p className="mt-3 text-base md:text-lg font-semibold text-neutral-900">
+                Watch the video. Try it for 14 days.
               </p>
             </div>
 
