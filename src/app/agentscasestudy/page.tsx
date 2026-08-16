@@ -111,7 +111,7 @@ export default function AgentsCaseStudyPage() {
                 </span>
               </div>
               <h1
-                className={`${helveticaBold.className} text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-4`}
+                className={`${helveticaBold.className} text-3xl sm:text-4xl lg:text-5xl leading-[1.15] tracking-tight uppercase text-neutral-900 mb-4`}
               >
                 Real estate agents: watch how our high intent Facebook leads
                 system produced{" "}
