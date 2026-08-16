@@ -146,6 +146,28 @@ export default function AgentsCaseStudyPage() {
                   <span className="text-brand-gold">$99</span> to see it work
                   before you commit to anything.
                 </p>
+
+                <div className="mt-5 pt-4 border-t border-brand-gold/25 flex items-center justify-center gap-2.5">
+                  <svg
+                    aria-hidden
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="text-brand-gold shrink-0"
+                  >
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                  <p className="text-neutral-700 text-sm md:text-base font-semibold leading-snug">
+                    If we don&apos;t generate you any leads, you get your $99
+                    back.
+                  </p>
+                </div>
               </div>
             </div>
 
