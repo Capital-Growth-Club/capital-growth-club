@@ -119,16 +119,31 @@ export default function AgentsCaseStudyPage() {
                   9 extra closings in 4 months
                 </span>
               </h1>
-              {/* Subordinate to the H1 by weight and colour, not typeface —
-                  qualifying line recedes, the two directives carry the weight. */}
-              <p className="text-base md:text-lg text-neutral-500 leading-relaxed max-w-xl mx-auto">
-                If you&apos;re a real estate agent or team trying to generate
-                clients more predictably, our high intent lead system was made
-                for you.
+              {/* Bolded middle clause gives the skimming eye something to
+                  land on; the directives sit in their own pill below. */}
+              <p className="text-lg md:text-xl text-neutral-700 leading-relaxed max-w-2xl mx-auto">
+                If you&apos;re a real estate agent or team trying to{" "}
+                <span className="font-bold text-neutral-900">
+                  generate clients more predictably
+                </span>
+                , our high intent lead system was made for you.
               </p>
-              <p className="mt-3 text-base md:text-lg font-semibold text-neutral-900">
-                Watch the video. Try it for 14 days.
-              </p>
+
+              <div className="mt-5 inline-flex items-center justify-center gap-2.5 rounded-2xl sm:rounded-full border border-neutral-900/20 bg-neutral-900/[0.04] px-5 py-2.5">
+                <svg
+                  aria-hidden
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="text-brand-gold shrink-0"
+                >
+                  <path d="M8 5v14l11-7L8 5z" />
+                </svg>
+                <span className="text-neutral-900 text-xs md:text-sm font-black tracking-[0.14em] uppercase leading-snug">
+                  Watch the video &middot; Try it for 14 days
+                </span>
+              </div>
             </div>
 
             <HeroVideo
