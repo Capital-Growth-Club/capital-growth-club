@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import Image from "next/image";
 import BookingCalendar from "./BookingCalendar";
 import { Accent, SiteFooter, poppins } from "../ui";
 
@@ -17,11 +16,7 @@ export default function DscrLendersBookPage() {
   return (
     <main className={`${poppins.className} min-h-screen overflow-x-clip bg-white text-[#0E0E0E]`}>
       <section className="relative px-4 pb-16 pt-8 sm:px-6 md:pb-20 md:pt-12">
-        <div className="pointer-events-none absolute left-1/2 top-0 h-[480px] w-[900px] max-w-full -translate-x-1/2 rounded-full bg-[#FFFCD8] opacity-70 blur-[110px]" />
-
         <div className="relative mx-auto max-w-5xl text-center">
-          <Image src="/logo.png" alt="Capital Growth Club" width={480} height={141} priority className="mx-auto mb-8 h-9 w-auto md:mb-10" />
-
           <h1 className="mx-auto max-w-4xl text-balance text-[2rem] font-extrabold leading-[1.08] tracking-[-0.035em] sm:text-5xl lg:text-[3.2rem]">
             On this call, we&apos;ll show you how to bring DSCR investors{" "}
             <Accent>straight to your team</Accent>, without waiting on referrals.

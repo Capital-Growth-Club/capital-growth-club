@@ -30,8 +30,8 @@ export function Accent({ children, light = false }: { children: ReactNode; light
 /** "54 qualified DSCR deals…" strip with the gold top edge. */
 export function GuaranteeStrip() {
   return (
-    <div className="relative mx-auto inline-block rounded-2xl border border-[#BB9A65]/50 bg-white px-6 py-4 shadow-[0_18px_40px_-18px_rgba(14,14,14,0.25)] before:absolute before:inset-x-6 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-[#8C6B2E] before:via-[#E9DCB0] before:to-[#8C6B2E]">
-      <p className="text-base font-extrabold tracking-[-0.01em] md:text-lg">
+    <div className="relative mx-auto inline-block rounded-2xl border border-[#BB9A65]/50 bg-white px-6 py-4 shadow-[0_18px_40px_-18px_rgba(14,14,14,0.25)] before:absolute before:inset-x-6 before:top-0 before:h-[3px] before:rounded-b-full before:bg-gradient-to-r before:from-[#8C6B2E] before:via-[#E9DCB0] before:to-[#8C6B2E] md:px-9 md:py-5">
+      <p className="text-lg font-extrabold tracking-[-0.015em] md:text-2xl">
         54 qualified DSCR deals in your first 90 days, <Accent>or you don&apos;t pay.</Accent>
       </p>
     </div>

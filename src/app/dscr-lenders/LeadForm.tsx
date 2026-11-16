@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { track } from "@/lib/analytics";
@@ -37,6 +37,8 @@ const STEP_NUMBER: Record<Stage, number> = {
   disqualified: 1,
 };
 const TOTAL_STEPS = 3;
+/** Pause after an option is picked so the filled circle registers before moving on. */
+const ADVANCE_DELAY_MS = 350;
 
 const input =
   "w-full rounded-xl border border-[#BB9A65]/40 bg-white px-4 py-3.5 text-base text-[#0E0E0E] placeholder-[#5F594B]/50 transition-colors focus:border-[#8C6B2E] focus:outline-none focus:ring-2 focus:ring-[#BB9A65]/25";
@@ -86,6 +88,8 @@ export default function LeadForm() {
     phone: "",
   });
   const [consent, setConsent] = useState(false);
+  const [qualifyAnswer, setQualifyAnswer] = useState<string | null>(null);
+  const advancingRef = useRef(false);
   const [emailError, setEmailError] = useState("");
   const [code, setCode] = useState("");
   const [error, setError] = useState("");
@@ -102,15 +106,22 @@ export default function LeadForm() {
     track("form_open", { question_set: "lenders", funnel: FUNNEL });
   }
 
+  /** Fills the chosen circle, holds briefly so the choice registers, then moves on. */
   function answerQualify(answer: string) {
+    if (advancingRef.current) return;
+    advancingRef.current = true;
+    setQualifyAnswer(answer);
     markStarted();
     track("form_answer", { funnel: FUNNEL, question: "owns_lending_business", answer });
-    if (answer === NO) {
-      track("form_disqualified", { funnel: FUNNEL, reason: "owns_lending_business" });
-      setStage("disqualified");
-      return;
-    }
-    setStage("business");
+    window.setTimeout(() => {
+      advancingRef.current = false;
+      if (answer === NO) {
+        track("form_disqualified", { funnel: FUNNEL, reason: "owns_lending_business" });
+        setStage("disqualified");
+        return;
+      }
+      setStage("business");
+    }, ADVANCE_DELAY_MS);
   }
 
   function submitBusiness(e: React.FormEvent) {
@@ -264,20 +275,38 @@ export default function LeadForm() {
             <legend className="mb-5 text-lg font-bold leading-snug tracking-tight text-[#0E0E0E] sm:text-xl">
               {QUALIFY_QUESTION}
             </legend>
-            <div className="grid gap-3 sm:grid-cols-2">
-              {[YES, NO].map((option) => (
-                <button
-                  key={option}
-                  type="button"
-                  onClick={() => answerQualify(option)}
-                  className="group flex items-center justify-between rounded-xl border border-[#BB9A65]/45 bg-white px-5 py-4 text-left text-base font-semibold text-[#0E0E0E] transition-all hover:-translate-y-0.5 hover:border-[#8C6B2E] hover:bg-[#FFFCD8]/70 hover:shadow-md"
-                >
-                  {option}
-                  <span className="text-[#8C6B2E] opacity-60 transition-opacity group-hover:opacity-100">
-                    <Arrow />
-                  </span>
-                </button>
-              ))}
+            <div role="radiogroup" aria-label={QUALIFY_QUESTION} className="grid gap-3 sm:grid-cols-2">
+              {[YES, NO].map((option) => {
+                const selected = qualifyAnswer === option;
+                return (
+                  <button
+                    key={option}
+                    type="button"
+                    role="radio"
+                    aria-checked={selected}
+                    onClick={() => answerQualify(option)}
+                    className={`group flex items-center gap-3.5 rounded-xl border px-5 py-4 text-left text-base font-semibold text-[#0E0E0E] transition-all hover:-translate-y-0.5 hover:shadow-md ${
+                      selected
+                        ? "border-[#8C6B2E] bg-[#FFFCD8]/70 shadow-md"
+                        : "border-[#BB9A65]/45 bg-white hover:border-[#8C6B2E] hover:bg-[#FFFCD8]/40"
+                    }`}
+                  >
+                    <span
+                      aria-hidden
+                      className={`grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 transition-colors ${
+                        selected ? "border-[#8C6B2E]" : "border-[#BB9A65]/70 group-hover:border-[#8C6B2E]"
+                      }`}
+                    >
+                      <span
+                        className={`h-2.5 w-2.5 rounded-full bg-[#8C6B2E] transition-transform duration-200 ${
+                          selected ? "scale-100" : "scale-0"
+                        }`}
+                      />
+                    </span>
+                    {option}
+                  </button>
+                );
+              })}
             </div>
           </fieldset>
         )}
@@ -421,7 +450,7 @@ export default function LeadForm() {
             <p className="mt-3 text-sm text-[#5F594B]">
               This program is built for private DSCR and hard money lenders with at least 3 loan officers.
             </p>
-            <button type="button" onClick={() => setStage("qualify")} className={`${backBtn} mt-5`}>
+            <button type="button" onClick={() => { setQualifyAnswer(null); setStage("qualify"); }} className={`${backBtn} mt-5`}>
               <Arrow back /> Change my answer
             </button>
           </div>

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Image from "next/image";
 import SectionTracker from "@/components/SectionTracker";
 import LeadForm from "./LeadForm";
 import BookCallButton from "./BookCallButton";
@@ -163,15 +162,14 @@ export default function DscrLendersPage() {
       <SectionTracker />
 
       {/* ═════════ HERO + FORM ═════════ */}
-      <section data-section-name="hero" className="relative px-4 pb-20 pt-8 sm:px-6 md:pb-28 md:pt-12">
-        <div className="pointer-events-none absolute left-1/2 top-0 h-[520px] w-[900px] max-w-full -translate-x-1/2 rounded-full bg-[#FFFCD8] opacity-70 blur-[110px]" />
+      <section data-section-name="hero" className="relative px-4 pb-6 pt-8 sm:px-6 md:pb-8 md:pt-12">
         <div className="relative mx-auto max-w-6xl text-center">
-          <Image src="/logo.png" alt="Capital Growth Club" width={480} height={141} priority className="mx-auto mb-8 h-9 w-auto md:mb-10" />
-
-          <div className="mb-8 inline-flex rounded-full bg-[#0E0E0E] px-4 py-2.5 ring-4 ring-[#0E0E0E]/15 sm:px-5 md:px-7">
-            <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[0.08em] text-[#BB9A65] sm:text-[11px] sm:tracking-[0.18em] md:text-sm">
-              For private DSCR and hard money lenders
-            </span>
+          <div className="gold-pulse-ring mb-9 inline-flex rounded-full p-[2.5px] md:mb-10">
+            <div className="rounded-full bg-[#0E0E0E] px-4 py-2.5 sm:px-8 sm:py-2.5 md:px-10 md:py-3 lg:px-14 lg:py-3.5">
+              <span className="whitespace-nowrap text-[clamp(11px,3.35vw,13px)] font-bold uppercase tracking-[0.02em] text-[#BB9A65] sm:text-lg sm:tracking-[0.1em] md:text-xl lg:text-[26px] xl:text-[28px]">
+                For private DSCR and hard money lenders
+              </span>
+            </div>
           </div>
 
           <h1 className="mx-auto max-w-5xl text-balance text-[2.1rem] font-extrabold leading-[1.07] tracking-[-0.035em] sm:text-5xl lg:text-[3.4rem]">
@@ -199,7 +197,7 @@ export default function DscrLendersPage() {
       </section>
 
       {/* ═════════ 01 THE PROBLEM ═════════ */}
-      <section data-section-name="problem" className="px-4 py-20 sm:px-6 md:py-28">
+      <section data-section-name="problem" className="px-4 pb-20 pt-10 sm:px-6 md:pb-28 md:pt-14">
         <div className="mx-auto max-w-5xl">
           <SectionHead
             number="01"
