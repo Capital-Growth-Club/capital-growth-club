@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { track } from "@/lib/analytics";
@@ -37,6 +37,18 @@ const STEP_NUMBER: Record<Stage, number> = {
   disqualified: 1,
 };
 const TOTAL_STEPS = 3;
+
+/**
+ * Analytics funnel order. `form_step` fires once per step the first time it's
+ * shown, so GA4 can chart drop-off: qualify → business → contact → verify,
+ * then `lead_verified` and `booking_complete`.
+ */
+const FUNNEL_STEP: Partial<Record<Stage, number>> = {
+  qualify: 1,
+  business: 2,
+  contact: 3,
+  verify: 4,
+};
 /** Pause after an option is picked so the filled circle registers before moving on. */
 const ADVANCE_DELAY_MS = 350;
 
@@ -100,6 +112,64 @@ export default function LeadForm() {
   const progress =
     stage === "verify" ? 92 : stage === "disqualified" ? 0 : ((step - 1) / TOTAL_STEPS) * 100 + 8;
 
+  const rootRef = useRef<HTMLDivElement>(null);
+  const trackedStepsRef = useRef(new Set<Stage>());
+
+  /** Fires `form_step` the first time a step is shown; going Back doesn't refire. */
+  const trackStep = useCallback((s: Stage) => {
+    const stepNumber = FUNNEL_STEP[s];
+    if (!stepNumber || trackedStepsRef.current.has(s)) return;
+    trackedStepsRef.current.add(s);
+    track("form_step", { funnel: FUNNEL, step: s, step_number: stepNumber });
+  }, []);
+
+  // Step 1 counts only once the form is actually on screen (it's below the
+  // fold on phones), so "saw the form" isn't inflated by page views.
+  useEffect(() => {
+    const el = rootRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          trackStep("qualify");
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [trackStep]);
+
+  // Later steps are only reachable by interacting, so they're on screen.
+  useEffect(() => {
+    if (stage !== "qualify") trackStep(stage);
+  }, [stage, trackStep]);
+
+  // Steps differ in height (the code step is much shorter than the contact
+  // step), so after a change the form can end up above the viewport. Center it:
+  // always for the code step, otherwise only when part of it is off screen.
+  const firstStageRef = useRef(true);
+  useEffect(() => {
+    if (firstStageRef.current) {
+      firstStageRef.current = false;
+      return;
+    }
+    const frame = window.requestAnimationFrame(() => {
+      const el = rootRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const offScreen = rect.top < 0 || rect.bottom > window.innerHeight;
+      if (stage === "verify" || offScreen) {
+        // A step taller than the screen (contact, on small phones) lines up
+        // with its top instead, so the question isn't cut off.
+        const tooTall = rect.height > window.innerHeight - 32;
+        el.scrollIntoView({ behavior: "smooth", block: tooTall ? "start" : "center" });
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
+  }, [stage]);
+
   function markStarted() {
     if (started) return;
     setStarted(true);
@@ -156,12 +226,14 @@ export default function LeadForm() {
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
+        track("otp_send_failed", { funnel: FUNNEL, reason: "rejected" });
         setError(data.error || "We couldn't text that number. Please check it and try again.");
       } else {
         track("lead_submit_info", { question_set: "lenders", funnel: FUNNEL });
         setStage("verify");
       }
     } catch {
+      track("otp_send_failed", { funnel: FUNNEL, reason: "network" });
       setError("We couldn't text that number. Please try again.");
     }
     setBusy(false);
@@ -170,6 +242,7 @@ export default function LeadForm() {
   async function resendCode() {
     setResending(true);
     setError("");
+    track("otp_resend", { funnel: FUNNEL });
     try {
       const res = await fetch("/api/auth/send-otp", {
         method: "POST",
@@ -195,11 +268,13 @@ export default function LeadForm() {
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
+        track("otp_verify_failed", { funnel: FUNNEL, reason: "wrong_code" });
         setError(data.error || "That code didn't match. Please try again.");
         setBusy(false);
         return;
       }
     } catch {
+      track("otp_verify_failed", { funnel: FUNNEL, reason: "network" });
       setError("We couldn't check that code. Please try again.");
       setBusy(false);
       return;
@@ -248,14 +323,14 @@ export default function LeadForm() {
   }
 
   return (
-    <div className="overflow-hidden rounded-[22px] border border-[#0E0E0E]/80 bg-white text-left shadow-[0_30px_70px_-20px_rgba(14,14,14,0.35)]">
+    <div ref={rootRef} className="scroll-mt-4 overflow-hidden rounded-[22px] border border-[#0E0E0E]/80 bg-white text-left shadow-[0_30px_70px_-20px_rgba(14,14,14,0.35)]">
       {stage !== "disqualified" && (
         <div className="flex items-center justify-between gap-4 bg-[#0E0E0E] px-6 py-4 sm:px-8">
-          <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#BB9A65]">
+          <span className="whitespace-nowrap text-xs font-bold uppercase tracking-[0.12em] text-[#BB9A65] sm:tracking-[0.16em]">
             {stage === "verify" ? "Confirm your number" : `Step ${step} of ${TOTAL_STEPS}`}
           </span>
           <div
-            className="h-1.5 w-28 overflow-hidden rounded-full bg-white/15"
+            className="h-1.5 w-20 shrink-0 overflow-hidden rounded-full bg-white/15 sm:w-28"
             role="progressbar"
             aria-valuenow={Math.round(progress)}
             aria-valuemin={0}

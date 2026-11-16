@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import SectionTracker from "@/components/SectionTracker";
+import ScrollDepthTracker from "@/components/ScrollDepthTracker";
+import FaqList from "./FaqList";
 import LeadForm from "./LeadForm";
 import BookCallButton from "./BookCallButton";
 import { Accent, GuaranteeStrip, SiteFooter, poppins } from "./ui";
@@ -160,6 +162,7 @@ export default function DscrLendersPage() {
   return (
     <main className={`${poppins.className} min-h-screen overflow-x-clip bg-white text-[#0E0E0E]`}>
       <SectionTracker />
+      <ScrollDepthTracker />
 
       {/* ═════════ HERO + FORM ═════════ */}
       <section data-section-name="hero" className="relative px-4 pb-6 pt-8 sm:px-6 md:pb-8 md:pt-12">
@@ -311,23 +314,7 @@ export default function DscrLendersPage() {
       <section data-section-name="faq" className="px-4 pb-24 pt-8 sm:px-6 md:pb-28">
         <div className="mx-auto max-w-4xl">
           <SectionHead number="04" eyebrow="Questions" title="Everything to know before you book your call." />
-          <div className="space-y-3.5">
-            {FAQS.map((f) => (
-              <details
-                key={f.q}
-                className="group rounded-2xl border border-[#BB9A65]/40 bg-white shadow-[0_16px_36px_rgba(14,14,14,0.05)] open:border-[#BB9A65]/70"
-              >
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 px-6 py-5 text-base font-bold tracking-[-0.01em] md:px-7 md:text-lg [&::-webkit-details-marker]:hidden">
-                  {f.q}
-                  <span aria-hidden className="relative h-4 w-4 shrink-0 text-[#8C6B2E]">
-                    <span className="absolute inset-x-0 top-1/2 h-[1.5px] -translate-y-1/2 bg-current" />
-                    <span className="absolute inset-y-0 left-1/2 w-[1.5px] -translate-x-1/2 bg-current transition-transform duration-200 group-open:rotate-90 group-open:scale-y-0" />
-                  </span>
-                </summary>
-                <p className="px-6 pb-6 leading-relaxed text-[#5F594B] md:px-7">{f.a}</p>
-              </details>
-            ))}
-          </div>
+          <FaqList faqs={FAQS} />
           <BookCallButton location="faq" />
         </div>
       </section>
