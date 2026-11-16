@@ -5,7 +5,7 @@ import ScrollDepthTracker from "@/components/ScrollDepthTracker";
 import FaqList from "./FaqList";
 import LeadForm from "./LeadForm";
 import BookCallButton from "./BookCallButton";
-import { Accent, GuaranteeStrip, SiteFooter, poppins } from "./ui";
+import { Accent, GuaranteeStrip, SiteFooter, poppins, poppinsItalic } from "./ui";
 
 /**
  * /dscr-lenders — in-house rebuild of the GHL page at
@@ -108,7 +108,7 @@ function Card({ icon, title, children }: { icon: string; title: string; children
 
 function Closer({ children }: { children: ReactNode }) {
   return (
-    <p className="mx-auto mt-12 max-w-2xl text-balance text-center text-lg font-semibold italic leading-relaxed text-[#0E0E0E] md:text-xl">
+    <p className={`${poppinsItalic.className} mx-auto mt-12 max-w-2xl text-balance text-center text-lg font-semibold italic leading-relaxed text-[#0E0E0E] md:text-xl`}>
       {children}
     </p>
   );

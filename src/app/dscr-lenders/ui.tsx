@@ -5,11 +5,24 @@ import { Poppins } from "next/font/google";
 
 /** Shared look for the /dscr-lenders funnel: landing, booking, thank-you. */
 
+/**
+ * Only the weights the funnel uses. Every file listed here is preloaded at
+ * high priority, so extra weights slow the headline on mobile.
+ */
 export const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "800"],
+  style: "normal",
   display: "swap",
+});
+
+/** Italic is only used below the fold (section closers), so it isn't preloaded. */
+export const poppinsItalic = Poppins({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  style: "italic",
+  display: "swap",
+  preload: false,
 });
 
 /** Gold gradient text for the emphasised half of a headline. */
